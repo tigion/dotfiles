@@ -19,6 +19,9 @@ vim/.vim/spell/*
 # Homebrew
 Brewfile.lock.json
 
+# test
+test/*
+
 # Private
 *.private
 *.private.*
