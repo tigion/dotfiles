@@ -1,0 +1,27 @@
+# backup, swap
+*.swp
+*~
+*.bak
+
+# macOS
+.DS_Store
+Icon[]
+
+# vim
+vim/.vim/colors/*
+vim/.vim/pack/*
+vim/.vim/spell/*
+
+# nvim
+.config/nvim/**/packer_compiled.lua
+.config/nvim/**/.luarc.json
+
+# Homebrew
+Brewfile.lock.json
+
+# Private
+*.private
+*.private.*
+
+# keep
+!.keep

@@ -1,0 +1,34 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+
+# tools
+brew "git"
+brew "tree"
+brew "curl"
+brew "wget"
+
+# nvim
+brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "tree-sitter"
+brew "node"
+brew "stylua"
+
+# coding
+brew "python3"
+brew "ruby"
+#brew "php"
+
+# fun
+brew "cmatrix"
+brew "tty-clock"
+
+# casks
+cask "font-hack-nerd-font"
+cask "kitty"
+#cask "iterm2"
+#cask "blackhole-2ch"
+#cask "neovide"

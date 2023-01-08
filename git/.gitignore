@@ -1,0 +1,6 @@
+*.esproj
+.DS_Store
+*.swp
+*~
+*.bak
+Icon[]
