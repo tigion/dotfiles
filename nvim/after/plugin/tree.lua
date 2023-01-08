@@ -9,6 +9,9 @@ tree.setup {
     dotfiles = false,
     custom = { '^\\.git$' }, -- ignore `.git` folder
   },
+  git = {
+    ignore = false, -- toggle with `I`
+  },
   renderer = {
     icons = {
       glyphs = {
