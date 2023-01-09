@@ -215,14 +215,14 @@ useZsh () {
     subtitle "Zsh"
     # Oh My Zsh
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-      #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
       success "Installed Oh My Zsh"
     else
       success "Oh My Zsh is already installed"
     fi
     # Powerlevel10k
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-      #git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
       success "Installed Powerlevel10k"
     else
       success "Powerlevel10k is already installed"
@@ -255,15 +255,15 @@ useVim () {
   if command -v vim &> /dev/null; then
     subtitle "Vim"
     if [[ ! -f "$HOME/.vim/colors/monokai.vim" ]]; then 
-      #mkdir -p "$HOME/.vim/colors"
-      #curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
+      mkdir -p "$HOME/.vim/colors"
+      curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
       success "Installed Monokai"
     else
       success "Monokai is already installed"
     fi
     if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then 
-      #mkdir -p ~/.vim/pack
-      #git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
+      mkdir -p ~/.vim/pack
+      git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
       success "Installed VimCompletesMe"
     else
       success "VimCompletesMe is already installed"
