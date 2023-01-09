@@ -14,6 +14,12 @@ OVERWRITE_EXISTING_CONFIG=true
 BACKUP_EXISTING_CONFIG=true
 BACKUP_EXISTING_CONFIG_LINK=false
 SKIP_EXISTING_CONFIG=true
+OPTION_DRYRUN=false
+
+# check dry run
+if [[ "$1" == "--dry-run" ]]; then
+  OPTION_DRYRUN=true
+fi
 
 # parameters
 BACKUP_TIMESTAMP="$(date '+%Y%m%d-%H%M%S')"

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# exits with true if option for dry-run is false
+doIt () {
+  [[ "$OPTION_DRYRUN" == "true" ]] && printf "${COLOR_YELLOW}!${COLOR_NONE}"
+  [[ "$OPTION_DRYRUN" != "true" ]]
+}
+
 # set colors
 COLOR_GRAY="\033[0;38;5;243m"
 COLOR_BLUE="\033[0;34m"
@@ -74,6 +80,20 @@ showOptions () {
       info "- Skip existing config: $(optionState $SKIP_EXISTING_CONFIG)"
     fi
   fi
+  if [[ "$OPTION_DRYRUN" == "true" ]]; then
+    warning "Dry run, commands marked with '!' are not executed: $(optionState $OPTION_DRYRUN)"
+  fi
+}
+
+existsCommand () {
+  command -v "$1" &> /dev/null
+  #command -v "$1" >/dev/null 2>&1
+}
+
+existsFile () {
+  [[ -e "$1" ]]
+  #[ -e "$1" ]
+  #test -e "$1"
 }
 
 readyToStart () {
@@ -89,24 +109,24 @@ readyToStart () {
 
 installXcodeCommandLineTools () {
   subtitle "Xcode Command Line Tools"
-  result=`xcode-select -p 1>/dev/null;echo $?`
+  result=`xcode-select -p 1>/dev/null; echo $?`
   if [[ "$result" == 0 ]]; then
     success "Command Line Tools for Xcode are already installed"
   else
-    xcode-select --install
+    doIt && xcode-select --install
     success "Installed Command Line Tools for Xcode"
   fi
 }
 
 installHomebrew () {
   subtitle "Homebrew"
-  if command -v brew &> /dev/null; then
+  if existsCommand brew; then
     success "Homebrew is already installed"
   else
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    doIt && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Installed Homebrew"
   fi
-  brew bundle --file "$DOTFILES_ROOT/homebrew/Brewfile"
+  doIt && brew bundle --file "$DOTFILES_ROOT/homebrew/Brewfile"
   success "Installed Homebrew bundle"
 }
 
@@ -157,11 +177,11 @@ link () {
       if [[ "$doBackup" == "true" ]]; then
         # remove with backup
         dstBackup="${dst}.backup-${BACKUP_TIMESTAMP}"
-        mv "$dst" "$dstBackup"
+        doIt && mv "$dst" "$dstBackup"
         success "Moved existing $dstType '$dst' to '$dstBackup'"
       else
         # remove without backup
-        rm -rf "$dst"
+        doIt && rm -rf "$dst"
         success "Removed existing $dstType '$dst'"
       fi
     else
@@ -178,10 +198,10 @@ link () {
   # create link
   local folder=$(dirname "$dst")
   if ! [[ -d "$folder" ]]; then
-    mkdir -p "$folder"
+    doIt && mkdir -p "$folder"
     success "Created directory '$folder'"
   fi
-  ln -s "$src" "$dst"
+  doIt && ln -s "$src" "$dst"
   success "Linked $srcType '$src' to '$dst'"
 }
 
@@ -193,7 +213,7 @@ useBin () {
 
 # git
 useGit () {
-  if command -v git &> /dev/null; then
+  if existsCommand git; then
     subtitle "Git"
     link "$DOTFILES_ROOT/git/.gitignore" "$HOME/.gitignore"
   fi
@@ -201,7 +221,7 @@ useGit () {
 
 # ssh
 useSsh () {
-  if command -v ssh &> /dev/null; then
+  if existsCommand ssh; then
     subtitle "SSH"
     link "$DOTFILES_ROOT/ssh/custom" "$HOME/.config/ssh"
     link "$DOTFILES_ROOT/ssh/config" "$HOME/.ssh/config"
@@ -210,19 +230,19 @@ useSsh () {
 
 # zsh
 useZsh () {
-  #if command -v zsh &> /dev/null; then
+  #if existsCommand zsh; then
   if [[ "${SHELL##*/}" == "zsh" ]]; then
     subtitle "Zsh"
     # Oh My Zsh
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+      doIt && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
       success "Installed Oh My Zsh"
     else
       success "Oh My Zsh is already installed"
     fi
     # Powerlevel10k
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-      git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+      doIt && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
       success "Installed Powerlevel10k"
     else
       success "Powerlevel10k is already installed"
@@ -235,7 +255,7 @@ useZsh () {
 
 # bash
 useBash () {
-  #if command -v bash &> /dev/null; then
+  #if existsCommand bash; then
   if [[ "${SHELL##*/}" == "bash" ]]; then
     subtitle "Bash"
     skip "TODO: Not yet supported!"
@@ -244,7 +264,7 @@ useBash () {
 
 # fd
 useFd () {
-  if command -v fd &> /dev/null; then
+  if existsCommand fd; then
     subtitle "fd"
     link "$DOTFILES_ROOT/fd" "$HOME/.config/fd"
   fi
@@ -252,18 +272,18 @@ useFd () {
 
 # vim
 useVim () {
-  if command -v vim &> /dev/null; then
+  if existsCommand vim; then
     subtitle "Vim"
     if [[ ! -f "$HOME/.vim/colors/monokai.vim" ]]; then 
-      mkdir -p "$HOME/.vim/colors"
-      curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
+      doIt && mkdir -p "$HOME/.vim/colors"
+      doIt && curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
       success "Installed Monokai"
     else
       success "Monokai is already installed"
     fi
     if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then 
-      mkdir -p ~/.vim/pack
-      git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
+      doIt && mkdir -p ~/.vim/pack
+      doIt && git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
       success "Installed VimCompletesMe"
     else
       success "VimCompletesMe is already installed"
@@ -274,16 +294,16 @@ useVim () {
 
 # nvim
 useNeovim () {
-  if command -v zsh &> /dev/null; then
+  if existsCommand zsh; then
     subtitle "Neovim"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
-    #nvim --headless +PackerInstall +q
+    #doIt && nvim --headless +PackerInstall +q
   fi
 }
 
 # kitty
 useKitty () {
-  if command -v kitty &> /dev/null; then
+  if existsCommand kitty; then
     subtitle "Kitty"
     link "$DOTFILES_ROOT/kitty" "$HOME/.config/kitty"
   fi
