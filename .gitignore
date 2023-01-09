@@ -22,7 +22,8 @@ Brewfile.lock.json
 # test
 test/*
 
-# Private
+# private configurations
+private.*
 *.private
 *.private.*
 
