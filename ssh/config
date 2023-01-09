@@ -7,4 +7,4 @@ Host *
   Compression yes
 
 # import custom config files
-Include $HOME/.config/ssh/config.*
+Include ~/.config/ssh/config.*
