@@ -199,6 +199,15 @@ useGit () {
   fi
 }
 
+# ssh
+useSsh () {
+  if command -v ssh &> /dev/null; then
+    subtitle "SSH"
+    link "$DOTFILES_ROOT/ssh/custom" "$HOME/.config/ssh"
+    link "$DOTFILES_ROOT/ssh/config" "$HOME/.ssh/config"
+  fi
+}
+
 # zsh
 useZsh () {
   #if command -v zsh &> /dev/null; then

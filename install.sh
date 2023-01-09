@@ -41,6 +41,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   title "Install Configurations"
   useBin
   useGit
+  useSsh
   useZsh
   useBash
   useFd

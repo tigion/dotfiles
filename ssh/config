@@ -1,0 +1,10 @@
+# vim: set filetype=sshconfig:
+
+# default settings
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  Compression yes
+
+# import custom config files
+Include $HOME/.config/ssh/config.*
