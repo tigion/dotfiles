@@ -19,6 +19,12 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 # ~/bin
 export PATH="$HOME/bin:$PATH"
 
+# Homebrew
+newPath="/usr/local/sbin"
+if [[ -d "$newPath" ]]; then
+  [[ ! "$PATH" =~ $newPath ]] && export PATH="$newPath:$PATH"
+fi
+
 # ruby
 if [ `uname -m` = "arm64" ] && [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   # arm64 (apple)
@@ -26,6 +32,6 @@ if [ `uname -m` = "arm64" ] && [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 elif [ `uname -m` = "x86_64" ] && [ -d "/usr/local/opt/ruby/bin" ]; then
   # x86_64 (intel)
-  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
