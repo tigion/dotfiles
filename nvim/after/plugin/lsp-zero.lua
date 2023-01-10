@@ -10,7 +10,8 @@ lsp.ensure_installed {
   'sumneko_lua', -- Lua
   'cssls', -- CSS, SCSS, LESS
   'clangd', -- C, C++
-  'bashls', -- Bash
+  'bashls', -- Bash (LSP)
+  --'shellcheck', -- Bash (Linter)
   'marksman', -- Markdown
   'pyright', -- Python
   'vimls', -- VimScript
@@ -89,6 +90,12 @@ vim.diagnostic.config {
 }
 
 -- user (tigion) settings
+require('mason-tool-installer').setup {
+  ensure_installed = {
+    'shellcheck', -- Bash (Linter)
+  }
+}
+
 local lspkind = require 'lspkind'
 cmp.setup {
   formatting = {

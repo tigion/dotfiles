@@ -96,6 +96,7 @@ packer.startup(function(use)
 
       -- user (tigion) settings
       { 'onsails/lspkind-nvim' }, -- vscode-like pictograms
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
     },
   }
 
