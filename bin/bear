@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Opens or create a note via callback URL with definedsize
+# Opens or create a note via callback URL with defined
 # size and position in Bear, a note app for macOS.
 
 # check
