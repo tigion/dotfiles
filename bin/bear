@@ -45,7 +45,8 @@ function createNote () {
 # open note via id
 function openNote () {
   id="$1"
-  if echo $id | grep "^[A-Z0-9]\{8\}-[A-Z0-9]\{4\}-[A-Z0-9]\{4\}-[A-Z0-9]\{4\}-[A-Z0-9]\{12\}-[A-Z0-9]\{5\}-[A-Z0-9]\{16\}$"; then
+  rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
+  if [[ "$id" =~ $rx ]]; then
     callbackURL="bear://x-callback-url/open-note?id=${id}&open_note=yes&new_window=yes"
   else
     echo "Invalid note id!"
