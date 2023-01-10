@@ -19,6 +19,9 @@ vim/.vim/spell/*
 # Homebrew
 Brewfile.lock.json
 
+# kitty
+kitty/kitty.app.icns
+
 # test
 test/*
 
