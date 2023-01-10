@@ -13,8 +13,8 @@ vim/.vim/pack/*
 vim/.vim/spell/*
 
 # nvim
-.config/nvim/**/packer_compiled.lua
-.config/nvim/**/.luarc.json
+nvim/**/packer_compiled.lua
+nvim/**/.luarc.json
 
 # Homebrew
 Brewfile.lock.json
