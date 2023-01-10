@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # TODO:
 # - macOS: trigger system and app update
@@ -14,7 +14,7 @@ cleanUp=true
 # update Homebrew and installed software
 updateHomebrew () {
   if command -v brew &> /dev/null; then
-    echo "\nHomebrew:"
+    printf "\nHomebrew:"
     # check
     brew -v
     brew outdated
@@ -36,10 +36,10 @@ updateHomebrew () {
 # update Ruby package manager RubyGems and Gems
 updateRuby () {
   if command -v gem &> /dev/null; then
-    echo "\nRubyGems, Gems:"
+    printf "\nRubyGems, Gems:"
     # check
-    currentVersion=`gem --version`
-    latestVersion=`curl -s https://api.github.com/repos/rubygems/rubygems/releases | grep -m 1 "html_url" | grep -o "releases/.*/.*" | tr -d "v\"," | cut -d"/" -f3`
+    currentVersion=$(gem --version)
+    latestVersion=$(curl -s https://api.github.com/repos/rubygems/rubygems/releases | grep -m 1 "html_url" | grep -o "releases/.*/.*" | tr -d "v\"," | cut -d"/" -f3)
     if [[ ${currentVersion//.} -lt ${latestVersion//.} ]]; then
       echo "A new RubyGems version is available ($currentVersion < $latestVersion)"
     else
@@ -52,7 +52,7 @@ updateRuby () {
       gem update
     fi
     # clean up
-    if [[ "$cleanUP" == "true" ]]; then
+    if [[ "$cleanUp" == "true" ]]; then
       gem cleanup
     fi
   fi
@@ -61,7 +61,7 @@ updateRuby () {
 # update Python package manager pip
 updatePython () {
   if command -v pip3 &> /dev/null; then
-    echo "\nPython pip:"
+    printf "\nPython pip:"
     # check
     pip3 --version
     pip3 list --outdated

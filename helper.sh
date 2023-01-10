@@ -2,7 +2,7 @@
 
 # exits with true if option for dry-run is false
 doIt () {
-  [[ "$OPTION_DRYRUN" == "true" ]] && printf "${COLOR_YELLOW}!${COLOR_NONE}"
+  [[ "$OPTION_DRYRUN" == "true" ]] && printf "%b!%b" "$COLOR_YELLOW" "$COLOR_NONE"
   [[ "$OPTION_DRYRUN" != "true" ]]
 }
 
@@ -18,28 +18,28 @@ COLOR_NONE="\033[0m"
 #printf "\r  "
 #printf "\r\033[2K  ..."
 title () {
-  printf "\n${COLOR_GRAY}[${COLOR_BLUE} == ${COLOR_GRAY}]${COLOR_NONE}${COLOR_BLUE} ${1}${COLOR_NONE}\n"
+  printf "\n%b[%b == %b]%b %b%b\n" "$COLOR_GRAY" "$COLOR_BLUE" "$COLOR_GRAY" "$COLOR_BLUE" "$1" "$COLOR_NONE"
 }
 subtitle () {
-  printf "\n${COLOR_GRAY}[${COLOR_BLUE} -- ${COLOR_GRAY}]${COLOR_NONE}${COLOR_BLUE} ${1}${COLOR_NONE}\n"
+  printf "\n%b[%b -- %b]%b %b%b\n" "$COLOR_GRAY" "$COLOR_BLUE" "$COLOR_GRAY" "$COLOR_BLUE" "$1" "$COLOR_NONE"
 }
 info () {
-  printf "${COLOR_GRAY}[${COLOR_BLUE} .. ${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "%b[%b .. %b]%b %b\n" "$COLOR_GRAY" "$COLOR_BLUE" "$COLOR_GRAY" "$COLOR_NONE" "$1"
 }
 question () {
-  printf "\n${COLOR_GRAY}[${COLOR_BLUE} ?? ${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "\n%b[%b ?? %b]%b %b\n" "$COLOR_GRAY" "$COLOR_BLUE" "$COLOR_GRAY" "$COLOR_NONE" "$1"
 }
 success () {
-  printf "${COLOR_GRAY}[${COLOR_GREEN} OK ${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "%b[%b OK %b]%b %b\n" "$COLOR_GRAY" "$COLOR_GREEN" "$COLOR_GRAY" "$COLOR_NONE" "$1"
 }
 warning () {
-  printf "${COLOR_GRAY}[${COLOR_YELLOW}WARN${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "%b[%bWARN%b]%b %b\n" "$COLOR_GRAY" "$COLOR_YELLOW" "$COLOR_GRAY" "$COLOR_NONE" "$1"
 }
 skip () {
-  printf "${COLOR_GRAY}[${COLOR_YELLOW}SKIP${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "%b[%bSKIP%b]%b %b\n" "$COLOR_GRAY" "$COLOR_YELLOW" "$COLOR_GRAY" "$COLOR_NONE" "$1"
 }
 fail () {
-  printf "${COLOR_GRAY}[${COLOR_RED}FAIL${COLOR_GRAY}]${COLOR_NONE} ${1}\n"
+  printf "%b[%bFAIL%b]%b %b\n" "$COLOR_GRAY" "$COLOR_RED" "$COLOR_GRAY" "$COLOR_NONE" "$1"
   exit 1
 }
 
@@ -55,8 +55,8 @@ testMessages () {
 }
 
 optionState () {
-  yes="${COLOR_GREEN}Yes${COLOR_NONE}"
-  no="${COLOR_RED}No${COLOR_NONE}"
+  local yes="${COLOR_GREEN}Yes${COLOR_NONE}"
+  local no="${COLOR_RED}No${COLOR_NONE}"
   if [[ "$1" == "true" ]]; then
     echo "$yes"
   else
@@ -66,22 +66,22 @@ optionState () {
 
 showOptions () {
   subtitle "Options:"
-  info "Install software: $(optionState $INSTALL_SOFTWARE)"
-  info "Install configurations: $(optionState $INSTALL_CONFIG)"
+  info "Install software: $(optionState "$INSTALL_SOFTWARE")"
+  info "Install configurations: $(optionState "$INSTALL_CONFIG")"
   if [[ "$INSTALL_CONFIG" == "true" ]]; then
-    info "- Overwrite existing ones: $(optionState $OVERWRITE_EXISTING_CONFIG)"
+    info "- Overwrite existing ones: $(optionState "$OVERWRITE_EXISTING_CONFIG")"
     if [[ "$OVERWRITE_EXISTING_CONFIG" == "true" ]]; then
-      info "- Backup existing ones: $(optionState $BACKUP_EXISTING_CONFIG)"
+      info "- Backup existing ones: $(optionState "$BACKUP_EXISTING_CONFIG")"
       info "- Backup timestamp: $BACKUP_TIMESTAMP"
       if [[ "$BACKUP_EXISTING_CONFIG" == "true" ]]; then
-        info "- Backup symbolic links: $(optionState $BACKUP_EXISTING_CONFIG_LINK)"
+        info "- Backup symbolic links: $(optionState "$BACKUP_EXISTING_CONFIG_LINK")"
       fi
     else
-      info "- Skip existing config: $(optionState $SKIP_EXISTING_CONFIG)"
+      info "- Skip existing config: $(optionState "$SKIP_EXISTING_CONFIG")"
     fi
   fi
   if [[ "$OPTION_DRYRUN" == "true" ]]; then
-    warning "Dry run, commands marked with '!' are not executed: $(optionState $OPTION_DRYRUN)"
+    warning "Dry run, commands marked with '!' are not executed: $(optionState "$OPTION_DRYRUN")"
   fi
 }
 
@@ -98,7 +98,7 @@ existsFile () {
 
 readyToStart () {
   question "Ready to start installation (y/n)?"
-  read -n 1 answer
+  read -r -n 1 answer
   printf "\r"
   if [[ "$answer" != "y" && "$answer" != "Y" ]]; then
     info "Bye"
@@ -109,7 +109,7 @@ readyToStart () {
 
 installXcodeCommandLineTools () {
   subtitle "Xcode Command Line Tools"
-  result=`xcode-select -p 1>/dev/null; echo $?`
+  result=$(xcode-select -p 1>/dev/null; echo $?)
   if [[ "$result" == 0 ]]; then
     success "Command Line Tools for Xcode are already installed"
   else
@@ -148,9 +148,10 @@ configType () {
 }
 
 link () {
-  declare src="$1" dst="$2"
-  declare srcType=$(configType "$src")
-  declare dstType=$(configType "$dst")
+  local src="$1" dst="$2"
+  local srcType dstType
+  srcType=$(configType "$src")
+  dstType=$(configType "$dst")
 
   # handle non-existent source or empty target
   if [[ ! -e "$src" ]]; then
@@ -196,7 +197,8 @@ link () {
   fi
 
   # create link
-  local folder=$(dirname "$dst")
+  local folder
+  folder=$(dirname "$dst")
   if ! [[ -d "$folder" ]]; then
     doIt && mkdir -p "$folder"
     success "Created directory '$folder'"
@@ -242,7 +244,7 @@ useZsh () {
     fi
     # Powerlevel10k
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-      doIt && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+      doIt && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
       success "Installed Powerlevel10k"
     else
       success "Powerlevel10k is already installed"

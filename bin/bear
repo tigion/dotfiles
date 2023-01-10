@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Opens or create a note via callback URL with defined
 # size and position in Bear, a note app for macOS.
@@ -14,7 +14,7 @@ parameter="$2"
 
 # encode string for url
 # https://gist.github.com/cdown/1163649?permalink_comment_id=4292547#gistcomment-4292547
-function rawUrlEncode() {
+rawUrlEncode() {
   local string="${1}"
   local strlen=${#string}
   local encoded=""
@@ -33,7 +33,7 @@ function rawUrlEncode() {
 }
 
 # create new note with title
-function createNote () {
+createNote () {
   if [[ -z "$1" ]]; then
     echo "Invalid note title!"
     exit 1
@@ -43,7 +43,7 @@ function createNote () {
 }
 
 # open note via id
-function openNote () {
+openNote () {
   id="$1"
   rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
   if [[ "$id" =~ $rx ]]; then
@@ -55,7 +55,7 @@ function openNote () {
 }
 
 # open TODO note via title or create new one 
-function openTodo () {
+openTodo () {
   callbackURL="bear://x-callback-url/open-note?title=TODO&exclude_trashed=yes&open_note=yes&new_window=yes&edit=yes&x-error=bear%3A%2F%2Fx-callback-url%2Fcreate%3Ftitle%3DTODO%26open_note%3Dyes%26new_window%3Dyes%26edit%3dyes"
 }
 
