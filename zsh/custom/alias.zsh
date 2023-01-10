@@ -1,7 +1,7 @@
 # --- Aliases ---
 
-# open tree without .git folder and ignored files
-alias tree="tree -a -I '.git' --gitignore --dirsfirst"
+# open tree without .git folder and ignored files, follow symbolic links
+alias tree="tree -a -l -I '.git' --gitignore --dirsfirst"
 
 # open todo note in Bear.app
 alias todo="bear open-todo"
