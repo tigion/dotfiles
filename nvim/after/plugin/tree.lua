@@ -32,6 +32,7 @@ tree.setup {
       },
     },
   },
+  update_focused_file = { enable = true },
 }
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<Cr>', { silent = true })
