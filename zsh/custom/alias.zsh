@@ -9,6 +9,9 @@ alias echoPATH="echo '${PATH//:/\\n}'"
 # open tty-clock with my preferred settings
 alias ti-clock="tty-clock -c -C3 -f '%A %d.%m.%Y'"
 
+# Lazygit
+alias lg="lazygit"
+
 # -- macOS --
 
 # recursively delete `.DS_Store` files

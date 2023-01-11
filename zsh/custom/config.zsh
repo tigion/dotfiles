@@ -1,4 +1,5 @@
-# --- Command History ---
+# --- Zsh ---
+# Command History
 export HISTFILE=~/.zsh_history # history file
 export HISTFILESIZE=1000000000 # history file size
 export HISTSIZE=1000000000 # history size
@@ -11,7 +12,6 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
-
 # set own COMPDUMP path (default is ~/) 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
@@ -19,13 +19,13 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 # ~/bin
 export PATH="$HOME/bin:$PATH"
 
-# Homebrew
+# --- Homebrew ---
 newPath="/usr/local/sbin"
 if [[ -d "$newPath" ]]; then
   [[ ! "$PATH" =~ $newPath ]] && export PATH="$newPath:$PATH"
 fi
 
-# ruby
+# --- Ruby ---
 if [ `uname -m` = "arm64" ] && [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   # arm64 (apple)
   export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -35,3 +35,6 @@ elif [ `uname -m` = "x86_64" ] && [ -d "/usr/local/opt/ruby/bin" ]; then
   export PATH="/usr/local/opt/ruby/bin:$PATH"
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
+
+# --- Lazygit---
+export XDG_CONFIG_HOME="$HOME/.config"

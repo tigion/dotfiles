@@ -8,6 +8,7 @@ brew "git"
 brew "tree"
 brew "curl"
 brew "wget"
+brew lazygit
 
 # nvim
 brew "neovim"

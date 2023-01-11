@@ -310,3 +310,11 @@ useKitty () {
     link "$DOTFILES_ROOT/kitty" "$HOME/.config/kitty"
   fi
 }
+
+# lazygit
+useLazygit () {
+  if existsCommand lazygit; then
+    subtitle "Lazygit"
+    link "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit/config.yml"
+  fi
+}

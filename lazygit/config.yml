@@ -1,0 +1,8 @@
+gui:
+  language: 'auto'
+  mouseEvents: true
+  showBottomLine: false
+  showIcons: true
+os:
+  editCommand: 'nvim'
+  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'

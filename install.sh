@@ -54,6 +54,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useVim
   useNeovim
   useKitty
+  useLazygit
 fi
 
 info "Finished"
