@@ -1,7 +1,7 @@
 # --- Aliases ---
 
-# open tree without .git folder and ignored files, follow symbolic links
-alias tree='tree -a -l -I ".git" --gitignore --dirsfirst'
+# open colored tree without .git folder and ignored files, follow symbolic links
+alias tree='tree -a -l -C -I ".git" --gitignore --dirsfirst'
 
 # echo PATH variable line by line
 alias echoPATH='echo "${PATH//:/\\n}"'
