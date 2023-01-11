@@ -315,6 +315,6 @@ useKitty () {
 useLazygit () {
   if existsCommand lazygit; then
     subtitle "Lazygit"
-    link "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit/config.yml"
+    link "$DOTFILES_ROOT/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
   fi
 }
