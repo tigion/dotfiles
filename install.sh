@@ -33,7 +33,7 @@ source "${DOTFILES_ROOT}/helper.sh"
 # start
 title "Start installation"
 showOptions
-readyToStart
+askToStart
 
 # install software
 if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
@@ -49,7 +49,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useGit
   useSsh
   useZsh
-  useBash
+  #useBash
   useFd
   useVim
   useNeovim
@@ -57,4 +57,5 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useLazygit
 fi
 
+echo ""
 info "Finished"
