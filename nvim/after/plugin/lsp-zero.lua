@@ -15,6 +15,7 @@ lsp.ensure_installed {
   'marksman', -- Markdown
   'pyright', -- Python
   'vimls', -- VimScript
+  'yamlls', -- Yaml
 }
 
 -- helper functions
