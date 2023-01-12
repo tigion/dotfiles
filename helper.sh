@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# exits with true if option for dry-run is false
-doIt () {
-  [[ "$OPTION_DRYRUN" == "true" ]] && printf "%b!%b" "$COLOR_YELLOW" "$COLOR_NONE"
-  [[ "$OPTION_DRYRUN" != "true" ]]
-}
-
 # set colors
 COLOR_GRAY="\033[0;38;5;243m"
 COLOR_BLUE="\033[0;34m"
@@ -54,6 +48,12 @@ testMessages () {
   fail "File not find"
 }
 
+# exits with true if option for dry-run is false
+doIt () {
+  [[ "$OPTION_DRYRUN" == "true" ]] && printf "%b!%b" "$COLOR_YELLOW" "$COLOR_NONE"
+  [[ "$OPTION_DRYRUN" != "true" ]]
+}
+
 optionState () {
   local yes="${COLOR_GREEN}Yes${COLOR_NONE}"
   local no="${COLOR_RED}No${COLOR_NONE}"
@@ -85,16 +85,16 @@ showOptions () {
   fi
 }
 
-existsCommand () {
-  command -v "$1" &> /dev/null
-  #command -v "$1" >/dev/null 2>&1
-}
+# returns true if a command or configuration exists
+isCommand () { command -v "$1" &> /dev/null; }
+isConfig () { [[ -d "$1" || -f "$1" || -h "$1" ]]; }
 
-existsFile () {
-  [[ -e "$1" ]]
-  #[ -e "$1" ]
-  #test -e "$1"
-}
+# -e ... existent file, directory or symbolic link (with existent target)
+# -h ... existent symbolic link (with existent or non-existent target)
+isFile ()         { [[ -e "$1" || -h "$1" ]]; }
+isRegularFile ()  { [[ -f "$1" ]]; }
+isFolder ()       { [[ -d "$1" ]]; }
+isSymbolicLink () { [[ -h "$1" ]]; }
 
 readyToStart () {
   question "Ready to start installation (y/n)?"
@@ -120,7 +120,7 @@ installXcodeCommandLineTools () {
 
 installHomebrew () {
   subtitle "Homebrew"
-  if existsCommand brew; then
+  if isCommand brew; then
     success "Homebrew is already installed"
   else
     doIt && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -154,7 +154,7 @@ link () {
   dstType=$(configType "$dst")
 
   # handle non-existent source or empty target
-  if [[ ! -e "$src" ]]; then
+  if ! isConfig "$src"; then
     skip "Source '$src' does not exist"
     return 0
   elif [[ -z "$dst" ]]; then
@@ -163,10 +163,7 @@ link () {
   fi
 
   # handle existing configuration
-  # -e ... file exists (can be a file, directory or symbolic link)
-  # -h ... symbolic link exists, but can be a non-existent file,
-  #        if a link exists to a target that no longer exists
-  if [[ -e "$dst" || -h "$dst" ]]; then
+  if isConfig "$dst"; then
     # overwrite
     if [[ "$OVERWRITE_EXISTING_CONFIG" == "true" ]]; then
       # set backup state, with special handling of symbolic links
@@ -190,7 +187,7 @@ link () {
         # skip
         skip "$dstType '$dst' already exists"
       else
-        # fail: the installation script stops 
+        # fail: the installation script stops
         fail "$dstType '$dst' already exists"
       fi
     fi
@@ -215,7 +212,7 @@ useBin () {
 
 # git
 useGit () {
-  if existsCommand git; then
+  if isCommand git; then
     subtitle "Git"
     link "$DOTFILES_ROOT/git/.gitignore" "$HOME/.gitignore"
   fi
@@ -223,7 +220,7 @@ useGit () {
 
 # ssh
 useSsh () {
-  if existsCommand ssh; then
+  if isCommand ssh; then
     subtitle "SSH"
     link "$DOTFILES_ROOT/ssh/custom" "$HOME/.config/ssh"
     link "$DOTFILES_ROOT/ssh/config" "$HOME/.ssh/config"
@@ -232,7 +229,7 @@ useSsh () {
 
 # zsh
 useZsh () {
-  #if existsCommand zsh; then
+  #if isCommand zsh; then
   if [[ "${SHELL##*/}" == "zsh" ]]; then
     subtitle "Zsh"
     # Oh My Zsh
@@ -257,7 +254,7 @@ useZsh () {
 
 # bash
 useBash () {
-  #if existsCommand bash; then
+  #if isCommand bash; then
   if [[ "${SHELL##*/}" == "bash" ]]; then
     subtitle "Bash"
     skip "TODO: Not yet supported!"
@@ -266,7 +263,7 @@ useBash () {
 
 # fd
 useFd () {
-  if existsCommand fd; then
+  if isCommand fd; then
     subtitle "fd"
     link "$DOTFILES_ROOT/fd" "$HOME/.config/fd"
   fi
@@ -274,16 +271,16 @@ useFd () {
 
 # vim
 useVim () {
-  if existsCommand vim; then
+  if isCommand vim; then
     subtitle "Vim"
-    if [[ ! -f "$HOME/.vim/colors/monokai.vim" ]]; then 
+    if [[ ! -f "$HOME/.vim/colors/monokai.vim" ]]; then
       doIt && mkdir -p "$HOME/.vim/colors"
       doIt && curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
       success "Installed Monokai"
     else
       success "Monokai is already installed"
     fi
-    if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then 
+    if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then
       doIt && mkdir -p ~/.vim/pack
       doIt && git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
       success "Installed VimCompletesMe"
@@ -296,7 +293,7 @@ useVim () {
 
 # nvim
 useNeovim () {
-  if existsCommand zsh; then
+  if isCommand zsh; then
     subtitle "Neovim"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
     #doIt && nvim --headless +PackerInstall +q
@@ -305,7 +302,7 @@ useNeovim () {
 
 # kitty
 useKitty () {
-  if existsCommand kitty; then
+  if isCommand kitty; then
     subtitle "Kitty"
     link "$DOTFILES_ROOT/kitty" "$HOME/.config/kitty"
   fi
@@ -313,7 +310,7 @@ useKitty () {
 
 # lazygit
 useLazygit () {
-  if existsCommand lazygit; then
+  if isCommand lazygit; then
     subtitle "Lazygit"
     link "$DOTFILES_ROOT/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
   fi
