@@ -181,6 +181,8 @@ nnoremap sl <C-w>l
 " open explorer
 nnoremap <Leader>e :Lexplore<Cr>
 "nnoremap <Leader>e :NERDTreeToggle<Cr>
+" search and replace template for the current word under cursor
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " --- insert mode ---
 " also `jj` for <Esc>
