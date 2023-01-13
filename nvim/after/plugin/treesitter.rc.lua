@@ -30,6 +30,7 @@ ts.setup {
     "vim",
     "help",
     "c",
+    "make",
   },
   autotag = {
     enable = true,
