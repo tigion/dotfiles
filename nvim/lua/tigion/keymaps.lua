@@ -3,6 +3,8 @@ local keymap = vim.keymap
 -- My keymaps
 keymap.set("n", "<Esc><Esc>", ":noh<cr>") -- clear search highlighting
 keymap.set('i', 'jj', '<Esc>') -- also `jj` for <Esc>
+keymap.set('v', '<', '<gv') -- repeat indent
+keymap.set('v', '>', '>gv') -- repeat indent
 -- search and go back to start of current word
 --keymap.set('n', '*', '*<C-o>')
 -- F-Keys

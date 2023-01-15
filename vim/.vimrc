@@ -194,6 +194,9 @@ inoremap <C-c> <Esc>
 " move highlight line down / up
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" repeat indent
+vnoremap < <gv
+vnoremap > >gv
 
 " --- F-Keys ---
 " execute make
