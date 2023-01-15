@@ -16,6 +16,7 @@ lsp.ensure_installed {
   'pyright', -- Python
   'vimls', -- VimScript
   'yamlls', -- Yaml
+  'html', -- HTML
 }
 
 -- helper functions
@@ -43,6 +44,18 @@ lsp.configure('sumneko_lua', {
   },
 })
 
+-- html (html-lsp)
+lsp.configure('html', {
+  settings = {
+    html = {
+      format = {
+        templating = true,
+        wrapLineLength = 0,
+      },
+    },
+  },
+})
+
 -- cmp mappings
 local cmp = require 'cmp'
 ----local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -54,11 +67,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings {
 }
 -- disable completion with tab
 -- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-lsp.setup_nvim_cmp {
-  mapping = cmp_mappings,
-}
+--cmp_mappings['<Tab>'] = nil
+--cmp_mappings['<S-Tab>'] = nil
+--lsp.setup_nvim_cmp {
+--	mapping = cmp_mappings,
+--}
 
 lsp.set_preferences {
   suggest_lsp_servers = false,
@@ -94,7 +107,7 @@ vim.diagnostic.config {
 require('mason-tool-installer').setup {
   ensure_installed = {
     'shellcheck', -- Bash (Linter)
-  }
+  },
 }
 
 local lspkind = require 'lspkind'
