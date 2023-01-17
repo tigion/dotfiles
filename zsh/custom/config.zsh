@@ -15,6 +15,9 @@ setopt share_history          # share command history data
 # set own COMPDUMP path (default is ~/) 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
+# --- CD Paths ---
+#export cdpath=($HOME/code)
+
 # --- Paths ---
 # ~/bin
 export PATH="$HOME/bin:$PATH"
