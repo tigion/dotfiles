@@ -1,0 +1,52 @@
+{
+  // vim
+  // https://stackoverflow.com/questions/61818446/how-do-i-add-a-keyboard-shortcut-to-activate-disable-a-vscode-extension 
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<Esc>", "<Esc>" ],
+      "commands": [ ":nohl" ]
+    },
+    /*{
+      "before": [ "<C-a>" ],
+      "commands": [ "gg<S-v>G" ] // select all
+    },*/
+    {
+      "before": [ "s", "s" ],
+      "commands": [ ":split" ] // "<Return><C-w>w"
+    },
+    {
+      "before": [ "s", "v" ],
+      "commands": [ ":vsplit" ] // "<Return><C-w>w"
+    },
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [ "j", "j" ],
+      "after": [ "<Esc>" ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "J" ],
+      "commands": [ "editor.action.moveLinesDownAction" ]
+    },
+    {
+      "before": [ "K" ],
+      "commands": [ "editor.action.moveLinesUpAction" ]
+    }
+    {
+      "before": [ ">" ],
+      "commands": [ "editor.action.indentLines" ]
+    },
+    {
+      "before": [ "<" ],
+      "commands": [ "editor.action.outdentLines" ]
+    },
+  ]
+}
