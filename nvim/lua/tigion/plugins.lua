@@ -29,6 +29,13 @@ packer.startup(function(use)
     requires = { 'tjdevries/colorbuddy.nvim' }, -- colorscheme helper
   }
 
+  use {
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+    end
+  }
+
   -- layout
   use 'nvim-lualine/lualine.nvim' -- statusline
   --use 'nvim-lua/plenary.nvim' -- common utilities
@@ -111,6 +118,7 @@ packer.startup(function(use)
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
+  use '~/dojo/nvim-asciidoc-preview'
 
   -- help
   use 'folke/which-key.nvim'
