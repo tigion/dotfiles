@@ -6,3 +6,5 @@ gui:
 os:
   editCommand: 'nvim'
   editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+git:
+  disableForcePushing: true
