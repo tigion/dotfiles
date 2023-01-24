@@ -80,3 +80,4 @@ vim.opt.title = true
 vim.opt.updatetime = 50
 vim.opt.wildignore:append { '*/node_modules/*' }
 --vim.opt.colorcolumn = "80"
+vim.opt.fillchars:append('eob: ') -- no ~ on not existent lines
