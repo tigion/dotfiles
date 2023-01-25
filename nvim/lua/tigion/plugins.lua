@@ -118,7 +118,8 @@ packer.startup(function(use)
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
-  use '~/dojo/nvim-asciidoc-preview'
+  --use '~/dojo/nvim-asciidoc-preview'
+  use 'tigion/nvim-asciidoc-preview'
 
   -- help
   use 'folke/which-key.nvim'
