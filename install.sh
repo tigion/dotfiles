@@ -51,7 +51,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useZsh
   #useBash
   useFd
-  #useVim
+  useVim
   useNeovim
   useKitty
   useLazygit

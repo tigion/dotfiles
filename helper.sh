@@ -233,19 +233,19 @@ useZsh () {
     fi
     # Plugins
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
-      isActive && git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+      isActive && git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
       success "Installed zsh-autosuggestions"
     else
       success "zsh-autosuggestions is already installed"
     fi
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
-      isActive && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+      isActive && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
       success "Installed zsh-syntax-highlighting"
     else
       success "zsh-syntax-highlighting is already installed"
     fi
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/ohmyzsh-full-autoupdate" ]]; then
-      isActive && git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate"
+      isActive && git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate"
       success "Installed ohmyzsh-full-autoupdate"
     else
       success "ohmyzsh-full-autoupdate is already installed"
@@ -286,14 +286,14 @@ useVim () {
     subtitle "Vim"
     if [[ ! -f "$HOME/.vim/colors/monokai.vim" ]]; then
       isActive && mkdir -p "$HOME/.vim/colors"
-      isActive && curl -o https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -f "$HOME/.vim/colors/monokai.vim"
+      isActive && curl https://raw.githubusercontent.com/crusoexia/vim-monokai/master/colors/monokai.vim -o "$HOME/.vim/colors/monokai.vim"
       success "Installed Monokai"
     else
       success "Monokai is already installed"
     fi
     if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then
-      isActive && mkdir -p ~/.vim/pack
-      isActive && git clone git://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
+      isActive && mkdir -p "$HOME/.vim/pack"
+      isActive && git clone https://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
       success "Installed VimCompletesMe"
     else
       success "VimCompletesMe is already installed"
