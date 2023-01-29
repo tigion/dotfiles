@@ -8,7 +8,7 @@ DOTFILES_ROOT="$(pwd)"
 
 # options
 # TODO: use command line options
-INSTALL_SOFTWARE=false
+INSTALL_SOFTWARE=true
 INSTALL_CONFIG=true
 OVERWRITE_EXISTING_CONFIG=true
 BACKUP_EXISTING_CONFIG=true
