@@ -7,7 +7,7 @@ tap "homebrew/core"
 brew "git"
 brew "tree"
 brew "curl"
-#brew "wget"
+brew "wget"
 brew "lazygit"
 
 # nvim
