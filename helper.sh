@@ -233,19 +233,19 @@ useZsh () {
     fi
     # Plugins
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
-      isActive && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+      isActive && git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
       success "Installed zsh-autosuggestions"
     else
       success "zsh-autosuggestions is already installed"
     fi
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
-      isActive && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+      isActive && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
       success "Installed zsh-syntax-highlighting"
     else
       success "zsh-syntax-highlighting is already installed"
     fi
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/ohmyzsh-full-autoupdate" ]]; then
-      isActive && git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
+      isActive && git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate"
       success "Installed ohmyzsh-full-autoupdate"
     else
       success "ohmyzsh-full-autoupdate is already installed"
@@ -260,6 +260,7 @@ useZsh () {
 
     link "$DOTFILES_ROOT/zsh/custom" "$HOME/.config/zsh"
     link "$DOTFILES_ROOT/zsh/.zshrc" "$HOME/.zshrc"
+    link "$DOTFILES_ROOT/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
   fi
 }
 
