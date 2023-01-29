@@ -8,7 +8,7 @@ brew "git"
 brew "tree"
 brew "curl"
 brew "wget"
-brew lazygit
+brew "lazygit"
 
 # nvim
 brew "neovim"
@@ -24,12 +24,14 @@ brew "ruby"
 #brew "php"
 
 # fun
-brew "cmatrix"
-brew "tty-clock"
+#brew "cmatrix"
+#brew "tty-clock"
 
 # casks
 cask "font-hack-nerd-font"
 cask "kitty"
+cask "stats"
+cask "itsycal"
 #cask "iterm2"
 #cask "blackhole-2ch"
 #cask "neovide"
