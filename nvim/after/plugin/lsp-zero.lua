@@ -107,6 +107,7 @@ vim.diagnostic.config {
 require('mason-tool-installer').setup {
   ensure_installed = {
     'shellcheck', -- Bash (Linter)
+    'prettier', -- Code formater
   },
 }
 
