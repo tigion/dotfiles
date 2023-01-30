@@ -2,9 +2,9 @@
 
 #resolution=$(osascript -e 'tell application "Finder" to get bounds of window of desktop')
 resolution=$(system_profiler SPDisplaysDataType | grep Resolution)
-screenWidth=$(echo "$resolution" | awk '{print $2}')
-screenHeight=$(echo "$resolution" | awk '{print $4}')
-screenRetina=$(echo "$resolution" | awk '{print $5}')
+screenWidth=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $1}')
+screenHeight=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $3}')
+screenRetina=$(echo "$resolution" | grep -o Retina)
 
 if [[ "${screenRetina}" == "Retina" ]]; then
   screenWidth=$((screenWidth / 2))
