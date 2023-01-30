@@ -24,6 +24,7 @@ tree.setup {
     group_empty = true,
   },
   view = {
+    width = 28,
     adaptive_size = false,
     mappings = {
       list = {
