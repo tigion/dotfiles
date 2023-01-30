@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#resolution=$(osascript -e 'tell application "Finder" to get bounds of window of desktop')
+resolution=$(system_profiler SPDisplaysDataType | grep Resolution)
+screenWidth=$(echo "$resolution" | awk '{print $2}')
+screenHeight=$(echo "$resolution" | awk '{print $4}')
+screenRetina=$(echo "$resolution" | awk '{print $5}')
+
+if [[ "${screenRetina}" == "Retina" ]]; then
+  screenWidth=$((screenWidth / 2))
+  screenHeight=$((screenHeight / 2))
+fi
+
+menuHeight=25
+margin=20
+
+appX=$((0 + margin))
+appY=$((25 + margin))
+appWidth=$((screenWidth - 2 * margin))
+appHeight=$((screenHeight - menuHeight - 2 * margin))
+#echo "${appX}, ${appY}, ${appWidth}, ${appHeight}"
+
+# scriptable app
+#tell1="tell application \"Kitty\""
+#tell2="tell window 1 to set bounds to {${appX}, ${appY}, ${appWidth}, ${appHeight}}"
+#osascript -e "${tell1} to ${tell2}" -e "return" 
+
+# not scriptable app
+tell1="tell application \"System Events\""
+tell2="tell application process \"kitty\""
+tell3="tell window 1 to set {position, size} to {{${appX}, ${appY}}, {${appWidth}, ${appHeight}}}"
+osascript -e "${tell1} to ${tell2} to ${tell3}" -e "return" 
