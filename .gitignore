@@ -21,6 +21,7 @@ Brewfile.lock.json
 
 # kitty
 kitty/kitty.app.icns
+kitty/backgrounds
 
 # test
 test/*
