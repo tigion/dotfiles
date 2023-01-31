@@ -29,6 +29,7 @@ brew "ruby"
 
 # casks
 cask "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
 cask "kitty"
 cask "stats"
 cask "itsycal"
