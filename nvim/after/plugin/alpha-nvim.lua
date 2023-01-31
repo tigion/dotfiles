@@ -38,15 +38,15 @@ dashboard.section.header.val = banner
 
 -- Menu
 dashboard.section.buttons.val = {
-  dashboard.button('e', '󰈔  New file', ':ene <BAR> startinsert<CR>'),
-  dashboard.button('r', '󱔗  Recent files', ':Telescope oldfiles <CR>'),
-  dashboard.button('f', '󰱼  Find file', ':Telescope find_files<CR>'),
-  dashboard.button('g', '󰺮  Find text', ':Telescope live_grep <CR>'),
-  dashboard.button('h', '󱤇  Find help tag', ':Telescope help_tags <CR>'),
-  dashboard.button('s', '  Settings', ':cd ~/.config/nvim/<CR> :e .<CR>'),
-  dashboard.button('u', '  Update plugins', ':PackerSync<CR>'),
-  dashboard.button('c', '  Check health', ':checkhealth<CR>'),
-  dashboard.button('q', '  Quit', ':qa<CR>'),
+  dashboard.button('e', '󰈔 New file', ':ene <BAR> startinsert<CR>'),
+  dashboard.button('r', '󱔗 Recent files', ':Telescope oldfiles <CR>'),
+  dashboard.button('f', '󰱼 Find file', ':Telescope find_files<CR>'),
+  dashboard.button('g', '󰺮 Find text', ':Telescope live_grep <CR>'),
+  dashboard.button('h', '󱤇 Find help tag', ':Telescope help_tags <CR>'),
+  dashboard.button('s', ' Settings', ':cd ~/.config/nvim/<CR> :e .<CR>'),
+  dashboard.button('u', ' Update plugins', ':PackerSync<CR>'),
+  dashboard.button('c', ' Check health', ':checkhealth<CR>'),
+  dashboard.button('q', ' Quit', ':qa<CR>'),
 }
 
 -- Footer
