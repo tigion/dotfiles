@@ -1,0 +1,24 @@
+# vim: set filetype=gitconfig:
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[merge]
+	tool = opendiff
+[core]
+  excludesfile = "~/.config/git/ignore"
+	editor = vim
+	filemode = false
+[pack]
+	threads = 0
+[mergetool]
+	keepBackup = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+
+[include]
+  path = "~/.config/git/config.private"

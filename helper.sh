@@ -207,7 +207,7 @@ useBin () {
 useGit () {
   if isCommand git; then
     subtitle "Git"
-    link "$DOTFILES_ROOT/git/.gitignore" "$HOME/.gitignore"
+    link "$DOTFILES_ROOT/git" "$HOME/.config/git"
   fi
 }
 
@@ -323,6 +323,6 @@ useKitty () {
 useLazygit () {
   if isCommand lazygit; then
     subtitle "Lazygit"
-    link "$DOTFILES_ROOT/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+    link "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit"
   fi
 }

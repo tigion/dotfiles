@@ -23,6 +23,9 @@ Brewfile.lock.json
 kitty/kitty.app.icns
 kitty/backgrounds
 
+# lazygit
+lazygit/state.yml
+
 # test
 test/*
 
