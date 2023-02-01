@@ -6,7 +6,7 @@ if ! cd "$(dirname "$0")"; then exit; fi
 # requirements
 brew install ruby
 
-# is java needed?
+# is java for asciidoc-diagram needed?
 #brew install openjdk
 #sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
