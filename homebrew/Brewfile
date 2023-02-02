@@ -29,10 +29,13 @@ brew "ruby"
 #brew "tty-clock"
 
 # casks
-cask "font-hack-nerd-font"
 cask "font-meslo-lg-nerd-font"
+#cask "font-hack-nerd-font"
 cask "kitty"
-cask "stats"
-cask "itsycal"
+cask "docker"
+
+# nice to have
 cask "fliqlo"
+#cask "stats"
+#cask "itsycal"
 #cask "iterm2"
