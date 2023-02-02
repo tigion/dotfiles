@@ -21,6 +21,7 @@ brew "stylua"
 # coding
 brew "python3"
 brew "ruby"
+#brew "composer"
 #brew "php"
 
 # fun
