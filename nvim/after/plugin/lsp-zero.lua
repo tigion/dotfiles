@@ -112,7 +112,7 @@ require 'mason-tool-installer'.setup {
     'shellcheck', -- Shell (Linter)
     'shfmt', -- Shell (Formater)
     'prettier', -- Code (Formater)
-    'stylua', -- Lua (Formater)
+    --'stylua', -- Lua (Formater)
     'flake8', -- Python (Formater)
   },
 }
@@ -126,6 +126,8 @@ null_ls.setup {
   --  --- ...
   --end,
   sources = {
+    null_ls.builtins.formatting.trim_newlines,
+    null_ls.builtins.formatting.trim_whitespace,
     --null_ls.builtins.formatting.prettierd,
     --null_ls.builtins.formatting.prettier,
     --null_ls.builtins.formatting.stylua, -- dont work
