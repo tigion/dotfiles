@@ -16,7 +16,6 @@ brew "ripgrep"
 brew "fd"
 brew "tree-sitter"
 brew "node"
-brew "stylua"
 
 # coding
 brew "python3"
