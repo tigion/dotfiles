@@ -11,7 +11,6 @@ lsp.ensure_installed {
   'cssls', -- CSS, SCSS, LESS
   'clangd', -- C, C++
   'bashls', -- Bash (LSP)
-  --'shellcheck', -- Bash (Linter)
   'marksman', -- Markdown
   'pyright', -- Python
   'vimls', -- VimScript
@@ -37,6 +36,9 @@ lsp.configure('sumneko_lua', {
   -- Fix Undefined global 'vim'
   settings = {
     Lua = {
+      format = {
+        enable = true, -- format with sumneko_lua (settings: .editorconfig) instead of stylua (null-ls)
+      },
       diagnostics = {
         globals = { 'vim' },
       },
@@ -74,7 +76,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings {
 --}
 
 lsp.set_preferences {
-  suggest_lsp_servers = false,
+  suggest_lsp_servers = true,
 }
 
 lsp.on_attach(function(client, bufnr)
@@ -104,10 +106,31 @@ vim.diagnostic.config {
 }
 
 -- user (tigion) settings
-require('mason-tool-installer').setup {
+
+require 'mason-tool-installer'.setup {
   ensure_installed = {
-    'shellcheck', -- Bash (Linter)
-    'prettier', -- Code formater
+    'shellcheck', -- Shell (Linter)
+    'shfmt', -- Shell (Formater)
+    'prettier', -- Code (Formater)
+    'stylua', -- Lua (Formater)
+    'flake8', -- Python (Formater)
+  },
+}
+
+local null_ls = require 'null-ls'
+local null_opts = lsp.build_options('null-ls', {})
+null_ls.setup {
+  on_attach = null_opts.on_attach,
+  --on_attach = function(client, bufnr)
+  --  null_opts.on_attach(client, bufnr)
+  --  --- ...
+  --end,
+  sources = {
+    --null_ls.builtins.formatting.prettierd,
+    --null_ls.builtins.formatting.prettier,
+    --null_ls.builtins.formatting.stylua, -- dont work
+    null_ls.builtins.formatting.shfmt, -- (settings: .editorconfig)
+    null_ls.builtins.diagnostics.flake8,
   },
 }
 

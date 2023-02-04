@@ -60,7 +60,7 @@ packer.startup(function(use)
     requires = 'JoosepAlviste/nvim-ts-context-commentstring', -- support embedded languages
   }
   use 'ethanholz/nvim-lastplace' -- reopen files at last edit position
-  use 'mhartington/formatter.nvim' -- format / indent (:Format)
+  --use 'mhartington/formatter.nvim' -- format / indent (:Format)
 
   -- treesitter
   use {
@@ -102,8 +102,10 @@ packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
 
       -- user (tigion) settings
+      { 'jose-elias-alvarez/null-ls.nvim' }, --
       { 'onsails/lspkind-nvim' }, -- vscode-like pictograms
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
+      { 'j-hui/fidget.nvim' }, -- LSP status view
     },
   }
 
@@ -118,8 +120,8 @@ packer.startup(function(use)
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
-  --use '~/dojo/nvim-asciidoc-preview'
-  use 'tigion/nvim-asciidoc-preview'
+  use '~/dojo/nvim-asciidoc-preview'
+  --use 'tigion/nvim-asciidoc-preview'
 
   -- help
   use 'folke/which-key.nvim'
