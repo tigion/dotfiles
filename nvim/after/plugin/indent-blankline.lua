@@ -1,12 +1,13 @@
-local status, ibl = pcall(require, "indent_blankline")
+local status, ibl = pcall(require, 'indent_blankline')
 if (not status) then return end
 
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#303030 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineChar guifg=#303030 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#574100 gui=nocombine]]
 
 ibl.setup {
-  char_highlight_list = {'IndentBlanklineIndent1'},
+  use_treesitter = true,
   char = '┊',
-  --show_current_context = true,
+  context_char = '┊',
+  show_current_context = true,
   show_trailing_blankline_indent = false,
 }
-

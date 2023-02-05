@@ -64,8 +64,8 @@ dashboard.section.footer.val = footer()
 -- defined in color theme (after/plugin/neosolarized.rc.lua)
 for _, button in ipairs(dashboard.section.buttons.val) do
   button.opts.width = buttonWidth
-  button.opts.hl = "AlphaButtons"
-  button.opts.hl_shortcut = "AlphaShortcut"
+  button.opts.hl = 'AlphaButtons'
+  button.opts.hl_shortcut = 'AlphaShortcut'
 end
 dashboard.section.header.opts.hl = 'AlphaHeader'
 dashboard.section.buttons.opts.hl = 'AlphaButtons'
@@ -91,7 +91,7 @@ if winHeight < getDashboardHeight() + 3 then
   table.remove(dashboard.section.buttons.val, 5)
   table.remove(dashboard.section.buttons.val, 5)
 end
-local topSpace = vim.fn.max({ 0, vim.fn.floor((vim.fn.winheight(0) - getDashboardHeight()) / 2) })
+local topSpace = vim.fn.max { 0, vim.fn.floor((vim.fn.winheight(0) - getDashboardHeight()) / 2) }
 dashboard.opts.layout[1].val = topSpace
 
 -- Setup

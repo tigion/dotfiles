@@ -33,7 +33,7 @@ packer.startup(function(use)
     'goolord/alpha-nvim',
     config = function()
       require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
-    end
+    end,
   }
 
   -- layout
@@ -65,7 +65,7 @@ packer.startup(function(use)
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter', -- treesitter
-    run = function() require('nvim-treesitter.install').update { with_sync = true } end,
+    run = function() require 'nvim-treesitter.install'.update { with_sync = true } end,
   }
 
   -- telescope
@@ -120,8 +120,8 @@ packer.startup(function(use)
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
-  use '~/dojo/nvim-asciidoc-preview'
-  --use 'tigion/nvim-asciidoc-preview'
+  --use '~/dojo/nvim-asciidoc-preview'
+  use 'tigion/nvim-asciidoc-preview'
 
   -- help
   use 'folke/which-key.nvim'

@@ -1,4 +1,4 @@
-vim.cmd("autocmd!")
+vim.cmd 'autocmd!'
 
 -- encoding
 vim.scriptencoding = 'utf-8'
@@ -40,18 +40,18 @@ vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in 
 -- backup, undo, swap
 vim.opt.backup = false
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.opt.undofile = true
 vim.opt.swapfile = false
 
 -- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+vim.cmd [[let &t_Cs = "\e[4:3m"]]
+vim.cmd [[let &t_Ce = "\e[4:0m"]]
 
 -- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd('InsertLeave', {
   pattern = '*',
-  command = "set nopaste"
+  command = 'set nopaste',
 })
 
 -- Add asterisks in block comments
@@ -80,4 +80,4 @@ vim.opt.title = true
 vim.opt.updatetime = 50
 vim.opt.wildignore:append { '*/node_modules/*' }
 --vim.opt.colorcolumn = "80"
-vim.opt.fillchars:append('eob: ') -- no ~ on not existent lines
+vim.opt.fillchars:append 'eob: ' -- no ~ on not existent lines
