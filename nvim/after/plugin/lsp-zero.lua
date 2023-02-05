@@ -129,7 +129,7 @@ null_ls.setup {
     null_ls.builtins.formatting.trim_newlines,
     null_ls.builtins.formatting.trim_whitespace,
     --null_ls.builtins.formatting.prettierd,
-    --null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier,
     --null_ls.builtins.formatting.stylua, -- dont work
     null_ls.builtins.formatting.shfmt, -- (settings: .editorconfig)
     null_ls.builtins.diagnostics.flake8,
