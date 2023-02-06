@@ -114,6 +114,7 @@ require 'mason-tool-installer'.setup {
     'prettier', -- Code (Formater)
     --'stylua', -- Lua (Formater)
     'flake8', -- Python (Formater)
+    'pint', -- PHP (Formater)
   },
 }
 
@@ -132,6 +133,10 @@ null_ls.setup {
     null_ls.builtins.formatting.prettier,
     --null_ls.builtins.formatting.stylua, -- dont work
     null_ls.builtins.formatting.shfmt, -- (settings: .editorconfig)
+    null_ls.builtins.formatting.pint.with {
+      command = 'pint',
+      --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
+    },
     null_ls.builtins.diagnostics.flake8,
   },
 }
