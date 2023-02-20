@@ -6,8 +6,7 @@ if ! cd "$(dirname "$0")"; then exit; fi
 # use absolute paths
 DOTFILES_ROOT="$(pwd)"
 
-# options
-# TODO: use command line options
+# option defaults
 INSTALL_SOFTWARE=true
 INSTALL_CONFIG=true
 OVERWRITE_EXISTING_CONFIG=true
@@ -16,10 +15,18 @@ BACKUP_EXISTING_CONFIG_LINK=false
 SKIP_EXISTING_CONFIG=true
 OPTION_DRYRUN=false
 
-# check dry run
-if [[ "$1" == "--dry-run" ]]; then
-  OPTION_DRYRUN=true
-fi
+# handle command-line options
+while :; do
+  case "$1" in
+  --no-software) INSTALL_SOFTWARE=false ;;
+  --no-config) INSTALL_CONFIG=false ;;
+  --no-overwrite) OVERWRITE_EXISTING_CONFIG=false ;;
+  --no-backup) BACKUP_EXISTING_CONFIG=false ;;
+  --dry-run) OPTION_DRYRUN=true ;;
+  *) break ;;
+  esac
+  shift
+done
 
 # parameters
 BACKUP_TIMESTAMP="$(date '+%Y%m%d-%H%M%S')"
