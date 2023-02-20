@@ -7,7 +7,7 @@ lsp.preset 'recommended'
 lsp.ensure_installed {
   'tsserver', -- TypeScript
   'eslint', -- JavaScript, TypeScript
-  'sumneko_lua', -- Lua
+  'lua_ls', -- Lua
   'cssls', -- CSS, SCSS, LESS
   'clangd', -- C, C++
   'bashls', -- Bash (LSP)
@@ -30,7 +30,7 @@ local enable_format_on_save = function(_, bufnr)
 end
 
 -- lua settings
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
   -- Add format on save
   on_attach = function(client, bufnr) enable_format_on_save(client, bufnr) end,
   -- Fix Undefined global 'vim'
