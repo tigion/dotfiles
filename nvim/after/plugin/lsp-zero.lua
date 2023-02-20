@@ -112,7 +112,7 @@ require 'mason-tool-installer'.setup {
     'shellcheck', -- Shell (Linter)
     'shfmt', -- Shell (Formater)
     'prettier', -- Code (Formater)
-    --'stylua', -- Lua (Formater)
+    'stylua', -- Lua (Formater)
     'flake8', -- Python (Formater)
     'pint', -- PHP (Formater)
   },
@@ -136,7 +136,7 @@ null_ls.setup {
     null_ls.builtins.formatting.pint.with {
       command = 'pint',
       --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
-    },
+    } ,
     null_ls.builtins.diagnostics.flake8,
   },
 }
@@ -144,6 +144,6 @@ null_ls.setup {
 local lspkind = require 'lspkind'
 cmp.setup {
   formatting = {
-    format = lspkind.cmp_format { with_text = true, maxwidth = 50 },
+    format = lspkind.cmp_format { with_text = true, maxwidth = 50 } ,
   },
 }
