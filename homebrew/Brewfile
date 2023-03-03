@@ -9,6 +9,7 @@ brew "tree"
 brew "curl"
 brew "wget"
 brew "lazygit"
+brew "httpie"
 
 # nvim
 brew "neovim"

@@ -326,3 +326,11 @@ useLazygit () {
     link "$DOTFILES_ROOT/lazygit" "$HOME/.config/lazygit"
   fi
 }
+
+# httpie
+httpie () {
+  if isCommand http; then
+    subtitle "httpie"
+    link "$DOTFILES_ROOT/httpie" "$HOME/.config/httpie"
+  fi
+}

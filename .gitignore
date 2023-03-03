@@ -26,6 +26,9 @@ kitty/backgrounds
 # lazygit
 lazygit/state.yml
 
+# httpie
+httpie/version_info.json
+
 # test
 test/*
 

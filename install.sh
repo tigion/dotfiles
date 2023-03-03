@@ -62,6 +62,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useNeovim
   useKitty
   useLazygit
+  httpie
 fi
 
 echo ""
