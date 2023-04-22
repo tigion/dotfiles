@@ -23,15 +23,16 @@ tree.setup {
     },
     group_empty = true,
   },
+  --on_attach = on_attach,
   view = {
     width = 28,
     adaptive_size = false,
-    mappings = {
-      list = {
-        { key = 's', action = '' },
-        { key = '<C-s>', action = 'system_open' },
-      },
-    },
+    --mappings = {
+    --  list = {
+    --    { key = 's',     action = '' },
+    --    { key = '<C-s>', action = 'system_open' },
+    --  },
+    --},
   },
   update_focused_file = { enable = true },
 }
