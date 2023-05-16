@@ -4,7 +4,9 @@ gui:
   showBottomLine: false
   showIcons: true
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+  #editCommand: 'nvim'
+  edit: 'nvim'
+  #editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+  editAtLine: '{{editor}} +{{line}} -- {{filename}}'
 git:
   disableForcePushing: true
