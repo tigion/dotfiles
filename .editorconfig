@@ -16,7 +16,7 @@ indent_style = space
 indent_size = 2
 # none/single/double
 quote_style = single
-end_of_line = lf,
+end_of_line = lf
 # keep/never/always/smart
 trailing_table_separator = smart
 # keep/remove/remove_table_only/remove_string_only
