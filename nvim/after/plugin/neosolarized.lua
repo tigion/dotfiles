@@ -29,7 +29,8 @@ local styles = cb.styles
 	Color.new("blue", "#268bd2")
 	Color.new("cyan", "#2aa198")
 	Color.new("green", "#719e07")
-]] --
+]]
+   --
 Group.new('AlphaHeader', colors.orange)
 Group.new('AlphaButtons', colors.blue)
 Group.new('AlphaShortCut', colors.green)

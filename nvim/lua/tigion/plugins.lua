@@ -25,7 +25,7 @@ packer.startup(function(use)
 
   -- colorschemes
   use {
-    'svrana/neosolarized.nvim', -- truecolor, solarized dark colorscheme
+    'svrana/neosolarized.nvim',                 -- truecolor, solarized dark colorscheme
     requires = { 'tjdevries/colorbuddy.nvim' }, -- colorscheme helper
   }
 
@@ -37,29 +37,29 @@ packer.startup(function(use)
   }
 
   -- layout
-  use 'nvim-lualine/lualine.nvim' -- statusline
+  use 'nvim-lualine/lualine.nvim'             -- statusline
   --use 'nvim-lua/plenary.nvim' -- common utilities
-  use 'nvim-tree/nvim-web-devicons' -- file icons
-  use 'folke/zen-mode.nvim' -- distraction-free coding
-  use 'lukas-reineke/indent-blankline.nvim' -- highlight indention level
+  use 'nvim-tree/nvim-web-devicons'           -- file icons
+  use 'folke/zen-mode.nvim'                   -- distraction-free coding
+  use 'lukas-reineke/indent-blankline.nvim'   -- highlight indention level
   use {
-    'akinsho/bufferline.nvim', -- styled tabs
+    'akinsho/bufferline.nvim',                -- styled tabs
     requires = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   }
   use {
-    'nvim-tree/nvim-tree.lua', -- file explorer
+    'nvim-tree/nvim-tree.lua',                -- file explorer
     requires = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   }
 
   -- coding helper
-  use 'windwp/nvim-autopairs' -- auto pairs (cmp, treesitter)
-  use 'windwp/nvim-ts-autotag' -- auto tags
-  use 'norcalli/nvim-colorizer.lua' -- colored color codes
+  use 'windwp/nvim-autopairs'                                 -- auto pairs (cmp, treesitter)
+  use 'windwp/nvim-ts-autotag'                                -- auto tags
+  use 'norcalli/nvim-colorizer.lua'                           -- colored color codes
   use {
-    'numToStr/Comment.nvim', -- comment handling
+    'numToStr/Comment.nvim',                                  -- comment handling
     requires = 'JoosepAlviste/nvim-ts-context-commentstring', -- support embedded languages
   }
-  use 'ethanholz/nvim-lastplace' -- reopen files at last edit position
+  use 'ethanholz/nvim-lastplace'                              -- reopen files at last edit position
   --use 'mhartington/formatter.nvim' -- format / indent (:Format)
 
   -- treesitter
@@ -76,7 +76,7 @@ packer.startup(function(use)
   -- telescope extensions
   use 'nvim-telescope/telescope-file-browser.nvim' -- file browser
   use {
-    'nvim-telescope/telescope-fzf-native.nvim', -- fuzzy find
+    'nvim-telescope/telescope-fzf-native.nvim',    -- fuzzy find
     run = 'make',
   }
 
@@ -102,10 +102,10 @@ packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
 
       -- user (tigion) settings
-      { 'jose-elias-alvarez/null-ls.nvim' }, --
-      { 'onsails/lspkind-nvim' }, -- vscode-like pictograms
+      { 'jose-elias-alvarez/null-ls.nvim' },           --
+      { 'onsails/lspkind-nvim' },                      -- vscode-like pictograms
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
-      { 'j-hui/fidget.nvim' }, -- LSP status view
+      { 'j-hui/fidget.nvim' },                         -- LSP status view
     },
   }
 

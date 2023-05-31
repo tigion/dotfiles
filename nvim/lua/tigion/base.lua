@@ -20,8 +20,8 @@ vim.opt.termguicolors = true
 
 -- line numbers, wrap
 vim.opt.relativenumber = false -- toggle with <F8>
-vim.wo.number = true -- toggle with <F9>
-vim.opt.wrap = false -- no wrap lines
+vim.wo.number = true           -- toggle with <F9>
+vim.opt.wrap = false           -- no wrap lines
 
 -- indent
 vim.opt.smarttab = true

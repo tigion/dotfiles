@@ -2,15 +2,15 @@ local keymap = vim.keymap
 
 -- My keymaps
 keymap.set('n', '<Esc><Esc>', ':noh<cr>') -- clear search highlighting
-keymap.set('i', 'jj', '<Esc>') -- also `jj` for <Esc>
-keymap.set('v', '<', '<gv') -- repeat indent
-keymap.set('v', '>', '>gv') -- repeat indent
+keymap.set('i', 'jj', '<Esc>')            -- also `jj` for <Esc>
+keymap.set('v', '<', '<gv')               -- repeat indent
+keymap.set('v', '>', '>gv')               -- repeat indent
 -- search and go back to start of current word
 --keymap.set('n', '*', '*<C-o>')
 -- F-Keys
 keymap.set('', '<F8>', ':set relativenumber!<Cr>') -- toggle relative line numbers
-keymap.set('', '<F9>', ':set number!<Cr>') -- toggle line numbers
-keymap.set('', '<F10>', ':set spell!<Cr>') -- toggle spell checking
+keymap.set('', '<F9>', ':set number!<Cr>')         -- toggle line numbers
+keymap.set('', '<F10>', ':set spell!<Cr>')         -- toggle spell checking
 
 -- [[Good keymaps from ThePrimeagen]]
 -- open vim file manager
@@ -24,8 +24,8 @@ keymap.set('n', 'J', 'mzJ`z')
 keymap.set('n', '<C-d>', '<C-d>zz') -- down
 keymap.set('n', '<C-u>', '<C-u>zz') -- up
 -- keep cursor in middle position when go to next/prev search result
-keymap.set('n', 'n', 'nzzzv') -- next
-keymap.set('n', 'N', 'Nzzzv') -- prev
+keymap.set('n', 'n', 'nzzzv')       -- next
+keymap.set('n', 'N', 'Nzzzv')       -- prev
 -- preserve highligh tsource
 keymap.set('x', '<leader>p', [["_dP]])
 -- let `<C-c>` act like `<Esc>`

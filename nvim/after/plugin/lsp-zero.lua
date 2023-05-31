@@ -6,16 +6,16 @@ lsp.preset 'recommended'
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 lsp.ensure_installed {
   'tsserver', -- TypeScript
-  'eslint', -- JavaScript, TypeScript
-  'lua_ls', -- Lua
-  'cssls', -- CSS, SCSS, LESS
-  'clangd', -- C, C++
-  'bashls', -- Bash (LSP)
+  'eslint',   -- JavaScript, TypeScript
+  'lua_ls',   -- Lua
+  'cssls',    -- CSS, SCSS, LESS
+  'clangd',   -- C, C++
+  'bashls',   -- Bash (LSP)
   'marksman', -- Markdown
-  'pyright', -- Python
-  'vimls', -- VimScript
-  'yamlls', -- Yaml
-  'html', -- HTML
+  'pyright',  -- Python
+  'vimls',    -- VimScript
+  'yamlls',   -- Yaml
+  'html',     -- HTML
 }
 
 -- helper functions
@@ -110,11 +110,11 @@ vim.diagnostic.config {
 require 'mason-tool-installer'.setup {
   ensure_installed = {
     'shellcheck', -- Shell (Linter)
-    'shfmt', -- Shell (Formater)
-    'prettier', -- Code (Formater)
-    'stylua', -- Lua (Formater)
-    'flake8', -- Python (Formater)
-    'pint', -- PHP (Formater)
+    'shfmt',      -- Shell (Formater)
+    'prettier',   -- Code (Formater)
+    'stylua',     -- Lua (Formater)
+    'flake8',     -- Python (Formater)
+    'pint',       -- PHP (Formater)
   },
 }
 
@@ -136,7 +136,7 @@ null_ls.setup {
     null_ls.builtins.formatting.pint.with {
       command = 'pint',
       --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
-    } ,
+    },
     null_ls.builtins.diagnostics.flake8,
   },
 }
@@ -144,6 +144,6 @@ null_ls.setup {
 local lspkind = require 'lspkind'
 cmp.setup {
   formatting = {
-    format = lspkind.cmp_format { with_text = true, maxwidth = 50 } ,
+    format = lspkind.cmp_format { with_text = true, maxwidth = 50 },
   },
 }
