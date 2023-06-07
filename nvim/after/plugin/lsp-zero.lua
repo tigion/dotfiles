@@ -114,6 +114,7 @@ require 'mason-tool-installer'.setup {
     'prettier',   -- Code (Formater)
     'stylua',     -- Lua (Formater)
     'flake8',     -- Python (Formater)
+    'black',      -- Python (Formater)
     'pint',       -- PHP (Formater)
   },
 }
@@ -137,7 +138,8 @@ null_ls.setup {
       command = 'pint',
       --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
     },
-    null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.flake8.with { extra_args = { '--max-line-length', '88' } },
+    null_ls.builtins.formatting.black,
   },
 }
 
