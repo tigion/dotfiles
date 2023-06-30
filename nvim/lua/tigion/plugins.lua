@@ -105,7 +105,7 @@ packer.startup(function(use)
       { 'jose-elias-alvarez/null-ls.nvim' },           --
       { 'onsails/lspkind-nvim' },                      -- vscode-like pictograms
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
-      { 'j-hui/fidget.nvim' },                         -- LSP status view
+      { 'j-hui/fidget.nvim',                        tag = 'legacy' }, -- LSP status view
     },
   }
 
