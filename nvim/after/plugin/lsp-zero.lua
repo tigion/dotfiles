@@ -139,8 +139,8 @@ null_ls.setup {
       --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
     },
     null_ls.builtins.diagnostics.flake8.with { extra_args = { '--max-line-length', '88' } },
-    --null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.black.with { extra_args = { '--skip-string-normalization' } },
+    null_ls.builtins.formatting.black,
+    --null_ls.builtins.formatting.black.with { extra_args = { '--skip-string-normalization' } },
     --null_ls.builtins.formatting.black.with { extra_args = { '--line-length=120', '--skip-string-normalization' } },
   },
 }
