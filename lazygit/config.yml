@@ -2,7 +2,8 @@ gui:
   language: 'auto'
   mouseEvents: true
   showBottomLine: false
-  showIcons: true
+  #showIcons: true
+  nerdFontsVersion: "3"
 os:
   #editCommand: 'nvim'
   edit: 'nvim'
