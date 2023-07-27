@@ -12,13 +12,16 @@ alias ti-clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
 # Lazygit
 alias lg='lazygit'
 
+# Python
+alias pip-upgrade-venv='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
+
 # -- macOS --
 
 # recursively delete `.DS_Store` files
 alias cleanup='find . -name "*.DS_Store" -type f -ls -delete'
 
 # quickly lock or put the Mac to sleep
-# System Settings -> Lock Screen -> Require password to wake this computer from sleep or screensaver -> immediately 
+# System Settings -> Lock Screen -> Require password to wake this computer from sleep or screensaver -> immediately
 alias afk='open -a ScreenSaverEngine.app'
 #alias afk="pmset displaysleepnow"
 alias slp='pmset sleepnow'
