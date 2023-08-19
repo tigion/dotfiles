@@ -304,7 +304,7 @@ useVim () {
 
 # nvim
 useNeovim () {
-  if isCommand zsh; then
+  if isCommand nvim; then
     subtitle "Neovim"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
     #isActive && nvim --headless +PackerInstall +q
