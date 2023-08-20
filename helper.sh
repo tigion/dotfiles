@@ -301,7 +301,7 @@ useVim () {
     fi
     if [[ ! -d "$HOME/.vim/pack/vendor/start/VimCompletesMe" ]]; then
       isActive && mkdir -p "$HOME/.vim/pack"
-      isActive && git clone https://github.com/ajh17/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
+      isActive && git clone https://github.com/vim-scripts/VimCompletesMe.git "$HOME/.vim/pack/vendor/start/VimCompletesMe"
       success "Installed VimCompletesMe"
     else
       success "VimCompletesMe is already installed"
