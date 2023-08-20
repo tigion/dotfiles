@@ -57,6 +57,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   useSsh
   useZsh
   #useBash
+  useTmux
   useFd
   useVim
   useNeovim

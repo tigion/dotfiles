@@ -280,6 +280,14 @@ useFd () {
   fi
 }
 
+# tmux
+useTmux () {
+  if isCommand tmux; then
+    subtitle "tmux"
+    link "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
+  fi
+}
+
 # vim
 useVim () {
   if isCommand vim; then
