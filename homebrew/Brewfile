@@ -10,6 +10,7 @@ brew "curl"
 brew "wget"
 brew "lazygit"
 brew "httpie"
+brew "tmux"
 
 # nvim
 brew "neovim"
