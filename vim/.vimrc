@@ -58,8 +58,12 @@ if &t_Co > 2
   "colorscheme solarized8
   "colorscheme solarized8_flat
   "colorscheme gruvbox
-  
+
   set termguicolors
+
+  " lets Vim know how to communicate true colors to Tmux
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 
   " search pattern highlighting
   set hlsearch
@@ -69,7 +73,7 @@ if &t_Co > 2
   hi LineNr ctermbg=NONE guibg=NONE
 
   " split bar style
-  set fillchars=vert:┊ 
+  set fillchars=vert:┊
   hi vertsplit ctermfg=239 ctermbg=NONE
 endif
 
@@ -210,7 +214,7 @@ nmap <F8> :set relativenumber!<CR>
 " toggle relative eine numbers
 nmap <F9> :set number!<CR>
 " toggle spell checking
-nmap <F10> :set spell!<CR> 
+nmap <F10> :set spell!<CR>
 
 " Auto command
 " ---------------------------------------------------------------------
@@ -258,4 +262,3 @@ endfunction
 
 " set new command Hardcopy
 command! -nargs=* Hardcopy call UseMyHardcopyColors('<args>')
-
