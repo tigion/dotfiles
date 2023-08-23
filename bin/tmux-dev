@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Create a new Tmux session or attach to an existing one.
+
+session_name="DEV-test"
+
+is_session=$(tmux ls | grep "^${session_name}")
+is_attached=$(echo "$is_session" | grep "(attached)$")
+
+if [[ $is_attached ]]; then
+	echo "Session '${session_name}' is already attached!"
+	read -r -n 1 -p "Do you still want to attach them (y,n)? " answer
+	if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+		tmux a -t "$session_name"
+	fi
+elif [[ $is_session ]]; then
+	echo "Attach to session '${session_name}'"
+	tmux a -t "$session_name"
+else
+	echo "Start new session '${session_name}'"
+	tmux new -s "$session_name"
+fi
