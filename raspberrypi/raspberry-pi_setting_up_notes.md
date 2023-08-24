@@ -68,7 +68,7 @@ Sources:
        #link-local: [ ipv4, ipv6 ]
    ```
 > **Note:**
-> If the Raspberry Pi is directly connected to a computer or iPad via USB-C to USDB-C cable, a new network interface `RNDIS/Ethernet Gadget` will appear in the network settings.
+> If the Raspberry Pi is directly connected to a computer or iPad via USB-C to USB-C cable, a new network interface `RNDIS/Ethernet Gadget` will appear in the network settings.
 
 ### Prepare Raspberry Pi for first boot
 
