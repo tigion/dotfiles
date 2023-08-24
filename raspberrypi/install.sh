@@ -40,15 +40,17 @@ printf "\nInstall: lazygit\n"
 install_lazygit
 
 # neovim + needed tools
-printf "\nInstall: neovim\n"
-install_neovim
 printf "\nInstall: neovim tools\n"
 install_neovim_tools
+printf "\nInstall: neovim\n"
+install_neovim
 
 # dotfiles
 printf "\nInstall: dotfiles\n"
 dotfiles_folder="$HOME/dotfiles"
-git clone https://github.com/tigion/dotfiles.git "$dotfiles_folder"
+if [[ ! -d "$dotfiles_folder" ]]; then
+  git clone https://github.com/tigion/dotfiles.git "$dotfiles_folder"
+fi
 "${dotfiles_folder}/install.sh --no-software"
 
 # set zsh as default shell
