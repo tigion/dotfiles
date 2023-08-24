@@ -33,7 +33,8 @@ Sources:
 2. With the **Raspberry Pi Imager** download and write the selected image on to an SD card:
   - Operating System:
     - `Ubuntu Server (64-bit)`/`Ubuntu Server LTS (64-bit)`
-  - Storage: <choose an SD card>
+  - Storage:
+    - `<choose the SD card>`
   - Advanced options (Gear symbol in the lower right corner):
     - Set hostname, enable SSH, username, password, wifi, Language and no telemetry
 
