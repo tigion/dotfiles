@@ -55,4 +55,4 @@ fi
 
 # set zsh as default shell
 printf "\nSet: zsh as default shell\n"
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
