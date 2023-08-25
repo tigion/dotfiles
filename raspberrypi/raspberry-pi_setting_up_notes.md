@@ -475,4 +475,10 @@ sudo systemctl disable bluetooth.service
 sudo systemctl disable hciuart.service
 sudo echo "dtoverlay=disable-bt" >> /boot/firmware/config.txt
 sudo reboot
+
+# apache2
+# manual with:
+# - sudo systemctl start|stop|restart apache2
+# - sudo systemctl status apache2
+sudo systemctl disable apache2
 ```
