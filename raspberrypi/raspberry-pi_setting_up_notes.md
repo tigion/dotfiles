@@ -1,10 +1,10 @@
-# Raspberry Pi 4B
+# Raspberry Pi 4B: The setting up
 
 This document explains how to set up a **Raspberry Pi 4B** with an **Ubuntu Server** operating system.
 It also contains installation instructions for some tools I use and notes to use a **encrypted data partition**.
 
-- [Raspberry Pi 4B](#raspberry-pi-4b)
-  - [Setting up the Raspberry Pi](#setting-up-the-raspberry-pi)
+- [Raspberry Pi 4B: The setting up](#raspberry-pi-4b-the-setting-up)
+  - [Install Ubuntu Server](#install-ubuntu-server)
     - [Prepare SD card with Operating System](#prepare-sd-card-with-operating-system)
     - [\[optional\] Activate network over USB-C (Zeroconf)](#optional-activate-network-over-usb-c-zeroconf)
     - [Prepare Raspberry Pi for first boot](#prepare-raspberry-pi-for-first-boot)
@@ -22,7 +22,7 @@ It also contains installation instructions for some tools I use and notes to use
   - [Optimizations (disk i/o, power consuming)](#optimizations-disk-io-power-consuming)
     - [Disable unneeded services](#disable-unneeded-services)
 
-## Setting up the Raspberry Pi
+## Install Ubuntu Server
 
 Requirements:
 
