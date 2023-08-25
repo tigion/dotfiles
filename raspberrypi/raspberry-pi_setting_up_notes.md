@@ -448,7 +448,7 @@ Deactivate:
 
 ```sh
 # unmount
-sudo mount /dev/mapper/data
+sudo umount /dev/mapper/data
 
 # lock (encrypted)
 sudo cryptsetup close --type luks data
@@ -457,7 +457,7 @@ sudo cryptsetup close --type luks data
 Notes:
 
 - change passphrase: `sudo cryptsetup luksChangeKey /dev/mmcblk0p3`
-- show status: `sudo cryptsetup status /dev/mapper/data` (inactive / active + info)
+- show status: `cryptsetup status /dev/mapper/data` (inactive / active + info)
 - manual page: [cryptsetup](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
 
 ## Optimizations (disk i/o, power consuming)
