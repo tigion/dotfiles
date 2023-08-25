@@ -29,11 +29,11 @@ sudo apt install git zsh tmux mosh
 
 # python
 printf "\nInstall: python\n"
-sudo apt install python3, python3-pip, python3-venv
+sudo apt install python3 python3-pip python3-venv
 
 # php
 printf "\nInstall: php\n"
-sudo apt install php, composer, php-xml
+sudo apt install php composer php-xml
 
 # lazygit
 printf "\nInstall: lazygit\n"
