@@ -18,6 +18,7 @@ It also contains installation instructions for some tools I use and notes to use
     - [Shrink partition and create a new one with the free size](#shrink-partition-and-create-a-new-one-with-the-free-size)
     - [Encrypt the new partition](#encrypt-the-new-partition)
     - [Daily handling](#daily-handling)
+    - [\[optional\] Move .git-credentials to the protected data folder](#optional-move-git-credentials-to-the-protected-data-folder)
   - [Optimizations (disk i/o, power consuming)](#optimizations-disk-io-power-consuming)
     - [Disable unneeded services](#disable-unneeded-services)
 
@@ -459,6 +460,21 @@ Notes:
 - change passphrase: `sudo cryptsetup luksChangeKey /dev/mmcblk0p3`
 - show status: `sudo cryptsetup status /dev/mapper/data` (inactive / active + info)
 - manual page: [cryptsetup](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
+
+### [optional] Move .git-credentials to the protected data folder
+
+If you use `git config --global credential.helper store`, your git credentials are saved as plain text in a local file _~/.git-credentials_.
+To protect the credentials move the file to your protected data folder and link it back:
+
+```sh
+# mv existing .git-credentials
+mv ~/.git-credentials ~/data/.git-credentials
+# or create a new empty .git-credentials file
+touch ~/data/.git-credentials
+
+# link back to home folder
+ln -s $HOME/data/.git-credentials $HOME/.git-credentials
+```
 
 ## Optimizations (disk i/o, power consuming)
 
