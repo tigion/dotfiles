@@ -1,26 +1,31 @@
 # Raspberry Pi 4B
 
 This document explains how to set up a **Raspberry Pi 4B** with an **Ubuntu Server** operating system.
-It also contains installation instructions for some tools I use.
+It also contains installation instructions for some tools I use and notes to use a **encrypted data partition**.
 
-- [Setting up the Raspberry Pi](#setting-up-the-raspberry-pi)
-  - [Prepare SD card with Operating System](#prepare-sd-card-with-operating-system)
-  - [\[optional\] Activate network over USB-C (Zeroconf)](#optional-activate-network-over-usb-c-zeroconf)
-  - [Prepare Raspberry Pi for first boot](#prepare-raspberry-pi-for-first-boot)
-- [Software](#software)
-  - [Base](#base)
-  - [Programming languages](#programming-languages)
-  - [Lazygit](#lazygit)
-  - [Neovim](#neovim)
-- [Dotfiles](#dotfiles)
+- [Raspberry Pi 4B](#raspberry-pi-4b)
+  - [Setting up the Raspberry Pi](#setting-up-the-raspberry-pi)
+    - [Prepare SD card with Operating System](#prepare-sd-card-with-operating-system)
+    - [\[optional\] Activate network over USB-C (Zeroconf)](#optional-activate-network-over-usb-c-zeroconf)
+    - [Prepare Raspberry Pi for first boot](#prepare-raspberry-pi-for-first-boot)
+  - [Install Software](#install-software)
+    - [Base](#base)
+    - [Programming languages](#programming-languages)
+    - [Lazygit](#lazygit)
+    - [Neovim](#neovim)
+  - [Install Dotfiles](#install-dotfiles)
+  - [Create a protected (encrypted) data partition on the SD card](#create-a-protected-encrypted-data-partition-on-the-sd-card)
+    - [Shrink partition and create a new one with the free size](#shrink-partition-and-create-a-new-one-with-the-free-size)
+    - [Encrypt the new partition](#encrypt-the-new-partition)
+    - [Daily handling](#daily-handling)
 
 ## Setting up the Raspberry Pi
 
-Required are:
+Requirements:
 - a Raspberry Pi 4B
 - an SD card
 - an internet connection
-- a computer with a SD card slot
+- a computer with a SD card slot or SD card reader
 
 Sources:
 - [Raspberry Pi iPad Pro Setup Simplified](https://techcraft.co/videos/2022/5/raspberry-pi-ipad-pro-setup-simplified/)
@@ -87,7 +92,7 @@ Sources:
 6. Restart: `sudo reboot`
 
 
-## Software
+## Install Software
 
 ### Base
 
@@ -184,7 +189,8 @@ cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
 > ```
 > I think `/snap/bin` must be in den $PATH or call `/snap/bin/nvim` directly.
 
-## Dotfiles
+
+## Install Dotfiles
 
 ```sh
 # dotfiles
@@ -192,3 +198,228 @@ git clone https://github.com/tigion/dotfiles.git
 cd dotfiles
 ./install.sh --no-software
 ```
+
+## Create a protected (encrypted) data partition on the SD card
+
+Requirments:
+- A computer with Linux and a SD card slot or SD card reader
+- Tools: `resize2fs`, `fdisk` and `cryptsetup`
+
+Sources:
+- [How to Protect Your Raspberry Pi Data From Loss or Theft](https://www.makeuseof.com/how-to-protect-your-raspberry-pi-data-from-loss-or-theft/)
+- [How to Encrypt and Decrypt a Partition in Raspberry Pi](https://linuxhint.com/encrypt-decrypt-partition-raspberry-pi/)
+- [How To Enable LUKS Disk Encryption on Raspberry Pi 4 with Ubuntu Desktop 20.10](https://devicetests.com/enable-luks-disk-encryption-raspberry-pi-4-ubuntu-desktop)
+
+### Shrink partition and create a new one with the free size
+
+1. Plug the SD card in a Linux Computer
+
+2. List and identify the SD card devices:
+
+   ```sh
+   $ lsblk
+   sdb                         8:16   1 119,1G  0 disk
+   ├─sdb1                      8:17   1   256M  0 part
+   └─sdb2                      8:18   1 118,9G  0 part
+   ```
+   - `sdb1` ... is the **boot** partition
+   - `sdb2` ... is the **root** partition we want to shrink
+
+3. Shrink `sdb2` to the new smaller size:
+
+   ```sh
+   $ sudo resize2fs /dev/sdb2 50G
+   Resizing the filesystem on /dev/sdb2 to 13107200 (4k) blocks.
+   The filesystem on /dev/sdb2 is now 13107200 (4k) blocks long.
+   ```
+   - if needed check before: `sudo e2fsck -f /dev/sdb2`
+   - `50G` is the new size of the `118,9G` partition, so now `68,8 GB` are free for the later encrypted partition
+   - calc new block size (later for fdisk): `13107200 * 4 = +52428800K`
+
+4. Update the partition information for `sdb2` (shrinked size) and a new `sdb3` (freed size):
+
+   ```sh
+   $ fdisk /dev/sdb
+   ```
+
+   1. Show current partition entries:
+      ```sh
+      # print the partition table
+      Command (m for help): p
+      Device     Boot  Start       End   Sectors   Size Id Type
+      /dev/sdb1  *      2048    526335    524288   256M  c W95 FAT32 (LBA)
+      /dev/sdb2       526336 249737182 249210847 118,9G 83 Linux
+      ```
+
+   2. Remove partition entry for `/dev/sdb2`:
+      ```sh
+      Command (m for help): d
+      Partition number (1,2, default 2): 2
+      Partition 2 has been deleted.
+      ```
+
+   3. Add partition entry for `/dev/sdb2` again with the new, reduced size:
+      ```sh
+      Command (m for help): n
+      Partition type
+         p   primary (1 primary, 0 extended, 3 free)
+         e   extended (container for logical partitions)
+      Select (default p): p
+      Partition number (2-4, default 2): 2
+      First sector (526336-249737215, default 526336):
+      Last sector, +/-sectors or +/-size{K,M,G,T,P} (526336-249737215, default 249737215): +52428800K
+
+      Created a new partition 2 of type 'Linux' and of size 50 GiB.
+      Partition #2 contains a ext4 signature.
+      Do you want to remove the signature? [Y]es/[N]o: N
+      ```
+      - Partition type: `p`
+      - Partition number: `2`
+      - First sector: `default`
+      - Last sector: `+52428800K` (the pre-calculated size)
+
+   4. Add partition entry for `/dev/sdb3` with the free size:
+      ```sh
+      # add a new partition
+      # - add new /dev/sdb3
+      Command (m for help): n
+      Partition type
+         p   primary (2 primary, 0 extended, 2 free)
+         e   extended (container for logical partitions)
+      Select (default p): p
+      Partition number (3,4, default 3): 3
+      First sector (105383936-249737215, default 105383936):
+      Last sector, +/-sectors or +/-size{K,M,G,T,P} (105383936-249737215, default 249737215):
+
+      Created a new partition 3 of type 'Linux' and of size 68,9 GiB.
+      ```
+      - Partition type: `p`
+      - Partition number: `3`
+      - First sector: `default`
+      - Last sector: `default`
+
+   5. Show modified partition entries:
+      ```sh
+      # print the partition table
+      Command (m for help): p
+      Device     Boot     Start       End   Sectors  Size Id Type
+      /dev/sdb1  *         2048    526335    524288  256M  c W95 FAT32 (LBA)
+      /dev/sdb2          526336 105383935 104857600   50G 83 Linux
+      /dev/sdb3       105383936 249737215 144353280 68,9G 83 Linux
+      ```
+
+   6. Write the new partition informations to the SD card:
+      ```sh
+      # write table to disk and exit
+      Command (m for help): w
+      The partition table has been altered.
+      Calling ioctl() to re-read partition table.
+      Syncing disks.
+      ```
+
+### Encrypt the new partition
+
+1. Start the Raspberry Pi from the SD card.
+
+2. Show the SD card devices, there is a new third `mmcblk0p3`:
+   ```sh
+   $ lsblk
+   ...
+   mmcblk0       179:0    0 119.1G  0 disk
+   ├─mmcblk0p1   179:1    0   256M  0 part  /boot/firmware
+   ├─mmcblk0p2   179:2    0    50G  0 part  /
+   └─mmcblk0p3   179:3    0  68.8G  0 part
+   ```
+
+3. Encrypt the new `/dev/mmcblk0p3` Partition:
+   ```sh
+   $ sudo cryptsetup -y -v luksFormat /dev/mmcblk0p3
+   WARNING!
+   ========
+   This will overwrite data on /dev/mmcblk0p3 irrevocably.
+
+   Are you sure? (Type 'yes' in capital letters): YES
+   Enter passphrase for /dev/mmcblk0p3:
+   Verify passphrase:
+   Key slot 0 created.
+   Command successful.
+   ```
+
+4. Unlock (open) the encrypted partition with the passphrase:
+   ```sh
+   #$ sudo cryptsetup luksOpen /dev/mmcblk0p3 data
+   $ sudo cryptsetup open --type luks /dev/mmcblk0p3 data
+   ```
+   - `data` is the chosen name of the mapper device
+   - there is a new device `/dev/mapper/data` with the unencrypted content of `/dev/mmcblk0p3`
+
+5.  Format the `/dev/mapper/data` device:
+   ```sh
+    $ sudo mkfs.ext4 /dev/mapper/data
+   ```
+
+6. Show the SD card devices, there is also the new unencrypted `data`:
+    ```sh
+    $ lsblk
+    ...
+    mmcblk0       179:0    0 119.1G  0 disk
+    ├─mmcblk0p1   179:1    0   256M  0 part  /boot/firmware
+    ├─mmcblk0p2   179:2    0    50G  0 part  /
+    └─mmcblk0p3   179:3    0  68.8G  0 part
+      └─data 253:0    0  68.8G  0 data
+    ```
+
+7. Create a mount target under your `<user>` and mount `/dev/mapper/data`:
+    ```sh
+    $ mkdir ~/data
+    $ sudo mount /dev/mapper/data /home/<user>/data
+    ```
+    - if needed set ownership: `sudo chown <user>:<user> ~/data`
+
+8. Unmount `/dev/mapper/data` from `~/data`:
+    ```sh
+    sudo umount /home/<user>/data
+    #sudo umount /dev/mapper/data
+    ```
+    - if the device is blocked check with: `sudo lsof /dev/mapper/data` or `sudo lsof /home/<user>/data`
+
+9. Lock (close) the unencrypted partition:
+    ```sh
+    #sudo cryptsetup luksClose data
+    sudo cryptsetup close --type luks data
+    ```
+
+10. Show the SD card devices, there is no unencrypted `data`:
+    ```sh
+    lsblk
+    ...
+    mmcblk0       179:0    0 119.1G  0 disk
+    ├─mmcblk0p1   179:1    0   256M  0 part  /boot/firmware
+    ├─mmcblk0p2   179:2    0    50G  0 part  /
+    └─mmcblk0p3   179:3    0  68.8G  0 part
+    ```
+
+### Daily handling
+
+Activate:
+```sh
+# unlock with passphrase (unencrypted)
+$ sudo cryptsetup open --type luks /dev/mmcblk0p3 data
+
+# mount
+$ sudo mount /dev/mapper/data /home/<user>/data
+```
+
+Deactivate:
+```sh
+# unmount
+sudo mount /dev/mapper/data
+
+# lock (encrypted)
+sudo cryptsetup close --type luks data
+```
+
+Notes:
+- change passphrase: `sudo cryptsetup luksChangeKey /dev/mmcblk0p3`
+- show status: `sudo cryptsetup status /dev/mapper/data` (inactive / active + info)
+- manual page: [cryptsetup](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
