@@ -24,12 +24,14 @@ It also contains installation instructions for some tools I use and notes to use
 ## Setting up the Raspberry Pi
 
 Requirements:
+
 - a Raspberry Pi 4B
 - an SD card
 - an internet connection
 - a computer with a SD card slot or SD card reader
 
 Sources:
+
 - [Raspberry Pi iPad Pro Setup Simplified](https://techcraft.co/videos/2022/5/raspberry-pi-ipad-pro-setup-simplified/)
 - [Setting up Raspberry Pi to work with your M1 iPad Pro](https://neoighodaro.com/posts/10-setting-up-raspberry-pi-to-work-with-your-ipad)
 
@@ -38,24 +40,27 @@ Sources:
 1. Load and install [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
 2. With the **Raspberry Pi Imager** download and write the selected image on to an SD card:
-  - Operating System:
-    - `Ubuntu Server (64-bit)`/`Ubuntu Server LTS (64-bit)`
-  - Storage:
-    - `<choose the SD card>`
-  - Advanced options (Gear symbol in the lower right corner):
-    - Set hostname, enable SSH, username, password, wifi, Language and no telemetry
+
+   - Operating System:
+     - `Ubuntu Server (64-bit)`/`Ubuntu Server LTS (64-bit)`
+   - Storage:
+     - `<choose the SD card>`
+   - Advanced options (Gear symbol in the lower right corner):
+     - Set hostname, enable SSH, username, password, wifi, Language and no telemetry
 
 ### [optional] Activate network over USB-C (Zeroconf)
 
 1. Put the SD card back into the computer
 
-2. Edit the file *cmdline.txt*:
+2. Edit the file _cmdline.txt_:
+
    - add `modules-load=dwc2,g_ether` with a space bevor `rootwait`
 
-3. Edit the file *config.txt*:
+3. Edit the file _config.txt_:
+
    - add `dtoverlay=dwc2,dr_mode=peripheral` as the last line
 
-4. On **Ubuntu Server (LTS)** edit the file *network-config*, to bring up the `usb0` interface by default:
+4. On **Ubuntu Server (LTS)** edit the file _network-config_, to bring up the `usb0` interface by default:
 
    ```yaml
    version: 2
@@ -74,8 +79,9 @@ Sources:
        #link-local: [ ipv6 ]
        #link-local: [ ipv4, ipv6 ]
    ```
-> **Note:**
-> If the Raspberry Pi is directly connected to a computer or iPad via USB-C to USB-C cable, a new network interface `RNDIS/Ethernet Gadget` will appear in the network settings.
+
+   > **Note:**
+   > If the Raspberry Pi is directly connected to a computer or iPad via USB-C to USB-C cable, a new network interface `RNDIS/Ethernet Gadget` will appear in the network settings.
 
 ### Prepare Raspberry Pi for first boot
 
@@ -86,13 +92,13 @@ Sources:
 3. The first start takes a little moment
 
 4. Login via SSH:
+
    - `ssh <hostname>` … if the Raspberry Pi is connected to a WLAN or via Ethernet cable
    - `ssh <hostname>.local` … if the Raspberry Pi is directly connected to a computer or iPad via USB-C and the network over USB-C is activated
 
 5. Update: `sudo apt update && sudo apt upgrade`
 
 6. Restart: `sudo reboot`
-
 
 ## Install Software
 
@@ -138,6 +144,7 @@ sudo install lazygit /usr/local/bin
 ### Neovim
 
 Install needed tools:
+
 ```sh
 # ripgrep
 # - neovim health check: warning: ripgrep not found
@@ -161,6 +168,7 @@ sudo apt install nodejs
 ```
 
 Build Neovim from source (this takes about 15 minutes on the Raspberry Pi 4B):
+
 ```sh
 # neovim
 # - apt to old, build self
@@ -185,12 +193,13 @@ cd build && cpack -G DEB && sudo dpkg -i nvim-linux64.deb
 ```
 
 > Alternatively via **snap**:
+>
 > ```sh
 > sudo apt install snapd
 > sudo snap install --classic nvim
 > ```
+>
 > I think `/snap/bin` must be in den $PATH or call `/snap/bin/nvim` directly.
-
 
 ## Install Dotfiles
 
@@ -204,10 +213,12 @@ cd dotfiles
 ## Create a protected (encrypted) data partition on the SD card
 
 Requirments:
+
 - A computer with Linux and a SD card slot or SD card reader
 - Tools: `resize2fs`, `fdisk` and `cryptsetup`
 
 Sources:
+
 - [How to Protect Your Raspberry Pi Data From Loss or Theft](https://www.makeuseof.com/how-to-protect-your-raspberry-pi-data-from-loss-or-theft/)
 - [How to Encrypt and Decrypt a Partition in Raspberry Pi](https://linuxhint.com/encrypt-decrypt-partition-raspberry-pi/)
 - [How To Enable LUKS Disk Encryption on Raspberry Pi 4 with Ubuntu Desktop 20.10](https://devicetests.com/enable-luks-disk-encryption-raspberry-pi-4-ubuntu-desktop)
@@ -224,6 +235,7 @@ Sources:
    ├─sdb1                      8:17   1   256M  0 part
    └─sdb2                      8:18   1 118,9G  0 part
    ```
+
    - `sdb1` ... is the **boot** partition
    - `sdb2` ... is the **root** partition we want to shrink
 
@@ -234,6 +246,7 @@ Sources:
    Resizing the filesystem on /dev/sdb2 to 13107200 (4k) blocks.
    The filesystem on /dev/sdb2 is now 13107200 (4k) blocks long.
    ```
+
    - if needed check before: `sudo e2fsck -f /dev/sdb2`
    - `50G` is the new size of the `118,9G` partition, so now `68,8 GB` are free for the later encrypted partition
    - calc new block size (later for fdisk): `13107200 * 4 = +52428800K`
@@ -245,6 +258,7 @@ Sources:
    ```
 
    1. Show current partition entries:
+
       ```sh
       # print the partition table
       Command (m for help): p
@@ -254,6 +268,7 @@ Sources:
       ```
 
    2. Remove partition entry for `/dev/sdb2`:
+
       ```sh
       Command (m for help): d
       Partition number (1,2, default 2): 2
@@ -261,6 +276,7 @@ Sources:
       ```
 
    3. Add partition entry for `/dev/sdb2` again with the new, reduced size:
+
       ```sh
       Command (m for help): n
       Partition type
@@ -275,12 +291,14 @@ Sources:
       Partition #2 contains a ext4 signature.
       Do you want to remove the signature? [Y]es/[N]o: N
       ```
+
       - Partition type: `p`
       - Partition number: `2`
       - First sector: `default`
       - Last sector: `+52428800K` (the pre-calculated size)
 
    4. Add partition entry for `/dev/sdb3` with the free size:
+
       ```sh
       # add a new partition
       # - add new /dev/sdb3
@@ -295,12 +313,14 @@ Sources:
 
       Created a new partition 3 of type 'Linux' and of size 68,9 GiB.
       ```
+
       - Partition type: `p`
       - Partition number: `3`
       - First sector: `default`
       - Last sector: `default`
 
    5. Show modified partition entries:
+
       ```sh
       # print the partition table
       Command (m for help): p
@@ -324,6 +344,7 @@ Sources:
 1. Start the Raspberry Pi from the SD card.
 
 2. Show the SD card devices, there is a new third `mmcblk0p3`:
+
    ```sh
    $ lsblk
    ...
@@ -334,6 +355,7 @@ Sources:
    ```
 
 3. Encrypt the new `/dev/mmcblk0p3` Partition:
+
    ```sh
    $ sudo cryptsetup -y -v luksFormat /dev/mmcblk0p3
    WARNING!
@@ -348,48 +370,57 @@ Sources:
    ```
 
 4. Unlock (open) the encrypted partition with the passphrase:
+
    ```sh
    #$ sudo cryptsetup luksOpen /dev/mmcblk0p3 data
    $ sudo cryptsetup open --type luks /dev/mmcblk0p3 data
    ```
+
    - `data` is the chosen name of the mapper device
    - there is a new device `/dev/mapper/data` with the unencrypted content of `/dev/mmcblk0p3`
 
-5.  Format the `/dev/mapper/data` device:
+5. Format the `/dev/mapper/data` device:
+
    ```sh
-    $ sudo mkfs.ext4 /dev/mapper/data
+   $ sudo mkfs.ext4 /dev/mapper/data
    ```
 
 6. Show the SD card devices, there is also the new unencrypted `data`:
-    ```sh
-    $ lsblk
-    ...
-    mmcblk0       179:0    0 119.1G  0 disk
-    ├─mmcblk0p1   179:1    0   256M  0 part  /boot/firmware
-    ├─mmcblk0p2   179:2    0    50G  0 part  /
-    └─mmcblk0p3   179:3    0  68.8G  0 part
-      └─data 253:0    0  68.8G  0 data
-    ```
+
+   ```sh
+   $ lsblk
+   ...
+   mmcblk0       179:0    0 119.1G  0 disk
+   ├─mmcblk0p1   179:1    0   256M  0 part  /boot/firmware
+   ├─mmcblk0p2   179:2    0    50G  0 part  /
+   └─mmcblk0p3   179:3    0  68.8G  0 part
+     └─data 253:0    0  68.8G  0 data
+   ```
 
 7. Create a mount target under your `<user>` and mount `/dev/mapper/data`:
-    ```sh
-    $ mkdir ~/data
-    $ sudo mount /dev/mapper/data /home/<user>/data
-    ```
-    - if needed set ownership: `sudo chown <user>:<user> ~/data`
+
+   ```sh
+   $ mkdir ~/data
+   $ sudo mount /dev/mapper/data /home/<user>/data
+   ```
+
+   - if needed set ownership: `sudo chown <user>:<user> ~/data`
 
 8. Unmount `/dev/mapper/data` from `~/data`:
-    ```sh
-    sudo umount /home/<user>/data
-    #sudo umount /dev/mapper/data
-    ```
-    - if the device is blocked check with: `sudo lsof /dev/mapper/data` or `sudo lsof /home/<user>/data`
+
+   ```sh
+   sudo umount /home/<user>/data
+   #sudo umount /dev/mapper/data
+   ```
+
+   - if the device is blocked check with: `sudo lsof /dev/mapper/data` or `sudo lsof /home/<user>/data`
 
 9. Lock (close) the unencrypted partition:
-    ```sh
-    #sudo cryptsetup luksClose data
-    sudo cryptsetup close --type luks data
-    ```
+
+   ```sh
+   #sudo cryptsetup luksClose data
+   sudo cryptsetup close --type luks data
+   ```
 
 10. Show the SD card devices, there is no unencrypted `data`:
     ```sh
@@ -404,6 +435,7 @@ Sources:
 ### Daily handling
 
 Activate:
+
 ```sh
 # unlock with passphrase (unencrypted)
 $ sudo cryptsetup open --type luks /dev/mmcblk0p3 data
@@ -413,6 +445,7 @@ $ sudo mount /dev/mapper/data /home/<user>/data
 ```
 
 Deactivate:
+
 ```sh
 # unmount
 sudo mount /dev/mapper/data
@@ -422,10 +455,10 @@ sudo cryptsetup close --type luks data
 ```
 
 Notes:
+
 - change passphrase: `sudo cryptsetup luksChangeKey /dev/mmcblk0p3`
 - show status: `sudo cryptsetup status /dev/mapper/data` (inactive / active + info)
 - manual page: [cryptsetup](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
-
 
 ## Optimizations (disk i/o, power consuming)
 
@@ -433,7 +466,9 @@ Notes:
 - Disable unneeded services
 
 ### Disable unneeded services
+
 - show running services: `sudo systemctl --type=service --state=running`
+
 ```sh
 # bluetooth
 sudo systemctl disable bluetooth.service
