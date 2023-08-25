@@ -18,6 +18,8 @@ It also contains installation instructions for some tools I use and notes to use
     - [Shrink partition and create a new one with the free size](#shrink-partition-and-create-a-new-one-with-the-free-size)
     - [Encrypt the new partition](#encrypt-the-new-partition)
     - [Daily handling](#daily-handling)
+  - [Optimizations (disk i/o, power consuming)](#optimizations-disk-io-power-consuming)
+    - [Disable unneeded services](#disable-unneeded-services)
 
 ## Setting up the Raspberry Pi
 
@@ -423,3 +425,19 @@ Notes:
 - change passphrase: `sudo cryptsetup luksChangeKey /dev/mmcblk0p3`
 - show status: `sudo cryptsetup status /dev/mapper/data` (inactive / active + info)
 - manual page: [cryptsetup](https://man7.org/linux/man-pages/man8/cryptsetup.8.html)
+
+
+## Optimizations (disk i/o, power consuming)
+
+- [Reducing SD Card Wear on a Raspberry Pi or Armbian Device \# Chris Dzombak](https://www.dzombak.com/blog/2021/11/Reducing-SD-Card-Wear-on-a-Raspberry-Pi-or-Armbian-Device.html)
+- Disable unneeded services
+
+### Disable unneeded services
+- show running services: `sudo systemctl --type=service --state=running`
+```sh
+# bluetooth
+sudo systemctl disable bluetooth.service
+sudo systemctl disable hciuart.service
+sudo echo "dtoverlay=disable-bt" >> /boot/firmware/config.txt
+sudo reboot
+```
