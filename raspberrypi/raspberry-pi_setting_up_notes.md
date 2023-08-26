@@ -1,4 +1,4 @@
-# Raspberry Pi 4B: The setting up
+# Raspberry Pi 4B: The setup
 
 This document explains how to set up a **Raspberry Pi 4B** with an **Ubuntu Server** operating system.
 It also contains installation instructions for some tools I use and notes to use a **encrypted data partition**.
