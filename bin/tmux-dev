@@ -2,7 +2,7 @@
 #
 # Create a new Tmux session or attach to an existing one.
 
-session_name="DEV-test"
+session_name="DEV"
 
 is_session=$(tmux ls | grep "^${session_name}")
 is_attached=$(echo "$is_session" | grep "(attached)$")
