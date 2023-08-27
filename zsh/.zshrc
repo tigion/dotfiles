@@ -109,7 +109,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Load my seperated config files
 for file in "$HOME/.config/zsh/"*.zsh; do
-  source "${file}"
+  [[ -e "${file}" ]] && source "${file}"
 done
 unset file
 
