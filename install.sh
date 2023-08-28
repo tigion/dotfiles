@@ -53,7 +53,7 @@ if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
   installHomebrew
 fi
 
-# link configs and install dependies
+# link configs and install dependencies
 if [[ "$INSTALL_CONFIG" == "true" ]]; then
   title "Install Configurations"
   useBin
