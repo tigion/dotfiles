@@ -53,7 +53,7 @@ return {
     -- Footer
     local function footer()
       local version = vim.version()
-      local pluginCount = vim.fn.len(vim.fn.globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))
+      local pluginCount = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', 0, 1))
       local print_version = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
       local date = os.date '%d.%m.%Y'
       --local datetime = os.date '%d.%m.%Y %H:%M'
