@@ -45,7 +45,7 @@ return {
       dashboard.button('g', '󰺮 Find text', ':Telescope live_grep <CR>'),
       dashboard.button('h', '󱤇 Find help tag', ':Telescope help_tags <CR>'),
       dashboard.button('s', ' Settings', ':cd ~/.config/nvim/<CR> :e .<CR>'),
-      dashboard.button('u', ' Update plugins', ':PackerSync<CR>'),
+      dashboard.button('p', ' Check plugins', ':Lazy check<CR>'),
       dashboard.button('c', ' Check health', ':checkhealth<CR>'),
       dashboard.button('q', ' Quit', ':qa<CR>'),
     }
