@@ -9,6 +9,8 @@ end_of_line = lf
 insert_final_newline = false
 charset = utf-8
 trim_trailing_whitespace = true
+#indent_style = space
+#indent_size = 2
 
 # lua
 # see https://github.com/CppCXY/EmmyLuaCodeStyle
@@ -27,6 +29,7 @@ keep_one_space_between_table_and_bracket = true
 [Makefile]
 indent_style = tab
 
-[*.sh]
+[{*.sh,bin/**}]
 indent_style = space
 indent_size = 2
+switch_case_indent = true
