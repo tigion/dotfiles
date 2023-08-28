@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 # Opens or create a note via callback URL with defined
 # size and position in Bear, a note app for macOS.
 
@@ -20,20 +20,20 @@ rawUrlEncode() {
   local encoded=""
   local pos c o
 
-  for (( pos=0 ; pos<strlen ; pos++ )); do
-     c=${string:$pos:1}
-     case "$c" in
-        [-_.~a-zA-Z0-9] ) o="${c}" ;;
-        * )               printf -v o '%%%02x' "'$c"
-     esac
-     encoded+="${o}"
+  for ((pos = 0; pos < strlen; pos++)); do
+    c=${string:$pos:1}
+    case "$c" in
+      [-_.~a-zA-Z0-9]) o="${c}" ;;
+      *) printf -v o '%%%02x' "'$c" ;;
+    esac
+    encoded+="${o}"
   done
-  echo "${encoded}"    # You can either set a return variable (FASTER) 
-  REPLY="${encoded}"   #+or echo the result (EASIER)... or both... :p
+  echo "${encoded}"  # You can either set a return variable (FASTER)
+  REPLY="${encoded}" #+or echo the result (EASIER)... or both... :p
 }
 
 # create new note with title
-createNote () {
+createNote() {
   if [[ -z "$1" ]]; then
     echo "Invalid note title!"
     exit 1
@@ -43,7 +43,7 @@ createNote () {
 }
 
 # open note via id
-openNote () {
+openNote() {
   id="$1"
   rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
   if [[ "$id" =~ $rx ]]; then
@@ -54,8 +54,8 @@ openNote () {
   fi
 }
 
-# open TODO note via title or create new one 
-openTodo () {
+# open TODO note via title or create new one
+openTodo() {
   callbackURL="bear://x-callback-url/open-note?title=TODO&exclude_trashed=yes&open_note=yes&new_window=yes&edit=yes&x-error=bear%3A%2F%2Fx-callback-url%2Fcreate%3Ftitle%3DTODO%26open_note%3Dyes%26new_window%3Dyes%26edit%3dyes"
 }
 

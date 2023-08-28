@@ -23,10 +23,10 @@ appHeight=$((screenHeight - menuHeight - 2 * margin))
 # scriptable app
 #tell1="tell application \"Kitty\""
 #tell2="tell window 1 to set bounds to {${appX}, ${appY}, ${appWidth}, ${appHeight}}"
-#osascript -e "${tell1} to ${tell2}" -e "return" 
+#osascript -e "${tell1} to ${tell2}" -e "return"
 
 # not scriptable app
 tell1="tell application \"System Events\""
 tell2="tell application process \"kitty\""
 tell3="tell window 1 to set {position, size} to {{${appX}, ${appY}}, {${appWidth}, ${appHeight}}}"
-osascript -e "${tell1} to ${tell2} to ${tell3}" -e "return" 
+osascript -e "${tell1} to ${tell2} to ${tell3}" -e "return"

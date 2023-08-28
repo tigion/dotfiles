@@ -11,4 +11,4 @@ o1="background_image=${HOME}/.config/kitty/backgrounds/background_01.png"
 o2="background_image_layout=scaled"
 o3="background_tint=0.985"
 
-kitty --start-as fullscreen --single-instance --instance-group "$group" --directory="$dir" -o "$o1" -o "$o2" -o "$o3" &> /dev/null &
+kitty --start-as fullscreen --single-instance --instance-group "$group" --directory="$dir" -o "$o1" -o "$o2" -o "$o3" &>/dev/null &
