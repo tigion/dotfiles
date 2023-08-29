@@ -135,8 +135,14 @@ return {
 
     lsp.setup()
 
+    -- set diagnostic icons
+    for name, icon in pairs(require('tigion.core.icons').diagnostics) do
+      name = 'DiagnosticSign' .. name
+      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+    end
     vim.diagnostic.config {
       virtual_text = true,
+      signs = true,
     }
 
     -- user (tigion) settings

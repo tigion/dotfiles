@@ -24,12 +24,7 @@ return {
           {
             'diagnostics',
             sources = { 'nvim_diagnostic' },
-            symbols = {
-              error = ' ',
-              warn = ' ',
-              info = ' ',
-              hint = ' ',
-            },
+            symbols = require('tigion.core.icons').diagnostics,
           },
           'encoding',
           'filetype',
