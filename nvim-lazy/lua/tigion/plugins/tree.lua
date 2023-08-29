@@ -3,6 +3,7 @@ return {
   dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   config = function()
     local tree = require('nvim-tree')
+    local icons = require('tigion.core.icons')
 
     tree.setup {
       --disable_netrw = true,
@@ -21,6 +22,15 @@ return {
             folder = {
               arrow_closed = '▸',
               arrow_open = '▾',
+            },
+            git = {
+              unstaged  = icons.git.unstaged,  -- ✗
+              staged    = icons.git.staged,    -- ✓
+              -- unmerged  = '',
+              renamed   = icons.git.renamed,   -- ➜
+              untracked = icons.git.untracked, -- ★
+              deleted   = icons.git.deleted,   -- 
+              ignored   = icons.git.ignored,   -- ◌
             },
           },
         },

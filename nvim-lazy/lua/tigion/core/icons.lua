@@ -25,4 +25,21 @@ M.diagnostics = {
 --   return tmp
 -- end
 
+-- folder
+M.folder = {
+  arrow_closed = '▸',
+  arrow_open = '▾',
+}
+
+-- git
+M.git = {
+  unstaged  = '', -- ✗ (modified)
+  staged    = '', -- ✓
+  -- unmerged  = '',
+  renamed   = '󰛂', -- ➜
+  untracked = '', -- ★ (new)
+  deleted   = '', -- 
+  ignored   = '󰢤', -- ◌
+}
+
 return M

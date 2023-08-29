@@ -3,6 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   config = function()
     local lualine = require('lualine')
+    local icons = require('tigion.core.icons')
 
     lualine.setup {
       options = {
@@ -24,7 +25,7 @@ return {
           {
             'diagnostics',
             sources = { 'nvim_diagnostic' },
-            symbols = require('tigion.core.icons').diagnostics,
+            symbols = icons.diagnostics,
           },
           'encoding',
           'filetype',
