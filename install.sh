@@ -43,31 +43,31 @@ source "${DOTFILES_ROOT}/helper.sh"
 
 # start
 title "Start installation"
-showOptions
-askToStart
+show_options
+ask_to_start
 
 # install software
 if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
   title "Install Software"
-  installXcodeCommandLineTools
-  installHomebrew
+  install_xcode_cli
+  install_homebrew
 fi
 
 # link configs and install dependencies
 if [[ "$INSTALL_CONFIG" == "true" ]]; then
   title "Install Configurations"
-  useBin
-  useGit
-  useSsh
-  useZsh
-  #useBash
-  useTmux
-  useFd
-  useVim
-  useNeovim
-  useKitty
-  useLazygit
-  httpie
+  use_bin
+  use_git
+  use_ssh
+  use_zsh
+  #use_bash
+  use_tmux
+  use_fd
+  use_vim
+  use_neovim
+  use_kitty
+  use_lazygit
+  use_httpie
 fi
 
 echo ""

@@ -14,7 +14,7 @@ parameter="$2"
 
 # encode string for url
 # https://gist.github.com/cdown/1163649?permalink_comment_id=4292547#gistcomment-4292547
-rawUrlEncode() {
+raw_url_encode() {
   local string="${1}"
   local strlen=${#string}
   local encoded=""
@@ -33,21 +33,21 @@ rawUrlEncode() {
 }
 
 # create new note with title
-createNote() {
+create_note() {
   if [[ -z "$1" ]]; then
     echo "Invalid note title!"
     exit 1
   fi
-  title=$(rawUrlEncode "$1")
-  callbackURL="bear://x-callback-url/create?title=${title}&open_note=yes&new_window=yes&edit=yes"
+  title=$(raw_url_encode "$1")
+  callback_url="bear://x-callback-url/create?title=${title}&open_note=yes&new_window=yes&edit=yes"
 }
 
 # open note via id
-openNote() {
+open_note() {
   id="$1"
   rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
   if [[ "$id" =~ $rx ]]; then
-    callbackURL="bear://x-callback-url/open-note?id=${id}&open_note=yes&new_window=yes"
+    callback_url="bear://x-callback-url/open-note?id=${id}&open_note=yes&new_window=yes"
   else
     echo "Invalid note id!"
     exit 1
@@ -55,24 +55,24 @@ openNote() {
 }
 
 # open TODO note via title or create new one
-openTodo() {
-  callbackURL="bear://x-callback-url/open-note?title=TODO&exclude_trashed=yes&open_note=yes&new_window=yes&edit=yes&x-error=bear%3A%2F%2Fx-callback-url%2Fcreate%3Ftitle%3DTODO%26open_note%3Dyes%26new_window%3Dyes%26edit%3dyes"
+open_todo() {
+  callback_url="bear://x-callback-url/open-note?title=TODO&exclude_trashed=yes&open_note=yes&new_window=yes&edit=yes&x-error=bear%3A%2F%2Fx-callback-url%2Fcreate%3Ftitle%3DTODO%26open_note%3Dyes%26new_window%3Dyes%26edit%3dyes"
 }
 
 # command switch
 if [[ "$command" == "create" ]]; then
-  createNote "$parameter"
+  create_note "$parameter"
 elif [[ "$command" == "open-note" ]]; then
-  openNote "$parameter"
+  open_note "$parameter"
 elif [[ "$command" == "open-todo" ]]; then
-  openTodo
+  open_todo
 else
   echo "TODO: Nothing to do"
   exit 1
 fi
 
 # open bear via callback url
-open "$callbackURL"
+open "$callback_url"
 
 # set window position and size
 osascript <<EOS

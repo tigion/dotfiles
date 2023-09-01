@@ -2,31 +2,31 @@
 
 #resolution=$(osascript -e 'tell application "Finder" to get bounds of window of desktop')
 resolution=$(system_profiler SPDisplaysDataType | grep Resolution)
-screenWidth=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $1}')
-screenHeight=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $3}')
-screenRetina=$(echo "$resolution" | grep -o Retina)
+screen_width=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $1}')
+screen_height=$(echo "$resolution" | grep -oE "([0-9]+) x ([0-9]+)" | awk '{print $3}')
+screen_retina=$(echo "$resolution" | grep -o Retina)
 
-if [[ "${screenRetina}" == "Retina" ]]; then
-  screenWidth=$((screenWidth / 2))
-  screenHeight=$((screenHeight / 2))
+if [[ "${screen_retina}" == "Retina" ]]; then
+  screen_width=$((screen_width / 2))
+  screen_height=$((screen_height / 2))
 fi
 
-menuHeight=25
+menu_height=25
 margin=20
 
-appX=$((0 + margin))
-appY=$((25 + margin))
-appWidth=$((screenWidth - 2 * margin))
-appHeight=$((screenHeight - menuHeight - 2 * margin))
-#echo "${appX}, ${appY}, ${appWidth}, ${appHeight}"
+app_x=$((0 + margin))
+app_y=$((25 + margin))
+app_width=$((screen_width - 2 * margin))
+app_height=$((screen_height - menu_height - 2 * margin))
+#echo "${app_x}, ${app_y}, ${app_width}, ${app_height}"
 
 # scriptable app
 #tell1="tell application \"Kitty\""
-#tell2="tell window 1 to set bounds to {${appX}, ${appY}, ${appWidth}, ${appHeight}}"
+#tell2="tell window 1 to set bounds to {${app_x}, ${app_y}, ${app_width}, ${app_height}}"
 #osascript -e "${tell1} to ${tell2}" -e "return"
 
 # not scriptable app
 tell1="tell application \"System Events\""
 tell2="tell application process \"kitty\""
-tell3="tell window 1 to set {position, size} to {{${appX}, ${appY}}, {${appWidth}, ${appHeight}}}"
+tell3="tell window 1 to set {position, size} to {{${app_x}, ${app_y}}, {${app_width}, ${app_height}}}"
 osascript -e "${tell1} to ${tell2} to ${tell3}" -e "return"
