@@ -2,6 +2,7 @@ return {
   -- telescope
   {
     'nvim-telescope/telescope.nvim', -- telescope
+    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',                   -- file browser
@@ -19,9 +20,18 @@ return {
 
       telescope.setup {
         defaults = {
+          path_display = { 'truncate' },
           mappings = {
             n = {
               ['q'] = actions.close,
+            },
+            i = {
+              ['<esc>'] = actions.close,
+              ['<C-k>'] = actions.move_selection_previous, -- move to prev result
+              ['<C-j>'] = actions.move_selection_next,     -- move to next result
+              ['<tab>'] = actions.toggle_selection,
+              ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+              ['<C-h>'] = 'which_key', -- help
             },
           },
           file_ignore_patterns = { '%.git/' }, -- ignore .git/ folders
@@ -67,13 +77,19 @@ return {
       telescope.load_extension 'file_browser'
       telescope.load_extension 'fzf'
 
-      vim.keymap.set('n', 'öf', function() builtin.find_files() end)
-      vim.keymap.set('n', 'ög', function() builtin.live_grep() end)
-      vim.keymap.set('n', 'öb', function() builtin.buffers() end)
-      vim.keymap.set('n', 'öh', function() builtin.help_tags() end)
-      vim.keymap.set('n', 'öö', function() builtin.resume() end)
-      vim.keymap.set('n', 'öd', function() builtin.diagnostics() end)
-      vim.keymap.set('n', 'sf', function()
+      -- keymaps
+      local keymap = vim.keymap
+
+      keymap.set('n', 'öf', builtin.find_files, { desc = 'Telescope: find files' })
+      keymap.set('n', 'ör', builtin.oldfiles, { desc = 'Telescope: find recent files' })
+      keymap.set('n', 'ög', builtin.live_grep, { desc = 'Telescope: find string' })
+      keymap.set('n', 'öc', builtin.grep_string, { desc = 'Telescope: find string under cursor' })
+      keymap.set('n', 'öb', builtin.buffers, { desc = 'Telescope: find in buffers' })
+      keymap.set('n', 'öh', builtin.help_tags, { desc = 'Telescope: find in help' })
+      keymap.set('n', 'öd', builtin.diagnostics, { desc = 'Telescope: find in diagnostics' })
+      keymap.set('n', 'öö', builtin.resume, { desc = 'Telescope: reopen last search' })
+
+      keymap.set('n', 'sf', function()
         telescope.extensions.file_browser.file_browser {
           path = '%:p:h',
           cwd = telescope_buffer_dir(),

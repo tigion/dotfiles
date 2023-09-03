@@ -17,13 +17,13 @@ return {
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-nvim-lua' },
 
     -- Snippets
-    { 'L3MON4D3/LuaSnip' },
-    { 'rafamadriz/friendly-snippets' },
+    { 'L3MON4D3/LuaSnip' },             -- snippet engine
+    { 'saadparwaiz1/cmp_luasnip' },     -- autocompletion
+    { 'rafamadriz/friendly-snippets' }, -- snippets
 
     -- user (tigion) settings
     { 'jose-elias-alvarez/null-ls.nvim' },                          --
@@ -39,17 +39,17 @@ return {
 
     -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
     lsp.ensure_installed {
-      'tsserver', -- TypeScript
-      'eslint',   -- JavaScript, TypeScript
-      'lua_ls',   -- Lua
-      'cssls',    -- CSS, SCSS, LESS
-      'clangd',   -- C, C++
       'bashls',   -- Bash (LSP)
+      'clangd',   -- C, C++
+      'cssls',    -- CSS, SCSS, LESS
+      'eslint',   -- JavaScript, TypeScript
+      'html',     -- HTML
+      'lua_ls',   -- Lua
       'marksman', -- Markdown
       'pyright',  -- Python
+      'tsserver', -- TypeScript
       'vimls',    -- VimScript
       'yamlls',   -- Yaml
-      'html',     -- HTML
     }
 
     -- helper functions
@@ -71,10 +71,18 @@ return {
       settings = {
         Lua = {
           format = {
-            enable = true, -- format with sumneko_lua (settings: .editorconfig) instead of stylua (null-ls)
+            enable = true, -- format with lua_ls (settings: .editorconfig) instead of stylua (null-ls)
           },
           diagnostics = {
+            -- recognize "vim" global
             globals = { 'vim' },
+          },
+          workspace = {
+            -- aware runtime files
+            library = {
+              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+              [vim.fn.stdpath('config') .. '/lua'] = true,
+            },
           },
         },
       },
@@ -121,23 +129,67 @@ return {
     }
 
     lsp.on_attach(function(client, bufnr)
-      local opts = { buffer = bufnr, remap = false }
+      local opts = { buffer = bufnr, remap = false, silent = false }
+      local keymap = vim.keymap
 
       if client.name == 'eslint' then
         vim.cmd.LspStop 'eslint'
         return
       end
 
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-      vim.keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
-      vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-      vim.keymap.set('n', 'üd', vim.diagnostic.goto_next, opts)
-      vim.keymap.set('n', '+d', vim.diagnostic.goto_prev, opts)
-      vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-      vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
-      vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-      vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+      keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+
+      opts.desc = 'Show LSP symbols'
+      -- Telescope lsp_workspace_symbols / lsp_dynamic_workspace_symbols
+      keymap.set('n', 'gs', '<cmd>Telescope lsp_workspace_symbols<CR>', opts) -- show lsp definitions
+      -- keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
+
+      opts.desc = 'Show LSP references'
+      -- keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
+      keymap.set('n', 'gR', '<cmd>Telescope lsp_references<CR>', opts) -- show definition, references
+
+      opts.desc = 'Go to declaration'
+      keymap.set('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
+
+      opts.desc = 'Show LSP definitions'
+      --keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+      keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
+
+      opts.desc = 'Show LSP implementations'
+      keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts) -- show lsp implementations
+
+      opts.desc = 'Show LSP type definitions'
+      keymap.set('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>', opts) -- show lsp type definitions
+
+      opts.desc = 'See available code actions'
+      -- keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
+      keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+
+      opts.desc = 'Smart rename'
+      -- keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
+      keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
+
+      opts.desc = 'Show buffer diagnostics'
+      keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts) -- show  diagnostics for file
+
+      opts.desc = 'Show line diagnostics'
+      -- keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+      keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+      opts.desc = 'Go to previous diagnostic'
+      -- keymap.set('n', '+d', vim.diagnostic.goto_prev, opts)
+      keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+      opts.desc = 'Go to next diagnostic'
+      -- keymap.set('n', 'üd', vim.diagnostic.goto_next, opts)
+      keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+      opts.desc = 'Show documentation for what is under cursor'
+      -- keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+      keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+      opts.desc = 'Restart LSP'
+      keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
     end)
 
     lsp.setup()
