@@ -137,9 +137,13 @@ return {
         return
       end
 
+      -- https://github.com/nvim-telescope/telescope.nvim#pickers
+      -- :Telescope builtin
+
       keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
       opts.desc = 'Show LSP symbols'
+      -- Telescope lsp_document_symbols
       -- Telescope lsp_workspace_symbols / lsp_dynamic_workspace_symbols
       keymap.set('n', 'gs', '<cmd>Telescope lsp_workspace_symbols<CR>', opts) -- show lsp definitions
       -- keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
