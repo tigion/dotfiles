@@ -25,6 +25,7 @@ is_command() {
 
 # OS dependent installation
 install() {
+  echo "> Installing '$1' ..."
   if is_macos; then
     brew install "$1"
   elif is_linux; then
