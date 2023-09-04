@@ -12,32 +12,42 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
-# set own COMPDUMP path (default is ~/) 
+# set own COMPDUMP path (default is ~/)
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
+# --- user config folder ---
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # --- CD Paths ---
 #export cdpath=($HOME/code)
 
+# --- helper ---
+add_path() {
+  if [[ -d "$1" && ! "$PATH" =~ (^|:)$1(:|$) ]]; then
+    export PATH="$1:$PATH"
+  fi
+}
+
 # --- Paths ---
 # ~/bin
-export PATH="$HOME/bin:$PATH"
+add_path "$HOME/bin"
 
 # --- Homebrew ---
-newPath="/usr/local/sbin"
-if [[ -d "$newPath" ]]; then
-  [[ ! "$PATH" =~ $newPath ]] && export PATH="$newPath:$PATH"
-fi
+add_path "/usr/local/sbin"
 
 # --- Ruby ---
-if [ `uname -m` = "arm64" ] && [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+if [[ "$(uname -m)" = "arm64" ]]; then
   # arm64 (apple)
-  export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-  export PATH=`gem environment gemdir`/bin:$PATH
-elif [ `uname -m` = "x86_64" ] && [ -d "/usr/local/opt/ruby/bin" ]; then
+  add_path "/opt/homebrew/opt/ruby/bin"
+elif [[ "$(uname -m)" = "x86_64" ]]; then
   # x86_64 (intel)
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
-  export PATH=`gem environment gemdir`/bin:$PATH
+  add_path "/usr/local/opt/ruby/bin"
 fi
+add_path "$(gem environment gemdir)/bin"
 
-# --- Lazygit---
-export XDG_CONFIG_HOME="$HOME/.config"
+# --- Java ---
+if [ "$(uname -m)" = "arm64" ]; then
+  add_path "/opt/homebrew/opt/openjdk/bin"
+elif [ "$(uname -m)" = "x86_64" ]; then
+  add_path "/usr/local/opt/openjdk/bin"
+fi
