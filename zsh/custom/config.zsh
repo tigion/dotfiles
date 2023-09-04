@@ -23,7 +23,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # --- helper ---
 add_path() {
-  if [[ -d "$1" && ! "$PATH" =~ (^|:)$1(:|$) ]]; then
+  # if [[ -d "$1" && ! "$PATH" =~ (^|:)$1(:|$) ]]; then
+  # deactivated because:
+  # - add new paths in front
+  # - remove duplicates later with `typeset -U path` to prevent unwanted reordering
+  if [[ -d "$1" ]]; then
     export PATH="$1:$PATH"
   fi
 }
@@ -51,3 +55,6 @@ if [ "$(uname -m)" = "arm64" ]; then
 elif [ "$(uname -m)" = "x86_64" ]; then
   add_path "/usr/local/opt/openjdk/bin"
 fi
+
+# clean up duplicates in $PATH (zsh feature)
+typeset -U path
