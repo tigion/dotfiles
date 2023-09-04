@@ -352,7 +352,7 @@ use_lazygit() {
 # use_httpie
 use_httpie() {
   if is_command http; then
-    subtitle "use_httpie"
-    link "$DOTFILES_ROOT/use_httpie" "$HOME/.config/use_httpie"
+    subtitle "httpie"
+    link "$DOTFILES_ROOT/httpie" "$HOME/.config/httpie"
   fi
 }
