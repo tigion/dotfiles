@@ -15,7 +15,7 @@ is_linux() {
   [[ $(uname -s) == "Linux" ]]
 }
 is_macos() {
-  [[ $(uname -s) == "Darvin" ]]
+  [[ $(uname -s) == "Darwin" ]]
 }
 
 # check if a command exists
@@ -37,10 +37,13 @@ install() {
 
 # requirements
 install ruby
-# is java for asciidoc-diagram needed?
+# java (for asciidoctor-diagram)
 install openjdk
 # macOS:
-# echo 'export PATH="/usr/local/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+if is_macos; then
+  sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+  # echo 'export PATH="/usr/local/opt/openjdk/bin:$PATH"' >> ~/.zshrc
+fi
 
 # asciidoctor
 gem install asciidoctor
@@ -51,3 +54,9 @@ gem install text-hyphen
 # diagram (plantuml) support
 install graphviz
 gem install asciidoctor-diagram
+
+if is_macos; then
+  printf "\nThings manual to do (if needed):\n"
+  printf "openjdk:\n"
+  brew info openjdk | sed '/==> Caveats/,/==>/!d;//d'
+fi
