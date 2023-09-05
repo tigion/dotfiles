@@ -46,6 +46,7 @@ return {
       'html',     -- HTML
       'lua_ls',   -- Lua
       'marksman', -- Markdown
+      'phpactor', -- PHP
       'pyright',  -- Python
       'tsserver', -- TypeScript
       'vimls',    -- VimScript
