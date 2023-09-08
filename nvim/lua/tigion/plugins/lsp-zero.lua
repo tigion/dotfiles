@@ -42,13 +42,13 @@ return {
       'bashls',   -- Bash (LSP)
       'clangd',   -- C, C++
       'cssls',    -- CSS, SCSS, LESS
-      'eslint',   -- JavaScript, TypeScript
+      --'eslint',   -- JavaScript, TypeScript
       'html',     -- HTML
       'lua_ls',   -- Lua
       'marksman', -- Markdown
       'phpactor', -- PHP
       'pyright',  -- Python
-      'tsserver', -- TypeScript
+      'tsserver', -- JavaScript, TypeScript
       'vimls',    -- VimScript
       'yamlls',   -- Yaml
     }
