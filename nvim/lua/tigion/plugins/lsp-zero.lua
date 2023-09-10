@@ -181,6 +181,7 @@ return {
         'flake8',     -- Python (Formater)
         'black',      -- Python (Formater)
         'pint',       -- PHP (Formater)
+        --'eslint_d',   -- ts/js linter
       },
     }
 
@@ -247,6 +248,12 @@ return {
         null_ls.builtins.formatting.black,
         --null_ls.builtins.formatting.black.with { extra_args = { '--skip-string-normalization' } },
         --null_ls.builtins.formatting.black.with { extra_args = { '--line-length=120', '--skip-string-normalization' } },
+
+        -- null_ls.builtins.diagnostics.eslint_d.with({                        -- js/ts linter
+        --   condition = function(utils)
+        --     return utils.root_has_file({ '.eslintrc.js', '.eslintrc.cjs' }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+        --   end,
+        -- }),
       },
     }
 
