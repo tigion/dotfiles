@@ -1,7 +1,7 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  --enabled = false,
-  branch = 'v2.x',
+  -- enabled = false,
+  branch = 'v3.x',
   dependencies = {
     -- LSP Support
     { 'neovim/nvim-lspconfig' },             -- Required
@@ -27,116 +27,16 @@ return {
 
     -- user (tigion) settings
     { 'jose-elias-alvarez/null-ls.nvim' },                          --
-    { 'onsails/lspkind-nvim' },                                     -- vscode-like pictograms
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' },                -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
+    { 'onsails/lspkind-nvim' },                                     -- vscode-like pictograms
     { 'j-hui/fidget.nvim',                        tag = 'legacy' }, -- LSP status view
   },
   config = function()
-    local status, lsp = pcall(require, 'lsp-zero')
-    if not status then return end
+    local lsp_zero = require('lsp-zero')
 
-    lsp.preset 'recommended'
-
-    -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-    lsp.ensure_installed {
-      'bashls',   -- Bash (LSP)
-      'clangd',   -- C, C++
-      'cssls',    -- CSS, SCSS, LESS
-      --'eslint',   -- JavaScript, TypeScript
-      'html',     -- HTML
-      'lua_ls',   -- Lua
-      'marksman', -- Markdown
-      'phpactor', -- PHP
-      'pyright',  -- Python
-      'tsserver', -- JavaScript, TypeScript
-      'vimls',    -- VimScript
-      'yamlls',   -- Yaml
-    }
-
-    -- helper functions
-    local augroup_format = vim.api.nvim_create_augroup('Format', { clear = true })
-    local enable_format_on_save = function(_, bufnr)
-      vim.api.nvim_clear_autocmds { group = augroup_format, buffer = bufnr }
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = augroup_format,
-        buffer = bufnr,
-        callback = function() vim.lsp.buf.format { bufnr = bufnr } end,
-      })
-    end
-
-    -- lua settings
-    lsp.configure('lua_ls', {
-      -- Add format on save
-      on_attach = function(client, bufnr) enable_format_on_save(client, bufnr) end,
-      -- Fix Undefined global 'vim'
-      settings = {
-        Lua = {
-          format = {
-            enable = true, -- format with lua_ls (settings: .editorconfig) instead of stylua (null-ls)
-          },
-          diagnostics = {
-            -- recognize "vim" global
-            globals = { 'vim' },
-          },
-          workspace = {
-            -- aware runtime files
-            library = {
-              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-              [vim.fn.stdpath('config') .. '/lua'] = true,
-            },
-          },
-        },
-      },
-    })
-
-    -- html (html-lsp)
-    lsp.configure('html', {
-      settings = {
-        html = {
-          format = {
-            templating = true,
-            wrapLineLength = 0,
-          },
-        },
-      },
-    })
-
-    -- cmp mappings
-    local cmp = require 'cmp'
-    --local cmp_select = { behavior = cmp.SelectBehavior.Select }
-    local cmp_mappings = lsp.defaults.cmp_mappings {
-      --['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-      --['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      --['<C-y>'] = cmp.mapping.confirm({ select = true }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      -- TODO: <S-CR> Don't work in Tmux => fallback <C+r>
-      ['<S-CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-      ['<C-r>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-      ['<C-Space>'] = cmp.mapping.complete(),
-    }
-
-    -- disable completion with tab
-    -- this helps with copilot setup
-    --cmp_mappings['<Tab>'] = nil
-    --cmp_mappings['<S-Tab>'] = nil
-
-    -- set new mappings
-    lsp.setup_nvim_cmp {
-      mapping = cmp_mappings,
-    }
-
-    lsp.set_preferences {
-      suggest_lsp_servers = true,
-    }
-
-    lsp.on_attach(function(client, bufnr)
+    lsp_zero.on_attach(function(client, bufnr)
       local opts = { buffer = bufnr, remap = false, silent = false }
       local keymap = vim.keymap
-
-      if client.name == 'eslint' then
-        vim.cmd.LspStop 'eslint'
-        return
-      end
 
       -- https://github.com/nvim-telescope/telescope.nvim#pickers
       -- :Telescope builtin
@@ -182,12 +82,12 @@ return {
       keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = 'Go to previous diagnostic'
-      -- keymap.set('n', '+d', vim.diagnostic.goto_prev, opts)
-      keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      -- keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+      keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
       opts.desc = 'Go to next diagnostic'
-      -- keymap.set('n', 'üd', vim.diagnostic.goto_next, opts)
-      keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      -- keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+      keymap.set('n', '+d', vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
       opts.desc = 'Show documentation for what is under cursor'
       -- keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -197,21 +97,82 @@ return {
       keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
     end)
 
-    lsp.setup()
+    -- Mason
+    require('mason').setup({})
+    require('mason-lspconfig').setup({
+      ensure_installed = {
+        -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+        'bashls',   -- Bash (LSP)
+        'clangd',   -- C, C++
+        'cssls',    -- CSS, SCSS, LESS
+        --'eslint',   -- JavaScript, TypeScript
+        'html',     -- HTML
+        'lua_ls',   -- Lua
+        'marksman', -- Markdown
+        'phpactor', -- PHP
+        'pyright',  -- Python
+        'tsserver', -- JavaScript, TypeScript
+        'vimls',    -- VimScript
+        'yamlls',   -- Yaml
+      },
+      automatic_installation = true,
+      handlers = {
+        lsp_zero.default_setup,
 
-    -- set diagnostic icons
-    for name, icon in pairs(require('tigion.core.icons').diagnostics) do
-      name = 'DiagnosticSign' .. name
-      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
-    end
-    vim.diagnostic.config {
-      virtual_text = true,
-      signs = true,
-    }
+        html = function()
+          require('lspconfig').html.setup({
+            settings = {
+              html = {
+                format = {
+                  templating = true,
+                  wrapLineLength = 0,
+                },
+              },
+            },
+          })
+        end,
 
-    -- user (tigion) settings
+        lua_ls = function()
+          -- helper functions
+          local augroup_format = vim.api.nvim_create_augroup('Format', { clear = true })
+          local enable_format_on_save = function(_, bufnr)
+            vim.api.nvim_clear_autocmds { group = augroup_format, buffer = bufnr }
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = augroup_format,
+              buffer = bufnr,
+              callback = function() vim.lsp.buf.format { bufnr = bufnr } end,
+            })
+          end
+          local lua_opts = lsp_zero.nvim_lua_ls({
+            -- Add format on save
+            on_attach = function(client, bufnr)
+              enable_format_on_save(client, bufnr)
+            end,
+            -- Fix Undefined global 'vim'
+            settings = {
+              Lua = {
+                format = {
+                  enable = true, -- format with lua_ls (settings: .editorconfig) instead of stylua (null-ls)
+                },
+                diagnostics = {
+                  globals = { 'vim' }, -- recognize "vim" global
+                },
+                workspace = {
+                  library = { -- aware runtime files
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.stdpath('config') .. '/lua'] = true,
+                  },
+                },
+              },
+            },
+          })
+          require('lspconfig').lua_ls.setup(lua_opts)
+        end,
 
-    require 'mason-tool-installer'.setup {
+      },
+    })
+
+    require('mason-tool-installer').setup {
       ensure_installed = {
         'shellcheck', -- Shell (Linter)
         'shfmt',      -- Shell (Formater)
@@ -223,8 +184,48 @@ return {
       },
     }
 
+
+    -- cmp mappings
+    local cmp = require('cmp')
+    local cmp_action = require('lsp-zero').cmp_action()
+
+    cmp.setup({
+      mapping = cmp.mapping.preset.insert({
+        -- defaults:
+        -- <Ctrl-y>: Confirms selection
+        -- <Ctrl-e>: Cancel completion
+        -- <Down>: Navigate to the next item on the list
+        -- <Up>: Navigate to previous item on the list
+        -- <Ctrl-n>: If the completion menu is visible, go to the next item. Else, trigger completion menu.
+        -- <Ctrl-p>: If the completion menu is visible, go to the previous item. Else, trigger completion menu.
+
+        -- `Enter` key to confirm completion
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+        -- TODO: <S-CR> Don't work in Tmux => fallback <C+r>
+        ['<S-CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        ['<C-r>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+
+        -- Ctrl+Space to trigger completion menu
+        ['<C-Space>'] = cmp.mapping.complete(),
+
+        -- Navigate between snippet placeholder
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+        -- Scroll up and down in the completion documentation
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      }),
+    })
+
+
+
+
+
+    -- NULL-LS
     local null_ls = require 'null-ls'
-    local null_opts = lsp.build_options('null-ls', {})
+    local null_opts = lsp_zero.build_options('null-ls', {})
     null_ls.setup {
       on_attach = null_opts.on_attach,
       --on_attach = function(client, bufnr)
@@ -249,6 +250,8 @@ return {
       },
     }
 
+
+    -- LSPKIND
     local lspkind = require 'lspkind'
     cmp.setup {
       formatting = {
@@ -256,15 +259,19 @@ return {
           mode = 'symbol_text',  -- show only symbol annotations
           maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-          -- The function below will be called before any actual modifications from lspkind
-          -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-          -- before = function (entry, vim_item)
-          --   ...
-          --   return vim_item
-          -- end
         }),
       },
+    }
+
+
+    -- set diagnostic icons
+    for name, icon in pairs(require('tigion.core.icons').diagnostics) do
+      name = 'DiagnosticSign' .. name
+      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+    end
+    vim.diagnostic.config {
+      virtual_text = true,
+      signs = true,
     }
   end,
 }
