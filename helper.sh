@@ -294,10 +294,24 @@ use_fd() {
   fi
 }
 
+# tmux terminfo
+# https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+install_tmux_terminfo() {
+  src="$DOTFILES_ROOT/macOS/tmux-256color/tmux-256color.src"
+  dst="$HOME/.local/share/terminfo"
+  if [[ ! -f $HOME/.local/share/terminfo/74/tmux-256color ]]; then
+    is_active && /usr/bin/tic -x -o "$dst" "$src"
+    success "Installed tmux-256color"
+  else
+    success "tmux-256color is already installed"
+  fi
+}
+
 # tmux
 use_tmux() {
   if is_command tmux; then
     subtitle "tmux"
+    is_macos && install_tmux_terminfo
     link "$DOTFILES_ROOT/tmux" "$HOME/.config/tmux"
   fi
 }

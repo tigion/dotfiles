@@ -36,6 +36,12 @@ add_path() {
 # ~/bin
 add_path "$HOME/bin"
 
+# --- Terminfo ---
+terminfo_folder="$HOME/.local/share/terminfo"
+if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
+  export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
+fi
+
 # --- Homebrew ---
 add_path "/usr/local/sbin"
 
