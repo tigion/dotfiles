@@ -292,5 +292,8 @@ return {
       virtual_text = true,
       signs = true,
     }
+
+    -- ignore diagnostic infos for `.env` files
+    vim.cmd([[autocmd BufRead,BufNewFile .env lua vim.diagnostic.disable(0)]])
   end,
 }
