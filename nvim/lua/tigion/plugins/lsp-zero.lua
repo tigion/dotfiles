@@ -15,10 +15,10 @@ return {
 
     -- Autocompletion
     { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/cmp-buffer' },   -- source for buffer words
+    { 'hrsh7th/cmp-path' },     -- source for file and folder paths
+    { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's built-in language server client
+    { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim Lua API
 
     -- Snippets
     { 'L3MON4D3/LuaSnip' },             -- snippet engine
@@ -195,8 +195,11 @@ return {
 
     cmp.setup({
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'nvim_lsp' }, -- lsp server
+        { name = 'nvim_lua' }, -- neovim lua API
+        { name = 'luasnip' },  -- snippets
+        { name = 'buffer' },   -- buffer words
+        { name = 'path' },     -- files, paths
       },
       mapping = cmp.mapping.preset.insert({
         -- defaults:
