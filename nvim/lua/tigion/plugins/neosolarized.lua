@@ -37,16 +37,13 @@ return {
       ]]
     --
 
-    Group.new('AlphaHeader', colors.orange)
-    Group.new('AlphaButtons', colors.blue)
-    Group.new('AlphaShortCut', colors.green)
-    Group.new('AlphaFooter', colors.base01:dark())
-
+    -- ...
     Color.new('black', '#000000')
     Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
     Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
     Group.new('Visual', colors.none, colors.base03, styles.reverse)
 
+    -- Diagnostics
     local cError = groups.Error.fg
     local cInfo = groups.Information.fg
     local cWarn = groups.Warning.fg
@@ -60,6 +57,12 @@ return {
     Group.new('DiagnosticUnderlineWarn', colors.none, colors.none, styles.undercurl, cWarn)
     Group.new('DiagnosticUnderlineInfo', colors.none, colors.none, styles.undercurl, cInfo)
     Group.new('DiagnosticUnderlineHint', colors.none, colors.none, styles.undercurl, cHint)
+
+    -- alpha-nvim
+    Group.new('AlphaHeader', colors.orange)
+    Group.new('AlphaButtons', colors.blue)
+    Group.new('AlphaShortCut', colors.green)
+    Group.new('AlphaFooter', colors.base01:dark())
 
     -- load the colorscheme here
     vim.cmd [[colorscheme neosolarized]]
