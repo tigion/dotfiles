@@ -189,8 +189,15 @@ return {
     -- cmp mappings
     local cmp = require('cmp')
     local cmp_action = require('lsp-zero').cmp_action()
+    local cmp_format = require('lsp-zero').cmp_format()
+
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup({
+      sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+      },
       mapping = cmp.mapping.preset.insert({
         -- defaults:
         -- <Ctrl-y>: Confirms selection
@@ -218,6 +225,8 @@ return {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
       }),
+      --- (Optional) Show source name in completion menu
+      formatting = cmp_format,
     })
 
 
