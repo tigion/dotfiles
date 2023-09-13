@@ -26,10 +26,16 @@ return {
     { 'rafamadriz/friendly-snippets' }, -- snippets
 
     -- user (tigion) settings
-    { 'jose-elias-alvarez/null-ls.nvim' },                          --
-    { 'WhoIsSethDaniel/mason-tool-installer.nvim' },                -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
-    { 'onsails/lspkind-nvim' },                                     -- vscode-like pictograms
-    { 'j-hui/fidget.nvim',                        tag = 'legacy' }, -- LSP status view
+    { 'jose-elias-alvarez/null-ls.nvim' },           --
+    { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
+    { 'onsails/lspkind-nvim' },                      -- vscode-like pictograms
+
+    {
+      'j-hui/fidget.nvim', -- LSP status view
+      event = 'LspAttach',
+      tag = 'legacy',
+      opts = {},
+    },
   },
   config = function()
     local lsp_zero = require('lsp-zero')
