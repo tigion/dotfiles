@@ -300,6 +300,6 @@ return {
     }
 
     -- ignore diagnostic infos for `.env` files
-    vim.cmd([[autocmd BufRead,BufNewFile .env lua vim.diagnostic.disable(0)]])
+    vim.cmd([[autocmd BufRead,BufNewFile .env,.env.* lua vim.diagnostic.disable(0)]])
   end,
 }
