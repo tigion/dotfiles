@@ -36,30 +36,34 @@ add_path() {
 # ~/bin
 add_path "$HOME/bin"
 
-# --- Terminfo ---
-terminfo_folder="$HOME/.local/share/terminfo"
-if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
-  export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
-fi
 
-# --- Homebrew ---
-add_path "/usr/local/sbin"
+# macOS
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  # --- Terminfo ---
+  terminfo_folder="$HOME/.local/share/terminfo"
+  if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
+    export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
+  fi
 
-# --- Ruby ---
-if [[ "$(uname -m)" = "arm64" ]]; then
-  # arm64 (apple)
-  add_path "/opt/homebrew/opt/ruby/bin"
-elif [[ "$(uname -m)" = "x86_64" ]]; then
-  # x86_64 (intel)
-  add_path "/usr/local/opt/ruby/bin"
-fi
-add_path "$(gem environment gemdir)/bin"
+  # --- Homebrew ---
+  add_path "/usr/local/sbin"
 
-# --- Java ---
-if [ "$(uname -m)" = "arm64" ]; then
-  add_path "/opt/homebrew/opt/openjdk/bin"
-elif [ "$(uname -m)" = "x86_64" ]; then
-  add_path "/usr/local/opt/openjdk/bin"
+  # --- Ruby ---
+  if [[ "$(uname -m)" = "arm64" ]]; then
+    # arm64 (apple)
+    add_path "/opt/homebrew/opt/ruby/bin"
+  elif [[ "$(uname -m)" = "x86_64" ]]; then
+    # x86_64 (intel)
+    add_path "/usr/local/opt/ruby/bin"
+  fi
+  add_path "$(gem environment gemdir)/bin"
+
+  # --- Java ---
+  if [ "$(uname -m)" = "arm64" ]; then
+    add_path "/opt/homebrew/opt/openjdk/bin"
+  elif [ "$(uname -m)" = "x86_64" ]; then
+    add_path "/usr/local/opt/openjdk/bin"
+  fi
 fi
 
 # clean up duplicates in $PATH (zsh feature)
