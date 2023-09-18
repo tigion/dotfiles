@@ -60,7 +60,7 @@ return {
     Group.new('DiagnosticUnderlineHint', colors.none, colors.none, styles.undercurl, cHint)
 
     Group.new('FloatBorder', colors.base01, groups.FloatBorder.bg)
-    Group.new('NormalFloat', groups.NormalFloat.fg, colors.none) -- no background
+    -- Group.new('NormalFloat', groups.NormalFloat.fg, colors.base02)
 
     -- alpha-nvim
     Group.new('AlphaHeader', colors.orange)
