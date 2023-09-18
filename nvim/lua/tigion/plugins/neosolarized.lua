@@ -40,6 +40,7 @@ return {
     -- ...
     Color.new('black', '#000000')
     Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
+    Group.new('CursorLine2', colors.none, colors.base02, styles.NONE, colors.base1)
     Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
     Group.new('Visual', colors.none, colors.base03, styles.reverse)
 
@@ -57,6 +58,9 @@ return {
     Group.new('DiagnosticUnderlineWarn', colors.none, colors.none, styles.undercurl, cWarn)
     Group.new('DiagnosticUnderlineInfo', colors.none, colors.none, styles.undercurl, cInfo)
     Group.new('DiagnosticUnderlineHint', colors.none, colors.none, styles.undercurl, cHint)
+
+    Group.new('FloatBorder', colors.base01, groups.FloatBorder.bg)
+    Group.new('NormalFloat', groups.NormalFloat.fg, colors.none) -- no background
 
     -- alpha-nvim
     Group.new('AlphaHeader', colors.orange)

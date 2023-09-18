@@ -200,6 +200,15 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup({
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered({
+          winhighlight = 'Normal:Normal,CursorLine:CursorLine2,Search:None',
+        }),
+        completion = cmp.config.window.bordered({
+          winhighlight = 'Normal:Normal,CursorLine:CursorLine2,Search:None',
+        }),
+      },
       sources = {
         { name = 'nvim_lsp' }, -- lsp server
         { name = 'nvim_lua' }, -- neovim lua API
