@@ -85,8 +85,7 @@ return {
 
       keymap.set('n', 'öf', builtin.find_files, { desc = 'Telescope: find files' })
       -- keymap.set('n', 'ör', builtin.oldfiles, { desc = 'Telescope: find recent files' })
-      keymap.set('n', 'ör', '<cmd>Telescope oldfiles cwd_only=true<CR>',
-        { desc = 'Telescope: find recent files (cwd)' })
+      keymap.set('n', 'ör', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = 'Telescope: find recent files' })
       keymap.set('n', 'ög', builtin.live_grep, { desc = 'Telescope: find string' })
       keymap.set('n', 'öc', builtin.grep_string, { desc = 'Telescope: find string under cursor' })
       keymap.set('n', 'öb', builtin.buffers, { desc = 'Telescope: find in buffers' })
