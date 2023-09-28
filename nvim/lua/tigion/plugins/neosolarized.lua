@@ -68,10 +68,11 @@ return {
     Group.new('AlphaShortCut', colors.green)
     Group.new('AlphaFooter', colors.base01:dark())
 
-    -- indent-blank-line
-    Group.new('IblIndent', colors.base01:dark():dark())
-    Group.new('IblScope', groups.Label.fg:dark())
-    -- Group.new('IblIndentContext', colors.yellow:dark()) -- Dont exist in current v3
+    -- indent-blankline
+    Group.new('IblIndent', colors.base01:dark():dark(), nil, styles.nocombine)
+    Group.new('IblScope', groups.Label.fg:dark(), nil, styles.nocombine)
+    Group.new('IblWhitespace', nil, nil, styles.nocombine)
+    -- Group.new('IblIndentContext', colors.yellow:dark(), nil, styles.nocombine) -- Dont exist in current v3
 
     -- load the colorscheme here
     vim.cmd [[colorscheme neosolarized]]
