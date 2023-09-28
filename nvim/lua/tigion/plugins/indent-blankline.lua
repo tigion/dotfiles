@@ -19,34 +19,17 @@ return {
       show_end = false,
       -- highlight = 'IblScope', -- configured in theme.lua
       priority = 500,
+      include = {
+        -- add some extra nodes for better current idention highlight
+        node_type = {
+          -- https://github.com/MunifTanjim/tree-sitter-lua/blob/main/src/node-types.json
+          lua = { 'return_statement', 'table_constructor' },
+          -- https://github.com/tree-sitter/tree-sitter-bash/blob/master/src/node-types.json
+          bash = { 'if_statement', 'case-statement', 'for_statement', 'while_statement', 'function_definition' },
+          -- https://github.com/tree-sitter/tree-sitter-python/blob/master/src/node-types.json
+          python = { 'if_statement', 'match_statement', 'for_statement', 'while_statement', 'try_statement' },
+        },
+      },
     },
   },
-  -- config = function()
-  --   vim.cmd [[highlight IndentBlanklineChar guifg=#303030 gui=nocombine]]
-  --   vim.cmd [[highlight IndentBlanklineContextChar guifg=#574100 gui=nocombine]]
-  --
-  --   require('ibl').setup {
-  --     -- v3
-  --     indent = {
-  --       char = '┊',
-  --       -- highlight = 'IndentBlanklineChar',
-  --     },
-  --     -- whitespace = { },
-  --     scope = {
-  --       enabled = true,
-  --       show_start = false,
-  --       show_end = false,
-  --       -- injected_languages = false,
-  --       highlight = 'IblContext',
-  --       priority = 500,
-  --     },
-  --
-  --     -- v2
-  --     -- use_treesitter = true,
-  --     -- char = '┊',
-  --     -- context_char = '┊',
-  --     -- show_current_context = true,
-  --     -- show_trailing_blankline_indent = false,
-  --   }
-  -- end,
 }
