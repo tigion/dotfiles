@@ -8,18 +8,15 @@ return {
     Note:
     - scope != current idention level
     - default highlight groups: 'IblIndent', 'IblWhitespace', 'IblScope'
+      - configured in theme.lua
     ]]
     indent = {
       char = '┊',
-      -- highlight = 'IblIndent', -- configured in theme.lua
     },
     -- whitespace = {},
     scope = {
-      enabled = true,
       show_start = false,
       show_end = false,
-      -- highlight = 'IblScope', -- configured in theme.lua
-      priority = 500,
       include = {
         -- add some extra nodes for better current idention highlight
         node_type = {
