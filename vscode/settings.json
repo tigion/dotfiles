@@ -39,7 +39,7 @@
     {
       "before": [ "K" ],
       "commands": [ "editor.action.moveLinesUpAction" ]
-    }
+    },
     {
       "before": [ ">" ],
       "commands": [ "editor.action.indentLines" ]
