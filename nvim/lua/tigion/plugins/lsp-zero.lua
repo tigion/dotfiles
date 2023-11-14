@@ -201,12 +201,13 @@ return {
 
     cmp.setup({
       window = {
-        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered({
-          winhighlight = 'Normal:Normal,CursorLine:CursorLine2,Search:None',
+          winhighlight = 'Normal:Normal,CursorLine:CursorLine,Search:None',
         }),
+        -- completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
-          winhighlight = 'Normal:Normal,CursorLine:CursorLine2,Search:None',
+          winhighlight = 'Normal:Normal,CursorLine:CursorLine,Search:None',
         }),
       },
       sources = {
