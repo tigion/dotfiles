@@ -33,7 +33,6 @@ return {
     {
       'j-hui/fidget.nvim', -- LSP status view
       event = 'LspAttach',
-      tag = 'legacy',
       opts = {},
     },
   },
