@@ -1,6 +1,5 @@
 return {
   'nvim-treesitter/nvim-treesitter', -- treesitter
-  dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
   build = ':TSUpdate',
   config = function()
     local status, ts = pcall(require, 'nvim-treesitter.configs')
