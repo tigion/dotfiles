@@ -5,6 +5,19 @@ return {
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')
 
+    -- get customized Codeium status
+    local function getCodeiumStatus()
+      if not pcall(vim.fn['codeium#Enabled']) then return '' end
+      if not vim.fn['codeium#Enabled']() then return '' end
+
+      local status = '󰘦'
+      local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
+      if str ~= 'ON' and str ~= '' then
+        status = status .. ' ' .. str
+      end
+      return status
+    end
+
     lualine.setup {
       options = {
         icons_enabled = true,
@@ -28,6 +41,8 @@ return {
             sources = { 'nvim_diagnostic' },
             symbols = icons.diagnostics,
           },
+          { getCodeiumStatus },
+          -- '%S󰘦 %3{codeium#GetStatusString()}',
           'encoding',
           'fileformat',
           'filetype',
