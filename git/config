@@ -18,7 +18,7 @@
 [init]
 	defaultBranch = main
 [pull]
-	rebase = false
+	rebase = true
 
 [include]
   path = "~/.config/git/config.private"
