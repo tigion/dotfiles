@@ -39,9 +39,9 @@ install openjdk
 if is_macos; then
 	# brew info openjdk | sed '/==> Caveats/,/==>/!d;//d'
 	is_arm64 && src_path="/opt/homebrew" || src_path="/usr/local"
-  if [[ -f "${src_path}/opt/openjdk/libexec/openjdk.jdk" ]]; then
-	  sudo ln -sfn "${src_path}/opt/openjdk/libexec/openjdk.jdk" "/Library/Java/JavaVirtualMachines/openjdk.jdk"
-  fi
+	if [[ -f "${src_path}/opt/openjdk/libexec/openjdk.jdk" ]]; then
+		sudo ln -sfn "${src_path}/opt/openjdk/libexec/openjdk.jdk" "/Library/Java/JavaVirtualMachines/openjdk.jdk"
+	fi
 	#echo "export PATH=\"${src_path}/opt/openjdk/bin:$PATH\"" >> ~/.zshrc
 fi
 
