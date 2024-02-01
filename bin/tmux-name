@@ -9,7 +9,7 @@ fi
 
 session_name="$1"
 
-is_session=$(tmux ls | grep "^${session_name}")
+is_session=$(tmux ls | grep "^${session_name}:")
 is_attached=$(echo "$is_session" | grep "(attached)$")
 
 if [[ $is_attached ]]; then
