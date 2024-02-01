@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+#
+# Starts one or multiple new Tmux sessions and attach to first one.
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $(basename "$0") <session-name> [<session-name> ...]"
+  exit 1
+fi
+
+is_session() { tmux ls | grep -q "^${1}:"; }
+is_attached() { tmux ls | grep -q "^${1}:.*(attached)$"; }
+
+# currently unused
+session_state() {
+  info=$(tmux ls -F "#{session_name}: #{?#{>:#{session_attached},0},attached,detached}" -f "#{m:${1},#{session_name}}")
+  if echo "$info" | grep -q "attached$"; then
+    echo 2 # exists and is attached
+  elif echo "$info" | grep -q "detached$"; then
+    echo 1 # exists and is detached
+  else
+    echo 0 # does not exist
+  fi
+}
+
+first_session_name="$1"
+
+for session_name in "$@"; do
+  if ! is_session "${session_name}"; then
+    echo "Start new session '${session_name}'"
+    tmux new -d -s "$session_name"
+  else
+    echo "Session '${session_name}' already exists!"
+  fi
+done
+
+if is_session "${first_session_name}"; then
+  echo ""
+  if is_attached "${first_session_name}"; then
+    echo "Session '${first_session_name}' is already attached!"
+    read -r -n 1 -p "Do you still want to attach '${first_session_name}' (y,n)? " answer
+    echo ""
+    if [[ "$answer" != "y" && "$answer" != "Y" ]]; then
+      exit 0
+    fi
+  fi
+  echo "Attach to session '${first_session_name}'"
+  tmux a -t "$first_session_name"
+fi
