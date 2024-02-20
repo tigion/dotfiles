@@ -4,8 +4,8 @@ return {
   branch = 'v3.x',
   dependencies = {
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },             -- Required
-    { 'williamboman/mason.nvim' },           -- Optional
+    { 'neovim/nvim-lspconfig' }, -- Required
+    { 'williamboman/mason.nvim' }, -- Optional
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- -- Autocompletion
@@ -15,20 +15,19 @@ return {
 
     -- Autocompletion
     { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },   -- source for buffer words
-    { 'hrsh7th/cmp-path' },     -- source for file and folder paths
+    { 'hrsh7th/cmp-buffer' }, -- source for buffer words
+    { 'hrsh7th/cmp-path' }, -- source for file and folder paths
     { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's built-in language server client
     { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim Lua API
 
     -- Snippets
-    { 'L3MON4D3/LuaSnip' },             -- snippet engine
-    { 'saadparwaiz1/cmp_luasnip' },     -- autocompletion
+    { 'L3MON4D3/LuaSnip' }, -- snippet engine
+    { 'saadparwaiz1/cmp_luasnip' }, -- autocompletion
     { 'rafamadriz/friendly-snippets' }, -- snippets
 
     -- user (tigion) settings
-    { 'jose-elias-alvarez/null-ls.nvim' },           --
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
-    { 'onsails/lspkind-nvim' },                      -- vscode-like pictograms
+    { 'onsails/lspkind-nvim' }, -- vscode-like pictograms
 
     {
       'j-hui/fidget.nvim', -- LSP status view
@@ -78,9 +77,12 @@ return {
       opts.desc = 'Smart rename'
       -- keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
       -- keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
-      keymap.set('n', '<leader>rn', function()
-        return ':IncRename ' .. vim.fn.expand('<cword>')
-      end, { desc = opts.desc, expr = true })
+      keymap.set(
+        'n',
+        '<leader>rn',
+        function() return ':IncRename ' .. vim.fn.expand('<cword>') end,
+        { desc = opts.desc, expr = true }
+      )
 
       opts.desc = 'Show buffer diagnostics'
       keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts) -- show  diagnostics for file
@@ -110,18 +112,18 @@ return {
     require('mason-lspconfig').setup({
       ensure_installed = {
         -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-        'bashls',   -- Bash (LSP)
-        'clangd',   -- C, C++
-        'cssls',    -- CSS, SCSS, LESS
+        'bashls', -- Bash (LSP)
+        'clangd', -- C, C++
+        'cssls', -- CSS, SCSS, LESS
         --'eslint',   -- JavaScript, TypeScript
-        'html',     -- HTML
-        'lua_ls',   -- Lua
+        'html', -- HTML
+        'lua_ls', -- Lua
         'marksman', -- Markdown
         'phpactor', -- PHP
-        'pyright',  -- Python
+        'pyright', -- Python
         'tsserver', -- JavaScript, TypeScript
-        'vimls',    -- VimScript
-        'yamlls',   -- Yaml
+        'vimls', -- VimScript
+        'yamlls', -- Yaml
       },
       automatic_installation = true,
       handlers = {
@@ -144,18 +146,18 @@ return {
           -- helper functions
           local augroup_format = vim.api.nvim_create_augroup('Format', { clear = true })
           local enable_format_on_save = function(_, bufnr)
-            vim.api.nvim_clear_autocmds { group = augroup_format, buffer = bufnr }
+            vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
             vim.api.nvim_create_autocmd('BufWritePre', {
               group = augroup_format,
               buffer = bufnr,
-              callback = function() vim.lsp.buf.format { bufnr = bufnr } end,
+              callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end,
             })
           end
           local lua_opts = lsp_zero.nvim_lua_ls({
             -- Add format on save
-            on_attach = function(client, bufnr)
-              enable_format_on_save(client, bufnr)
-            end,
+            -- on_attach = function(client, bufnr)
+            --   enable_format_on_save(client, bufnr)
+            -- end,
             -- Fix Undefined global 'vim'
             settings = {
               Lua = {
@@ -176,23 +178,24 @@ return {
           })
           require('lspconfig').lua_ls.setup(lua_opts)
         end,
-
       },
     })
 
-    require('mason-tool-installer').setup {
+    require('mason-tool-installer').setup({
       ensure_installed = {
         'shellcheck', -- Shell (Linter)
-        'shfmt',      -- Shell (Formater)
-        'prettier',   -- Code (Formater)
-        'stylua',     -- Lua (Formater)
-        'flake8',     -- Python (Formater)
-        'black',      -- Python (Formater)
-        'pint',       -- PHP (Formater)
-        --'eslint_d',   -- ts/js linter
+        'shfmt', -- Shell (Formater)
+        'prettier', -- Code (Formater)
+        'stylua', -- Lua (Formater)
+        'ruff', -- Python (Linter)
+        'flake8', -- Python (Linter)
+        'pylint', -- Python (Linter)
+        'black', -- Python (Formater)
+        'isort', -- Python (Formatter: includes)
+        'pint', -- PHP (Formater)
+        'eslint_d', -- JS/TS (Linter)
       },
-    }
-
+    })
 
     -- cmp mappings
     local cmp = require('cmp')
@@ -215,9 +218,9 @@ return {
       sources = {
         { name = 'nvim_lsp' }, -- lsp server
         { name = 'nvim_lua' }, -- neovim lua API
-        { name = 'luasnip' },  -- snippets
-        { name = 'buffer' },   -- buffer words
-        { name = 'path' },     -- files, paths
+        { name = 'luasnip' }, -- snippets
+        { name = 'buffer' }, -- buffer words
+        { name = 'path' }, -- files, paths
       },
       mapping = cmp.mapping.preset.insert({
         -- defaults:
@@ -250,67 +253,27 @@ return {
       formatting = cmp_format,
     })
 
-
-
-
-
-    -- NULL-LS
-    local null_ls = require 'null-ls'
-    local null_opts = lsp_zero.build_options('null-ls', {})
-    null_ls.setup {
-      on_attach = null_opts.on_attach,
-      --on_attach = function(client, bufnr)
-      --  null_opts.on_attach(client, bufnr)
-      --  --- ...
-      --end,
-      sources = {
-        null_ls.builtins.formatting.trim_newlines,
-        null_ls.builtins.formatting.trim_whitespace,
-        --null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.prettier,
-        --null_ls.builtins.formatting.stylua, -- dont work
-        null_ls.builtins.formatting.shfmt, -- (settings: .editorconfig)
-        null_ls.builtins.formatting.pint.with {
-          command = 'pint',
-          --extra_args = { '--preset', 'psr12' }, -- laravel (default), psr12, symfony
-        },
-        null_ls.builtins.diagnostics.flake8.with { extra_args = { '--max-line-length', '120', '--extend-ignore', 'E501' } },
-        --null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.black.with { extra_args = { '--line-length=120' } },
-        --null_ls.builtins.formatting.black.with { extra_args = { '--skip-string-normalization' } },
-        --null_ls.builtins.formatting.black.with { extra_args = { '--line-length=120', '--skip-string-normalization' } },
-
-        -- null_ls.builtins.diagnostics.eslint_d.with({                        -- js/ts linter
-        --   condition = function(utils)
-        --     return utils.root_has_file({ '.eslintrc.js', '.eslintrc.cjs' }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-        --   end,
-        -- }),
-      },
-    }
-
-
     -- LSPKIND
-    local lspkind = require 'lspkind'
-    cmp.setup {
+    local lspkind = require('lspkind')
+    cmp.setup({
       formatting = {
         format = lspkind.cmp_format({
-          mode = 'symbol_text',  -- show only symbol annotations
-          maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          mode = 'symbol_text', -- show only symbol annotations
+          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),
       },
-    }
-
+    })
 
     -- set diagnostic icons
     for name, icon in pairs(require('tigion.core.icons').diagnostics) do
       name = 'DiagnosticSign' .. name
       vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
     end
-    vim.diagnostic.config {
+    vim.diagnostic.config({
       virtual_text = true,
       signs = true,
-    }
+    })
 
     -- ignore diagnostic infos for `.env` files
     vim.cmd([[autocmd BufRead,BufNewFile .env,.env.* lua vim.diagnostic.disable(0)]])
