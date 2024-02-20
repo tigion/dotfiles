@@ -9,27 +9,24 @@ end_of_line = lf
 insert_final_newline = false
 charset = utf-8
 trim_trailing_whitespace = true
-#indent_style = space
-#indent_size = 2
+# indent_style = space
+# indent_size = 2
 
 # lua
-# see https://github.com/CppCXY/EmmyLuaCodeStyle
+# - StyLua options in .stylua.toml
+# - editorconfig: https://github.com/CppCXY/EmmyLuaCodeStyle
 [*.lua]
 indent_style = space
 indent_size = 2
-# none/single/double
-quote_style = single
-end_of_line = lf
-# keep/never/always/smart
-trailing_table_separator = smart
-# keep/remove/remove_table_only/remove_string_only
-#call_arg_parentheses = remove
-keep_one_space_between_table_and_bracket = true
 
 [Makefile]
 indent_style = tab
 
-[{*.sh,bin/**}]
+[*.sh]
+indent_style = space
+indent_size = 2
+switch_case_indent = true
+[bin/**]
 indent_style = space
 indent_size = 2
 switch_case_indent = true
