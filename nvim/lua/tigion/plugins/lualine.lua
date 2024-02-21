@@ -1,9 +1,15 @@
 return {
-  'nvim-lualine/lualine.nvim',                      -- styled statusline
+  'nvim-lualine/lualine.nvim', -- styled statusline
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   config = function()
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')
+
+    -- custom solarized-osaka section colors
+    local so_colors = require('solarized-osaka.colors').setup({ transform = true })
+    local custom_theme = require('lualine.themes.solarized-osaka')
+    custom_theme.normal.b.fg = so_colors.black
+    custom_theme.normal.b.bg = so_colors.fg
 
     -- get customized Codeium status
     local function getCodeiumStatus()
@@ -13,16 +19,15 @@ return {
       local status = '󰘦'
       -- vim.api.nvim_call_function("codeium#GetStatusString", {})
       local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
-      if str ~= 'ON' and str ~= '' then
-        status = status .. ' ' .. str
-      end
+      if str ~= 'ON' and str ~= '' then status = status .. ' ' .. str end
       return status
     end
 
-    lualine.setup {
+    lualine.setup({
       options = {
         icons_enabled = true,
-        theme = 'solarized-osaka',
+        -- theme = 'solarized_osaka',
+        theme = custom_theme,
         -- theme = 'solarized_dark',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
@@ -65,6 +70,6 @@ return {
       },
       tabline = {},
       extensions = { 'nvim-tree' },
-    }
+    })
   end,
 }

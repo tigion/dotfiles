@@ -20,6 +20,6 @@ return {
     require('solarized-osaka').setup(opts)
 
     -- load the colorscheme here
-    vim.cmd [[colorscheme solarized-osaka]]
+    vim.cmd([[colorscheme solarized-osaka]])
   end,
 }
