@@ -6,20 +6,21 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { 'prettier' },
-        typescript = { 'prettier' },
-        -- javascriptreact = { 'prettier' },
-        -- typescriptreact = { 'prettier' },
         css = { 'prettier' },
         html = { 'prettier' },
+        javascript = { 'prettier' },
         json = { 'prettier' },
-        yaml = { 'prettier' },
-        markdown = { 'prettier' },
         lua = { 'stylua' },
+        markdown = { 'prettier' },
+        php = { 'pint' },
         python = { 'isort', 'black' },
         sh = { 'shfmt' },
-        php = { 'pint' },
+        typescript = { 'prettier' },
+        yaml = { 'prettier' },
+        -- filetypes that don't have other formatters
         ['_'] = { 'trim_whitespace', 'trim_newlines' },
+        -- all filetypes
+        -- ['*'] = { '' },
       },
       format_on_save = {
         lsp_fallback = true,

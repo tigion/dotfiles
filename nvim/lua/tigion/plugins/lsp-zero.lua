@@ -111,11 +111,9 @@ return {
     require('mason').setup({})
     require('mason-lspconfig').setup({
       ensure_installed = {
-        -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
         'bashls', -- Bash (LSP)
         'clangd', -- C, C++
         'cssls', -- CSS, SCSS, LESS
-        --'eslint',   -- JavaScript, TypeScript
         'html', -- HTML
         'lua_ls', -- Lua
         'marksman', -- Markdown
@@ -183,16 +181,16 @@ return {
 
     require('mason-tool-installer').setup({
       ensure_installed = {
+        'prettier', -- Code (Formatter)
+        'stylua', -- Lua (Formatter)
         'shellcheck', -- Shell (Linter)
-        'shfmt', -- Shell (Formater)
-        'prettier', -- Code (Formater)
-        'stylua', -- Lua (Formater)
-        'ruff', -- Python (Linter)
-        'flake8', -- Python (Linter)
+        'shfmt', -- Shell (Formatter)
         'pylint', -- Python (Linter)
-        'black', -- Python (Formater)
+        -- 'flake8', -- Python (Linter)
+        -- 'ruff', -- Python (Linter)
+        'black', -- Python (Formatter)
         'isort', -- Python (Formatter: includes)
-        'pint', -- PHP (Formater)
+        'pint', -- PHP (Formatter)
         'eslint_d', -- JS/TS (Linter)
         'markdownlint', -- Markdown (Linter)
       },
