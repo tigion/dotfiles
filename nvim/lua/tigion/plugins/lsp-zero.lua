@@ -193,6 +193,7 @@ return {
         'pint', -- PHP (Formatter)
         'eslint_d', -- JS/TS (Linter)
         'markdownlint', -- Markdown (Linter)
+        'codespell', -- Code (Linter: words)
       },
     })
 
