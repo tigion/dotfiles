@@ -194,6 +194,7 @@ return {
         'isort', -- Python (Formatter: includes)
         'pint', -- PHP (Formater)
         'eslint_d', -- JS/TS (Linter)
+        'markdownlint', -- Markdown (Linter)
       },
     })
 

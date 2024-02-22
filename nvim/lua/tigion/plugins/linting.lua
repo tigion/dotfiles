@@ -16,6 +16,7 @@ return {
       python = { 'pylint' },
       -- python = { 'flake8' },
       -- python = { "ruff" },
+      markdown = { 'markdownlint' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
