@@ -1,2 +1,3 @@
-vim.opt_local.softtabstop = 4
-vim.opt_local.shiftwidth = 4
+-- use an formatter instead
+-- vim.opt_local.softtabstop = 4
+-- vim.opt_local.shiftwidth = 4
