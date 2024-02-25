@@ -45,38 +45,45 @@ return {
       -- https://github.com/nvim-telescope/telescope.nvim#pickers
       -- :Telescope builtin
 
-      keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+      -- https://github.com/neovim/neovim/discussions/25711
+      opts.desc = 'LSP: Show signature help'
+      keymap.set('n', 'gK', vim.lsp.buf.signature_help, opts)
+      -- keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
+      opts.desc = 'LSP: Show hover information'
+      keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- calling twice jumps into hover message
+      keymap.set('i', '<C-k>', vim.lsp.buf.hover, opts) -- calling twice jumps into hover message
 
-      opts.desc = 'Show LSP symbols'
-      -- Telescope lsp_document_symbols
+      opts.desc = 'LSP: Show document symbols'
+      -- keymap.set('n', '<leader>vds', vim.lsp.buf.document_symbol, opts)
+      keymap.set('n', 'sds', '<cmd>Telescope lsp_document_symbols<CR>', opts)
+
+      opts.desc = 'LSP: Show workspace symbols'
       -- Telescope lsp_workspace_symbols / lsp_dynamic_workspace_symbols
-      keymap.set('n', 'gs', '<cmd>Telescope lsp_workspace_symbols<CR>', opts) -- show lsp definitions
+      keymap.set('n', 'sws', '<cmd>Telescope lsp_workspace_symbols<CR>', opts)
       -- keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
 
-      opts.desc = 'Show LSP references'
+      opts.desc = 'LSP: Show references'
       -- keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
-      keymap.set('n', 'gR', '<cmd>Telescope lsp_references<CR>', opts) -- show definition, references
+      keymap.set('n', 'sR', '<cmd>Telescope lsp_references<CR>', opts)
 
-      opts.desc = 'Go to declaration'
-      keymap.set('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
+      opts.desc = 'LSP: Go to declaration'
+      keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 
-      opts.desc = 'Show LSP definitions'
-      --keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-      keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
+      opts.desc = 'LSP: Go to definition(s)'
+      --keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- jumps to the definition
+      keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts)
 
-      opts.desc = 'Show LSP implementations'
-      keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts) -- show lsp implementations
+      opts.desc = 'LSP: Go to type definition(s)'
+      keymap.set('n', 'gdt', '<cmd>Telescope lsp_type_definitions<CR>', opts)
 
-      opts.desc = 'Show LSP type definitions'
-      keymap.set('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>', opts) -- show lsp type definitions
+      opts.desc = 'LSP: Go to implementation(s)'
+      keymap.set('n', 'gI', '<cmd>Telescope lsp_implementations<CR>', opts)
 
-      opts.desc = 'See available code actions'
-      -- keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-      keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+      opts.desc = 'LSP: Show code actions'
+      keymap.set({ 'n', 'v' }, 'sca', vim.lsp.buf.code_action, opts) -- in visual mode will apply to selection
 
-      opts.desc = 'Smart rename'
-      -- keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-      -- keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
+      opts.desc = 'LSP: Rename with all references'
+      -- keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
       keymap.set(
         'n',
         '<leader>rn',
@@ -85,26 +92,22 @@ return {
       )
 
       opts.desc = 'Show buffer diagnostics'
-      keymap.set('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>', opts) -- show  diagnostics for file
+      keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
+      keymap.set('n', '<leader>ddd', '<cmd>Telescope diagnostics<CR>', opts)
 
       opts.desc = 'Show line diagnostics'
-      -- keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
-      keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
+      keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
 
       opts.desc = 'Go to previous diagnostic'
       -- keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-      keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
 
       opts.desc = 'Go to next diagnostic'
       -- keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-      keymap.set('n', '+d', vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
 
-      opts.desc = 'Show documentation for what is under cursor'
-      -- keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-      keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-      opts.desc = 'Restart LSP'
-      keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
+      opts.desc = 'LSP: Restar'
+      keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts)
     end)
 
     -- Mason

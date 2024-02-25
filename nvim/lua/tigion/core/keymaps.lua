@@ -1,76 +1,78 @@
+-- Keymaps
+-- with useful keymaps from devaslife, ThePrimeagen, LazyVim, *
+
 local keymap = vim.keymap
 
--- My keymaps
-keymap.set('n', '<Esc><Esc>', ':noh<cr>') -- clear search highlighting
-keymap.set('i', 'jj', '<Esc>') -- also `jj` for <Esc>
-keymap.set('v', '<', '<gv') -- repeat indent
-keymap.set('v', '>', '>gv') -- repeat indent
--- search and go back to start of current word
---keymap.set('n', '*', '*<C-o>')
--- F-Keys
-keymap.set('', '<F8>', ':set relativenumber!<Cr>') -- toggle relative line numbers
-keymap.set('', '<F9>', ':set number!<Cr>') -- toggle line numbers
-keymap.set('', '<F10>', ':set spell!<Cr>') -- toggle spell checking
+-- Goodies
 
--- [[Good keymaps from ThePrimeagen]]
--- open vim file manager
---keymap.set("n", "<leader>pv", vim.cmd.Ex)
--- move highlight line down / up
+keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
+keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
+keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
+-- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
+-- keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
+
+-- F-Keys
+keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
+keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
+keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
+
+-- Navigation
+
+keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode like <Esc>' })
+-- keep cursor in middle position when scrolling down / up
+keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down' })
+keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up' })
+-- keep cursor in middle position when go to next/prev search result
+keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next search result' })
+keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to prev search result' })
+-- quick fix navigation
+-- keymap.set('n', '<C-k>', '<Cmd>cnext<CR>zz')
+-- keymap.set('n', '<C-j>', '<Cmd>cprev<CR>zz')
+-- keymap.set('n', '<Leader>k', '<Cmd>lnext<CR>zz')
+-- keymap.set('n', '<Leader>j', '<Cmd>lprev<CR>zz')
+
+-- Manipulation
+
+-- better identing (repeatable)
+keymap.set('v', '<', '<gv', { desc = 'Decrease indent' })
+keymap.set('v', '>', '>gv', { desc = 'Increase indent' })
+-- dont affect register
+keymap.set('n', 'x', '"_x') -- delete character without copying (register)
+-- ('v', P') -> keymap.set('x', '<Leader>p', [["_dP]]) -- preserve highlight source
+-- move highlighted line
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv") -- down
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv") -- up
 -- keep cursor position with line concatenation
 keymap.set('n', 'J', 'mzJ`z')
--- keep cursor in middle position when scrolling down / up
-keymap.set('n', '<C-d>', '<C-d>zz') -- down
-keymap.set('n', '<C-u>', '<C-u>zz') -- up
--- keep cursor in middle position when go to next/prev search result
-keymap.set('n', 'n', 'nzzzv') -- next
-keymap.set('n', 'N', 'Nzzzv') -- prev
--- preserve highligh tsource
-keymap.set('x', '<leader>p', [["_dP]])
--- let `<C-c>` act like `<Esc>`
-keymap.set('i', '<C-c>', '<Esc>')
--- ...
---keymap.set("n", "Q", "<nop>")
--- ...
---keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
--- format / indent current buffer with lsp
--- keymap.set('n', '<leader>f', vim.lsp.buf.format)
--- quick fix navigation
-keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
-keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
-keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
-keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 -- search and replace template for the current word under cursor
-keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set(
+  'n',
+  '<Leader>s',
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = 'Search and replace word under cursor' }
+)
+-- keymap.set('n', '<Leader>f', vim.lsp.buf.format, { desc = 'Format current buffer with LSP' })
+-- keymap.set('n', 'dw', 'vb"_d', { desc = 'Delete a word backwards not forwards' })
 
--- [[Good keymaps from devaslife]]
--- ?
-keymap.set('n', 'x', '"_x')
--- Increment/decrement
---keymap.set('n', '+', '<C-a>')
---keymap.set('n', '-', '<C-x>')
--- Delete a word backwards not forwards
---keymap.set('n', 'dw', 'vb"_d')
--- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
--- New tab
-keymap.set('n', 'te', ':tabedit')
+-- Windows
+
 -- Split window
-keymap.set('n', 'ss', ':split<Return><C-w>w')
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
+keymap.set('n', 'sh', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
+keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
 -- Switch window
-keymap.set('n', '<Leader><Tab>', '<C-w>w')
-keymap.set('', 'sh', '<C-w>h')
-keymap.set('', 'sk', '<C-w>k')
-keymap.set('', 'sj', '<C-w>j')
-keymap.set('', 'sl', '<C-w>l')
-keymap.set('', '<C-h>', '<C-w>h')
-keymap.set('', '<C-k>', '<C-w>k')
-keymap.set('', '<C-j>', '<C-w>j')
-keymap.set('', '<C-l>', '<C-w>l')
+keymap.set('n', '<Leader><Tab>', '<C-w>w', { desc = 'Switch to next window' })
+keymap.set('', '<C-h>', '<C-w>h', { desc = 'Switch to left window' })
+keymap.set('', '<C-j>', '<C-w>j', { desc = 'Switch to lower window' })
+keymap.set('', '<C-k>', '<C-w>k', { desc = 'Switch to upper window' })
+keymap.set('', '<C-l>', '<C-w>l', { desc = 'Switch to right window' })
+-- keymap.set('', 'sh', '<C-w>h', { desc = 'Switch to left window' })
+-- keymap.set('', 'sj', '<C-w>j', { dess = 'Switch to lower window' })
+-- keymap.set('', 'sk', '<C-w>k', { desc = 'Switch to upper window' })
+-- keymap.set('', 'sl', '<C-w>l', { desc = 'Switch to right window' })
 -- Resize window
-keymap.set('n', '<C-w><left>', '<C-w><')
-keymap.set('n', '<C-w><right>', '<C-w>>')
-keymap.set('n', '<C-w><up>', '<C-w>+')
-keymap.set('n', '<C-w><down>', '<C-w>-')
+keymap.set('n', '<C-w><Left>', '<C-w><', { desc = 'Decrease window width' })
+keymap.set('n', '<C-w><Right>', '<C-w>>', { desc = 'Increase window width' })
+keymap.set('n', '<C-w><Down>', '<C-w>-', { desc = 'Decrease window height' })
+keymap.set('n', '<C-w><Up>', '<C-w>+', { desc = 'Increase window height' })
+
+-- Tabs

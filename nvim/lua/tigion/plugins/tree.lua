@@ -1,11 +1,11 @@
 return {
-  'nvim-tree/nvim-tree.lua',                    -- file explorer
+  'nvim-tree/nvim-tree.lua', -- file explorer
   dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   config = function()
     local tree = require('nvim-tree')
     local icons = require('tigion.core.icons')
 
-    tree.setup {
+    tree.setup({
       --disable_netrw = true,
       hijack_netrw = false,
       --auto_close = true, -- has been removed
@@ -24,13 +24,13 @@ return {
               arrow_open = '▾',
             },
             git = {
-              unstaged  = icons.git.unstaged,  -- ✗
-              staged    = icons.git.staged,    -- ✓
+              unstaged = icons.git.unstaged, -- ✗
+              staged = icons.git.staged, -- ✓
               -- unmerged  = '',
-              renamed   = icons.git.renamed,   -- ➜
+              renamed = icons.git.renamed, -- ➜
               untracked = icons.git.untracked, -- ★
-              deleted   = icons.git.deleted,   -- 
-              ignored   = icons.git.ignored,   -- ◌
+              deleted = icons.git.deleted, -- 
+              ignored = icons.git.ignored, -- ◌
             },
           },
         },
@@ -48,8 +48,8 @@ return {
         --},
       },
       update_focused_file = { enable = true },
-    }
+    })
 
-    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<Cr>', { silent = true })
+    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<Cr>', { silent = true, desc = 'Toggle file explorer (NvimTree)' })
   end,
 }
