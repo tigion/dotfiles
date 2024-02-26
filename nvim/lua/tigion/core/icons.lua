@@ -3,9 +3,9 @@ local M = {}
 -- diagnostics
 local diagnostics = {
   error = ' ', --  
-  warn  = ' ', -- 
-  hint  = ' ', -- 󰌵 
-  info  = ' ', -- 
+  warn = ' ', -- 
+  hint = ' ', -- 󰌵 
+  info = ' ', -- 
 }
 M.diagnostics = {
   Error = diagnostics.error,
@@ -33,13 +33,15 @@ M.folder = {
 
 -- git
 M.git = {
-  unstaged  = '', -- ✗ (modified)
-  staged    = '', -- ✓
+  unstaged = '', -- ✗ (modified)
+  staged = '', -- ✓
   -- unmerged  = '',
-  renamed   = '󰛂', -- ➜
+  renamed = '󰛂', -- ➜
   untracked = '', -- ★ (new)
-  deleted   = '', -- 
-  ignored   = '󰢤', -- ◌
+  deleted = '', -- 
+  ignored = '󰢤', -- ◌
 }
+
+M.telescope = ''
 
 return M
