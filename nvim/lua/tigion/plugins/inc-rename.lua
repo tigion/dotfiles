@@ -3,7 +3,7 @@ return {
   event = 'VeryLazy',
   cmd = 'IncRename',
   opts = {
-    -- input_buffer_type = 'dressing',
+    input_buffer_type = 'dressing',
   },
   -- keys = {
   --   {
