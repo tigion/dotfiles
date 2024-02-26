@@ -6,10 +6,10 @@ return {
     local icons = require('tigion.core.icons')
 
     -- custom solarized-osaka section colors
-    local so_colors = require('solarized-osaka.colors').setup({ transform = true })
-    local custom_theme = require('lualine.themes.solarized-osaka')
-    custom_theme.normal.b.fg = so_colors.black
-    custom_theme.normal.b.bg = so_colors.fg
+    -- local so_colors = require('solarized-osaka.colors').setup({ transform = true })
+    -- local custom_theme = require('lualine.themes.solarized-osaka')
+    -- custom_theme.normal.b.fg = so_colors.black
+    -- custom_theme.normal.b.bg = so_colors.fg
 
     -- get customized Codeium status
     local function getCodeiumStatus()
@@ -26,9 +26,9 @@ return {
     lualine.setup({
       options = {
         icons_enabled = true,
-        -- theme = 'solarized_osaka',
-        theme = custom_theme,
         -- theme = 'solarized_dark',
+        theme = 'solarized-osaka',
+        -- theme = custom_theme,
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = {},
