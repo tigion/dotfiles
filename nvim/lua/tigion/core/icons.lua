@@ -43,5 +43,6 @@ M.git = {
 }
 
 M.telescope = ''
+M.codeium = '󰘦'
 
 return M
