@@ -2,9 +2,11 @@ return {
   'onsails/lspkind-nvim', -- vscode-like pictograms
   config = function()
     local status, lspkind = pcall(require, 'lspkind')
-    if (not status) then return end
+    if not status then return end
 
-    lspkind.init {
+    local icons = require('tigion.core.icons')
+
+    lspkind.init({
       -- enables text annotations
 
       -- defines how annotations are shown
@@ -48,7 +50,8 @@ return {
         Event = '',
         Operator = '󰆕',
         TypeParameter = '',
+        Codeium = icons.codeium, -- '',
       },
-    }
+    })
   end,
 }

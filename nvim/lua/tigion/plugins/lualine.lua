@@ -16,7 +16,7 @@ return {
       if not pcall(vim.fn['codeium#Enabled']) then return '' end
       if not vim.fn['codeium#Enabled']() then return '' end
 
-      local status = '󰘦'
+      local status = icons.codeium -- '󰘦'
       -- vim.api.nvim_call_function("codeium#GetStatusString", {})
       local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
       if str ~= 'ON' and str ~= '' then status = status .. ' ' .. str end
