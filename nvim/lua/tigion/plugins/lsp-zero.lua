@@ -222,6 +222,7 @@ return {
         { name = 'nvim_lsp' }, -- lsp server
         { name = 'nvim_lua' }, -- neovim lua API
         { name = 'luasnip' }, -- snippets
+        { name = 'codeium', max_item_count = 3 }, -- codeium
         { name = 'buffer' }, -- buffer words
         { name = 'path' }, -- files, paths
       },
