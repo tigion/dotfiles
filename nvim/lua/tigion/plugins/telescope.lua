@@ -92,6 +92,7 @@ return {
       keymap.set('n', 'ög', builtin.live_grep, { desc = 'Telescope: find string' })
       keymap.set('n', 'ögg', builtin.grep_string, { desc = 'Telescope: find string under cursor' })
       keymap.set('n', 'öb', builtin.buffers, { desc = 'Telescope: find in buffers' })
+      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = 'Telescope: find in current buffer' })
       keymap.set('n', 'öh', builtin.help_tags, { desc = 'Telescope: find in help' })
       keymap.set('n', 'öd', builtin.diagnostics, { desc = 'Telescope: find in diagnostics' })
       keymap.set('n', 'ö:', builtin.commands, { desc = 'Telescope: find in commands' })
