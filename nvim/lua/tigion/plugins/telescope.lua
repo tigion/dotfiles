@@ -85,23 +85,24 @@ return {
 
       -- keymaps
       local keymap = vim.keymap
+      local icon = require('tigion.core.icons').telescope
 
-      keymap.set('n', 'öf', builtin.find_files, { desc = 'Telescope: find files' })
-      -- keymap.set('n', 'ör', builtin.oldfiles, { desc = 'Telescope: find recent files' })
-      keymap.set('n', 'ör', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = 'Telescope: find recent files' })
-      keymap.set('n', 'ög', builtin.live_grep, { desc = 'Telescope: find string' })
-      keymap.set('n', 'ögg', builtin.grep_string, { desc = 'Telescope: find string under cursor' })
-      keymap.set('n', 'öb', builtin.buffers, { desc = 'Telescope: find in buffers' })
-      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = 'Telescope: find in current buffer' })
-      keymap.set('n', 'öh', builtin.help_tags, { desc = 'Telescope: find in help' })
-      keymap.set('n', 'öd', builtin.diagnostics, { desc = 'Telescope: find in diagnostics' })
-      keymap.set('n', 'ö:', builtin.commands, { desc = 'Telescope: find in commands' })
-      keymap.set('n', 'ö::', builtin.command_history, { desc = 'Telescope: find in command history' })
-      keymap.set('n', 'ö/', builtin.search_history, { desc = 'Telescope: find in search history' })
-      -- keymap.set('n', 'öc', builtin.git_commits, { desc = 'Telescope: find in buffer git commits' })
-      -- keymap.set('n', 'öcc', builtin.git_bcommits, { desc = 'Telescope: find in git commits' })
-      keymap.set('n', 'öt', builtin.treesitter, { desc = 'Telescope: fing in treesitter symbols' })
-      keymap.set('n', 'öö', builtin.resume, { desc = 'Telescope: reopen last search' })
+      keymap.set('n', 'öf', builtin.find_files, { desc = icon .. ' Find files' })
+      -- keymap.set('n', 'ör', builtin.oldfiles, { desc = icon .. ' Find recent files' })
+      keymap.set('n', 'ör', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = icon .. ' Find recent files' })
+      keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string' })
+      keymap.set('n', 'ögg', builtin.grep_string, { desc = icon .. ' Find string under cursor' })
+      keymap.set('n', 'öb', builtin.buffers, { desc = icon .. ' Find in buffers' })
+      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = icon .. 'Find in current buffer' })
+      keymap.set('n', 'öh', builtin.help_tags, { desc = icon .. ' Find in help' })
+      keymap.set('n', 'öd', builtin.diagnostics, { desc = icon .. ' Find in diagnostics' })
+      keymap.set('n', 'ö:', builtin.commands, { desc = icon .. ' Find in commands' })
+      keymap.set('n', 'ö::', builtin.command_history, { desc = icon .. ' Find in command history' })
+      keymap.set('n', 'ö/', builtin.search_history, { desc = icon .. ' Find in search history' })
+      -- keymap.set('n', 'öc', builtin.git_commits, { desc = icon .. ' Find in buffer git commits' })
+      -- keymap.set('n', 'öcc', builtin.git_bcommits, { desc = icon .. ' Find in git commits' })
+      keymap.set('n', 'öt', builtin.treesitter, { desc = icon .. ' Find in treesitter symbols' })
+      keymap.set('n', 'öö', builtin.resume, { desc = icon .. ' Reopen last search' })
 
       keymap.set('n', 'sf', function()
         telescope.extensions.file_browser.file_browser({
@@ -116,7 +117,7 @@ return {
             height = 40,
           },
         })
-      end)
+      end, { desc = icon .. ' File browser' })
     end,
   },
 
