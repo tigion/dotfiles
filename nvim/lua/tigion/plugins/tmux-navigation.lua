@@ -1,23 +1,29 @@
 return {
   'alexghergh/nvim-tmux-navigation',
   event = 'VeryLazy',
-  -- keys = {
-  --   { '<C-h>',     '<cmd>NvimTmuxNavigateLeft<cr>',         desc = 'Got to the left pane' },
-  --   { '<C-j>',     '<cmd>NvimTmuxNavigateDown<cr>',         desc = 'Got to the down pane' },
-  --   { '<C-k>',     '<cmd>NvimTmuxNavigateUp<cr>',           desc = 'Got to the up pane' },
-  --   { '<C-l>',     '<cmd>NvimTmuxNavigateRight<cr>',        desc = 'Got to the right pane' },
-  --   { '<C-\\>',    '<cmd>NvimTmuxNavigatePrevious<cr>',     desc = 'Go to the previous pane' },
-  --   { '<C-Space>', '<Cmd>NvimTmuxNavigateNavigateNext<CR>', desc = 'Got to the next pane' },
-  -- },
+  -- stylua: ignore
+  keys = {
+    -- no `mode = {}` defaults to 'n'
+    { '<C-h>', '<Cmd>NvimTmuxNavigateLeft<CR>', desc = 'Go to the left window/pane' },
+    { '<C-j>', '<Cmd>NvimTmuxNavigateDown<CR>', desc = 'Go to the down window/pane' },
+    { '<C-k>', '<Cmd>NvimTmuxNavigateUp<CR>', desc = 'Go to the up window/pane' },
+    { '<C-l>', '<Cmd>NvimTmuxNavigateRight<CR>', desc = 'Go to the right window/pane' },
+    { '<C-\\>', '<Cmd>NvimTmuxNavigateLastActive<CR>', desc = 'Go to the previous window/pane' },
+    { '<C-Space>', '<Cmd>NvimTmuxNavigateNext<CR>', desc = 'Go to the next window/pane' },
+  },
   opts = {
     -- disable_when_zoomed = true,
-    keybindings = {
-      left = '<C-h>',
-      down = '<C-j>',
-      up = '<C-k>',
-      right = '<C-l>',
-      last_active = '<C-\\>',
-      next = '<C-Space>',
-    },
   },
+  -- config = function(_, opts)
+  --   local nvim_tmux_nav = require('nvim-tmux-navigation')
+  --
+  --   nvim_tmux_nav.setup(opts)
+  --
+  --   vim.keymap.set('n', '<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
+  --   vim.keymap.set('n', '<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)
+  --   vim.keymap.set('n', '<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
+  --   vim.keymap.set('n', '<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
+  --   vim.keymap.set('n', '<C-\\>', nvim_tmux_nav.NvimTmuxNavigateLastActive)
+  --   vim.keymap.set('n', '<C-Space>', nvim_tmux_nav.NvimTmuxNavigateNext)
+  -- end,
 }

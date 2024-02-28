@@ -5,7 +5,7 @@ return {
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-file-browser.nvim', -- file browser
+      -- 'nvim-telescope/telescope-file-browser.nvim', -- file browser
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy find
     },
     config = function()
@@ -14,9 +14,8 @@ return {
       local actions = require('telescope.actions')
       local builtin = require('telescope.builtin')
 
-      local function telescope_buffer_dir() return vim.fn.expand('%:p:h') end
-
-      local fb_actions = require('telescope').extensions.file_browser.actions
+      -- local fb_actions = require('telescope').extensions.file_browser.actions
+      -- local function telescope_buffer_dir() return vim.fn.expand('%:p:h') end
 
       telescope.setup({
         defaults = {
@@ -52,24 +51,24 @@ return {
           -- },
         },
         extensions = {
-          file_browser = {
-            theme = 'dropdown',
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            hidden = true, -- find also hidden files
-            mappings = {
-              -- your custom insert mode mappings
-              ['i'] = {
-                ['<C-w>'] = function() vim.cmd('normal vbd') end,
-              },
-              ['n'] = {
-                -- your custom normal mode mappings
-                ['N'] = fb_actions.create,
-                ['h'] = fb_actions.goto_parent_dir,
-                ['/'] = function() vim.cmd('startinsert') end,
-              },
-            },
-          },
+          -- file_browser = {
+          --   theme = 'dropdown',
+          --   -- disables netrw and use telescope-file-browser in its place
+          --   hijack_netrw = true,
+          --   hidden = true, -- find also hidden files
+          --   mappings = {
+          --     -- your custom insert mode mappings
+          --     ['i'] = {
+          --       ['<C-w>'] = function() vim.cmd('normal vbd') end,
+          --     },
+          --     ['n'] = {
+          --       -- your custom normal mode mappings
+          --       ['N'] = fb_actions.create,
+          --       ['h'] = fb_actions.goto_parent_dir,
+          --       ['/'] = function() vim.cmd('startinsert') end,
+          --     },
+          --   },
+          -- },
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
@@ -80,55 +79,50 @@ return {
         },
       })
 
-      telescope.load_extension('file_browser')
+      -- telescope.load_extension('file_browser')
       telescope.load_extension('fzf')
 
       -- keymaps
       local keymap = vim.keymap
       local icon = require('tigion.core.icons').telescope
 
-      keymap.set('n', 'öf', builtin.find_files, { desc = icon .. ' Find files' })
+      keymap.set('n', 'öf', builtin.find_files, { desc = icon .. ' Find files in workspace' })
       -- keymap.set('n', 'ör', builtin.oldfiles, { desc = icon .. ' Find recent files' })
-      keymap.set('n', 'ör', '<cmd>Telescope oldfiles cwd_only=true<CR>', { desc = icon .. ' Find recent files' })
-      keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string' })
-      keymap.set('n', 'ögg', builtin.grep_string, { desc = icon .. ' Find string under cursor' })
+      keymap.set(
+        'n',
+        'ör',
+        '<cmd>Telescope oldfiles cwd_only=true<CR>',
+        { desc = icon .. ' Find previously open files in workspace' }
+      )
+      keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string in workspace' })
+      keymap.set('n', 'ögg', builtin.grep_string, { desc = icon .. ' Find string under cursor in workspace' })
+      keymap.set('v', 'ögg', builtin.grep_string, { desc = icon .. ' Find selection in workspace' })
       keymap.set('n', 'öb', builtin.buffers, { desc = icon .. ' Find in buffers' })
-      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = icon .. 'Find in current buffer' })
+      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = icon .. ' Find in current buffer' })
       keymap.set('n', 'öh', builtin.help_tags, { desc = icon .. ' Find in help' })
       keymap.set('n', 'öd', builtin.diagnostics, { desc = icon .. ' Find in diagnostics' })
       keymap.set('n', 'ö:', builtin.commands, { desc = icon .. ' Find in commands' })
       keymap.set('n', 'ö::', builtin.command_history, { desc = icon .. ' Find in command history' })
       keymap.set('n', 'ö/', builtin.search_history, { desc = icon .. ' Find in search history' })
-      -- keymap.set('n', 'öc', builtin.git_commits, { desc = icon .. ' Find in buffer git commits' })
-      -- keymap.set('n', 'öcc', builtin.git_bcommits, { desc = icon .. ' Find in git commits' })
+      -- keymap.set('n', 'öc', builtin.git_commits, { desc = icon .. ' Find in git commits' })
+      -- keymap.set('n', 'öcc', builtin.git_bcommits, { desc = icon .. ' Find in git commits in current buffer' })
       keymap.set('n', 'öt', builtin.treesitter, { desc = icon .. ' Find in treesitter symbols' })
-      keymap.set('n', 'öö', builtin.resume, { desc = icon .. ' Reopen last search' })
+      keymap.set('n', 'öö', builtin.resume, { desc = icon .. ' Reopen previous Telescope search' })
 
-      keymap.set('n', 'sf', function()
-        telescope.extensions.file_browser.file_browser({
-          path = '%:p:h',
-          cwd = telescope_buffer_dir(),
-          respect_gitignore = false,
-          hidden = true,
-          grouped = true,
-          previewer = false, -- deactivate preview
-          initial_mode = 'normal',
-          layout_config = {
-            height = 40,
-          },
-        })
-      end, { desc = icon .. ' File browser' })
+      -- keymap.set('n', 'sf', function()
+      --   telescope.extensions.file_browser.file_browser({
+      --     path = '%:p:h',
+      --     cwd = telescope_buffer_dir(),
+      --     respect_gitignore = false,
+      --     hidden = true,
+      --     grouped = true,
+      --     previewer = false, -- deactivate preview
+      --     initial_mode = 'normal',
+      --     layout_config = {
+      --       height = 40,
+      --     },
+      --   })
+      -- end, { desc = icon .. ' Open file browser' })
     end,
   },
-
-  -- telescope extensions
-  -- {
-  --   'nvim-telescope/telescope-file-browser.nvim', -- file browser
-  --   dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-  -- },
-  -- {
-  --   'nvim-telescope/telescope-fzf-native.nvim', -- fuzzy find
-  --   build = 'make',
-  --   dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-  -- },
 }

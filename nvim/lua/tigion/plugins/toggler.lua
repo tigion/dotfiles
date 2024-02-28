@@ -17,9 +17,9 @@ return {
 
     vim.keymap.set(
       { 'n', 'v' },
-      '<leader>t',
+      '<Leader>i',
       toggler.toggle,
-      { noremap = true, silent = true, desc = 'Toggle (invert) text/operand' }
+      { noremap = true, silent = true, desc = 'Invert text/operand' }
     )
   end,
 }

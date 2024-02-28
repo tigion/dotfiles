@@ -8,7 +8,7 @@ return {
       -- vim.g.codeium_tab_fallback = '<C-g>'
       -- vim.keymap.set('n', 'coe', ':CodeiumEnable<CR>', { silent = true, desc = 'Enable Codeium' })
       -- vim.keymap.set('n', 'cod', ':CodeiumDisable<CR>', { silent = true, desc = 'Disable Codeium' })
-      vim.keymap.set('n', '<leader>c', ':CodeiumToggle<CR>', { silent = true, desc = 'Toggle Codeium' })
+      vim.keymap.set('n', '<Leader>c', ':CodeiumToggle<CR>', { silent = true, desc = 'Toggle Codeium' })
       vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
       -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
       vim.keymap.set('i', '<C-f>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })

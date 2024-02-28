@@ -6,9 +6,8 @@ return {
     local icons = require('tigion.core.icons')
 
     tree.setup({
-      --disable_netrw = true,
+      -- disable_netrw = true,
       hijack_netrw = false,
-      --auto_close = true, -- has been removed
       filters = {
         dotfiles = false,
         custom = { '^\\.git$' }, -- ignore `.git` folder
@@ -50,6 +49,6 @@ return {
       update_focused_file = { enable = true },
     })
 
-    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<Cr>', { silent = true, desc = 'Toggle file explorer (NvimTree)' })
+    vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<Cr>', { silent = true, desc = 'Toggle file explorer' })
   end,
 }

@@ -7,6 +7,7 @@ local keymap = vim.keymap
 
 keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
 keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
+keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
 -- keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
@@ -18,7 +19,6 @@ keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
 
 -- Navigation
 
-keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode like <Esc>' })
 -- keep cursor in middle position when scrolling down / up
 keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up' })
@@ -51,7 +51,6 @@ keymap.set(
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = 'Search and replace word under cursor' }
 )
--- keymap.set('n', '<Leader>f', vim.lsp.buf.format, { desc = 'Format current buffer with LSP' })
 -- keymap.set('n', 'dw', 'vb"_d', { desc = 'Delete a word backwards not forwards' })
 
 -- Windows
@@ -60,15 +59,15 @@ keymap.set(
 keymap.set('n', 'sh', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
 -- Switch window
-keymap.set('n', '<Leader><Tab>', '<C-w>w', { desc = 'Switch to next window' })
-keymap.set('', '<C-h>', '<C-w>h', { desc = 'Switch to left window' })
-keymap.set('', '<C-j>', '<C-w>j', { desc = 'Switch to lower window' })
-keymap.set('', '<C-k>', '<C-w>k', { desc = 'Switch to upper window' })
-keymap.set('', '<C-l>', '<C-w>l', { desc = 'Switch to right window' })
--- keymap.set('', 'sh', '<C-w>h', { desc = 'Switch to left window' })
--- keymap.set('', 'sj', '<C-w>j', { dess = 'Switch to lower window' })
--- keymap.set('', 'sk', '<C-w>k', { desc = 'Switch to upper window' })
--- keymap.set('', 'sl', '<C-w>l', { desc = 'Switch to right window' })
+-- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
+keymap.set('', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
+keymap.set('', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
+keymap.set('', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
+keymap.set('', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
+-- keymap.set('', 'sh', '<C-w>h', { desc = 'Go to left window' })
+-- keymap.set('', 'sj', '<C-w>j', { dess = 'Go to lower window' })
+-- keymap.set('', 'sk', '<C-w>k', { desc = 'Go to upper window' })
+-- keymap.set('', 'sl', '<C-w>l', { desc = 'Go to right window' })
 -- Resize window
 keymap.set('n', '<C-w><Left>', '<C-w><', { desc = 'Decrease window width' })
 keymap.set('n', '<C-w><Right>', '<C-w>>', { desc = 'Increase window width' })

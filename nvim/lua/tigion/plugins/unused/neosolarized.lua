@@ -1,18 +1,18 @@
 return {
-  'svrana/neosolarized.nvim',                     -- truecolor, solarized dark color
+  'svrana/neosolarized.nvim', -- truecolor, solarized dark color
   enabled = false,
   dependencies = { 'tjdevries/colorbuddy.nvim' }, -- colorscheme helper
-  lazy = false,                                   -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000,                                -- make sure to load this before all the other start plugins
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
     local neosolarized = require('neosolarized')
 
-    neosolarized.setup {
+    neosolarized.setup({
       comment_italics = true,
       background_set = false,
-    }
+    })
 
-    local cb = require 'colorbuddy.init'
+    local cb = require('colorbuddy.init')
     local Color = cb.Color
     local colors = cb.colors
     local Group = cb.Group
@@ -76,6 +76,6 @@ return {
     -- Group.new('IblIndentContext', colors.yellow:dark(), nil, styles.nocombine) -- Dont exist in current v3
 
     -- load the colorscheme here
-    vim.cmd [[colorscheme neosolarized]]
+    vim.cmd([[colorscheme neosolarized]])
   end,
 }
