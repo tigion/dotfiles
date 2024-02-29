@@ -7,7 +7,7 @@ return {
   },
   -- keys = {
   --   {
-  --     '<leader>rn',
+  --     '<Leader>rn',
   --     function()
   --       return ':IncRename ' .. vim.fn.expand('<cword>')
   --     end,
@@ -20,7 +20,7 @@ return {
   -- config = function(_, opts)
   --   require('inc_rename').setup(opts)
   --
-  --   vim.keymap.set('n', '<leader>rm', function()
+  --   vim.keymap.set('n', '<Leader>rm', function()
   --     return ':IncRename ' .. vim.fn.expand('<cword>')
   --   end, { expr = true })
   -- end,

@@ -29,7 +29,7 @@ return {
       end,
     })
 
-    vim.keymap.set('n', '<leader>l', function()
+    vim.keymap.set('n', '<Leader>l', function()
       lint.try_lint()
       lint.try_lint('codespell')
     end, { desc = 'Trigger linting for current file' })

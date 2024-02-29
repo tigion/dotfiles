@@ -26,10 +26,10 @@ return {
               ['q'] = actions.close,
             },
             i = {
-              ['<esc>'] = actions.close,
+              ['<Esc>'] = actions.close,
               ['<C-k>'] = actions.move_selection_previous, -- move to prev result
               ['<C-j>'] = actions.move_selection_next, -- move to next result
-              ['<tab>'] = actions.toggle_selection,
+              ['<Tab>'] = actions.toggle_selection,
               ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
               ['<C-h>'] = 'which_key', -- help
               -- ['<C-h>'] = actions.preview_scrolling_left,
@@ -91,7 +91,7 @@ return {
       keymap.set(
         'n',
         'ör',
-        '<cmd>Telescope oldfiles cwd_only=true<CR>',
+        '<Cmd>Telescope oldfiles cwd_only=true<CR>',
         { desc = icon .. ' Find previously open files in workspace' }
       )
       keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string in workspace' })

@@ -4,9 +4,10 @@ return {
   cmd = { 'TroubleToggle', 'Trouble' },
   opts = { use_diagnostic_signs = true },
   keys = {
-    { '<Leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Show document diagnostics' },
-    { '<Leader>xX', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = 'Show workspace diagnostics' },
-    { '<Leader>xL', '<cmd>TroubleToggle loclist<cr>', desc = 'Show location list' },
-    { '<Leader>xQ', '<cmd>TroubleToggle quickfix<cr>', desc = 'Show quickfix list' },
+    { '<Leader>xx', '<Cmd>TroubleToggle<CR>', desc = 'Toggle trouble' },
+    { '<Leader>xd', '<Cmd>TroubleToggle document_diagnostics<CR>', desc = 'Show document diagnostics' },
+    { '<Leader>xw', '<Cmd>TroubleToggle workspace_diagnostics<CR>', desc = 'Show workspace diagnostics' },
+    { '<Leader>xl', '<Cmd>TroubleToggle loclist<CR>', desc = 'Show location list' },
+    { '<Leader>xq', '<Cmd>TroubleToggle quickfix<CR>', desc = 'Show quickfix list' },
   },
 }
