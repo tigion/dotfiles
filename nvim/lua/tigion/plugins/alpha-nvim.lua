@@ -29,7 +29,7 @@ return {
     local banner = {
       '  _  _             _        ',
       ' | \\| |___ _____ _(_)_ __   ',
-      ' | .` / -_) _ \\ V / | \'  \\  ',
+      " | .` / -_) _ \\ V / | '  \\  ",
       ' |_|\\_\\___\\___/\\_/|_|_|_|_| ',
     }
     -- local banner = {
@@ -55,7 +55,7 @@ return {
       local version = vim.version()
       local pluginCount = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', 0, 1))
       local print_version = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
-      local date = os.date '%d.%m.%Y'
+      local date = os.date('%d.%m.%Y')
       --local datetime = os.date '%d.%m.%Y %H:%M'
       return ' ' .. print_version .. '   ' .. pluginCount .. '   ' .. date
     end
@@ -76,9 +76,13 @@ return {
     -- Align dashboard vertically
     local function getDashboardHeight()
       local bannerHeight = 0
-      for _ in pairs(dashboard.section.header.val) do bannerHeight = bannerHeight + 1 end
+      for _ in pairs(dashboard.section.header.val) do
+        bannerHeight = bannerHeight + 1
+      end
       local buttonCount = 0
-      for _ in pairs(dashboard.section.buttons.val) do buttonCount = buttonCount + 1 end
+      for _ in pairs(dashboard.section.buttons.val) do
+        buttonCount = buttonCount + 1
+      end
       local buttonsHeight = 2 * buttonCount
       local footerHeight = 1
       local dashboardHeight = bannerHeight + dashboard.opts.layout[3].val + buttonsHeight + footerHeight
@@ -93,7 +97,7 @@ return {
       table.remove(dashboard.section.buttons.val, 5)
       table.remove(dashboard.section.buttons.val, 5)
     end
-    local topSpace = vim.fn.max { 0, vim.fn.floor((vim.fn.winheight(0) - getDashboardHeight()) / 2) }
+    local topSpace = vim.fn.max({ 0, vim.fn.floor((vim.fn.winheight(0) - getDashboardHeight()) / 2) })
     dashboard.opts.layout[1].val = topSpace
 
     -- Setup

@@ -1,13 +1,14 @@
 gui:
-  language: 'auto'
+  language: "auto"
   mouseEvents: true
   showBottomLine: false
   #showIcons: true
   nerdFontsVersion: "3"
 os:
   #editCommand: 'nvim'
-  edit: 'nvim'
+  edit: "nvim"
   #editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
-  editAtLine: '{{editor}} +{{line}} -- {{filename}}'
+  editAtLine: "{{editor}} +{{line}} -- {{filename}}"
 git:
   disableForcePushing: true
+

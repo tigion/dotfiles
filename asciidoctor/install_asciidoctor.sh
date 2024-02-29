@@ -21,12 +21,12 @@ is_command() { command -v "$1" &>/dev/null; }
 
 # OS dependent installation
 install() {
-	echo "> Installing '$1' ..."
-	if is_macos; then
-		brew install "$1"
-	elif is_linux; then
-		sudo apt install "$1"
-	fi
+  echo "> Installing '$1' ..."
+  if is_macos; then
+    brew install "$1"
+  elif is_linux; then
+    sudo apt install "$1"
+  fi
 }
 
 # install Asciidoctor
@@ -37,12 +37,12 @@ install ruby
 # java (for asciidoctor-diagram)
 install openjdk
 if is_macos; then
-	# brew info openjdk | sed '/==> Caveats/,/==>/!d;//d'
-	is_arm64 && src_path="/opt/homebrew" || src_path="/usr/local"
-	if [[ -f "${src_path}/opt/openjdk/libexec/openjdk.jdk" ]]; then
-		sudo ln -sfn "${src_path}/opt/openjdk/libexec/openjdk.jdk" "/Library/Java/JavaVirtualMachines/openjdk.jdk"
-	fi
-	#echo "export PATH=\"${src_path}/opt/openjdk/bin:$PATH\"" >> ~/.zshrc
+  # brew info openjdk | sed '/==> Caveats/,/==>/!d;//d'
+  is_arm64 && src_path="/opt/homebrew" || src_path="/usr/local"
+  if [[ -f "${src_path}/opt/openjdk/libexec/openjdk.jdk" ]]; then
+    sudo ln -sfn "${src_path}/opt/openjdk/libexec/openjdk.jdk" "/Library/Java/JavaVirtualMachines/openjdk.jdk"
+  fi
+  #echo "export PATH=\"${src_path}/opt/openjdk/bin:$PATH\"" >> ~/.zshrc
 fi
 
 # asciidoctor

@@ -1,10 +1,10 @@
 return {
-  'akinsho/bufferline.nvim',                        -- styled tabs
+  'akinsho/bufferline.nvim', -- styled tabs
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   config = function()
     local bufferline = require('bufferline')
 
-    bufferline.setup {
+    bufferline.setup({
       options = {
         mode = 'tabs',
         separator_style = 'slant',
@@ -61,9 +61,10 @@ return {
           bg = '#073642',
         },
       },
-    }
+    })
 
     vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
     vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
   end,
 }
+

@@ -6,18 +6,18 @@ return {
     if not status then return end
 
     -- Utilities for creating configurations
-    local util = require 'formatter.util'
+    local util = require('formatter.util')
 
     -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-    formatter.setup {
-      logging = true,                  -- Enable or disable logging
+    formatter.setup({
+      logging = true, -- Enable or disable logging
       log_level = vim.log.levels.WARN, -- Set the log level
       -- All formatter configurations are opt-in
       filetype = {
         -- lua configuration
         lua = {
           -- defines default configurations
-          require 'formatter.filetypes.lua'.stylua,
+          require('formatter.filetypes.lua').stylua,
           -- define own configuration
           function()
             -- Supports conditional formatting
@@ -47,9 +47,10 @@ return {
         -- any filetype configurations
         ['*'] = {
           -- defines default configurations
-          require 'formatter.filetypes.any'.remove_trailing_whitespace,
+          require('formatter.filetypes.any').remove_trailing_whitespace,
         },
       },
-    }
+    })
   end,
 }
+

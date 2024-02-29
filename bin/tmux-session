@@ -46,3 +46,4 @@ if is_session "${first_session_name}"; then
   echo "Attach to session '${first_session_name}'"
   tmux a -t "$first_session_name"
 fi
+

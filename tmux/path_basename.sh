@@ -29,3 +29,4 @@ if [[ ${path::1} == "/" ]]; then
 fi
 
 basename "${path}"
+

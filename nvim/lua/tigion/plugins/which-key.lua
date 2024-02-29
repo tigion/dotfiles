@@ -10,3 +10,4 @@ return {
     -- or leave it empty to use the default settings
   },
 }
+

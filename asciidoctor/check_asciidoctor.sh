@@ -1,7 +1,7 @@
 #!/bin/bash
 
 check() {
-	if ! eval "$1" 2>/dev/null; then echo "! '$2' is not installed or found"; fi
+  if ! eval "$1" 2>/dev/null; then echo "! '$2' is not installed or found"; fi
 }
 
 echo "Ruby:"

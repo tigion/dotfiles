@@ -96,3 +96,4 @@ osascript <<EOS
     set the size of appWindow to [550, _h -50]
   end tell
 EOS
+

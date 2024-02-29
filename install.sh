@@ -18,16 +18,16 @@ OPTION_DRYRUN=false
 # handle command-line options
 while :; do
   case "$1" in
-  --software) INSTALL_SOFTWARE=true ;;
-  --no-software) INSTALL_SOFTWARE=false ;;
-  --config) INSTALL_CONFIG=true ;;
-  --no-config) INSTALL_CONFIG=false ;;
-  --overwrite) OVERWRITE_EXISTING_CONFIG=true ;;
-  --no-overwrite) OVERWRITE_EXISTING_CONFIG=false ;;
-  --backup) BACKUP_EXISTING_CONFIG=true ;;
-  --no-backup) BACKUP_EXISTING_CONFIG=false ;;
-  --dry-run) OPTION_DRYRUN=true ;;
-  *) break ;;
+    --software) INSTALL_SOFTWARE=true ;;
+    --no-software) INSTALL_SOFTWARE=false ;;
+    --config) INSTALL_CONFIG=true ;;
+    --no-config) INSTALL_CONFIG=false ;;
+    --overwrite) OVERWRITE_EXISTING_CONFIG=true ;;
+    --no-overwrite) OVERWRITE_EXISTING_CONFIG=false ;;
+    --backup) BACKUP_EXISTING_CONFIG=true ;;
+    --no-backup) BACKUP_EXISTING_CONFIG=false ;;
+    --dry-run) OPTION_DRYRUN=true ;;
+    *) break ;;
   esac
   shift
 done

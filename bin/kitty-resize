@@ -30,3 +30,4 @@ tell1="tell application \"System Events\""
 tell2="tell application process \"kitty\""
 tell3="tell window 1 to set {position, size} to {{${app_x}, ${app_y}}, {${app_width}, ${app_height}}}"
 osascript -e "${tell1} to ${tell2} to ${tell3}" -e "return"
+

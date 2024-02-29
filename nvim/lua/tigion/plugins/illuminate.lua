@@ -25,3 +25,4 @@ return {
     vim.keymap.set('n', 'üü', function() illuminate.goto_prev_reference(false) end, { desc = 'Go to prev reference' })
   end,
 }
+

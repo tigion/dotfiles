@@ -20,3 +20,4 @@ else
   echo "Start new session '${session_name}'"
   tmux new -s "$session_name"
 fi
+

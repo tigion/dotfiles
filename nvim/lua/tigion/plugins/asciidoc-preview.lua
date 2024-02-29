@@ -5,3 +5,4 @@ return {
   ft = { 'asciidoc' },
   -- opts = {},
 }
+

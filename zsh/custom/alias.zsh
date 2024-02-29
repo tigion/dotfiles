@@ -28,3 +28,4 @@ alias slp='pmset sleepnow'
 
 # open todo note in Bear.app
 alias todo='bear open-todo'
+
