@@ -294,7 +294,3 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | Mode | Keymap      | Description     |
 | ---- | ----------- | --------------- |
 | `n`  | `<Leader>z` | Toggle zen mode |
-
----
-
-#coding/neovim
