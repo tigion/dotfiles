@@ -86,6 +86,9 @@ return {
       local keymap = vim.keymap
       local icon = require('tigion.core.icons').telescope
 
+      -- https://github.com/nvim-telescope/telescope.nvim#pickers
+      -- :Telescope builtin
+
       keymap.set('n', 'öf', builtin.find_files, { desc = icon .. ' Find files in workspace' })
       -- keymap.set('n', 'ör', builtin.oldfiles, { desc = icon .. ' Find recent files' })
       keymap.set(
@@ -95,17 +98,17 @@ return {
         { desc = icon .. ' Find previously open files in workspace' }
       )
       keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string in workspace' })
-      keymap.set('n', 'ögg', builtin.grep_string, { desc = icon .. ' Find string under cursor in workspace' })
-      keymap.set('v', 'ögg', builtin.grep_string, { desc = icon .. ' Find selection in workspace' })
-      keymap.set('n', 'öb', builtin.buffers, { desc = icon .. ' Find in buffers' })
-      keymap.set('n', 'öbb', builtin.current_buffer_fuzzy_find, { desc = icon .. ' Find in current buffer' })
+      keymap.set('n', 'öG', builtin.grep_string, { desc = icon .. ' Find string under cursor in workspace' })
+      keymap.set('v', 'öG', builtin.grep_string, { desc = icon .. ' Find selection in workspace' })
+      keymap.set('n', 'öb', builtin.current_buffer_fuzzy_find, { desc = icon .. ' Find in current buffer' })
+      keymap.set('n', 'öbb', builtin.buffers, { desc = icon .. ' Find in buffers' })
       keymap.set('n', 'öh', builtin.help_tags, { desc = icon .. ' Find in help' })
       keymap.set('n', 'öd', builtin.diagnostics, { desc = icon .. ' Find in diagnostics' })
       keymap.set('n', 'ö:', builtin.commands, { desc = icon .. ' Find in commands' })
       keymap.set('n', 'ö::', builtin.command_history, { desc = icon .. ' Find in command history' })
       keymap.set('n', 'ö/', builtin.search_history, { desc = icon .. ' Find in search history' })
-      -- keymap.set('n', 'öc', builtin.git_commits, { desc = icon .. ' Find in git commits' })
-      -- keymap.set('n', 'öcc', builtin.git_bcommits, { desc = icon .. ' Find in git commits in current buffer' })
+      -- keymap.set('n', 'öc', builtin.git_bcommits, { desc = icon .. ' Find in git commits in current buffer' })
+      -- keymap.set('n', 'öcc', builtin.git_commits, { desc = icon .. ' Find in git commits' })
       keymap.set('n', 'öt', builtin.treesitter, { desc = icon .. ' Find in treesitter symbols' })
       keymap.set('n', 'öö', builtin.resume, { desc = icon .. ' Reopen previous Telescope search' })
 
