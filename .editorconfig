@@ -3,34 +3,38 @@
 # top-most EditorConfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
+# All files
 [*]
-end_of_line = lf
-insert_final_newline = true
 charset = utf-8
-trim_trailing_whitespace = true
-# indent_style = space
-# indent_size = 2
-
-# lua
-# - StyLua options in .stylua.toml
-# - editorconfig: https://github.com/CppCXY/EmmyLuaCodeStyle
-[*.lua]
-indent_style = space
+end_of_line = lf
 indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
 
+# Lua
+# - more in .stylua.toml for StyLua
+[*.lua]
+indent_size = 2
+indent_style = space
+
+# Makefile
 [Makefile]
 indent_style = tab
 
-[*.sh]
-indent_style = space
-indent_size = 2
-switch_case_indent = true
-[bin/**]
-indent_style = space
-indent_size = 2
-switch_case_indent = true
-
+# Markdown
 [*.md]
 insert_final_newline = true
-# trim_trailing_whitespace = false
+trim_trailing_whitespace = false
+
+# Shell script
+[*.sh]
+indent_size = 2
+indent_style = space
+# shfmt
+switch_case_indent = true
+[bin/**]
+indent_size = 2
+indent_style = space
+# shfmt
+switch_case_indent = true
