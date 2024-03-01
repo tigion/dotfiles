@@ -25,6 +25,7 @@
     - [vim-illuminate](#vim-illuminate)
     - [zen-mode.nvim](#zen-modenvim)
   - [ftplugin](#ftplugin)
+    - [AsciiDoc](#asciidoc)
     - [Markdown](#markdown)
 <!--toc:end-->
 
@@ -299,9 +300,15 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 ## ftplugin
 
+### AsciiDoc
+
+| Mode | Keymap       | Description               |
+| ---- | ------------ | ------------------------- |
+| `n`  | `<Leader>Ah` | Find headers from level 2 |
+
 ### Markdown
 
 | Mode | Keymap       | Description                     |
 | ---- | ------------ | ------------------------------- |
 | `n`  | `<Leader>A1` | Fix TOC generated from Marksman |
-| `n`  | `<Leader>A2` | Find headers from level 2       |
+| `n`  | `<Leader>Ah` | Find headers from level 2       |
