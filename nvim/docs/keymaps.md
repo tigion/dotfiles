@@ -24,6 +24,8 @@
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
     - [zen-mode.nvim](#zen-modenvim)
+  - [ftplugin](#ftplugin)
+    - [Markdown](#markdown)
 <!--toc:end-->
 
 <!-- prettier-ignore-end -->
@@ -294,3 +296,12 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | Mode | Keymap      | Description     |
 | ---- | ----------- | --------------- |
 | `n`  | `<Leader>z` | Toggle zen mode |
+
+## ftplugin
+
+### Markdown
+
+| Mode | Keymap       | Description                     |
+| ---- | ------------ | ------------------------------- |
+| `n`  | `<Leader>A1` | Fix TOC generated from Marksman |
+| `n`  | `<Leader>A2` | Find headers from level 2       |
