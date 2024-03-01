@@ -8,6 +8,7 @@
   - [General](#general)
     - [Goodies](#goodies)
     - [F-Keys](#f-keys)
+    - [Quickfix/Location List](#quickfixlocation-list)
     - [Windows](#windows)
   - [Plugins](#plugins)
     - [bufferline](#bufferline)
@@ -60,6 +61,17 @@
 |      | `<F8>`  | Toggle relative line numbers |
 |      | `<F9>`  | Toggle line numbers          |
 |      | `<F10>` | Toggle spell checking        |
+
+### Quickfix/Location List
+
+| Mode | Keymap | Description              |
+| ---- | ------ | ------------------------ |
+| `n`  | `üq`   | Go to next quickfix item |
+| `n`  | `+q`   | Go to prev quickfix item |
+| `n`  | `ül`   | Go to next location item |
+| `n`  | `+l`   | Go to prev location item |
+
+- Open/Close with [Trouble.nvim](#troublenvim) or `:copen`/`:lopen`, `:cclose`/`:lclose`
 
 ### Windows
 
