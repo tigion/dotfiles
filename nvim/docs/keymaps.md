@@ -231,11 +231,11 @@ CMP - Completion Menu:
 | Mode     | Keymap    | Description                                        |
 | -------- | --------- | -------------------------------------------------- |
 | `n`      | `öf`      | Find files in workspace                            |
-| `n`      | `ör`      | Find previously open files in workspace            |
-| `n`      | `ög`      | Find string in workspace                           |
+| `n`      | `ör`      | Find previously opened files in workspace          |
+| `n`      | `öb`      | Find open buffers                                  |
+| `n`      | `ög`      | Find in current buffer                             |
+| `n`      | `ögg`     | Find in workspace                                  |
 | `n`, `v` | `öG`      | Find string under cursor or selection in workspace |
-| `n`      | `öb`      | Find in current buffer                             |
-| `n`      | `öbb`     | Find in buffers                                    |
 | `n`      | `öh`      | Find in help                                       |
 | `n`      | `öd`      | Find in diagnostics                                |
 | `n`      | `ö:`      | Find in commands                                   |

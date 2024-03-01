@@ -90,18 +90,18 @@ return {
       -- :Telescope builtin
 
       keymap.set('n', 'öf', builtin.find_files, { desc = icon .. ' Find files in workspace' })
-      -- keymap.set('n', 'ör', builtin.oldfiles, { desc = icon .. ' Find recent files' })
       keymap.set(
         'n',
         'ör',
         '<Cmd>Telescope oldfiles cwd_only=true<CR>',
-        { desc = icon .. ' Find previously open files in workspace' }
+        { desc = icon .. ' Find previously opened files in workspace' }
       )
-      keymap.set('n', 'ög', builtin.live_grep, { desc = icon .. ' Find string in workspace' })
+      keymap.set('n', 'öb', builtin.buffers, { desc = icon .. ' Find open buffers' })
+
+      keymap.set('n', 'ög', builtin.current_buffer_fuzzy_find, { desc = icon .. ' Find in current buffer' })
+      keymap.set('n', 'ögg', builtin.live_grep, { desc = icon .. ' Find in workspace' })
       keymap.set('n', 'öG', builtin.grep_string, { desc = icon .. ' Find string under cursor in workspace' })
       keymap.set('v', 'öG', builtin.grep_string, { desc = icon .. ' Find selection in workspace' })
-      keymap.set('n', 'öb', builtin.current_buffer_fuzzy_find, { desc = icon .. ' Find in current buffer' })
-      keymap.set('n', 'öbb', builtin.buffers, { desc = icon .. ' Find in buffers' })
       keymap.set('n', 'öh', builtin.help_tags, { desc = icon .. ' Find in help' })
       keymap.set('n', 'öd', builtin.diagnostics, { desc = icon .. ' Find in diagnostics' })
       keymap.set('n', 'ö:', builtin.commands, { desc = icon .. ' Find in commands' })
