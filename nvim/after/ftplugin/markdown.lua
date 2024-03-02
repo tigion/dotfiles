@@ -1,21 +1,21 @@
 -- Keymaps
 local keymap = vim.keymap
+local opts = { buffer = true, silent = true }
 
 -- Fix incorrect markdown toc entries
 -- - Marksman code action don't understand links in headers
 -- - change `[[...]](#...)` to `[...](#...)`
+opts.desc = 'Fix TOC generated from Marksman'
 keymap.set(
   'n',
   '<Leader>A1',
   [[:/^<!--toc:start-->/,/^<!--toc:end-->/s/^\( *- \)\[\[\(.\+\)\]\]\((#.\+)\)/\1\[\2\]\3/<CR>]],
-  { buffer = true, silent = true, desc = 'MARKDOWN: Fix TOC generated from Marksman' }
+  opts
 )
 
 -- Find markdown headers (from level 2)
 -- - No recognition of code blocks
-keymap.set(
-  'n',
-  '<Leader>Ah',
-  [[/^##\+ .*<CR>]],
-  { buffer = true, silent = true, desc = 'MARKDOWN: Find headers from level 2' }
-)
+opts.desc = 'Find headers'
+keymap.set('n', '<Leader>Ah', [[/^##\+ .*<CR>]], { buffer = true, silent = true, desc = 'Find headers from level 2' })
+opts.desc = 'Find headers to location list'
+keymap.set('n', '<Leader>AH', [[:lvimgrep /^##\+ .\+/ %<CR>]], opts)

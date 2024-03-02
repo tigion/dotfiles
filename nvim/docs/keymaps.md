@@ -314,13 +314,15 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 ### AsciiDoc
 
-| Mode | Keymap       | Description               |
-| ---- | ------------ | ------------------------- |
-| `n`  | `<Leader>Ah` | Find headers from level 2 |
+| Mode | Keymap       | Description                                  |
+| ---- | ------------ | -------------------------------------------- |
+| `n`  | `<Leader>Ah` | Find headers (from level 2)                  |
+| `n`  | `<Leader>AH` | Find headers (from level 2) to location list |
 
 ### Markdown
 
-| Mode | Keymap       | Description                     |
-| ---- | ------------ | ------------------------------- |
-| `n`  | `<Leader>A1` | Fix TOC generated from Marksman |
-| `n`  | `<Leader>Ah` | Find headers from level 2       |
+| Mode | Keymap       | Description                                  |
+| ---- | ------------ | -------------------------------------------- |
+| `n`  | `<Leader>A1` | Fix TOC generated from Marksman              |
+| `n`  | `<Leader>Ah` | Find headers (from level 2)                  |
+| `n`  | `<Leader>AH` | Find headers (from level 2) to location list |
