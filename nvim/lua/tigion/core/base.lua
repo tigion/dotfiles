@@ -58,8 +58,10 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 vim.opt.formatoptions:append({ 'r' })
 
 -- spell checking
+-- - "de": new German spelling
+-- - "de_de": old and new German spelling
 vim.opt.spell = false -- toggle with <F10>
-vim.opt.spelllang = { 'de', 'en' }
+vim.opt.spelllang = { 'de', 'en_us' }
 
 -- [[ Basic Keymaps ]]
 -- set leader key

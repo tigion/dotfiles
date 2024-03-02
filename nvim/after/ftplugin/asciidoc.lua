@@ -1,3 +1,6 @@
+-- Settings
+vim.opt.spell = true
+
 -- Keymaps
 local keymap = vim.keymap
 local opts = { buffer = true, silent = true }
