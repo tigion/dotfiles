@@ -16,6 +16,7 @@ keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
 keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
 keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
+-- keymap.set('', '<F10>', ':setlocal spell!<CR>', { desc = 'Toggle spell checking for current buffer' })
 
 -- Navigation
 
