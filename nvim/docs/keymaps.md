@@ -64,12 +64,14 @@
 
 ### Quickfix/Location List
 
-| Mode | Keymap | Description              |
-| ---- | ------ | ------------------------ |
-| `n`  | `üq`   | Go to next quickfix item |
-| `n`  | `+q`   | Go to prev quickfix item |
-| `n`  | `ül`   | Go to next location item |
-| `n`  | `+l`   | Go to prev location item |
+| Mode | Keymap           | Description                                               |
+| ---- | ---------------- | --------------------------------------------------------- |
+| `n`  | ~~`<Leader>xq`~~ | Toggle quickfix list<br />-> [trouble.nvim](#troublenvim) |
+| `n`  | `üq`             | Go to next quickfix item                                  |
+| `n`  | `+q`             | Go to prev quickfix item                                  |
+| `n`  | ~~`<Leader>xl`~~ | Toggle location list<br />-> [trouble.nvim](#troublenvim) |
+| `n`  | `ül`             | Go to next location item                                  |
+| `n`  | `+l`             | Go to prev location item                                  |
 
 - Open/Close with [Trouble.nvim](#troublenvim) or `:copen`/`:lopen`, `:cclose`/`:lclose`
 
