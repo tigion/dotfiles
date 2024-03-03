@@ -17,6 +17,8 @@ I use a German keyboard layout (qwertz), so I have adjusted some key mappings.
 
 - for example `,` -> `ö`
 
+- [My Neovim keymaps](nvim/docs/keymaps.md)
+
 ## Usage
 
 > [!NOTE]
