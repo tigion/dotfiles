@@ -28,10 +28,30 @@ keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next search result' })
 keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to prev search result' })
 
 -- quickfix/location list
--- keymap.set('n', 'xq', '<Cmd>copen<CR>', { desc = 'Open quickfix list' })
+
+-- quickfix list
+-- keymap.set('n', '<Leader>xq', '<Cmd>copen<CR>', { desc = 'Open quickfix list' })
+keymap.set('n', '<Leader>xq', function()
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win['quickfix'] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end, { desc = 'Toggle quickfix list' })
 keymap.set('n', 'üq', '<Cmd>cnext<CR>zz', { desc = 'Go to next quickfix item' })
 keymap.set('n', '+q', '<Cmd>cprev<CR>zz', { desc = 'Go to prev quickfix item' })
--- keymap.set('n', 'xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
+
+-- location list
+-- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
+keymap.set('n', '<Leader>xl', function()
+  if vim.fn.getloclist(0, { winid = 0 }).winid == 0 then
+    if not pcall(vim.cmd.lopen) then print('No location list available') end
+  else
+    vim.cmd.lclose()
+  end
+end, { desc = 'Toggle location list' })
 keymap.set('n', 'ül', '<Cmd>lnext<CR>zz', { desc = 'Go to next location item' })
 keymap.set('n', '+l', '<Cmd>lprev<CR>zz', { desc = 'Go to prev location item' })
 

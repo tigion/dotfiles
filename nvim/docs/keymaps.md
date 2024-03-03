@@ -27,6 +27,7 @@
     - [zen-mode.nvim](#zen-modenvim)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
+    - [Help](#help)
     - [Markdown](#markdown)
 <!--toc:end-->
 
@@ -64,16 +65,16 @@
 
 ### Quickfix/Location List
 
-| Mode | Keymap           | Description                                               |
-| ---- | ---------------- | --------------------------------------------------------- |
-| `n`  | ~~`<Leader>xq`~~ | Toggle quickfix list<br />-> [trouble.nvim](#troublenvim) |
-| `n`  | `üq`             | Go to next quickfix item                                  |
-| `n`  | `+q`             | Go to prev quickfix item                                  |
-| `n`  | ~~`<Leader>xl`~~ | Toggle location list<br />-> [trouble.nvim](#troublenvim) |
-| `n`  | `ül`             | Go to next location item                                  |
-| `n`  | `+l`             | Go to prev location item                                  |
+| Mode | Keymap       | Description              |
+| ---- | ------------ | ------------------------ |
+| `n`  | `<Leader>xq` | Toggle quickfix list     |
+| `n`  | `üq`         | Go to next quickfix item |
+| `n`  | `+q`         | Go to prev quickfix item |
+| `n`  | `<Leader>xl` | Toggle location list     |
+| `n`  | `ül`         | Go to next location item |
+| `n`  | `+l`         | Go to prev location item |
 
-- Open/Close with [Trouble.nvim](#troublenvim) or `:copen`/`:lopen`, `:cclose`/`:lclose`
+- See also [Trouble.nvim](#troublenvim)
 
 ### Windows
 
@@ -292,8 +293,10 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `<Leader>xx` | Toggle trouble               |
 | `n`  | `<Leader>xd` | Toggle document diagnostics  |
 | `n`  | `<Leader>xw` | Toggle workspace diagnostics |
-| `n`  | `<Leader>xl` | Toggle location list         |
-| `n`  | `<Leader>xq` | Toggle quickfix list         |
+| `n`  | `<Leader>xL` | Toggle location list         |
+| `n`  | `<Leader>xQ` | Toggle quickfix list         |
+
+- See also [Quickfix/Location List](#quickfixlocation-list)
 
 ### [vim-illuminate]
 
@@ -320,6 +323,12 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | ---- | ------------ | -------------------------------------------- |
 | `n`  | `<Leader>Ah` | Find headers (from level 2)                  |
 | `n`  | `<Leader>AH` | Find headers (from level 2) to location list |
+
+### Help
+
+| Mode | Keymap | Description                              |
+| ---- | ------ | ---------------------------------------- |
+| `n`  | `gd`   | Go to help tag (definition) like `<C-]>` |
 
 ### Markdown
 

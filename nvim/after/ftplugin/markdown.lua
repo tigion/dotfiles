@@ -19,6 +19,6 @@ keymap.set(
 -- Find markdown headers (from level 2)
 -- - No recognition of code blocks
 opts.desc = 'Find headers'
-keymap.set('n', '<Leader>Ah', [[/^##\+ .*<CR>]], { buffer = true, silent = true, desc = 'Find headers from level 2' })
+keymap.set('n', '<Leader>Ah', [[/^##\+ .\+<CR>]], opts)
 opts.desc = 'Find headers to location list'
 keymap.set('n', '<Leader>AH', [[:lvimgrep /^##\+ .\+/ %<CR>]], opts)
