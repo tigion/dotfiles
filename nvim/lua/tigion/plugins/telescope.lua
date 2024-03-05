@@ -109,7 +109,7 @@ return {
       keymap.set('n', 'ö/', builtin.search_history, { desc = icon .. ' Find in search history' })
       -- keymap.set('n', 'öc', builtin.git_bcommits, { desc = icon .. ' Find in git commits in current buffer' })
       -- keymap.set('n', 'öcc', builtin.git_commits, { desc = icon .. ' Find in git commits' })
-      keymap.set('n', 'öt', builtin.treesitter, { desc = icon .. ' Find in treesitter symbols' })
+      keymap.set('n', 'ös', builtin.treesitter, { desc = icon .. ' Find in treesitter symbols' })
       keymap.set('n', 'öö', builtin.resume, { desc = icon .. ' Reopen previous Telescope search' })
 
       -- keymap.set('n', 'sf', function()

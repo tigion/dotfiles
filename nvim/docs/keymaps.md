@@ -22,6 +22,7 @@
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
     - [telescope.nvim](#telescopenvim)
+    - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
     - [zen-mode.nvim](#zen-modenvim)
@@ -283,6 +284,18 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 |         | `<C-d>`                    | Scroll down in preview window        |
 |         | ⚠️ `<C-f>`                 | Scroll left in preview window        |
 |         | ⚠️ `<C-b>`                 | Scroll right in preview window       |
+
+### [todo-comments.nvim]
+
+[todo-comments.nvim]: https://github.com/folke/todo-comments.nvim
+
+| Mode | Keymap       | Description           | P   |
+| ---- | ------------ | --------------------- | --- |
+| `n`  | `öt`         | Find in TODO comments | T   |
+| `n`  | `<Leader>xt` | Show TODO comments    | TR  |
+
+- `T` ... Telescope
+- `TC` ... Trouble
 
 ### [trouble.nvim]
 
