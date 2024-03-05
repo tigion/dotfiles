@@ -7,8 +7,12 @@ if [[ $# -eq 0 ]]; then
   exit 1
 fi
 
-is_session() { tmux ls | grep -q "^${1}:"; }
-is_attached() { tmux ls | grep -q "^${1}:.*(attached)$"; }
+# check if tmux server is running
+is_running() { tmux run &>/dev/null; }
+# check if session exists
+is_session() { tmux has-session -t "$1" 2>/dev/null; }
+# check if session is attached
+is_attached() { tmux ls 2>/dev/null | grep -q "^${1}:.*(attached)$"; }
 
 # currently unused
 session_state() {
@@ -22,28 +26,35 @@ session_state() {
   fi
 }
 
+# get first session
 first_session_name="$1"
 
+# wait for first server start to prevent .gitconfig lock error
+# is_running && wait=false || wait=true
+
+# start given sessions
 for session_name in "$@"; do
   if ! is_session "${session_name}"; then
     echo "Start new session '${session_name}'"
     tmux new -d -s "$session_name"
+    # $wait && sleep .5 && wait=false
+    sleep .5 # hopefully prevents .gitconfig lock error
   else
     echo "Session '${session_name}' already exists!"
   fi
 done
 
+# attach to first session
 if is_session "${first_session_name}"; then
   echo ""
   if is_attached "${first_session_name}"; then
     echo "Session '${first_session_name}' is already attached!"
     read -r -n 1 -p "Do you still want to attach '${first_session_name}' (y,n)? " answer
     echo ""
-    if [[ "$answer" != "y" && "$answer" != "Y" ]]; then
-      exit 0
-    fi
+    if [[ "$answer" != "y" && "$answer" != "Y" ]]; then exit 0; fi
   fi
   echo "Attach to session '${first_session_name}'"
   tmux a -t "$first_session_name"
+else
+  echo "Session '${first_session_name}' does not exist!"
 fi
-
