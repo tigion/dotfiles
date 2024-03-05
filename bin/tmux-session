@@ -2,6 +2,7 @@
 #
 # Starts one or multiple new Tmux sessions and attach to first one.
 
+# check arguments
 if [[ $# -eq 0 ]]; then
   echo "Usage: $(basename "$0") <session-name> [<session-name> ...]"
   exit 1
@@ -9,39 +10,39 @@ fi
 
 # check if tmux server is running
 is_running() { tmux run &>/dev/null; }
-# check if session exists
-is_session() { tmux has-session -t "$1" 2>/dev/null; }
-# check if session is attached
-is_attached() { tmux ls 2>/dev/null | grep -q "^${1}:.*(attached)$"; }
 
-# currently unused
-session_state() {
-  info=$(tmux ls -F "#{session_name}: #{?#{>:#{session_attached},0},attached,detached}" -f "#{m:${1},#{session_name}}")
-  if echo "$info" | grep -q "attached$"; then
-    echo 2 # exists and is attached
-  elif echo "$info" | grep -q "detached$"; then
-    echo 1 # exists and is detached
-  else
-    echo 0 # does not exist
-  fi
+# check if session exists
+is_session() {
+  # has-session (alias: has)
+  # -t target-session
+  tmux has-session -t "$1" 2>/dev/null
+}
+
+# check if session is attached
+is_attached() {
+  # list-session (alias: ls)
+  tmux ls 2>/dev/null | grep -q "^${1}:.*(attached)$"
 }
 
 # get first session
 first_session_name="$1"
 
-# wait for first server start to prevent .gitconfig lock error
-# is_running && wait=false || wait=true
-
 # start given sessions
 for session_name in "$@"; do
-  if ! is_session "${session_name}"; then
-    echo "Start new session '${session_name}'"
-    tmux new -d -s "$session_name"
-    # $wait && sleep .5 && wait=false
-    sleep .5 # hopefully prevents .gitconfig lock error
-  else
+  # skip existing sessions
+  if is_session "${session_name}"; then
     echo "Session '${session_name}' already exists!"
+    continue
   fi
+
+  # create new session
+  echo "Create new session '${session_name}'"
+  # new-session (alias: new)
+  # -d ... dont attach new session to current terminal (needed to create multiple sessions)
+  # -s session-name
+  tmux new-session -d -s "$session_name"
+  # wait, hopefully prevents .gitconfig lock error
+  sleep .5
 done
 
 # attach to first session
@@ -54,7 +55,10 @@ if is_session "${first_session_name}"; then
     if [[ "$answer" != "y" && "$answer" != "Y" ]]; then exit 0; fi
   fi
   echo "Attach to session '${first_session_name}'"
-  tmux a -t "$first_session_name"
+  # attach-session (alias: attach, a)
+  # -t target-session
+  # -d ... detache other clients
+  tmux attach-session -t "$first_session_name"
 else
   echo "Session '${first_session_name}' does not exist!"
 fi
