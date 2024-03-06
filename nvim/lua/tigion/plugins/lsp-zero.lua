@@ -18,7 +18,7 @@ return {
     { 'hrsh7th/cmp-buffer' }, -- source for buffer words
     { 'hrsh7th/cmp-path' }, -- source for file and folder paths
     { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's built-in language server client
-    { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim Lua API
+    -- { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim Lua API <- not needed, because: 'folke/neodev.nvim'
 
     -- Snippets
     { 'L3MON4D3/LuaSnip' }, -- snippet engine
@@ -28,6 +28,7 @@ return {
     -- user (tigion) settings
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
     { 'onsails/lspkind-nvim' }, -- vscode-like pictograms
+    { 'folke/neodev.nvim', opts = {} }, -- setup for init.lua and plugin development for -> lua_ls
 
     {
       'j-hui/fidget.nvim', -- LSP status view
@@ -38,7 +39,7 @@ return {
   config = function()
     local lsp_zero = require('lsp-zero')
 
-    lsp_zero.on_attach(function(client, bufnr)
+    lsp_zero.on_attach(function(_, bufnr)
       local opts = { buffer = bufnr, remap = false, silent = false }
       local icon_telescope = require('tigion.core.icons').telescope
       local keymap = vim.keymap
@@ -150,26 +151,31 @@ return {
           --     callback = function() vim.lsp.buf.format({ bufnr = bufnr }) end,
           --   })
           -- end
+          -- local lua_opts = lsp_zero.nvim_lua_ls()
+          -- require('lspconfig').lua_ls.setup(lua_opts)
           local lua_opts = lsp_zero.nvim_lua_ls({
             -- Add format on save
             -- on_attach = function(client, bufnr)
             --   enable_format_on_save(client, bufnr)
             -- end,
-            -- Fix Undefined global 'vim'
             settings = {
               Lua = {
-                format = {
-                  enable = true, -- format with lua_ls (settings: .editorconfig) instead of stylua (null-ls)
+                completion = {
+                  callSnippet = 'Replace',
                 },
-                diagnostics = {
-                  globals = { 'vim' }, -- recognize "vim" global
-                },
-                workspace = {
-                  library = { -- aware runtime files
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.stdpath('config') .. '/lua'] = true,
-                  },
-                },
+                -- diagnostics = {
+                --   disable = { 'missing-fields' }, -- -- suppress 'Missing Required Fields' warnings
+                -- },
+                -- format = {
+                --   enable = false, -- format with stylua (conform.nvim) instead of lua_ls (settings: .editorconfig)
+                -- },
+                -- workspace = {
+                --   checkThirdParty = false,
+                --   library = { -- aware runtime files
+                --     [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                --     [vim.fn.stdpath('config') .. '/lua'] = true,
+                --   },
+                -- },
               },
             },
           })
@@ -216,10 +222,10 @@ return {
       },
       sources = {
         { name = 'nvim_lsp' }, -- lsp server
-        { name = 'nvim_lua' }, -- neovim lua API
+        -- { name = 'nvim_lua' }, -- neovim lua API
         { name = 'luasnip' }, -- snippets
-        { name = 'codeium', max_item_count = 3 }, -- codeium
-        { name = 'buffer' }, -- buffer words
+        { name = 'codeium', max_item_count = 5 }, -- codeium
+        { name = 'buffer', keyword_length = 3, max_item_count = 10 }, -- buffer words
         { name = 'path' }, -- files, paths
       },
       mapping = cmp.mapping.preset.insert({
@@ -256,6 +262,11 @@ return {
     -- LSPKIND
     local lspkind = require('lspkind')
     cmp.setup({
+      -- NOTE:The following line suppresses the warning 'Missing required fields'
+      -- Source: https://github.com/LuaLS/lua-language-server/issues/2214
+      -- Alternative add an global `disable = { 'missing-fields' }` to the lua_la config above
+      --
+      ---@diagnostic disable-next-line missing-fields
       formatting = {
         format = lspkind.cmp_format({
           mode = 'symbol_text', -- show only symbol annotations

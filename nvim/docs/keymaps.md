@@ -5,7 +5,7 @@
 <!--toc:start-->
 - [Neovim Keymaps](#neovim-keymaps)
   - [Info](#info)
-    - [Keymap Groups (TODO)](#keymap-groups-todo)
+    - [Keymap Groups (TODO)](#keymap-groups)
   - [General](#general)
     - [Goodies](#goodies)
     - [F-Keys](#f-keys)
@@ -43,7 +43,9 @@
 >
 > for example: `[` -> `ü`, `]` -> `+`, `,` -> `ö`
 
-### Keymap Groups (TODO)
+### Keymap Groups
+
+<!--TODO: Rework keymap groups -->
 
 | Keymap      | Description |
 | ----------- | ----------- |
@@ -183,28 +185,28 @@
 
 [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim
 
-| Mode | Keymap           | Description                                                             | P   |
-| ---- | ---------------- | ----------------------------------------------------------------------- | --- |
-| `n`  | `K`              | Show hover information                                                  |     |
-| `i`  | ~~`<C-k>`~~      | Show hover information                                                  |     |
-| `n`  | `gK`             | Show signature help                                                     |     |
-| `i`  | `<C-k>`          | Show signature help                                                     |     |
-| `n`  | `gs`             | Show symbols in current buffer                                          | T   |
-| `n`  | `gss`            | Show symbols in workspace (sbt)                                         | T   |
-| `n`  | `gr`             | Show references (wuc)                                                   | T   |
-| `n`  | `gd`             | Go to definition(s) (wuc)                                               | T   |
-| `n`  | `gD`             | Go to declaration (wuc)                                                 |     |
-| `n`  | `gdt`            | Go to type definition(s) (wuc)                                          | T   |
-| `n`  | `gI`             | Go to implementation(s)                                                 | T   |
-| `n`  | `<Leader>ca`     | Show code actions                                                       |     |
-| `n`  | ~~`<Leader>rn`~~ | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-rename) |     |
-| `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)              |     |
-| `n`  | `<Leader>d`      | Show diagnostics for current line                                       |     |
-| `n`  | `<Leader>dd`     | Show diagnostics for current buffer                                     | T   |
-| `n`  | `<Leader>ddd`    | Show diagnostics for all buffers                                        | T   |
-| `n`  | `+d`             | Next diagnostic                                                         |     |
-| `n`  | `üd`             | Previous diagnostic                                                     |     |
-| `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                  |     |
+| Mode | Keymap           | Description                                                                 | P   |
+| ---- | ---------------- | --------------------------------------------------------------------------- | --- |
+| `n`  | `K`              | Show hover information                                                      |     |
+| `i`  | ~~`<C-k>`~~      | Show hover information                                                      |     |
+| `n`  | `gK`             | Show signature help                                                         |     |
+| `i`  | `<C-k>`          | Show signature help                                                         |     |
+| `n`  | `gs`             | Show symbols in current buffer                                              | T   |
+| `n`  | `gss`            | Show symbols in workspace (sbt)                                             | T   |
+| `n`  | `gr`             | Show references (wuc)                                                       | T   |
+| `n`  | `gd`             | Go to definition(s) (wuc)                                                   | T   |
+| `n`  | `gD`             | Go to declaration (wuc)                                                     |     |
+| `n`  | `gdt`            | Go to type definition(s) (wuc)                                              | T   |
+| `n`  | `gI`             | Go to implementation(s)                                                     | T   |
+| `n`  | `<Leader>ca`     | Show code actions                                                           |     |
+| `n`  | ~~`<Leader>rn`~~ | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
+| `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
+| `n`  | `<Leader>d`      | Show diagnostics for current line                                           |     |
+| `n`  | `<Leader>dd`     | Show diagnostics for current buffer                                         | T   |
+| `n`  | `<Leader>ddd`    | Show diagnostics for all buffers                                            | T   |
+| `n`  | `+d`             | Next diagnostic                                                             |     |
+| `n`  | `üd`             | Previous diagnostic                                                         |     |
+| `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
 
 - `wuc` ... Word under cursor
 - `sbt` ... Same buffer (file) type?
