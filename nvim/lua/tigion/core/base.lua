@@ -66,7 +66,7 @@ vim.opt.spelllang = { 'de', 'en_us' }
 -- [[ Basic Keymaps ]]
 -- set leader key
 -- Set <space> as the leader key
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 

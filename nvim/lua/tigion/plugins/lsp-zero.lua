@@ -82,13 +82,8 @@ return {
       opts.desc = 'LSP: Show code actions'
       keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts) -- in visual mode will apply to selection
 
-      opts.desc = 'LSP: Rename with all references'
-      keymap.set(
-        'n',
-        '<Leader>rn',
-        function() return ':IncRename ' .. vim.fn.expand('<cword>') end,
-        { desc = opts.desc, expr = true }
-      )
+      -- Deactivated: See inc-rename.lua (inc-rename.nvim)
+      -- opts.desc = 'LSP: Rename with all references'
       -- keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
 
       -- Deactivated: See formatting.lua (conform.nvim)
@@ -102,9 +97,9 @@ return {
       opts.desc = icon_telescope .. ' Show diagnostics for all buffers'
       keymap.set('n', '<Leader>ddd', '<Cmd>Telescope diagnostics<CR>', opts)
 
-      opts.desc = 'Go to next diagnostic'
+      opts.desc = 'Next diagnostic'
       keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
-      opts.desc = 'Go to previous diagnostic'
+      opts.desc = 'Previous diagnostic'
       keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
 
       opts.desc = 'LSP: Restart LSP servers for current buffer'

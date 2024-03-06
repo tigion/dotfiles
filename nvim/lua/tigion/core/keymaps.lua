@@ -24,8 +24,8 @@ keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
 keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up' })
 -- keep cursor in middle position when go to next/prev search result
-keymap.set('n', 'n', 'nzzzv', { desc = 'Go to next search result' })
-keymap.set('n', 'N', 'Nzzzv', { desc = 'Go to prev search result' })
+keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
+keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result' })
 
 -- quickfix/location list
 
@@ -40,8 +40,8 @@ keymap.set('n', '<Leader>xq', function()
   end
   vim.cmd.copen()
 end, { desc = 'Toggle quickfix list' })
-keymap.set('n', 'üq', '<Cmd>cnext<CR>zz', { desc = 'Go to next quickfix item' })
-keymap.set('n', '+q', '<Cmd>cprev<CR>zz', { desc = 'Go to prev quickfix item' })
+keymap.set('n', '+q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
+keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Previous quickfix' })
 
 -- location list
 -- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
@@ -52,8 +52,8 @@ keymap.set('n', '<Leader>xl', function()
     vim.cmd.lclose()
   end
 end, { desc = 'Toggle location list' })
-keymap.set('n', 'ül', '<Cmd>lnext<CR>zz', { desc = 'Go to next location item' })
-keymap.set('n', '+l', '<Cmd>lprev<CR>zz', { desc = 'Go to prev location item' })
+keymap.set('n', '+l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
+keymap.set('n', 'ül', '<Cmd>lprev<CR>zz', { desc = 'Previous location' })
 
 -- Manipulation
 

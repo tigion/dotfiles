@@ -21,8 +21,17 @@ return {
 
     illuminate.configure(opts)
 
-    vim.keymap.set('n', '++', function() illuminate.goto_next_reference(false) end, { desc = 'Go to next reference' })
-    vim.keymap.set('n', 'üü', function() illuminate.goto_prev_reference(false) end, { desc = 'Go to prev reference' })
+    vim.keymap.set(
+      'n',
+      '++',
+      function() illuminate.goto_next_reference(false) end,
+      { desc = 'Next reference (Illuminate)' }
+    )
+    vim.keymap.set(
+      'n',
+      'üü',
+      function() illuminate.goto_prev_reference(false) end,
+      { desc = 'Previous reference (Illuminate)' }
+    )
   end,
 }
-

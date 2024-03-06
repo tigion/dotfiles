@@ -5,9 +5,16 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-  },
-}
+  opts = {},
+  config = function(_, opts)
+    require('which-key').setup(opts)
 
+    -- TODO: keymap groups
+    require('which-key').register({
+      ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
+      ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
+      -- ['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
+      ['ö'] = { name = 'Telescope', _ = 'which_key_ignore' },
+    })
+  end,
+}

@@ -5,17 +5,19 @@
 <!--toc:start-->
 - [Neovim Keymaps](#neovim-keymaps)
   - [Info](#info)
+    - [Keymap Groups (TODO)](#keymap-groups-todo)
   - [General](#general)
     - [Goodies](#goodies)
     - [F-Keys](#f-keys)
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Windows](#windows)
   - [Plugins](#plugins)
-    - [bufferline](#bufferline)
+    - [bufferline.nvim](#bufferlinenvim)
     - [codeium.vim](#codeiumvim)
     - [Comment.nvim](#commentnvim)
     - [conform.nvim](#conformnvim)
     - [gitsigns.nvim](#gitsignsnvim)
+    - [inc-rename.nvim](#inc-renamenvim)
     - [lsp-zero.nvim](#lsp-zeronvim)
     - [nvim-lint](#nvim-lint)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
@@ -41,6 +43,14 @@
 >
 > for example: `[` -> `ü`, `]` -> `+`, `,` -> `ö`
 
+### Keymap Groups (TODO)
+
+| Keymap      | Description |
+| ----------- | ----------- |
+| `<Leader>g` | +Git        |
+| `<Leader>x` | +Trouble    |
+| `ö`         | +Telescope  |
+
 ## General
 
 ### Goodies
@@ -52,7 +62,7 @@
 | `n`  | `<C-a>`       | Select all                        |
 | `v`  | `J`           | Move selection down               |
 | `v`  | `K`           | Move selection up                 |
-| `n`  | `<Leader>s`   | search and replace template (wuc) |
+| `n`  | `<Leader>s`   | Search and replace template (wuc) |
 
 - `wuc` ... Word under cursor
 
@@ -66,16 +76,16 @@
 
 ### Quickfix/Location List
 
-| Mode | Keymap       | Description              |
-| ---- | ------------ | ------------------------ |
-| `n`  | `<Leader>xq` | Toggle quickfix list     |
-| `n`  | `üq`         | Go to next quickfix item |
-| `n`  | `+q`         | Go to prev quickfix item |
-| `n`  | `<Leader>xl` | Toggle location list     |
-| `n`  | `ül`         | Go to next location item |
-| `n`  | `+l`         | Go to prev location item |
+| Mode | Keymap       | Description          |
+| ---- | ------------ | -------------------- |
+| `n`  | `<Leader>xq` | Toggle quickfix list |
+| `n`  | `+q`         | Next quickfix        |
+| `n`  | `üq`         | Previous quickfix    |
+| `n`  | `<Leader>xl` | Toggle location list |
+| `n`  | `+l`         | Next location        |
+| `n`  | `ül`         | Prev location        |
 
-- See also [Trouble.nvim](#troublenvim)
+- See also [trouble.nvim](#troublenvim)
 
 ### Windows
 
@@ -97,9 +107,9 @@
 
 ## Plugins
 
-### [bufferline]
+### [bufferline.nvim]
 
-[bufferline]: https://github.com/akinsho/bufferline.nvim
+[bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
 
 | Mode | Keymap    | Description        |
 | ---- | --------- | ------------------ |
@@ -149,41 +159,56 @@
 
 [gitsigns.nvim]: https://github.com/lewis6991/gitsigns.nvim
 
-| Mode | Keymap      | Description                    |
-| ---- | ----------- | ------------------------------ |
-| `n`  | `<Leader>g` | Show git hunk for current line |
+| Mode | Keymap       | Description                     | P    |
+| ---- | ------------ | ------------------------------- | ---- |
+| `n`  | `<Leader>gp` | Show (preview) git hunk         |      |
+| `n`  | `<Leader>gs` | Stage git hunk                  |      |
+| `n`  | `<Leader>gu` | Unstage git hunk                |      |
+| `n`  | `<Leader>gR` | Reset git hunk                  |      |
+| `n`  | `+g`         | Next git hunk                   |      |
+| `n`  | `üg`         | Previous git hunk               |      |
+| `n`  | `<Leader>gl` | Show git hunks in location list | (TR) |
+
+- `(TR)` ... [trouble.nvim](#troublenvim) or `:lopen`
+
+### [inc-rename.nvim]
+
+[inc-rename.nvim]: https://github.com/smjonas/inc-rename.nvim
+
+| Mode | Keymap       | Description                      |
+| ---- | ------------ | -------------------------------- |
+| `n`  | `<Leader>rn` | Rename with all references (wuc) |
 
 ### [lsp-zero.nvim]
 
 [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim
 
-| Mode | Keymap          | Description                                                | P   |
-| ---- | --------------- | ---------------------------------------------------------- | --- |
-| `n`  | `K`             | Show hover information                                     |     |
-| `i`  | ~~`<C-k>`~~     | Show hover information                                     |     |
-| `n`  | `gK`            | Show signature help                                        |     |
-| `i`  | `<C-k>`         | Show signature help                                        |     |
-| `n`  | `gs`            | Show symbols in current buffer                             | T   |
-| `n`  | `gss`           | Show symbols in workspace (sbt)                            | T   |
-| `n`  | `gr`            | Show references (wuc)                                      | T   |
-| `n`  | `gd`            | Go to definition(s) (wuc)                                  | T   |
-| `n`  | `gD`            | Go to declaration (wuc)                                    |     |
-| `n`  | `gdt`           | Go to type definition(s) (wuc)                             | T   |
-| `n`  | `gI`            | Go to implementation(s)                                    | T   |
-| `n`  | `<Leader>ca`    | Show code actions                                          |     |
-| `n`  | `<Leader>rn`    | Rename with all references (wuc)                           | IR  |
-| `n`  | ~~`<Leader>f`~~ | Format current buffer<br />-> [conform.nvim](#conformnvim) |     |
-| `n`  | `<Leader>d`     | Show diagnostics for current line                          |     |
-| `n`  | `<Leader>dd`    | Show diagnostics for current buffer                        | T   |
-| `n`  | `<Leader>ddd`   | Show diagnostics for all buffers                           | T   |
-| `n`  | `+d`            | Go to next diagnostic                                      |     |
-| `n`  | `üd`            | Go to previous diagnostic                                  |     |
-| `n`  | `<Leader>rs`    | Restart LSP servers for current buffer                     |     |
+| Mode | Keymap           | Description                                                             | P   |
+| ---- | ---------------- | ----------------------------------------------------------------------- | --- |
+| `n`  | `K`              | Show hover information                                                  |     |
+| `i`  | ~~`<C-k>`~~      | Show hover information                                                  |     |
+| `n`  | `gK`             | Show signature help                                                     |     |
+| `i`  | `<C-k>`          | Show signature help                                                     |     |
+| `n`  | `gs`             | Show symbols in current buffer                                          | T   |
+| `n`  | `gss`            | Show symbols in workspace (sbt)                                         | T   |
+| `n`  | `gr`             | Show references (wuc)                                                   | T   |
+| `n`  | `gd`             | Go to definition(s) (wuc)                                               | T   |
+| `n`  | `gD`             | Go to declaration (wuc)                                                 |     |
+| `n`  | `gdt`            | Go to type definition(s) (wuc)                                          | T   |
+| `n`  | `gI`             | Go to implementation(s)                                                 | T   |
+| `n`  | `<Leader>ca`     | Show code actions                                                       |     |
+| `n`  | ~~`<Leader>rn`~~ | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-rename) |     |
+| `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)              |     |
+| `n`  | `<Leader>d`      | Show diagnostics for current line                                       |     |
+| `n`  | `<Leader>dd`     | Show diagnostics for current buffer                                     | T   |
+| `n`  | `<Leader>ddd`    | Show diagnostics for all buffers                                        | T   |
+| `n`  | `+d`             | Next diagnostic                                                         |     |
+| `n`  | `üd`             | Previous diagnostic                                                     |     |
+| `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                  |     |
 
 - `wuc` ... Word under cursor
 - `sbt` ... Same buffer (file) type?
-- `T` ... Telescope
-- `IR`... IncRename
+- `T` ... [telescope.nvim](#telescopenvim)
 
 CMP - Completion Menu:
 
@@ -206,9 +231,9 @@ CMP - Completion Menu:
 
 [nvim-lint]: https://github.com/mfussenegger/nvim-lint
 
-| Mode | Keymap      | Description                      |
-| ---- | ----------- | -------------------------------- |
-| `n`  | `<Leader>l` | Trigger linting for current file |
+| Mode | Keymap          | Description              |
+| ---- | --------------- | ------------------------ |
+| `n`  | ~~`<Leader>l`~~ | Lint current buffer/file |
 
 ### [nvim-tmux-navigation]
 
@@ -294,8 +319,8 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `öt`         | Find in TODO comments | T   |
 | `n`  | `<Leader>xt` | Show TODO comments    | TR  |
 
-- `T` ... Telescope
-- `TC` ... Trouble
+- `T` ... [telescope.nvim](#telescopenvim)
+- `TR` ... [trouble.nvim](#troublenvim)
 
 ### [trouble.nvim]
 
@@ -315,10 +340,10 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 [vim-illuminate]: https://github.com/RRethy/vim-illuminate
 
-| Mode | Keymap | Description              |
-| ---- | ------ | ------------------------ |
-| `n`  | `++`   | Go to next reference     |
-| `n`  | `üü`   | Go to previous reference |
+| Mode | Keymap | Description        |
+| ---- | ------ | ------------------ |
+| `n`  | `++`   | Next reference     |
+| `n`  | `üü`   | Previous reference |
 
 ### [zen-mode.nvim]
 

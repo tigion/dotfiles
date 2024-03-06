@@ -29,10 +29,9 @@ return {
       end,
     })
 
-    vim.keymap.set('n', '<Leader>l', function()
-      lint.try_lint()
-      lint.try_lint('codespell')
-    end, { desc = 'Trigger linting for current file' })
+    -- vim.keymap.set('n', '<Leader>l', function()
+    --   lint.try_lint()
+    --   lint.try_lint('codespell')
+    -- end, { desc = 'Lint current buffer/file' })
   end,
 }
-
