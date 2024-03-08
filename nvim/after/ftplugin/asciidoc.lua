@@ -1,5 +1,5 @@
 -- Settings
-vim.opt.spell = true
+vim.opt_local.spell = true
 
 -- Keymaps
 local keymap = vim.keymap
