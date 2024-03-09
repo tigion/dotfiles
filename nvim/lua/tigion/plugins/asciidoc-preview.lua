@@ -1,8 +1,8 @@
 return {
-  'tigion/nvim-asciidoc-preview', -- variant for official plugin
-  -- dir = '~/projects/neovim/nvim-asciidoc-preview', -- variant for local plugin development
+  'tigion/nvim-asciidoc-preview',
 
-  -- enabled = false,
+  dev = false, -- When `true`, the local development version is used instead.
+
   cmd = { 'AsciiDocPreview' },
   ft = { 'asciidoc' },
   build = 'cd server && npm install',
