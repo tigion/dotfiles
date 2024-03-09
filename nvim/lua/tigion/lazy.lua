@@ -11,5 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('tigion.plugins')
+local opts = {
+  dev = {
+    path = '~/projects/neovim',
+    -- patterns = { 'tigion' },
+  },
+}
 
+require('lazy').setup('tigion.plugins', opts)

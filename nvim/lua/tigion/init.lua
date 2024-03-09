@@ -5,4 +5,3 @@ require('tigion.core')
 
 -- plugins
 require('tigion.lazy')
-
