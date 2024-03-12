@@ -6,6 +6,11 @@ return {
 
     local icons = require('tigion.core.icons')
 
+    local symbol_map = {}
+    for kind, icon in pairs(icons.code) do
+      symbol_map[kind] = icon
+    end
+
     lspkind.init({
       -- enables text annotations
 
@@ -24,34 +29,7 @@ return {
       -- override preset symbols
       --
       -- default: {}
-      symbol_map = {
-        Text = '󰉿',
-        Method = '󰆧',
-        Function = '󰊕',
-        Constructor = '',
-        Field = '󰜢',
-        Variable = '󰀫',
-        Class = '󰠱',
-        Interface = '',
-        Module = '',
-        Property = '󰜢',
-        Unit = '󰑭',
-        Value = '󰎠',
-        Enum = '',
-        Keyword = '󰌋',
-        Snippet = '',
-        Color = '󰏘',
-        File = '󰈙',
-        Reference = '󰈇',
-        Folder = '󰉋',
-        EnumMember = '',
-        Constant = '󰏿',
-        Struct = '󰙅',
-        Event = '',
-        Operator = '󰆕',
-        TypeParameter = '',
-        Codeium = icons.codeium, -- '',
-      },
+      symbol_map = symbol_map,
     })
   end,
 }

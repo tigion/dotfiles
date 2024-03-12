@@ -19,8 +19,8 @@ return {
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = '▸',
-              arrow_open = '▾',
+              arrow_closed = icons.folding.closed,
+              arrow_open = icons.folding.open,
             },
             git = {
               unstaged = icons.git.unstaged, -- ✗
@@ -52,4 +52,3 @@ return {
     vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<Cr>', { silent = true, desc = 'Toggle file explorer' })
   end,
 }
-
