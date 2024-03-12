@@ -5,7 +5,7 @@
 <!--toc:start-->
 - [Neovim Keymaps](#neovim-keymaps)
   - [Info](#info)
-    - [Keymap Groups (TODO)](#keymap-groups)
+    - [Keymap Groups](#keymap-groups)
   - [General](#general)
     - [Goodies](#goodies)
     - [F-Keys](#f-keys)
@@ -23,6 +23,7 @@
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
+    - [outline.nvim](#outlinenvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
@@ -269,6 +270,14 @@ CMP - Completion Menu:
 | Keymap | Description               |
 | ------ | ------------------------- |
 | `g?`   | Show help (exit with `q`) |
+
+### [outline.nvim]
+
+[outline.nvim]: https://github.com/hedyhli/outline.nvim
+
+| Mode | Keymap      | Description               |
+| ---- | ----------- | ------------------------- |
+| `n`  | `<Leader>o` | Toggle outline of symbols |
 
 ### [telescope.nvim]
 
