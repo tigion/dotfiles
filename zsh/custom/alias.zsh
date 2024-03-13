@@ -6,6 +6,10 @@ alias tree='tree -a -l -C -I ".git" --gitignore --dirsfirst'
 # echo PATH variable line by line
 alias echoPATH='echo "${PATH//:/\\n}"'
 
+# find in history
+# alias fh='history | grep'
+alias fh='history | fzf'
+
 # open tty-clock with my preferred settings
 alias ti-clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
 
@@ -13,7 +17,13 @@ alias ti-clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
 alias lg='lazygit'
 
 # Python
-alias pip-upgrade-venv='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
+# virtual environment
+alias vc='python3 -m venv ./venv'
+alias va='source ./venv/bin/activate'
+alias vd='deactivate'
+alias vu='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
+
+# -- Change directory
 
 # -- macOS --
 
@@ -28,4 +38,3 @@ alias slp='pmset sleepnow'
 
 # open todo note in Bear.app
 alias todo='bear open-todo'
-
