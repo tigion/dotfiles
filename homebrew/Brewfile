@@ -11,6 +11,7 @@ brew "wget"
 brew "lazygit"
 brew "httpie"
 brew "tmux"
+brew "fzf"
 
 # nvim
 brew "neovim"
@@ -43,4 +44,3 @@ cask "fliqlo"
 #cask "stats"
 #cask "itsycal"
 #cask "iterm2"
-
