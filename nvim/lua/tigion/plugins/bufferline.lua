@@ -63,8 +63,7 @@ return {
       },
     })
 
-    vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
-    vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
+    vim.keymap.set('n', '+t', '<Cmd>BufferLineCycleNext<CR>', {})
+    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', {})
   end,
 }
-

@@ -10,6 +10,7 @@
     - [Goodies](#goodies)
     - [F-Keys](#f-keys)
     - [Quickfix/Location List](#quickfixlocation-list)
+    - [Tabs](#tabs)
     - [Windows](#windows)
   - [Plugins](#plugins)
     - [bufferline.nvim](#bufferlinenvim)
@@ -90,6 +91,15 @@
 
 - See also [trouble.nvim](#troublenvim)
 
+### Tabs
+
+| Mode | Keymap | Description  |
+| ---- | ------ | ------------ |
+| `n`  | `gt`   | Next tab     |
+| `n`  | `gT`   | Previous tab |
+
+- See also [bufferline.nvim](#bufferlinenvim)
+
 ### Windows
 
 | Mode | Keymap         | Description                |
@@ -114,10 +124,12 @@
 
 [bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
 
-| Mode | Keymap    | Description        |
-| ---- | --------- | ------------------ |
-| `n`  | `<Tab>`   | Go to next tab     |
-| `n`  | `<S-Tab>` | Go to previous tab |
+| Mode | Keymap   | Description           |
+| ---- | -------- | --------------------- |
+| `n`  | ~~`+b`~~ | Go to next buffer     |
+| `n`  | ~~`üb`~~ | Go to previous buffer |
+| `n`  | `+t`     | Go to next tab        |
+| `n`  | `üt`     | Go to previous tab    |
 
 ### [codeium.vim]
 
