@@ -168,7 +168,7 @@ link() {
 
   # handle existing configuration
   if is_config "$dst"; then
-    # source is allready linked
+    # source is already linked
     if [[ -L "$dst" && $(readlink "$dst") == "$src" ]]; then
       success "Link '$dst_name' is already the correct link"
       return

@@ -11,7 +11,7 @@ return {
     },
   },
   opts = {
-    input_buffer_type = 'dressing',
+    -- input_buffer_type = 'dressing',
   },
   -- config = function(_, opts)
   --   require('inc_rename').setup(opts)

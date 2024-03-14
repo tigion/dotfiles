@@ -5,9 +5,13 @@ return {
   },
   opts = {
     window = {
+      -- width = 160,
       options = {
-        --number = false,
+        -- number = false,
       },
+    },
+    plugins = {
+      -- tmux = { enabled = true },
     },
   },
 }

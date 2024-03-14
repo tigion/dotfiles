@@ -1,5 +1,5 @@
 return {
-  'lukas-reineke/indent-blankline.nvim', -- highlight indention level
+  'lukas-reineke/indent-blankline.nvim', -- highlight indentation level
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = { 'nvim-tree/nvim-tree.lua' }, -- treesitter
   main = 'ibl',
@@ -31,4 +31,3 @@ return {
     },
   },
 }
-

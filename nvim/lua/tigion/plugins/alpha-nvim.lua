@@ -9,23 +9,6 @@ return {
     local buttonWidth = 40
 
     -- Banner
-    -- local banner = {
-    --   '                                                    ',
-    --   ' ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
-    --   ' ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ',
-    --   ' ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ',
-    --   ' ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ',
-    --   ' ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
-    --   ' ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
-    --   '                                                    ',
-    -- }
-    -- local banner = {
-    --   '  _______                     __            ',
-    --   ' |    |  |.-----.-----.--.--.|__|.--------. ',
-    --   ' |       ||  -__|  _  |  |  ||  ||        | ',
-    --   ' |__|____||_____|_____|\\___/ |__||__|__|__| ',
-    -- }
-
     local banner = {
       '  _  _             _        ',
       ' | \\| |___ _____ _(_)_ __   ',
@@ -44,7 +27,8 @@ return {
       dashboard.button('f', '󰱼 Find file', ':Telescope find_files<CR>'),
       dashboard.button('g', '󰺮 Find text', ':Telescope live_grep <CR>'),
       dashboard.button('h', '󱤇 Find help tag', ':Telescope help_tags <CR>'),
-      dashboard.button('s', ' Settings', ':cd ' .. vim.fn.stdpath('config') .. '<CR> :e .<CR>'),
+      -- dashboard.button('s', ' Settings', ':cd ' .. vim.fn.stdpath('config') .. '<CR> :e .<CR>'),
+      dashboard.button('s', ' Settings', ':cd ' .. vim.fn.stdpath('config') .. '<CR>:NvimTreeOpen<CR>'),
       dashboard.button('p', ' Check plugins', ':Lazy check<CR>'),
       dashboard.button('c', ' Check health', ':checkhealth<CR>'),
       dashboard.button('q', ' Quit', ':qa<CR>'),
