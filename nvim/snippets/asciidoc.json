@@ -2,52 +2,52 @@
   "header 1": {
     "prefix": "h1",
     "body": ["= ${0}"],
-    "description": "Add header level 1"
+    "description": "Insert header level 1"
   },
   "header 2": {
     "prefix": "h2",
     "body": ["== ${0}"],
-    "description": "Add header level 2"
+    "description": "Insert header level 2"
   },
   "header 3": {
     "prefix": "h3",
     "body": ["=== ${0}"],
-    "description": "Add header level 3"
+    "description": "Insert header level 3"
   },
   "header 4": {
     "prefix": "h4",
     "body": ["==== ${0}"],
-    "description": "Add header level 4"
+    "description": "Insert header level 4"
   },
   "header 5": {
     "prefix": "h5",
     "body": ["===== ${0}"],
-    "description": "Add header level 5"
+    "description": "Insert header level 5"
   },
   "header 6": {
     "prefix": "h6",
     "body": ["====== ${0}"],
-    "description": "Add header level 6"
+    "description": "Insert header level 6"
   },
 
-  "Link": {
-    "prefix": ["l", "link"],
+  "link macro": {
+    "prefix": "link",
     "body": ["${1:url}[${2:text}] ${0}"],
-    "description": "Add link macro with text"
+    "description": "Insert link macro with text"
   },
 
-  "Image Macro": {
-    "prefix": "img",
+  "image Macro": {
+    "prefix": "image",
     "body": ["image::${1:path}[\"${2:alt text}\"]", "${0}"],
-    "description": "Add block image macro"
+    "description": "Insert block image macro"
   },
-  "Image Macro 2": {
-    "prefix": "img+",
+  "image Macro 2": {
+    "prefix": "image+",
     "body": [".${3:title}", "image::${1:path}[\"${2:alt text}\"]", "${0}"],
-    "description": "Add block image macro with title"
+    "description": "Insert block image macro with title"
   },
-  "Image Macro 3": {
-    "prefix": "img++",
+  "image Macro 3": {
+    "prefix": "image++",
     "body": [
       ":imageTitle: ${2:title}",
       ":imageFile: ${1:path}",
@@ -56,37 +56,396 @@
       "image::{imageFile}[title=\"{imageTitle}\", alt=\"{imageTitle}\", id=\"{imageID}\", width={imageWidth}]",
       "${0}"
     ],
-    "description": "Add block image macro with title and attributes"
+    "description": "Insert block image macro with title and attributes"
   },
 
-  "Insert bold text": {
+  "bold text": {
     "prefix": ["bold", "b"],
     "body": "*${1}* $0",
     "description": "Insert bold text"
   },
-  "Insert italic text": {
-    "prefix": ["i", "italic"],
+  "italic text": {
+    "prefix": ["italic", "i"],
     "body": "_${1}_ $0",
     "description": "Insert italic text"
   },
-  "Insert monospace text": {
-    "prefix": ["monospace", "code-inline"],
+  "monospace text": {
+    "prefix": ["monospace", "code"],
     "body": "`${1}` $0",
     "description": "Insert monospace text"
   },
-  "Insert bold and italic text": {
+  "bold and italic text": {
     "prefix": ["bold and italic", "bi"],
     "body": "*_${1}_* $0",
     "description": "Insert bold and italic text"
   },
-  "Insert strikethrough text": {
+  "marked text": {
+    "prefix": ["mark"],
+    "body": "#${1}# $0",
+    "description": "Insert marked text"
+  },
+  "strikethrough text": {
     "prefix": "strikethrough",
     "body": "[.line-through]#${1}# ${0}",
     "description": "Insert strikethrough text"
   },
-  "Insert underline text": {
+  "underline text": {
     "prefix": "underline",
     "body": "[.underline]#${1}# ${0}",
     "description": "Insert underline text"
+  },
+  "overline text": {
+    "prefix": "overline",
+    "body": "[.overline]#${1}# ${0}",
+    "description": "Insert overline text"
+  },
+  "small text": {
+    "prefix": "small",
+    "body": "[.small]#${1}# ${0}",
+    "description": "Insert small text"
+  },
+  "big text": {
+    "prefix": "big",
+    "body": "[.big]#${1}# ${0}",
+    "description": "Insert big text"
+  },
+  "superscript text": {
+    "prefix": "superscript",
+    "body": "^${1}^${0}",
+    "description": "Insert superscript text"
+  },
+  "subscript text": {
+    "prefix": "subscript",
+    "body": "~${1}~${0}",
+    "description": "Insert subscript text"
+  },
+
+  "code block": {
+    "prefix": "code block",
+    "body": ["[source,${1:language}]", "----", "$0", "----"],
+    "description": "Insert source code block"
+  },
+  "code block 2": {
+    "prefix": "code block+",
+    "body": [".${2:title}", "[source,${1:language}]", "----", "$0", "----"],
+    "description": "Insert source code block with title"
+  },
+
+  "listing paragraph": {
+    "prefix": "listing paragraph",
+    "body": ["[listing]", "$0"],
+    "description": "Insert listing block as paragraph"
+  },
+  "listing block": {
+    "prefix": "listing block",
+    "body": ["----", "$0", "----"],
+    "description": "Insert listing block"
+  },
+
+  "literal paragraph": {
+    "prefix": "literal paragraph",
+    "body": ["[literal]", "$0"],
+    "description": "Insert literal block as paragraph"
+  },
+  "literal block": {
+    "prefix": "literal block",
+    "body": ["....", "$0", "...."],
+    "description": "Insert literal block"
+  },
+
+  "example paragraph": {
+    "prefix": "example paragraph",
+    "body": ["[example]", "$0"],
+    "description": "Insert example block as paragraph"
+  },
+  "example paragraph 2": {
+    "prefix": "example paragraph+",
+    "body": [".${1:title}", "[example]", "$0"],
+    "description": "Insert example block as paragraph with title"
+  },
+  "example block": {
+    "prefix": "example block",
+    "body": ["====", "$0", "===="],
+    "description": "Insert example block"
+  },
+  "example block 2": {
+    "prefix": "example block+",
+    "body": [".${1:title}", "====", "$0", "===="],
+    "description": "Insert example block with title"
+  },
+
+  "sidebar paragraph": {
+    "prefix": "sidebar paragraph",
+    "body": ["[sidebar]", "$0"],
+    "description": "Insert sidebar block as paragraph"
+  },
+  "sidebar paragraph 2": {
+    "prefix": "sidebar paragraph+",
+    "body": [".${1:title}", "[sidebar]", "$0"],
+    "description": "Insert sidebar block as paragraph with title"
+  },
+  "sidebar block": {
+    "prefix": "sidebar",
+    "body": ["****", "$0", "****"],
+    "description": "Insert sidebar block"
+  },
+  "sidebar block 2": {
+    "prefix": "sidebar+",
+    "body": [".${1:title}", "****", "$0", "****"],
+    "description": "Insert sidebar block with title"
+  },
+
+  "quote paragraph": {
+    "prefix": "quote paragraph",
+    "body": [
+      "[quote, ${1:attribution}, \"${2:citation title and information}\"]",
+      "$0"
+    ],
+    "description": "Insert quote block as paragraph"
+  },
+  "quote paragraph 2": {
+    "prefix": "quote paragraph+",
+    "body": [
+      ".${3:title}",
+      "[quote, ${1:attribution}, \"${2:citation title and information}\"]",
+      "$0"
+    ],
+    "description": "Insert quote block as paragraph with title"
+  },
+  "quote paragraph 3": {
+    "prefix": "quote paragraph",
+    "body": [
+      "\"$0\"",
+      "-- ${1:attribution}, ${2:citation title and information}"
+    ],
+    "description": "Insert quote block as paragraph"
+  },
+  "quote block": {
+    "prefix": "quote block",
+    "body": [
+      "[quote, ${1:attribution}, \"${2:citation title and information}\"]",
+      "----",
+      "$0",
+      "----"
+    ],
+    "description": "Insert quote block"
+  },
+  "quote block 2": {
+    "prefix": "quote block+",
+    "body": [
+      ".${3:title}",
+      "[quote, ${1:attribution}, \"${2:citation title and information}\"]",
+      "----",
+      "$0",
+      "----"
+    ],
+    "description": "Insert quote block with title"
+  },
+
+  "verse paragraph": {
+    "prefix": "verse paragraph",
+    "body": [
+      "[verse, ${1:attribution}, \"${2:citation title and information}\"]",
+      "$0"
+    ],
+    "description": "Insert verse block as paragraph"
+  },
+  "verse block": {
+    "prefix": "verse block",
+    "body": [
+      "[verse, ${1:attribution}, \"${2:citation title and information}\"]",
+      "____",
+      "$0",
+      "____"
+    ],
+    "description": "Insert verse block"
+  },
+
+  "open block": {
+    "prefix": "open block",
+    "body": ["--", "$0", "--"],
+    "description": "Insert open block"
+  },
+
+  "collapsible paragraph": {
+    "prefix": "collapsible paragraph",
+    "body": ["[example%collapsible]", "$0"],
+    "description": "Insert collapsible block as paragraph"
+  },
+  "collapsible block": {
+    "prefix": "collapsible block",
+    "body": ["[%collapsible]", "====", "$0", "===="],
+    "description": "Insert collapsible block"
+  },
+  "collapsible block 2": {
+    "prefix": "collapsible block+",
+    "body": [".${1:title}", "[%collapsible]", "====", "$0", "===="],
+    "description": "Insert collapsible block with title"
+  },
+  "collapsible block 3": {
+    "prefix": "collapsible block in block+",
+    "body": [
+      ".${1:title}",
+      "[%collapsible]",
+      "====",
+      "=====",
+      "$0",
+      "=====",
+      "===="
+    ],
+    "description": "Insert collapsible block with title and inner block"
+  },
+  "collapsible block 4": {
+    "prefix": "collapsible code in block+",
+    "body": [
+      ".${1:title}",
+      "[%collapsible]",
+      "====",
+      "[source,${2:language}]",
+      "----",
+      "$0",
+      "----",
+      "===="
+    ],
+    "description": "Insert collapsible block with title and inner code block"
+  },
+
+  "note paragraph": {
+    "prefix": ["note"],
+    "body": "NOTE: $0",
+    "description": "Insert NOTE admonition block as paragraph"
+  },
+  "note block": {
+    "prefix": ["note"],
+    "body": ["[NOTE]", "====", "$0", "===="],
+    "description": "Insert NOTE block"
+  },
+  "note block 2": {
+    "prefix": ["note+"],
+    "body": ["[NOTE]", ".${1:title}", "====", "$0", "===="],
+    "description": "Insert NOTE block"
+  },
+  "tip paragraph": {
+    "prefix": ["TIP"],
+    "body": "TIP: $0",
+    "description": "Insert TIP admonition block as paragraph"
+  },
+  "tip block": {
+    "prefix": ["TIP"],
+    "body": ["[TIP]", "====", "$0", "===="],
+    "description": "Insert TIP block"
+  },
+  "tip block 2": {
+    "prefix": ["TIP+"],
+    "body": ["[TIP]", ".${1:title}", "====", "$0", "===="],
+    "description": "Insert TIP block"
+  },
+  "important paragraph": {
+    "prefix": ["IMPORTANT"],
+    "body": "IMPORTANT: $0",
+    "description": "Insert IMPORTANT admonition block as paragraph"
+  },
+  "important block": {
+    "prefix": ["IMPORTANT"],
+    "body": ["[IMPORTANT]", "====", "$0", "===="],
+    "description": "Insert IMPORTANT block"
+  },
+  "important block 2": {
+    "prefix": ["IMPORTANT+"],
+    "body": ["[IMPORTANT]", ".${1:title}", "====", "$0", "===="],
+    "description": "Insert IMPORTANT block"
+  },
+  "caution paragraph": {
+    "prefix": ["CAUTION"],
+    "body": "CAUTION: $0",
+    "description": "Insert CAUTION admonition block as paragraph"
+  },
+  "caution block": {
+    "prefix": ["CAUTION"],
+    "body": ["[CAUTION]", "====", "$0", "===="],
+    "description": "Insert CAUTION block"
+  },
+  "caution block 2": {
+    "prefix": ["CAUTION+"],
+    "body": ["[CAUTION]", ".${1:title}", "====", "$0", "===="],
+    "description": "Insert CAUTION block"
+  },
+  "warning paragraph": {
+    "prefix": ["WARNING"],
+    "body": "WARNING: $0",
+    "description": "Insert WARNING admonition block as paragraph"
+  },
+  "warning block": {
+    "prefix": ["WARNING"],
+    "body": ["[WARNING]", "====", "$0", "===="],
+    "description": "Insert WARNING block"
+  },
+  "warning block 2": {
+    "prefix": ["WARNING+"],
+    "body": ["[WARNING]", ".${1:title}", "====", "$0", "===="],
+    "description": "Insert WARNING block"
+  },
+
+  "keyboard macro": {
+    "prefix": "keyboard macro",
+    "body": "kbd:[${1:key}] $0",
+    "description": "Insert keyboard key"
+  },
+  "keyboard macro 2": {
+    "prefix": "keyboard macro",
+    "body": "kbd:[${1:key}+${2:key}] $0",
+    "description": "Insert keyboard key sequence"
+  },
+  "button macro": {
+    "prefix": "button macro",
+    "body": "btn:[${1:text}] $0",
+    "description": "Insert button"
+  },
+  "menu macro": {
+    "prefix": "menu macro",
+    "body": "menu:${1:menu}[${2:item}] $0",
+    "description": "Insert menu with item"
+  },
+  "menu macro 2": {
+    "prefix": "menu macro",
+    "body": "menu:${1:menu}[${2:item} > ${3:subitem}] $0",
+    "description": "Insert menu with subitem"
+  },
+  "menu macro 3": {
+    "prefix": "menu macro",
+    "body": "menu:${1:menu}[${2:item} > ${3:subitem} > ${4:subsubitem}] $0",
+    "description": "Insert menu with subsubitem"
+  },
+  "icon macro": {
+    "prefix": "icon macro",
+    "body": "icon:${1:icon}[] $0",
+    "description": "Insert icon"
+  },
+
+  "comment": {
+    "prefix": "comment",
+    "body": "// $0",
+    "description": "Insert comment"
+  },
+  "comment block": {
+    "prefix": "comment block",
+    "body": ["////", "$0", "////"],
+    "description": "Insert comment"
+  },
+
+  "horizontal rule": {
+    "prefix": "horizontal rule",
+    "body": "'''\n",
+    "description": "Insert horizontal rule"
+  },
+  "horizontal rule 2": {
+    "prefix": "horizontal rule",
+    "body": "---\n",
+    "description": "Insert horizontal rule"
+  },
+  "page break": {
+    "prefix": "page break",
+    "body": "<<<\n",
+    "description": "Insert page break"
   }
 }
