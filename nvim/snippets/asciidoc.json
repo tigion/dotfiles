@@ -1,0 +1,92 @@
+{
+  "header 1": {
+    "prefix": "h1",
+    "body": ["= ${0}"],
+    "description": "Add header level 1"
+  },
+  "header 2": {
+    "prefix": "h2",
+    "body": ["== ${0}"],
+    "description": "Add header level 2"
+  },
+  "header 3": {
+    "prefix": "h3",
+    "body": ["=== ${0}"],
+    "description": "Add header level 3"
+  },
+  "header 4": {
+    "prefix": "h4",
+    "body": ["==== ${0}"],
+    "description": "Add header level 4"
+  },
+  "header 5": {
+    "prefix": "h5",
+    "body": ["===== ${0}"],
+    "description": "Add header level 5"
+  },
+  "header 6": {
+    "prefix": "h6",
+    "body": ["====== ${0}"],
+    "description": "Add header level 6"
+  },
+
+  "Link": {
+    "prefix": ["l", "link"],
+    "body": ["${1:url}[${2:text}] ${0}"],
+    "description": "Add link macro with text"
+  },
+
+  "Image Macro": {
+    "prefix": "img",
+    "body": ["image::${1:path}[\"${2:alt text}\"]", "${0}"],
+    "description": "Add block image macro"
+  },
+  "Image Macro 2": {
+    "prefix": "img+",
+    "body": [".${3:title}", "image::${1:path}[\"${2:alt text}\"]", "${0}"],
+    "description": "Add block image macro with title"
+  },
+  "Image Macro 3": {
+    "prefix": "img++",
+    "body": [
+      ":imageTitle: ${2:title}",
+      ":imageFile: ${1:path}",
+      ":imageWidth: ${3:width}",
+      ":imageID: ${4:id}",
+      "image::{imageFile}[title=\"{imageTitle}\", alt=\"{imageTitle}\", id=\"{imageID}\", width={imageWidth}]",
+      "${0}"
+    ],
+    "description": "Add block image macro with title and attributes"
+  },
+
+  "Insert bold text": {
+    "prefix": ["bold", "b"],
+    "body": "*${1}* $0",
+    "description": "Insert bold text"
+  },
+  "Insert italic text": {
+    "prefix": ["i", "italic"],
+    "body": "_${1}_ $0",
+    "description": "Insert italic text"
+  },
+  "Insert monospace text": {
+    "prefix": ["monospace", "code-inline"],
+    "body": "`${1}` $0",
+    "description": "Insert monospace text"
+  },
+  "Insert bold and italic text": {
+    "prefix": ["bold and italic", "bi"],
+    "body": "*_${1}_* $0",
+    "description": "Insert bold and italic text"
+  },
+  "Insert strikethrough text": {
+    "prefix": "strikethrough",
+    "body": "[.line-through]#${1}# ${0}",
+    "description": "Insert strikethrough text"
+  },
+  "Insert underline text": {
+    "prefix": "underline",
+    "body": "[.underline]#${1}# ${0}",
+    "description": "Insert underline text"
+  }
+}
