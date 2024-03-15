@@ -13,7 +13,6 @@ vim/.vim/pack/*
 vim/.vim/spell/*
 
 # nvim
-nvim/**/packer_compiled.lua
 nvim/**/.luarc.json
 nvim/spell/*
 
