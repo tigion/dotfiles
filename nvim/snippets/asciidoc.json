@@ -36,17 +36,17 @@
     "description": "Insert link macro with text"
   },
 
-  "image Macro": {
+  "image macro": {
     "prefix": "image",
     "body": ["image::${1:path}[\"${2:alt text}\"]", "${0}"],
     "description": "Insert block image macro"
   },
-  "image Macro 2": {
+  "image macro 2": {
     "prefix": "image+",
     "body": [".${3:title}", "image::${1:path}[\"${2:alt text}\"]", "${0}"],
     "description": "Insert block image macro with title"
   },
-  "image Macro 3": {
+  "image macro 3": {
     "prefix": "image++",
     "body": [
       ":imageTitle: ${2:title}",
@@ -118,6 +118,37 @@
     "prefix": "subscript",
     "body": "~${1}~${0}",
     "description": "Insert subscript text"
+  },
+
+  "unordered list": {
+    "prefix": "unordered list",
+    "body": ["* ${1:text}", "* ${2:text}", "* ${3:text}", "$0"],
+    "description": "Insert unordered list"
+  },
+  "ordered list": {
+    "prefix": "ordered list",
+    "body": [". ${1:text}", ". ${2:text}", ". ${3:text}", "$0"],
+    "description": "Insert ordered list"
+  },
+  "check list": {
+    "prefix": "check list",
+    "body": [
+      "* [${1| ,x|}] ${2:text}",
+      "* [${3| ,x|}] ${4:text}",
+      "* [${5| ,x|}] ${6:text}",
+      "${0}"
+    ],
+    "description": "Insert check list"
+  },
+  "description list": {
+    "prefix": "description list",
+    "body": [
+      "${1:term}:: ${2:description}",
+      "${3:term}:: ${4:description}",
+      "${5:term}:: ${6:description}",
+      "${0}"
+    ],
+    "description": "Insert description list"
   },
 
   "code block": {
@@ -435,17 +466,95 @@
 
   "horizontal rule": {
     "prefix": "horizontal rule",
-    "body": "'''\n",
+    "body": ["'''", "$0"],
     "description": "Insert horizontal rule"
   },
   "horizontal rule 2": {
     "prefix": "horizontal rule",
-    "body": "---\n",
+    "body": ["---", "$0"],
     "description": "Insert horizontal rule"
   },
   "page break": {
     "prefix": "page break",
-    "body": "<<<\n",
+    "body": ["<<<", "$0"],
     "description": "Insert page break"
+  },
+
+  "table": {
+    "prefix": "table",
+    "body": [
+      ".${13:title}",
+      "[cols=\"1,1,1\"]",
+      "|===",
+      "| ${1:column1} | ${2:column2} | ${3:column3}",
+      "",
+      "| ${4:cell1.1} | ${5:cell1.2} | ${6:cell1.3}",
+      "| ${7:cell2.1} | ${8:cell2.2} | ${9:cell2.3}",
+      "| ${10:cell3.1} | ${11:cell3.2} | ${12:cell3.3}",
+      "|===",
+      "$0"
+    ],
+    "description": "Insert 4x3 table with header"
+  },
+  "table 2": {
+    "prefix": "table",
+    "body": [
+      ".${13:title}",
+      "[%autowidth%header,cols=\"1,1,1\"]",
+      "|===",
+      "| ${1:column1} | ${2:column2} | ${3:column3}",
+      "",
+      "| ${4:cell1.1}",
+      "| ${5:cell1.2}",
+      "| ${6:cell1.3}",
+      "",
+      "| ${7:cell2.1}",
+      "| ${8:cell2.2}",
+      "| ${9:cell2.3}",
+      "",
+      "| ${10:cell3.1}",
+      "| ${11:cell3.2}",
+      "| ${12:cell3.3}",
+      "|===",
+      "$0"
+    ],
+    "description": "Insert 4x3 table with autowidth and header"
+  },
+
+  "diagram plantuml": {
+    "prefix": "diagram plantuml",
+    "body": [
+      ".${3:title}",
+      "[plantuml, \"${2:diagram-file}\", svg]",
+      "....",
+      "$0",
+      "...."
+    ],
+    "description": "Insert diagram with plantuml"
+  },
+  "diagram plantuml 2": {
+    "prefix": "diagram plantuml",
+    "body": [
+      ".${3:title}",
+      "[plantuml, \"${2:diagram-file}\", svg]",
+      "....",
+      "include::${1:diagram-file}.puml[]",
+      "....",
+      "$0"
+    ],
+    "description": "Insert diagram with plantuml"
+  },
+  "diagram plantuml 3": {
+    "prefix": "diagram plantuml",
+    "body": [
+      ":diagramFile: ${1:diagram-file}",
+      ".${2:title}",
+      "[plantuml, \"{diagramsdir}/{diagramFile}\", svg]",
+      "....",
+      "include::{plantumlsdir}/{diagramFile}.puml[]",
+      "....",
+      "$0"
+    ],
+    "description": "Insert diagram with plantuml"
   }
 }
