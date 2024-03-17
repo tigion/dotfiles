@@ -3,10 +3,12 @@
   "contributes": {
     "snippets": [
       {
-        "language": [
-          "asciidoc"
-        ],
+        "language": "asciidoc",
         "path": "./asciidoc.json"
+      },
+      {
+        "language": "asciidoc",
+        "path": "./asciidoc_user.json"
       }
     ]
   }

@@ -1,0 +1,71 @@
+{
+  "document attributes": {
+    "prefix": "document attributes++ (ti)",
+    "body": [
+      "// author, revision",
+      "${1:author} <${2:email}>; ${3:author} <${4:email}>",
+      "{localdatetime}",
+      "// metadata (for HTML generation)",
+      "// :description:",
+      "// :keywords:",
+      "// settings",
+      ":doctype: ${5:article}",
+      ":toc:",
+      ":toclevels: ${6:3}",
+      ":sectnums:",
+      ":xrefstyle: ${7:full}",
+      ":icons: font",
+      ":source-highlighter: highlight.js",
+      "// :source-highlighter: rouge",
+      "// :rouge-style: github",
+      ":experimental:",
+      "// hyphenation (for PDF generation, gem text-hyphen is required)",
+      ":hyphens:",
+      "// language settings",
+      ":lang: DE",
+      ":toc-title: Inhaltsverzeichnis",
+      ":figure-caption: Abbildung",
+      ":table-caption: Tabelle",
+      "// :listing-caption: Code",
+      ":!listing-caption:",
+      "// :example-caption: Beispiel",
+      ":!example-caption:",
+      "// directory settings",
+      "ifndef::imagesdir[:imagesdir: images]",
+      "ifndef::diagramsdir[:diagramsdir: diagrams]",
+      "ifndef::plantumlsdir[:plantumlsdir: plantuml]",
+      "// user attributes",
+      "// is main document",
+      ":main-document:",
+      "$0"
+    ],
+    "description": "Insert document attributes (de)"
+  },
+
+  "image macro": {
+    "prefix": "image++ (ti)",
+    "body": [
+      ":imageTitle: ${1:title}",
+      ":imageFile: ${2:filepath}",
+      ":imageWidth: ${3:width}",
+      ":imageID: ${4:id}",
+      "image::{imageFile}[title=\"{imageTitle}\", alt=\"{imageTitle}\", id=\"{imageID}\", width={imageWidth}]",
+      "$0"
+    ],
+    "description": "Insert block image macro with title and attributes"
+  },
+
+  "diagram plantuml": {
+    "prefix": "diagram plantuml+ (ti)",
+    "body": [
+      ":diagramFile: ${1:file-without-extension}",
+      ".${2:title}",
+      "[plantuml, \"{diagramsdir}/{diagramFile}\", svg]",
+      "....",
+      "include::{plantumlsdir}/{diagramFile}.puml[]",
+      "....",
+      "$0"
+    ],
+    "description": "Insert diagram with plantuml via include"
+  }
+}
