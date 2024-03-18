@@ -74,12 +74,12 @@
 
   "custom id": {
     "prefix": ["custom id"],
-    "body": ["[#${1:id}]", "$0"],
+    "body": "[#${1:id}]$0",
     "description": "Insert custom id"
   },
   "custom id 2": {
     "prefix": ["custom id"],
-    "body": ["[#${1:id},reftext=${2:text}]", "$0"],
+    "body": "[#${1:id},reftext=${2:text}]$0",
     "description": "Insert custom id with reference text"
   },
 
