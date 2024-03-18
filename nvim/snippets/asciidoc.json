@@ -1,12 +1,24 @@
 {
+  "document header": {
+    "prefix": "header",
+    "body": [
+      "= ${1:${TM_FILENAME_BASE:Document Title}}",
+      "${2:Author} <${3:author@email.com}>",
+      "${4:version}, ${5:${CURRENT_YEAR:year}-${CURRENT_MONTH:month}-${CURRENT_DATE:day}}${6:: remark}",
+      "${7::attributes:}",
+      "",
+      "$0"
+    ],
+    "description": "Insert document header"
+  },
   "document title": {
     "prefix": ["h1", "document title"],
-    "body": ["= ${1:title}", "$0"],
+    "body": ["= ${1:${TM_FILENAME_BASE:Document Title}}", "$0"],
     "description": "Insert header level 1"
   },
   "document title 2": {
     "prefix": ["h1", "document title+"],
-    "body": ["= ${1:title}: ${2:subtitle}", "$0"],
+    "body": ["= ${1:${TM_FILENAME_BASE:Document Title}}: ${2:subtitle}", "$0"],
     "description": "Insert header level 1 with subtitle"
   },
 
@@ -150,20 +162,20 @@
 
   "unordered list": {
     "prefix": "unordered list",
-    "body": ["* ${1:text}", "* ${2:text}", "* ${3:text}", "$0"],
+    "body": ["* ${1:first}", "* ${2:second}", "* ${3:third}", "$0"],
     "description": "Insert unordered list"
   },
   "ordered list": {
     "prefix": "ordered list",
-    "body": [". ${1:text}", ". ${2:text}", ". ${3:text}", "$0"],
+    "body": [". ${1:first}", ". ${2:second}", ". ${3:third}", "$0"],
     "description": "Insert ordered list"
   },
   "check list": {
     "prefix": "check list",
     "body": [
-      "* [${1: }] ${2:text}",
-      "* [${3: }] ${4:text}",
-      "* [${5: }] ${6:text}",
+      "* [${1: }] ${2:first}",
+      "* [${3: }] ${4:second}",
+      "* [${5: }] ${6:third}",
       "$0"
     ],
     "description": "Insert check list"
@@ -179,10 +191,20 @@
     "description": "Insert description list"
   },
 
+  "link simple": {
+    "prefix": "link",
+    "body": "${1:${TM_SELECTED_TEXT:link}}[${2:alt}]$0",
+    "description": "Insert simple link"
+  },
   "link macro": {
     "prefix": "link",
-    "body": ["${1:url}[${2:text}] $0"],
+    "body": ["${1:${TM_SELECTED_TEXT:link}}[${2:alt}] $0"],
     "description": "Insert link macro with text"
+  },
+  "mailto link": {
+    "prefix": "mailto",
+    "body": "mailto:${1:${TM_SELECTED_TEXT:link}}[${2:alt}]$0",
+    "description": "Insert mailto link"
   },
 
   "cross reference": {
@@ -212,26 +234,31 @@
     "description": "Insert footnote macro with id"
   },
 
-  "image macro": {
+  "image inline": {
     "prefix": "image",
-    "body": ["image::${1:filepath}[\"${2:alt text}\"]", "$0"],
-    "description": "Insert block image macro"
+    "body": "image:${1:filepath}[${2:alt}]",
+    "description": "Insert image inline"
   },
-  "image macro 2": {
+  "image block macro": {
+    "prefix": "image",
+    "body": ["image::${1:filepath}[\"${2:alt}\"]", "$0"],
+    "description": "Insert image block macro"
+  },
+  "image block macro 2": {
     "prefix": "image+",
-    "body": [".${1:title}", "image::${2:filepath}[\"${3:alt text}\"]", "$0"],
-    "description": "Insert block image macro with title"
+    "body": [".${1:title}", "image::${2:filepath}[\"${3:alt}\"]", "$0"],
+    "description": "Insert image block macro with title"
   },
 
-  "audio macro": {
+  "audio block": {
     "prefix": "audio macro",
     "body": ["audio::${1:filepath}[]", "$0"],
-    "description": "Include audio"
+    "description": "Include audio block"
   },
-  "video macro": {
+  "video block": {
     "prefix": "video macro",
     "body": ["video::${1:filepath}[]", "$0"],
-    "description": "Include video"
+    "description": "Include video block"
   },
 
   "icon macro": {

@@ -1,0 +1,10 @@
+{
+  "Insert heading": {
+    "prefix": "heading",
+    "body": [
+      "${1|=,==,===,====,=====,======|} ${2:${TM_SELECTED_TEXT:Heading Title}}",
+      "\n$0"
+    ],
+    "description": "Insert heading"
+  }
+}
