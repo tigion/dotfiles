@@ -13,9 +13,9 @@ return {
       -- javascriptreact = { 'eslint_d' },
       -- typescriptreact = { 'eslint_d' },
       -- svelte = { 'eslint_d' },
-      python = { 'pylint' },
+      -- python = { 'pylint' },
       -- python = { 'flake8' },
-      -- python = { "ruff" },
+      -- python = { 'ruff' }, -- replaced with ruff_lsp
       markdown = { 'markdownlint' },
     }
 

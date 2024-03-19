@@ -119,6 +119,7 @@ return {
         'marksman', -- Markdown
         'phpactor', -- PHP
         'pyright', -- Python
+        'ruff_ls', -- Python
         'tsserver', -- JavaScript, TypeScript
         'vimls', -- VimScript
         'yamlls', -- Yaml
@@ -190,11 +191,11 @@ return {
         'stylua', -- Lua (Formatter)
         'shellcheck', -- Shell (Linter)
         'shfmt', -- Shell (Formatter)
-        'pylint', -- Python (Linter)
+        -- 'pylint', -- Python (Linter)
         -- 'flake8', -- Python (Linter)
-        -- 'ruff', -- Python (Linter)
-        'black', -- Python (Formatter)
-        'isort', -- Python (Formatter: includes)
+        'ruff', -- Python (Linter/Formatter)
+        -- 'black', -- Python (Formatter)
+        -- 'isort', -- Python (Formatter: includes)
         'pint', -- PHP (Formatter)
         'eslint_d', -- JS/TS (Linter)
         'markdownlint', -- Markdown (Linter)
