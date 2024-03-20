@@ -119,7 +119,6 @@ return {
         'marksman', -- Markdown
         'phpactor', -- PHP
         'pyright', -- Python
-        'ruff_ls', -- Python
         'tsserver', -- JavaScript, TypeScript
         'vimls', -- VimScript
         'yamlls', -- Yaml
@@ -193,7 +192,8 @@ return {
         'shfmt', -- Shell (Formatter)
         -- 'pylint', -- Python (Linter)
         -- 'flake8', -- Python (Linter)
-        'ruff', -- Python (Linter/Formatter)
+        'ruff-lsp', -- Python (LSP/Linter/Formatter)
+        -- 'ruff', -- Python (Linter/Formatter)
         -- 'black', -- Python (Formatter)
         -- 'isort', -- Python (Formatter: includes)
         'pint', -- PHP (Formatter)

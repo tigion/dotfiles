@@ -13,12 +13,12 @@ return {
         lua = { 'stylua' },
         markdown = { 'prettier' },
         php = { 'pint' },
-        -- python = { 'isort', 'black' },
-        -- python = { 'black' },
-        python = {
-          -- 'ruff_fix', -- To fix lint errors.
-          'ruff_format', -- To run the Ruff formatter.
-        },
+        -- python = { 'isort', 'black' }, -- replaced with ruff-ls
+        -- python = { 'black' }, -- replaced with ruff-ls
+        -- python = { -- ruff is replaced with ruff-ls
+        --   'ruff_fix', -- To fix lint errors. (ruff with argument --fix)
+        --   'ruff_format', -- To run the formatter. (ruff with argument format)
+        -- },
         sh = { 'shfmt' },
         typescript = { 'prettier' },
         yaml = { 'prettier' },
