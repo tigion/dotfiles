@@ -8,7 +8,7 @@ Inspired by the many great dotfile repositories out there.
 >
 > The _install.sh_ and _update.sh_ are currently only for macOS.
 
-<img width="1024" alt="screenshot" src="docs/images/screenshot_20240221.png">
+![Screenshot](docs/images/screenshot_20240221.png)
 
 - Screenshot: [kitty](https://sw.kovidgoyal.net/kitty/)
   with [tmux](https://github.com/tmux/tmux/wiki)
