@@ -14,7 +14,7 @@ return {
     -- { 'L3MON4D3/LuaSnip' },   -- Required
 
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp', commit = 'b356f2c' }, -- FIX: Workaround for `list_contains` error: Pin to specific commit
+    { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-buffer' }, -- source for buffer words
     { 'hrsh7th/cmp-path' }, -- source for file and folder paths
     { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's built-in language server client
