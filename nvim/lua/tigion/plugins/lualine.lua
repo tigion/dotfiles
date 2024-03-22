@@ -30,22 +30,35 @@ return {
         theme = 'solarized-osaka',
         -- theme = custom_theme,
         section_separators = { left = '', right = '' },
-        component_separators = { left = '', right = '' },
+        -- component_separators = { left = '', right = '' },
+        component_separators = { left = '┊', right = '┊' },
         disabled_filetypes = {},
+        -- globalstatus = false,
       },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
-        lualine_c = { {
-          'filename',
-          file_status = true,
-          path = 0,
-        } },
+        lualine_c = {
+          { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
+          { 'filename', file_status = true, path = 0, padding = { left = 0, right = 1 } },
+          {
+            'diff',
+            -- symbols = {
+            --   added = icons.git.untracked,
+            --   modified = icons.git.unstaged,
+            --   removed = icons.git.deleted,
+            -- },
+          },
+        },
         lualine_x = {
           {
             'diagnostics',
             sources = { 'nvim_diagnostic' },
             symbols = icons.diagnostics,
+          },
+          {
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
           },
           { getCodeiumStatus },
           -- '%S󰘦 %3{codeium#GetStatusString()}',
@@ -59,11 +72,13 @@ return {
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { {
-          'filename',
-          file_status = true,
-          path = 1,
-        } },
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            path = 1,
+          },
+        },
         lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {},

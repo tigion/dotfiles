@@ -12,6 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
+  checker = {
+    enabled = true, -- automatically check for plugin updates
+    notify = false, -- get a notification when new updates are found
+  },
   dev = {
     --   path = '~/projects/neovim',
     --   -- patterns = { 'tigion' },
