@@ -4,12 +4,12 @@ local M = {}
 local diagnostics = {
   error = '', --  
   warn = '', -- 
-  hint = '', -- 󰌵 
+  hint = '󱧢', -- 󰌵 󱧢
   info = '', -- 
 }
 M.diagnostics = {}
 for k, v in pairs(diagnostics) do
-  v = v .. ' ' -- add needed space after icon
+  -- v = v .. ' ' -- add a space after icon
   M.diagnostics[k:lower()] = v
   M.diagnostics[k:sub(1, 1):upper() .. k:sub(2, -1):lower()] = v
 end
@@ -22,18 +22,28 @@ M.folding = {
 
 -- git
 M.git = {
-  unstaged = '', -- ✗ (modified)
-  staged = '', -- ✓
+  branch = '',
+
+  unstaged = '', --  󰛿 (modified)
+  staged = '', -- 
   -- unmerged  = '',
-  renamed = '󰛂', -- ➜
-  untracked = '', -- ★ (new)
-  deleted = '', -- 
-  ignored = '󰢤', -- ◌
+  renamed = '󰛂', -- 󰛂 󰁖󱖘󰁗
+  untracked = '', --  󰐗󰐙 (new)
+  deleted = '', --  󰍶󰍷
+  ignored = '󰢤', -- 󰢤◌
+}
+
+M.git.diff = {
+  added = M.git.untracked,
+  modified = M.git.unstaged,
+  removed = M.git.deleted,
 }
 
 -- tools
+M.neovim = ''
 M.telescope = ''
 M.codeium = '󰘦'
+M.copilot = ''
 
 -- code symbols
 M.code = {
@@ -47,7 +57,7 @@ M.code = {
   Component = '󰅴',
   Constant = '󰏿',
   Constructor = '',
-  Copilot = '',
+  Copilot = M.copilot,
   Enum = '',
   EnumMember = '',
   Event = '',

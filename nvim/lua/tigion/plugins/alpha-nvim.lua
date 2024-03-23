@@ -41,7 +41,7 @@ return {
       local print_version = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
       local date = os.date('%d.%m.%Y')
       --local datetime = os.date '%d.%m.%Y %H:%M'
-      return ' ' .. print_version .. '   ' .. pluginCount .. '   ' .. date
+      return ' ' .. print_version .. '   ' .. pluginCount .. '   ' .. date
     end
 
     dashboard.section.footer.val = footer()
