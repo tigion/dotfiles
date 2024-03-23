@@ -36,18 +36,25 @@ return {
         -- globalstatus = false,
       },
       sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
+        lualine_a = {
+          {
+            'mode',
+            -- icon = icons.neovim,
+          },
+        },
+        lualine_b = {
+          { 'branch', icon = icons.git.branch },
+        },
         lualine_c = {
           { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
           { 'filename', file_status = true, path = 0, padding = { left = 0, right = 1 } },
           {
             'diff',
-            -- symbols = {
-            --   added = icons.git.untracked,
-            --   modified = icons.git.unstaged,
-            --   removed = icons.git.deleted,
-            -- },
+            symbols = {
+              added = icons.git.diff.added,
+              modified = icons.git.diff.modified,
+              removed = icons.git.diff.removed,
+            },
           },
         },
         lualine_x = {
@@ -73,18 +80,14 @@ return {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {
-          {
-            'filename',
-            file_status = true,
-            path = 1,
-          },
+          { 'filename', file_status = true, path = 1 },
         },
         lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {},
       },
       tabline = {},
-      extensions = { 'nvim-tree' },
+      extensions = { 'nvim-tree', 'trouble' },
     })
   end,
 }
