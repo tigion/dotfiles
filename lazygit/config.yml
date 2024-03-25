@@ -1,7 +1,7 @@
 gui:
   language: "auto"
   mouseEvents: true
-  showBottomLine: false
+  # showBottomLine: false
   #showIcons: true
   nerdFontsVersion: "3"
 os:
@@ -11,4 +11,3 @@ os:
   editAtLine: "{{editor}} +{{line}} -- {{filename}}"
 git:
   disableForcePushing: true
-
