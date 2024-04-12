@@ -3,6 +3,11 @@
 
 local keymap = vim.keymap
 
+-- Set <space> as the leader key
+-- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Goodies
 
 keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
@@ -75,13 +80,16 @@ keymap.set(
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = 'Search and replace word under cursor' }
 )
+-- increment/decrement numbers
+keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
+keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 -- keymap.set('n', 'dw', 'vb"_d', { desc = 'Delete a word backwards not forwards' })
 
 -- Windows
 
 -- Split window
-keymap.set('n', 'sh', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
+keymap.set('n', 'sh', ':split<Return>', { desc = 'Split window horizontally' })
+keymap.set('n', 'sv', ':vsplit<Return>', { desc = 'Split window vertically' })
 -- Switch window
 -- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
 keymap.set('', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
