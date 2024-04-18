@@ -68,3 +68,6 @@ fi
 
 # clean up duplicates in $PATH (zsh feature)
 typeset -U path
+
+# --- fzf ---
+eval "$(fzf --zsh)"
