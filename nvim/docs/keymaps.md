@@ -316,22 +316,23 @@ CMP - Completion Menu:
 
 In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings)):
 
-| Mode    | Keymap                     | Description                          |
-| ------- | -------------------------- | ------------------------------------ |
-| `i`,`n` | `<CR>`                     | Confirm selected item                |
-| `i`     | `<C-j>` (`<C-n>`/`<Down>`) | Move down                            |
-| `i`     | `<C-k>` (`<C-p>`/`<Up>`)   | Move up                              |
-| `n`     | `q` (`<Esc>`)              | Close Telescope                      |
-| `i`     | `<Esc>` (`<C-c>`)          | Close Telescope                      |
-| `i`     | `<Tab>`                    | Toggle selection                     |
-| `i`     | `<C-q>`                    | Send selected items to quickfix list |
-| `i`     | `<C-h>`                    | Show help                            |
-|         | `<C-x>`                    | Go to file selection as a split      |
-|         | `<C-v>`                    | Go to file selection as a vsplit     |
-|         | `<C-u>`                    | Scroll up in preview window          |
-|         | `<C-d>`                    | Scroll down in preview window        |
-|         | ⚠️ `<C-f>`                 | Scroll left in preview window        |
-|         | ⚠️ `<C-b>`                 | Scroll right in preview window       |
+| Mode    | Keymap                     | Description                                 |
+| ------- | -------------------------- | ------------------------------------------- |
+| `i`,`n` | `<CR>`                     | Confirm selected item                       |
+| `i`     | `<C-j>` (`<C-n>`/`<Down>`) | Move down                                   |
+| `i`     | `<C-k>` (`<C-p>`/`<Up>`)   | Move up                                     |
+| `n`     | `q` (`<Esc>`)              | Close Telescope                             |
+| `i`     | `<Esc>` (`<C-c>`)          | Close Telescope                             |
+| `i`     | `<Tab>`                    | Toggle selection of an item                 |
+| `i`     | `<S-Tab>`                  | Toggle selection of all items               |
+| `i`     | `<C-q>`                    | Send all or selected items to quickfix list |
+| `i`     | `<C-h>`                    | Show help                                   |
+|         | `<C-x>`                    | Go to file selection as a split             |
+|         | `<C-v>`                    | Go to file selection as a vsplit            |
+|         | `<C-u>`                    | Scroll up in preview window                 |
+|         | `<C-d>`                    | Scroll down in preview window               |
+|         | ⚠️ `<C-f>`                 | Scroll left in preview window               |
+|         | ⚠️ `<C-b>`                 | Scroll right in preview window              |
 
 ### [todo-comments.nvim]
 

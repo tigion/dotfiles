@@ -27,10 +27,11 @@ return {
             },
             i = {
               ['<Esc>'] = actions.close,
-              ['<C-k>'] = actions.move_selection_previous, -- move to prev result
-              ['<C-j>'] = actions.move_selection_next, -- move to next result
-              ['<Tab>'] = actions.toggle_selection,
-              ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
+              ['<C-k>'] = actions.move_selection_previous,
+              ['<C-j>'] = actions.move_selection_next,
+              ['<Tab>'] = actions.toggle_selection, -- toggle selection of an item (replace default behavior)
+              ['<S-Tab>'] = actions.toggle_all, -- toggle selection of all items (replace default behavior)
+              ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist, -- send smart (all or selected items) to quickfix list (replace default behavior)
               ['<C-h>'] = 'which_key', -- help
               -- ['<C-h>'] = actions.preview_scrolling_left,
               -- ['<C-l>'] = actions.preview_scrolling_right,
