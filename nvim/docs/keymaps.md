@@ -234,8 +234,8 @@ CMP - Completion Menu:
 | `i`  | `<C-e>`           | Cancel completion                                 |
 | `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
 | `i`  | `<C-Space>`       | Trigger completion menu                           |
-|      | `<Down>`          | Go to the next item                               |
-|      | `<Up>`            | Go to the previous item                           |
+| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
+| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
 | `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
 | `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
 |      | `<C-f>`           | Go to next snippet placeholder                    |

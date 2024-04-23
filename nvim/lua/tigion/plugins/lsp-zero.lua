@@ -241,14 +241,19 @@ return {
         -- <Ctrl-n>: If the completion menu is visible, go to the next item. Else, trigger completion menu.
         -- <Ctrl-p>: If the completion menu is visible, go to the previous item. Else, trigger completion menu.
 
-        -- `Enter` key to confirm completion
+        -- Navigate between suggestions
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+
+        -- Confirm completion
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
+        -- Confirm completion with replace
         -- TODO: <S-CR> Don't work in Tmux => fallback <C+r>
         ['<S-CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         ['<C-r>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 
-        -- Ctrl+Space to trigger completion menu
+        -- Trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
 
         -- Navigate between snippet placeholder
