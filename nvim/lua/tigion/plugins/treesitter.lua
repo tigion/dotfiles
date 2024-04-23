@@ -59,10 +59,6 @@ return {
           node_decremental = '<BS>',
         },
       },
-      -- for nvim-ts-context-commentstring
-      context_commentstring = {
-        enable = true,
-      },
     })
 
     local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
