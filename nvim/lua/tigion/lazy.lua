@@ -16,6 +16,9 @@ local opts = {
     enabled = true, -- automatically check for plugin updates
     notify = false, -- get a notification when new updates are found
   },
+  change_detection = {
+    notify = false,
+  },
   dev = {
     --   path = '~/projects/neovim',
     --   -- patterns = { 'tigion' },

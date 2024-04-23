@@ -323,8 +323,9 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `i`     | `<C-k>` (`<C-p>`/`<Up>`)   | Move up                                     |
 | `n`     | `q` (`<Esc>`)              | Close Telescope                             |
 | `i`     | `<Esc>` (`<C-c>`)          | Close Telescope                             |
-| `i`     | `<Tab>`                    | Toggle selection of an item                 |
-| `i`     | `<S-Tab>`                  | Toggle selection of all items               |
+| `i`     | `<Tab>`                    | Toggle selection and move to next selection |
+| `i`     | `<S-Tab>`                  | Toggle selection and move to prev selection |
+| `i`     | `<C-r>`                    | Toggle (reverse) selection of all items     |
 | `i`     | `<C-q>`                    | Send all or selected items to quickfix list |
 | `i`     | `<C-h>`                    | Show help                                   |
 |         | `<C-x>`                    | Go to file selection as a split             |

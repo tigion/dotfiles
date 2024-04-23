@@ -5,9 +5,12 @@ return {
     local tree = require('nvim-tree')
     local icons = require('tigion.core.icons')
 
+    -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
     tree.setup({
       -- disable_netrw = true,
-      hijack_netrw = false,
       filters = {
         dotfiles = false,
         custom = { '^\\.git$' }, -- ignore `.git` folder

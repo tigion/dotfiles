@@ -9,8 +9,7 @@ return {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy find
     },
     config = function()
-      local status, telescope = pcall(require, 'telescope')
-      if not status then return end
+      local telescope = require('telescope')
       local actions = require('telescope.actions')
       local builtin = require('telescope.builtin')
 
@@ -20,6 +19,7 @@ return {
       telescope.setup({
         defaults = {
           path_display = { 'truncate' },
+          -- path_display = { 'smart' },
           -- wrap_results = true,
           mappings = {
             n = {
@@ -29,8 +29,9 @@ return {
               ['<Esc>'] = actions.close,
               ['<C-k>'] = actions.move_selection_previous,
               ['<C-j>'] = actions.move_selection_next,
-              ['<Tab>'] = actions.toggle_selection, -- toggle selection of an item (replace default behavior)
-              ['<S-Tab>'] = actions.toggle_all, -- toggle selection of all items (replace default behavior)
+              -- ['<Tab>'] = actions.toggle_selection, -- toggle selection of an item (replace default behavior)
+              -- ['<S-Tab>'] = actions.toggle_all, -- toggle selection of all items (replace default behavior)
+              ['<C-r>'] = actions.toggle_all, -- toggle (reverse) selection of all items
               ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist, -- send smart (all or selected items) to quickfix list (replace default behavior)
               ['<C-h>'] = 'which_key', -- help
               -- ['<C-h>'] = actions.preview_scrolling_left,

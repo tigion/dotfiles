@@ -22,10 +22,6 @@ opt.titlestring = [[%{v:progname} ┊ %t]]
 -- Shell
 opt.shell = 'zsh'
 
--- Disable netrw (for nvim-tree, telescope-file-browser)
---vim.g.loaded_netrw = 1
---vim.g.loaded_netrwPlugin = 1
-
 -- Colors / Transparency
 opt.termguicolors = true
 opt.background = 'dark'
