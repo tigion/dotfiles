@@ -49,6 +49,16 @@ return {
       autotag = {
         enable = true,
       },
+      -- for incremental selection
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<CR>',
+          node_incremental = '<CR>',
+          scope_incremental = false,
+          node_decremental = '<BS>',
+        },
+      },
       -- for nvim-ts-context-commentstring
       context_commentstring = {
         enable = true,

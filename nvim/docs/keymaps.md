@@ -24,6 +24,7 @@
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
+    - [nvim-treesitter](#nvim-treesitter)
     - [outline.nvim](#outlinenvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
@@ -282,6 +283,16 @@ CMP - Completion Menu:
 | Keymap | Description               |
 | ------ | ------------------------- |
 | `g?`   | Show help (exit with `q`) |
+
+### [nvim-treesitter]
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+
+| Mode | Keymap | Description                             |
+| ---- | ------ | --------------------------------------- |
+| `n`  | `<CR>` | Init selection (current node)           |
+| `v`  | `<CR>` | Expand selection to outer (parent) node |
+| `v`  | `<BS>` | Reduce selection to inner (child) node  |
 
 ### [outline.nvim]
 
