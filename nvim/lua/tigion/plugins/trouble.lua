@@ -9,5 +9,11 @@ return {
     { '<Leader>xw', '<Cmd>TroubleToggle workspace_diagnostics<CR>', desc = 'Toggle workspace diagnostics' },
     { '<Leader>xL', '<Cmd>TroubleToggle loclist<CR>', desc = 'Toggle location list' },
     { '<Leader>xQ', '<Cmd>TroubleToggle quickfix<CR>', desc = 'Toggle quickfix list' },
+    {
+      'üt',
+      function() require('trouble').previous({ skip_groups = true, jump = true }) end,
+      desc = 'Previous item (Trouble)',
+    },
+    { '+t', function() require('trouble').next({ skip_groups = true, jump = true }) end, desc = 'Next item (Trouble)' },
   },
 }

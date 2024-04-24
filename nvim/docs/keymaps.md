@@ -369,6 +369,8 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `<Leader>xw` | Toggle workspace diagnostics |
 | `n`  | `<Leader>xL` | Toggle location list         |
 | `n`  | `<Leader>xQ` | Toggle quickfix list         |
+| `n`  | `+t`         | Next item                    |
+| `n`  | `üt`         | Previous item                |
 
 - See also [Quickfix/Location List](#quickfixlocation-list)
 
