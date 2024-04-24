@@ -10,12 +10,12 @@ return {
     lint.linters_by_ft = {
       javascript = { 'eslint_d' },
       typescript = { 'eslint_d' },
-      -- javascriptreact = { 'eslint_d' },
-      -- typescriptreact = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
       -- svelte = { 'eslint_d' },
-      -- python = { 'pylint' },
-      -- python = { 'flake8' },
       -- python = { 'ruff' }, -- replaced with ruff_lsp
+      -- python = { 'pylint' }, -- replaced with ruff
+      -- python = { 'flake8' }, -- replaced with ruff
       markdown = { 'markdownlint' },
     }
 
