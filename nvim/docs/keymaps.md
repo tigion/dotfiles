@@ -18,6 +18,7 @@
     - [Comment.nvim](#commentnvim)
     - [conform.nvim](#conformnvim)
     - [gitsigns.nvim](#gitsignsnvim)
+    - [harpoon](#harpoon)
     - [inc-rename.nvim](#inc-renamenvim)
     - [lsp-zero.nvim](#lsp-zeronvim)
     - [nvim-lint](#nvim-lint)
@@ -186,6 +187,16 @@
 | `n`  | `<Leader>gl` | Show git hunks in location list | (TR) |
 
 - `(TR)` ... [trouble.nvim](#troublenvim) or `:lopen`
+
+### [harpoon]
+
+[harpoon]: https://github.com/ThePrimeagen/harpoon
+
+| Mode | Keymap                     | Description                      |
+| ---- | -------------------------- | -------------------------------- |
+| `n`  | `<Leader>h`                | Open Harpoon quick menu          |
+| `n`  | `<Leader>H`                | Add (harpoon) file to quick menu |
+| `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 5 directly      |
 
 ### [inc-rename.nvim]
 
