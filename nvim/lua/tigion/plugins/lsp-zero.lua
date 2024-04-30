@@ -115,6 +115,7 @@ return {
         'clangd', -- C, C++
         'cssls', -- CSS, SCSS, LESS
         'html', -- HTML
+        'jdtls', -- Java
         'lua_ls', -- Lua
         'marksman', -- Markdown
         'phpactor', -- PHP
