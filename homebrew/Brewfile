@@ -1,7 +1,10 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
+
+# fonts
+brew "font-meslo-lg-nerd-font"
+#brew "font-hack-nerd-font"
 
 # tools
 brew "git"
@@ -12,6 +15,8 @@ brew "lazygit"
 brew "httpie"
 brew "tmux"
 brew "fzf"
+brew "bat"
+brew "eza"
 
 # nvim
 brew "neovim"
@@ -35,13 +40,11 @@ brew "ruby"
 #brew "tty-clock"
 
 # casks
-cask "font-meslo-lg-nerd-font"
-#cask "font-hack-nerd-font"
 cask "kitty"
 cask "docker"
 
 # nice to have
-cask "fliqlo"
+#cask "fliqlo"
 #cask "stats"
 #cask "itsycal"
 #cask "iterm2"
