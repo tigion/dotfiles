@@ -373,15 +373,16 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 [trouble.nvim]: https://github.com/folke/trouble.nvim
 
-| Mode | Keymap       | Description                  |
-| ---- | ------------ | ---------------------------- |
-| `n`  | `<Leader>xx` | Toggle trouble               |
-| `n`  | `<Leader>xd` | Toggle document diagnostics  |
-| `n`  | `<Leader>xw` | Toggle workspace diagnostics |
-| `n`  | `<Leader>xL` | Toggle location list         |
-| `n`  | `<Leader>xQ` | Toggle quickfix list         |
-| `n`  | `+t`         | Next item                    |
-| `n`  | `üt`         | Previous item                |
+| Mode | Keymap       | Description                                |
+| ---- | ------------ | ------------------------------------------ |
+| `n`  | `<Leader>xx` | Toggle workspace diagnostics               |
+| `n`  | `<Leader>xX` | Toggle document diagnostics                |
+| `n`  | `<Leader>cs` | Toggle symbols sidebar                     |
+| `n`  | `<Leader>cl` | Toggle lsp definitions, references sidebar |
+| `n`  | `<Leader>xL` | Toggle location list                       |
+| `n`  | `<Leader>xQ` | Toggle quickfix list                       |
+| `n`  | `+t`         | Next item                                  |
+| `n`  | `üt`         | Previous item                              |
 
 - See also [Quickfix/Location List](#quickfixlocation-list)
 
