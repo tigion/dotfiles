@@ -287,6 +287,13 @@ return {
     })
 
     -- set diagnostic icons
+    --
+    -- TODO: In Neovim >= 0.10, you can configure diagnostic signs
+    -- (also) with `vim.diagnostic.config()` instead of `vim.fn.sign_define`.
+    --
+    -- if vim.fn.has('nvim-0.10') == 1 then
+    -- else
+    -- end
     for name, icon in pairs(require('tigion.core.icons').diagnostics) do
       name = 'DiagnosticSign' .. name
       vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
