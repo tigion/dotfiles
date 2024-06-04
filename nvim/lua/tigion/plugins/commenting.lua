@@ -27,7 +27,12 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'VimEnter',
     keys = {
-      { '<Leader>xt', '<Cmd>TodoTrouble<CR>', desc = 'Trouble: Show TODO comments' },
+      -- { '<Leader>xt', '<Cmd>TodoTrouble<CR>', desc = 'Trouble: Show TODO comments' },
+      {
+        '<Leader>xt',
+        '<Cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>',
+        desc = 'Trouble: Show TODO comments',
+      },
       { 'öt', '<Cmd>TodoTelescope<CR>', desc = 'Find in TODO comments' },
     },
     opts = {
