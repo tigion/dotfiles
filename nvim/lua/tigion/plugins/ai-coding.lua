@@ -1,6 +1,9 @@
 return {
   {
     'Exafunction/codeium.vim',
+    -- TODO: clean up ~/.codeium/bin from old folders
+    --       with language_server_macos_arm binaries
+    --
     event = 'InsertEnter',
     config = function()
       -- vim.g.codeium_disable_bindings = 1
