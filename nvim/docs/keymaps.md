@@ -19,6 +19,7 @@
     - [conform.nvim](#conformnvim)
     - [gitsigns.nvim](#gitsignsnvim)
     - [harpoon](#harpoon)
+    - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
     - [lsp-zero.nvim](#lsp-zeronvim)
     - [nvim-lint](#nvim-lint)
@@ -27,6 +28,7 @@
     - [nvim-tree](#nvim-tree)
     - [nvim-treesitter](#nvim-treesitter)
     - [outline.nvim](#outlinenvim)
+    - [precognition.nvim](#precognitionnvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
@@ -198,6 +200,14 @@
 | `n`  | `<Leader>H`                | Add (harpoon) file to quick menu |
 | `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 5 directly      |
 
+### [hardtime.nvim]
+
+[hardtime.nvim]: https://github.com/m4xshen/hardtime.nvim
+
+| Mode | Keymap       | Description     |
+| ---- | ------------ | --------------- |
+| `n`  | `<Leader>?h` | Toggle hardtime |
+
 ### [inc-rename.nvim]
 
 [inc-rename.nvim]: https://github.com/smjonas/inc-rename.nvim
@@ -312,6 +322,14 @@ CMP - Completion Menu:
 | Mode | Keymap      | Description               |
 | ---- | ----------- | ------------------------- |
 | `n`  | `<Leader>o` | Toggle outline of symbols |
+
+### [precognition.nvim]
+
+[precognition.nvim]: https://github.com/tris203/precognition.nvim
+
+| Mode | Keymap       | Description         |
+| ---- | ------------ | ------------------- |
+| `n`  | `<Leader>?p` | Toggle precognition |
 
 ### [telescope.nvim]
 
