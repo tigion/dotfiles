@@ -7,7 +7,7 @@ return {
     keys = {
       { '<Leader>?p', '<Cmd>Precognition toggle<CR>', desc = 'Toggle Precognition' },
     },
-    config = {
+    opts = {
       startVisible = false,
     },
   },
