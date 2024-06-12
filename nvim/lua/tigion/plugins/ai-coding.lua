@@ -4,6 +4,7 @@ return {
     -- TODO: clean up ~/.codeium/bin from old folders
     --       with language_server_macos_arm binaries
     --
+    version = '1.8.37', -- FIX: pin to version 1.8.37 because of error (not working) in current version
     event = 'InsertEnter',
     config = function()
       -- vim.g.codeium_disable_bindings = 1
