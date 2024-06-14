@@ -21,6 +21,7 @@ return {
     },
     opts = {
       disable_mouse = false,
+      restriction_mode = 'hint',
       disabled_keys = {
         ['<Up>'] = { '' },
         ['<Down>'] = { '' },
