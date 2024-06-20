@@ -12,7 +12,5 @@ return {
     { '<Leader>gu', '<Cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Unstage git hunk' },
     { '<Leader>gR', '<Cmd>Gitsigns reset_hunk<CR>', desc = 'Reset git hunk' },
   },
-  opts = {
-    _signs_staged_enable = true, -- experimental: show dimmed signs for staged hunks
-  },
+  opts = {},
 }
