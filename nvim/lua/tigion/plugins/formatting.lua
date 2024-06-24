@@ -21,6 +21,7 @@ return {
         -- },
         sh = { 'shfmt' },
         typescript = { 'prettier' },
+        vue = { 'prettier' },
         yaml = { 'prettier' },
         -- filetypes that don't have other formatters
         ['_'] = { 'trim_whitespace', 'trim_newlines' },

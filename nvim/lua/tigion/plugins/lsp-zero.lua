@@ -148,6 +148,7 @@ return {
         'pyright', -- Python
         'tsserver', -- JavaScript, TypeScript
         'vimls', -- VimScript
+        'volar', -- Vue.js
         'yamlls', -- Yaml
       },
       automatic_installation = true,

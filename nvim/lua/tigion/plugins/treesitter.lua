@@ -40,6 +40,7 @@ return {
         'toml',
         'tsx',
         'vim',
+        'vue',
         'yaml',
         --'help',
         --'swift',
