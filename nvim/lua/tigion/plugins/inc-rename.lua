@@ -6,7 +6,7 @@ return {
     {
       '<Leader>rn',
       function() return ':IncRename ' .. vim.fn.expand('<cword>') end,
-      desc = 'LSP: Rename with all references',
+      desc = 'LSP: Rename with all references (IncRename)',
       expr = true,
     },
   },

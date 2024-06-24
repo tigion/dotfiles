@@ -112,6 +112,8 @@ return {
       -- Deactivated: See inc-rename.lua (inc-rename.nvim)
       -- opts.desc = 'LSP: Rename with all references'
       -- keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+      opts.desc = 'LSP: Rename with all references'
+      keymap.set('n', '<Leader>Rn', vim.lsp.buf.rename, opts)
 
       -- Deactivated: See formatting.lua (conform.nvim)
       -- opts.desc = 'LSP: Format current buffer'
@@ -148,12 +150,25 @@ return {
         'pyright', -- Python
         'tsserver', -- JavaScript, TypeScript
         'vimls', -- VimScript
+
+        -- FIX: There is a problem with LSP config for 'volar' in since version 2.0.0
+        --      valor@1.8.27: no extra config needed, `K` and `Inc_Rename` work fine
+        --      valor@2.0.0: extra config needed, `K`, `:lua vim.lsp.buf.rename()` works but `Inc_Rename` don't work
+        --
+        --      Workaround 1: Pin to version @1.8.27
+        --      - `:MasonInstall vue-language-server@1.8.27`
+        --      - mason-tool-installer (line 231)
+        --      - `{ 'volar', version = '1.8.27' },`
+        --
+        --      Workaround 2: Use extra config but with no rename support
         'volar', -- Vue.js
+
         'yamlls', -- Yaml
       },
       automatic_installation = true,
       handlers = {
         lsp_zero.default_setup,
+        -- function(server_name) require('lspconfig')[server_name].setup({}) end,
 
         html = function()
           require('lspconfig').html.setup({
@@ -163,6 +178,61 @@ return {
                   templating = true,
                   wrapLineLength = 0,
                 },
+              },
+            },
+          })
+        end,
+
+        -- FIX: Extra config for `valor` since version 2.0.0
+        --      - https://lsp-zero.netlify.app/v3.x/guide/configure-volar-v2.html
+        --      - https://github.com/vuejs/language-tools?tab=readme-ov-file#community-integration
+        --
+        -- Hybrid mode configuration (Requires @vue/language-server version ^2.0.0)
+        -- tsserver = function()
+        --   local vue_language_server_path = require('mason-registry')
+        --     .get_package('vue-language-server')
+        --     :get_install_path() .. '/node_modules/@vue/language-server'
+        --   local vue_typescript_plugin = require('mason-registry').get_package('vue-language-server'):get_install_path()
+        --     .. '/node_modules/@vue/language-server'
+        --
+        --   require('lspconfig').tsserver.setup({
+        --     init_options = {
+        --       plugins = {
+        --         {
+        --           name = '@vue/typescript-plugin',
+        --           location = vue_typescript_plugin,
+        --           languages = { 'vue' },
+        --         },
+        --       },
+        --     },
+        --     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        --   })
+        -- end,
+        -- volar = function() require('lspconfig').volar.setup({}) end,
+
+        -- None-Hybrid mode(similar to takeover mode) configuration (Requires @vue/language-server version ^2.0.7)
+        tsserver = function()
+          local vue_typescript_plugin = require('mason-registry').get_package('vue-language-server'):get_install_path()
+            .. '/node_modules/@vue/language-server'
+            .. '/node_modules/@vue/typescript-plugin'
+
+          require('lspconfig').tsserver.setup({
+            init_options = {
+              plugins = {
+                {
+                  name = '@vue/typescript-plugin',
+                  location = vue_typescript_plugin,
+                  languages = { 'vue' },
+                },
+              },
+            },
+          })
+        end,
+        volar = function()
+          require('lspconfig').volar.setup({
+            init_options = {
+              vue = {
+                hybridMode = false,
               },
             },
           })
@@ -228,6 +298,7 @@ return {
         'eslint_d', -- JS/TS (Linter)
         'markdownlint', -- Markdown (Linter)
         'codespell', -- Code (Linter: words)
+        -- { 'volar', version = '1.8.27' }, -- Vue.js FIX: (:MasonInstall volar@1.8.27)
       },
     })
 
