@@ -60,6 +60,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true -- Case insensitive searching unless `/C`
 opt.smartcase = true -- Case sensitive searching if mixed cases in search
+opt.inccommand = 'split' -- Live substitution
 
 -- Backup, undo, swap
 opt.backup = false
@@ -93,7 +94,6 @@ opt.splitright = true -- open new split right
 -- Others
 opt.backspace = { 'start', 'eol', 'indent' }
 opt.cmdheight = 1
-opt.inccommand = 'split'
 opt.laststatus = 2
 opt.path:append({ '**' }) -- Finding files - Search down into subfolders
 opt.scrolloff = 10
