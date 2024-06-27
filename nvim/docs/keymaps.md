@@ -198,7 +198,7 @@
 | ---- | -------------------------- | -------------------------------- |
 | `n`  | `<Leader>h`                | Open Harpoon quick menu          |
 | `n`  | `<Leader>H`                | Add (harpoon) file to quick menu |
-| `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 5 directly      |
+| `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 9 directly      |
 
 ### [hardtime.nvim]
 
