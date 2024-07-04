@@ -314,13 +314,13 @@ return {
 
     cmp.setup({
       window = {
-        -- documentation = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered({
-          winhighlight = 'Normal:Normal,CursorLine:CursorLine,Search:None',
-        }),
         -- completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
-          winhighlight = 'Normal:Normal,CursorLine:CursorLine,Search:None',
+          winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
+        }),
+        -- documentation = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered({
+          winhighlight = 'Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder,CursorLine:CursorLine,Search:None',
         }),
       },
       sources = {
