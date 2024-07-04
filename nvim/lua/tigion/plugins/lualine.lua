@@ -29,6 +29,7 @@ return {
         -- theme = 'solarized_dark',
         theme = 'solarized-osaka',
         -- theme = custom_theme,
+        -- theme = 'tokyonight',
         section_separators = { left = '', right = '' },
         -- component_separators = { left = '', right = '' },
         component_separators = { left = '┊', right = '┊' },
