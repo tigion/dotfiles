@@ -313,16 +313,16 @@ return {
     require('luasnip.loaders.from_vscode').load({ paths = './snippets' })
 
     cmp.setup({
-      -- window = {
-      --   -- completion = cmp.config.window.bordered(),
-      --   completion = cmp.config.window.bordered({
-      --     winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
-      --   }),
-      --   -- documentation = cmp.config.window.bordered(),
-      --   documentation = cmp.config.window.bordered({
-      --     winhighlight = 'Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder,CursorLine:CursorLine,Search:None',
-      --   }),
-      -- },
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
+        }),
+        -- documentation = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered({
+          winhighlight = 'Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder,CursorLine:CursorLine,Search:None',
+        }),
+      },
       sources = {
         { name = 'nvim_lsp' }, -- lsp server
         -- { name = 'nvim_lua' }, -- neovim lua API
