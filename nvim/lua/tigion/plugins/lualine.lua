@@ -33,9 +33,11 @@ return {
       options = {
         icons_enabled = true,
         -- theme = 'solarized_dark',
-        theme = 'solarized-osaka',
+        -- theme = 'solarized-osaka',
         -- theme = custom_theme,
-        -- theme = 'tokyonight',
+        theme = 'tokyonight',
+        -- theme = 'catppuccin',
+        -- theme = 'onedark',
         section_separators = { left = '', right = '' },
         -- component_separators = { left = '', right = '' },
         component_separators = { left = '┊', right = '┊' },
