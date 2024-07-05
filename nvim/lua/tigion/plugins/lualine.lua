@@ -8,8 +8,14 @@ return {
     -- custom solarized-osaka section colors
     -- local so_colors = require('solarized-osaka.colors').setup({ transform = true })
     -- local custom_theme = require('lualine.themes.solarized-osaka')
-    -- custom_theme.normal.b.fg = so_colors.black
-    -- custom_theme.normal.b.bg = so_colors.fg
+    -- custom_theme.normal.b.fg = so_colors.blue
+    -- custom_theme.normal.b.bg = so_colors.base02
+    -- custom_theme.normal.c.bg = so_colors.base04
+    -- custom_theme.insert['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.insert.a.bg }
+    -- custom_theme.command['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.command.a.bg }
+    -- custom_theme.visual['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.visual.a.bg }
+    -- custom_theme.replace['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.replace.a.bg }
+    -- custom_theme.terminal['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.terminal.a.bg }
 
     -- get customized Codeium status
     local function getCodeiumStatus()
