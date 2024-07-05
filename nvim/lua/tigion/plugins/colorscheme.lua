@@ -57,6 +57,7 @@ return {
       sidebars = 'transparent',
       floats = 'dark',
     },
+    lualine_bold = true,
     on_colors = function(colors)
       -- bg             = "#222436",
       -- bg_dark        = "#1e2030",
@@ -95,6 +96,8 @@ return {
       colors.comment = '#727897'
     end,
     on_highlights = function(hl, c)
+      -- lualine
+
       -- Telescope
       local c1 = '#14151f'
       hl.TelescopeBorder = { fg = c1, bg = c1 }
