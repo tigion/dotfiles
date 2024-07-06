@@ -5,10 +5,10 @@ return {
     local dashboard = require('alpha.themes.dashboard')
 
     -- local variables
-    local winHeight = vim.fn.winheight(0)
-    local buttonWidth = 40
+    local win_height = vim.fn.winheight(0)
+    local button_width = 40
 
-    -- Banner
+    -- Sets the header with a banner ascii art or text.
     local banner = {
       '  _  _             _        ',
       ' | \\| |___ _____ _(_)_ __   ',
@@ -20,7 +20,7 @@ return {
     -- }
     dashboard.section.header.val = banner
 
-    -- Menu
+    -- Sets the buttons with icons and text in the Menu.
     dashboard.section.buttons.val = {
       dashboard.button('e', '󰈔 New file', ':ene <BAR> startinsert<CR>'),
       dashboard.button('r', '󱔗 Recent files', ':Telescope oldfiles <CR>'),
@@ -34,22 +34,24 @@ return {
       dashboard.button('q', ' Quit', ':qa<CR>'),
     }
 
-    -- Footer
-    local function footer()
+    -- Returns information about the Neovim version,
+    -- the number of plugins and the current date.
+    ---@return string
+    local function get_info()
       local version = vim.version()
-      local pluginCount = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', 0, 1))
-      local print_version = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
+      local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', false, 1))
+      local version_with_dots = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
       local date = os.date('%d.%m.%Y')
-      --local datetime = os.date '%d.%m.%Y %H:%M'
-      return ' ' .. print_version .. '   ' .. pluginCount .. '   ' .. date
+      -- local datetime = os.date '%d.%m.%Y %H:%M'
+      return ' ' .. version_with_dots .. '   ' .. plugin_count .. '   ' .. date
     end
 
-    dashboard.section.footer.val = footer()
+    -- Sets the footer text.
+    dashboard.section.footer.val = get_info()
 
-    -- Colors
-    -- defined in color theme (after/plugin/neosolarized.rc.lua)
+    -- Sets the color highlight groups of the color scheme.
     for _, button in ipairs(dashboard.section.buttons.val) do
-      button.opts.width = buttonWidth
+      button.opts.width = button_width
       button.opts.hl = 'AlphaButtons'
       button.opts.hl_shortcut = 'AlphaShortcut'
     end
@@ -57,31 +59,34 @@ return {
     dashboard.section.buttons.opts.hl = 'AlphaButtons'
     dashboard.section.footer.opts.hl = 'AlphaFooter'
 
-    -- Align dashboard vertically
-    local function getDashboardHeight()
-      local bannerHeight = 0
+    -- Returns the height of the dashboard content.
+    ---@return integer
+    local function get_dashboard_height()
+      local banner_height = 0
       for _ in pairs(dashboard.section.header.val) do
-        bannerHeight = bannerHeight + 1
+        banner_height = banner_height + 1
       end
-      local buttonCount = 0
+      local button_count = 0
       for _ in pairs(dashboard.section.buttons.val) do
-        buttonCount = buttonCount + 1
+        button_count = button_count + 1
       end
-      local buttonsHeight = 2 * buttonCount
-      local footerHeight = 1
-      local dashboardHeight = bannerHeight + dashboard.opts.layout[3].val + buttonsHeight + footerHeight
-      return dashboardHeight
+      local buttons_height = 2 * button_count
+      local footer_height = 1
+      local dashboard_height = banner_height + dashboard.opts.layout[3].val + buttons_height + footer_height
+      return dashboard_height
     end
 
-    if winHeight < getDashboardHeight() + 3 then
-      -- Reduce dashboard size for small window heights
+    -- Reduce dashboard size for small window heights
+    if win_height < get_dashboard_height() + 3 then
       dashboard.section.header.val = { 'Neovim' }
       table.remove(dashboard.section.buttons.val, 5)
       table.remove(dashboard.section.buttons.val, 5)
       table.remove(dashboard.section.buttons.val, 5)
       table.remove(dashboard.section.buttons.val, 5)
     end
-    local topSpace = vim.fn.max({ 0, vim.fn.floor((vim.fn.winheight(0) - getDashboardHeight()) / 2) })
+
+    -- Align dashboard vertically
+    local topSpace = vim.fn.max({ 0, vim.fn.floor((vim.fn.winheight(0) - get_dashboard_height()) / 2) })
     dashboard.opts.layout[1].val = topSpace
 
     -- Setup
