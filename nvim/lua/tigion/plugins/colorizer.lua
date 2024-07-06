@@ -1,12 +1,10 @@
 return {
   'norcalli/nvim-colorizer.lua', -- colored color codes
-  config = function()
-    local status, colorizer = pcall(require, 'colorizer')
-    if not status then return end
-
-    colorizer.setup({
-      '*',
-    })
-  end,
+  enabled = true,
+  opts = {
+    -- default: RGB, RRGGBB, names
+    css = {
+      css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    },
+  },
 }
-
