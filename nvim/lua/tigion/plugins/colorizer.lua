@@ -12,7 +12,7 @@
 
 return {
   'NvChad/nvim-colorizer.lua', -- colored color codes
-  enabled = true,
+  enabled = false,
   opts = {
     -- default: RGB, RRGGBB, names
     user_default_options = {
