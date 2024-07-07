@@ -48,12 +48,12 @@ return {
     -- Returns hex color group for matching hsl() color.
     --
     ---@param match string
-    ---@return string
+    ---@return string, integer, integer, integer
     local hsl_color = function(_, match)
       local style = 'fg' -- 'fg' or 'bg', for extmark_opts_inline use 'fg'
       local hue, saturation, lightness = match:match('hsl%((%d+), ?(%d+)%%, ?(%d+)%%%)')
 
-      -- Returns hex color group for matching hsl() color.
+      -- Converts HSL to RGB.
       -- https://www.w3.org/TR/css-color-3/#hsl-color
       --
       ---@param h string The hue value in degrees.
@@ -73,6 +73,22 @@ return {
 
       local red, green, blue = hsl_to_rgb(hue, saturation, lightness)
       local hex = string.format('#%02x%02x%02x', red, green, blue)
+      return hipatterns.compute_hex_color_group(hex, style), red, green, blue
+    end
+
+    -- Returns hex color group for matching hsla() color
+    -- or false if alpha is nil or out of range.
+    -- The use of the alpha value refers to a black background.
+    --
+    ---@param match string
+    ---@return string|false
+    local hsla_color = function(_, match)
+      local style = 'fg' -- 'fg' or 'bg', for extmark_opts_inline use 'fg'
+      local hue, saturation, lightness, alpha = match:match('hsla%((%d+), ?(%d+)%%, ?(%d+)%%, ?(%d*%.?%d*)%)')
+      alpha = tonumber(alpha)
+      if alpha == nil or alpha < 0 or alpha > 1 then return false end
+      local _, red, green, blue = hsl_color(_, string.format('hsl(%s, %s%%, %s%%)', hue, saturation, lightness))
+      local hex = string.format('#%02x%02x%02x', red * alpha, green * alpha, blue * alpha)
       return hipatterns.compute_hex_color_group(hex, style)
     end
 
@@ -116,13 +132,12 @@ return {
         },
 
         -- `hsla(0, 100%, 50%, 0.5)`
-        -- TODO: Add support for `hsla()`
         --
-        -- hsla_color = {
-        --   pattern = 'hsla%(%d+, ?%d+%%, ?%d+%%, ?%d*%.?%d*%)',
-        --   group = hsla_color,
-        --   extmark_opts = extmark_opts_inline,
-        -- },
+        hsla_color = {
+          pattern = 'hsla%(%d+, ?%d+%%, ?%d+%%, ?%d*%.?%d*%)',
+          group = hsla_color,
+          extmark_opts = extmark_opts_inline,
+        },
 
         -- `cmyk(100%, 0%, 0%, 0%)`
         -- TODO: Add support for `cmyk()`
