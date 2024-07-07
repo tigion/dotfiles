@@ -92,6 +92,21 @@ return {
       return hipatterns.compute_hex_color_group(hex, style)
     end
 
+    -- Returns hex color group for matching cmyk() color.
+    --
+    ---@param match string
+    ---@return string
+    local cmyk_color = function(_, match)
+      local style = 'fg' -- 'fg' or 'bg', for extmark_opts_inline use 'fg'
+      local cyan, magenta, yellow, black = match:match('cmyk%((%d+)%%, ?(%d+)%%, ?(%d+)%%, ?(%d+)%%%)')
+      cyan, magenta, yellow, black = cyan / 100, magenta / 100, yellow / 100, black / 100
+      local red = 255 * (1 - cyan) * (1 - black)
+      local green = 255 * (1 - magenta) * (1 - black)
+      local blue = 255 * (1 - yellow) * (1 - black)
+      local hex = string.format('#%02x%02x%02x', red, green, blue)
+      return hipatterns.compute_hex_color_group(hex, style)
+    end
+
     -- Returns extmark opts for highlights with virtual inline text.
     --
     ---@param data table Includes `hl_group`, `full_match` and more.
@@ -132,7 +147,6 @@ return {
         },
 
         -- `hsla(0, 100%, 50%, 0.5)`
-        --
         hsla_color = {
           pattern = 'hsla%(%d+, ?%d+%%, ?%d+%%, ?%d*%.?%d*%)',
           group = hsla_color,
@@ -140,13 +154,11 @@ return {
         },
 
         -- `cmyk(100%, 0%, 0%, 0%)`
-        -- TODO: Add support for `cmyk()`
-        --
-        -- cmyk_color = {
-        --   pattern = 'cmyk%(%d+%%, ?%d+%%, ?%d+%%, ?%d+%%%)',
-        --   group = cmyk_color,
-        --   extmark_opts = extmark_opts_inline,
-        -- }
+        cmyk_color = {
+          pattern = 'cmyk%(%d+%%, ?%d+%%, ?%d+%%, ?%d+%%%)',
+          group = cmyk_color,
+          extmark_opts = extmark_opts_inline,
+        },
       },
     })
   end,
