@@ -122,17 +122,17 @@ return {
 
     hipatterns.setup({
       highlighters = {
-        -- `#rrggbb`
+        -- `#ff0000`
         -- hex_color = hipatterns.gen_highlighter.hex_color({ style = 'full' }),
         hex_color = hipatterns.gen_highlighter.hex_color({ style = 'inline', inline_text = ' ' }),
 
-        -- `#rgb`
+        -- `#f00`
         hex_color_short = { pattern = '#%x%x%x%f[%X]', group = hex_color_short, extmark_opts = extmark_opts_inline },
 
-        -- `rgb(255, 255, 255)`
+        -- `rgb(255, 0, 0)`
         rgb_color = { pattern = 'rgb%(%d+, ?%d+, ?%d+%)', group = rgb_color, extmark_opts = extmark_opts_inline },
 
-        -- `rgba(255, 255, 255, 0.5)`
+        -- `rgba(255, 0, 0, 0.5)`
         rgba_color = {
           pattern = 'rgba%(%d+, ?%d+, ?%d+, ?%d*%.?%d*%)',
           group = rgba_color,
@@ -153,7 +153,7 @@ return {
           extmark_opts = extmark_opts_inline,
         },
 
-        -- `cmyk(100%, 0%, 0%, 0%)`
+        -- `cmyk(0%, 100%, 100%, 0%)`
         cmyk_color = {
           pattern = 'cmyk%(%d+%%, ?%d+%%, ?%d+%%, ?%d+%%%)',
           group = cmyk_color,
