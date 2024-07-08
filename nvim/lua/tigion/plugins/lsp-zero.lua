@@ -19,6 +19,8 @@ return {
     { 'hrsh7th/cmp-path' }, -- source for file and folder paths
     { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's built-in language server client
     -- { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim Lua API <- not needed, because: 'folke/neodev.nvim'
+    -- { 'hrsh7th/cmp-cmdline' }, -- source for vim's cmdline
+    -- { 'dmitmel/cmp-cmdline-history' }, -- source for cmdline history
 
     -- Snippets
     { 'L3MON4D3/LuaSnip' }, -- snippet engine
@@ -323,9 +325,10 @@ return {
           winhighlight = 'Normal:CmpDocumentation,FloatBorder:CmpDocumentationBorder,CursorLine:CursorLine,Search:None',
         }),
       },
-      sources = {
+      sources = { -- check with `:CmpStatus`
         { name = 'nvim_lsp' }, -- lsp server
         -- { name = 'nvim_lua' }, -- neovim lua API
+        { name = 'lazydev' }, -- lazydev
         { name = 'luasnip' }, -- snippets
         { name = 'codeium', max_item_count = 5 }, -- codeium
         { name = 'buffer', keyword_length = 3, max_item_count = 10 }, -- buffer words
@@ -367,6 +370,33 @@ return {
       formatting = cmp_format,
     })
 
+    -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline({ '/', '?' }, {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = {
+    --     { name = 'buffer' },
+    --   },
+    -- })
+    --
+    -- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources({
+    --     { name = 'path' },
+    --   }, {
+    --     { name = 'cmdline' },
+    --   }),
+    --   matching = { disallow_symbol_nonprefix_matching = false },
+    -- })
+    --
+    -- for _, cmd_type in ipairs({ ':', '/', '?', '@' }) do
+    --   cmp.setup.cmdline(cmd_type, {
+    --     sources = {
+    --       { name = 'cmdline_history' },
+    --     },
+    --   })
+    -- end
+
     -- LSPKIND
     local lspkind = require('lspkind')
     cmp.setup({
@@ -378,6 +408,14 @@ return {
       formatting = {
         format = lspkind.cmp_format({
           mode = 'symbol_text', -- show only symbol annotations
+          menu = {
+            nvim_lsp = '[lsp]',
+            nvim_lua = '[lua]',
+            luasnip = '[luasnip]',
+            codeium = '[codeium]',
+            buffer = '[buffer]',
+            path = '[path]',
+          },
           maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),

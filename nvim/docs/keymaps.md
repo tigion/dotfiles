@@ -22,6 +22,7 @@
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
     - [lsp-zero.nvim](#lsp-zeronvim)
+    - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
@@ -139,12 +140,12 @@
 
 [codeium.vim]: https://github.com/Exafunction/codeium.vim
 
-| Mode | Keymap      | Description                      |
-| ---- | ----------- | -------------------------------- |
-| `n`  | `<Leader>c` | Toggle Codeium                   |
-| `i`  | `<Tab>`     | Accept completion                |
-| `i`  | `<C-x>`     | Cancel/Clear current completions |
-| `f`  | `<C-f>`     | Cycle completions forwards       |
+| Mode | Keymap       | Description                      |
+| ---- | ------------ | -------------------------------- |
+| `n`  | `<Leader>tc` | Toggle Codeium                   |
+| `i`  | `<Tab>`      | Accept completion                |
+| `i`  | `<C-x>`      | Cancel/Clear current completions |
+| `f`  | `<C-f>`      | Cycle completions forwards       |
 
 - ? `<S-Tab>` for Cancel
 - ? `<C-e>` for Cancel/Clear like CMP
@@ -263,6 +264,14 @@ CMP - Completion Menu:
 |      | `<C-b>`           | Go to previous snippet placeholder                |
 |      | `<C-u>`           | Scroll completion documentation up                |
 |      | `<C-d>`           | Scroll completion documentation down              |
+
+### [neogen]
+
+[neogen]: https://github.com/danymat/neogen
+
+| Mode | Keymap       | Description          |
+| ---- | ------------ | -------------------- |
+| `n`  | `<Leader>cn` | Generate Annotations |
 
 ### [nvim-lint]
 

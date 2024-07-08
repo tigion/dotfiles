@@ -12,8 +12,10 @@ return {
     -- TODO: keymap groups
     require('which-key').register({
       ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
-      ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
+      ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
       -- ['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
+      ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
+      ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
       ['ö'] = { name = 'Telescope', _ = 'which_key_ignore' },
     })
   end,
