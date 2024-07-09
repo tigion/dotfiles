@@ -48,10 +48,6 @@ return {
         --'swift',
       },
       auto_install = true,
-      -- for ts-autotag
-      autotag = {
-        enable = true,
-      },
       -- for incremental selection
       incremental_selection = {
         enable = true,
