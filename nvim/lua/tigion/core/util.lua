@@ -1,5 +1,26 @@
 local M = {}
 
+M.info = {}
+
+---Returns the Neovim version as formatted string.
+---@return string
+function M.info.nvim_version()
+  local version = vim.version()
+  local v = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
+  -- if version.prerelease ~= nil then v = v .. '-' .. version.prerelease end
+  return v
+end
+
+---Returns the number of used plugins (lazy.nvim).
+---@return number
+function M.info.plugin_count()
+  -- local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', false, 1))
+  local plugin_count = require('lazy').stats().count
+  return plugin_count
+end
+
+M.color = {}
+
 ---Limits a value between min and max.
 ---@param value number
 ---@param min number
@@ -38,8 +59,6 @@ local function hsl_to_rgb(h, s, l)
   end
   return f(0) * 255, f(8) * 255, f(4) * 255
 end
-
-M.color = {}
 
 ---Converts the RGB values to a HEX string.
 ---@param r integer The red value.

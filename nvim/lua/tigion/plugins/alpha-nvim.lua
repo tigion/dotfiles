@@ -4,6 +4,9 @@ return {
     local alpha = require('alpha')
     local dashboard = require('alpha.themes.dashboard')
 
+    local nvim_version = require('tigion.core.util').info.nvim_version
+    local plugin_count = require('tigion.core.util').info.plugin_count
+
     -- local variables
     local win_height = vim.fn.winheight(0)
     local button_width = 40
@@ -34,20 +37,9 @@ return {
       dashboard.button('q', ' Quit', ':qa<CR>'),
     }
 
-    -- Returns information about the Neovim version,
-    -- the number of plugins and the current date.
-    ---@return string
-    local function get_info()
-      local version = vim.version()
-      local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', false, 1))
-      local version_with_dots = 'v' .. version.major .. '.' .. version.minor .. '.' .. version.patch
-      local date = os.date('%d.%m.%Y')
-      -- local datetime = os.date '%d.%m.%Y %H:%M'
-      return ' ' .. version_with_dots .. '   ' .. plugin_count .. '   ' .. date
-    end
-
     -- Sets the footer text.
-    dashboard.section.footer.val = get_info()
+    local version, count, date = nvim_version(), plugin_count(), os.date('%d.%m.%Y')
+    dashboard.section.footer.val = ' ' .. version .. '   ' .. count .. '   ' .. date
 
     -- Sets the color highlight groups of the color scheme.
     for _, button in ipairs(dashboard.section.buttons.val) do
