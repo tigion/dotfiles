@@ -24,7 +24,7 @@ return {
 
     return {
       options = {
-        mode = 'buffers', -- buffers (default), tabs (use only tabs as buffers)
+        mode = 'tabs', -- buffers (default), tabs (use only tabs as buffers)
 
         separator_style = 'slant', -- slant, slope, thick, thin (default), `{ 'any', 'any' }`
         style_preset = {
