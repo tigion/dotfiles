@@ -51,7 +51,8 @@ return {
   priority = 1000,
   opts = {
     style = 'moon', -- moon, storm, night, day
-    transparent = true,
+    transparent = true, -- FIX: Doesn't set the background to transparent or is ignored.
+    --      Only `styles { sidebars = "transparent" }` works.
     styles = {
       -- Background styles. Can be "dark", "transparent" or "normal"
       sidebars = 'transparent',
@@ -59,6 +60,7 @@ return {
     },
     lualine_bold = true,
     on_colors = function(colors)
+      -- https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/moon.lua
       -- bg             = "#222436",
       -- bg_dark        = "#1e2030",
       -- bg_highlight   = "#2f334d",
@@ -93,7 +95,7 @@ return {
       --   change       = "#7ca1f2",
       --   delete       = "#e26a75",
       -- }
-      colors.comment = '#727897'
+      colors.comment = '#727897' -- use a more gray comment
     end,
     on_highlights = function(hl, c)
       -- lualine
