@@ -60,6 +60,17 @@ local function hsl_to_rgb(h, s, l)
   return f(0) * 255, f(8) * 255, f(4) * 255
 end
 
+---Converts HEX string to RGB values.
+---@param hex string The hexadecimal value in the format #rrggbb.
+---@return table # The RGB values in the format { r = integer, g = integer, b = integer }.
+local function hex_to_rgb(hex)
+  return {
+    r = tonumber(hex:sub(2, 3), 16),
+    g = tonumber(hex:sub(4, 5), 16),
+    b = tonumber(hex:sub(6, 7), 16),
+  }
+end
+
 ---Converts the RGB values to a HEX string.
 ---@param r integer The red value.
 ---@param g integer The green value.
@@ -119,6 +130,115 @@ function M.color.cmyk_to_hex(c, m, y, k)
   local g = 255 * (1 - m) * (1 - k)
   local b = 255 * (1 - y) * (1 - k)
   return string.format('#%02x%02x%02x', r, g, b)
+end
+
+---Mixes two HEX strings with a certain weighting.
+---@param hex1 string The first hexadecimal value in the format #rrggbb.
+---@param hex2 string The second hexadecimal value in the format #rrggbb.
+---@param weight number The weight of the second color in the range 0-1.
+---@return string # The hexadecimal value in the format #rrggbb.
+function M.color.mix_hex_colors(hex1, hex2, weight)
+  weight = limit_alpha(weight)
+  local rgb1 = hex_to_rgb(hex1)
+  local rgb2 = hex_to_rgb(hex2)
+  local r = math.floor((rgb1.r * (1 - weight) + rgb2.r * weight) + 0.5)
+  local g = math.floor((rgb1.g * (1 - weight) + rgb2.g * weight) + 0.5)
+  local b = math.floor((rgb1.b * (1 - weight) + rgb2.b * weight) + 0.5)
+  return M.color.rgb_to_hex(r, g, b)
+end
+
+M.bufferline = {}
+
+---Returns bufferline highlights with own background colors.
+---@param bg_default string|nil The default background color for the bufferline.
+---@param bg_active string|nil The active background color for the selected buffers.
+---@param bg_inactive string|nil The inactive background color for the non-selected buffers.
+---@return table
+function M.bufferline.background_highlights(bg_default, bg_active, bg_inactive)
+  local fill_bg = bg_default
+  local tab_bg = bg_inactive
+  local tab_selected_bg = bg_active
+  local buffer_bg = bg_inactive
+  local buffer_visible_bg = bg_active
+  local buffer_selected_bg = bg_active
+
+  if bg_default == nil and bg_active == nil and bg_inactive == nil then return {} end
+
+  return {
+    -- Base highlights
+    fill = { bg = fill_bg }, -- Bufferline background
+
+    -- Tab highlights
+    tab = { bg = tab_bg },
+    tab_selected = { bg = tab_selected_bg },
+    tab_separator = { fg = fill_bg, bg = tab_bg },
+    tab_separator_selected = { fg = fill_bg, bg = tab_selected_bg },
+    tab_close = { bg = fill_bg },
+
+    -- Buffer highlights
+    background = { bg = buffer_bg },
+
+    buffer_visible = { bg = buffer_visible_bg },
+    buffer_selected = { bg = buffer_selected_bg },
+
+    close_button = { bg = buffer_bg },
+    close_button_visible = { bg = buffer_visible_bg },
+    close_button_selected = { bg = buffer_selected_bg },
+
+    indicator_visible = { fg = fill_bg, bg = buffer_visible_bg },
+    indicator_selected = { fg = fill_bg, bg = buffer_selected_bg }, -- BUG: Does not work with theme transparency in mode 'thin' for indicator icon!
+
+    separator = { fg = fill_bg, bg = buffer_bg },
+    separator_visible = { fg = fill_bg, bg = buffer_visible_bg },
+    separator_selected = { fg = fill_bg, bg = buffer_selected_bg },
+
+    modified = { bg = buffer_bg },
+    modified_visible = { bg = buffer_visible_bg },
+    modified_selected = { bg = buffer_selected_bg },
+
+    duplicate = { bg = buffer_bg },
+    duplicate_visible = { bg = buffer_visible_bg },
+    duplicate_selected = { bg = buffer_selected_bg },
+
+    diagnostic = { bg = buffer_bg },
+    diagnostic_visible = { bg = buffer_visible_bg },
+    diagnostic_selected = { bg = buffer_selected_bg },
+
+    error = { bg = buffer_bg },
+    error_visible = { bg = buffer_visible_bg },
+    error_selected = { bg = buffer_selected_bg },
+    warning = { bg = buffer_bg },
+    warning_visible = { bg = buffer_visible_bg },
+    warning_selected = { bg = buffer_selected_bg },
+    info = { bg = buffer_bg },
+    info_visible = { bg = buffer_visible_bg },
+    info_selected = { bg = buffer_selected_bg },
+    hint = { bg = buffer_bg },
+    hint_visible = { bg = buffer_visible_bg },
+    hint_selected = { bg = buffer_selected_bg },
+
+    error_diagnostic = { bg = buffer_bg },
+    error_diagnostic_visible = { bg = buffer_visible_bg },
+    error_diagnostic_selected = { bg = buffer_selected_bg },
+    warning_diagnostic = { bg = buffer_bg },
+    warning_diagnostic_visible = { bg = buffer_visible_bg },
+    warning_diagnostic_selected = { bg = buffer_selected_bg },
+    info_diagnostic = { bg = buffer_bg },
+    info_diagnostic_visible = { bg = buffer_visible_bg },
+    info_diagnostic_selected = { bg = buffer_selected_bg },
+    hint_diagnostic = { bg = buffer_bg },
+    hint_diagnostic_visible = { bg = buffer_visible_bg },
+    hint_diagnostic_selected = { bg = buffer_selected_bg },
+  }
+end
+
+---Returns bufferline highlights with fixed colors
+---for theme with activated transparent background.
+---@param bg_default string|nil
+---@param bg_inactive string|nil
+---@return table
+function M.bufferline.fixed_highlights(bg_default, bg_inactive)
+  return M.bufferline.background_highlights(bg_default, nil, bg_inactive)
 end
 
 return M

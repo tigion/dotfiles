@@ -2,28 +2,31 @@ return {
   'akinsho/bufferline.nvim', -- styled tabs
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   version = '*',
-  config = function()
+  event = 'VeryLazy',
+  -- keys = {
+  --  FIX: Keymap `+t` doesn't work, error message: `No mode specified`.
+  --       Workaround: Declare keymaps in the plugin config.
+  --
+  --   { '+t', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
+  --   { 'üt', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Previous buffer' },
+  -- },
+  opts = function()
     local bufferline = require('bufferline')
 
     local icons = require('tigion.core.icons').diagnostics
+    local mix_hex_colors = require('tigion.core.util').color.mix_hex_colors
+    local fixed_highlights = require('tigion.core.util').bufferline.fixed_highlights
 
     local theme_colors = require('tokyonight.colors').setup({ style = 'moon' })
-    local bg_default = theme_colors.bg_dark --'#1e2030'
-    local bg_inactive = '#272b3f' -- between bg_highlight and bg
-    local bg_active = nil --theme_colors.bg_highlight --'#2f334d'
+    local bg_default = theme_colors.bg_dark
+    local bg_active = theme_colors.bg_highlight
+    local bg_inactive = mix_hex_colors(bg_default, bg_active, 0.5)
 
-    local fill_bg = bg_default
-    local tab_bg = bg_inactive
-    local tab_selected_bg = bg_active
-    local buffer_bg = bg_inactive
-    local buffer_visible_bg = bg_active
-    local buffer_selected_bg = bg_active
-
-    bufferline.setup({
+    return {
       options = {
-        mode = 'tabs', -- tabs, buffers
+        mode = 'buffers', -- buffers (default), tabs (use only tabs as buffers)
 
-        separator_style = 'slant',
+        separator_style = 'slant', -- slant, slope, thick, thin (default), `{ 'any', 'any' }`
         style_preset = {
           bufferline.style_preset.no_italic,
           bufferline.style_preset.no_bold,
@@ -33,6 +36,8 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
         color_icons = true,
+
+        modified_icon = '',
 
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(_, level, _, _)
@@ -44,76 +49,24 @@ return {
         end,
       },
 
-      -- Overwrite highlights for theme with transparent background
-      highlights = {
-        -- Base highlights
-        fill = { bg = fill_bg }, -- Bufferline background
+      -- Fixes highlights for theme with activated transparent background.
+      highlights = fixed_highlights(bg_default, bg_inactive),
 
-        -- Tab highlights
-        tab = { bg = tab_bg },
-        tab_selected = { bg = tab_selected_bg },
-        tab_separator = { fg = fill_bg, bg = tab_bg },
-        tab_separator_selected = { fg = fill_bg, bg = tab_selected_bg },
-        tab_close = { bg = fill_bg },
+      -- highlights = vim.tbl_extend(
+      --   'keep',
+      --   {
+      --     -- Place custom highlights here
+      --   },
+      --   -- Fixes highlights for theme with activated transparent background.
+      --   fixed_highlights(bg_default, bg_inactive)
+      -- ),
+    }
+  end,
+  config = function(_, opts)
+    require('bufferline').setup(opts)
 
-        -- Buffer highlights
-        background = { bg = buffer_bg },
-
-        buffer_visible = { bg = buffer_visible_bg },
-        buffer_selected = { bg = buffer_selected_bg },
-
-        close_button = { bg = buffer_bg },
-        close_button_visible = { bg = buffer_visible_bg },
-        close_button_selected = { bg = buffer_selected_bg },
-
-        indicator_visible = { fg = fill_bg, bg = buffer_visible_bg },
-        indicator_selected = { fg = fill_bg, bg = buffer_selected_bg }, -- BUG: Does not work with theme transparency in mode 'thin' for indicator icon!
-
-        separator = { fg = fill_bg, bg = buffer_bg },
-        separator_visible = { fg = fill_bg, bg = buffer_visible_bg },
-        separator_selected = { fg = fill_bg, bg = buffer_selected_bg },
-
-        modified = { bg = buffer_bg },
-        modified_visible = { bg = buffer_visible_bg },
-        modified_selected = { bg = buffer_selected_bg },
-
-        duplicate = { bg = buffer_bg },
-        duplicate_visible = { bg = buffer_visible_bg },
-        duplicate_selected = { bg = buffer_selected_bg },
-
-        diagnostic = { bg = buffer_bg },
-        diagnostic_visible = { bg = buffer_visible_bg },
-        diagnostic_selected = { bg = buffer_selected_bg },
-
-        error = { bg = buffer_bg },
-        error_visible = { bg = buffer_visible_bg },
-        error_selected = { bg = buffer_selected_bg },
-        warning = { bg = buffer_bg },
-        warning_visible = { bg = buffer_visible_bg },
-        warning_selected = { bg = buffer_selected_bg },
-        info = { bg = buffer_bg },
-        info_visible = { bg = buffer_visible_bg },
-        info_selected = { bg = buffer_selected_bg },
-        hint = { bg = buffer_bg },
-        hint_visible = { bg = buffer_visible_bg },
-        hint_selected = { bg = buffer_selected_bg },
-
-        error_diagnostic = { bg = buffer_bg },
-        error_diagnostic_visible = { bg = buffer_visible_bg },
-        error_diagnostic_selected = { bg = buffer_selected_bg },
-        warning_diagnostic = { bg = buffer_bg },
-        warning_diagnostic_visible = { bg = buffer_visible_bg },
-        warning_diagnostic_selected = { bg = buffer_selected_bg },
-        info_diagnostic = { bg = buffer_bg },
-        info_diagnostic_visible = { bg = buffer_visible_bg },
-        info_diagnostic_selected = { bg = buffer_selected_bg },
-        hint_diagnostic = { bg = buffer_bg },
-        hint_diagnostic_visible = { bg = buffer_visible_bg },
-        hint_diagnostic_selected = { bg = buffer_selected_bg },
-      },
-    })
-
-    vim.keymap.set('n', '+t', '<Cmd>BufferLineCycleNext<CR>', {})
-    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', {})
+    -- Add keymaps
+    vim.keymap.set('n', '+t', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
   end,
 }
