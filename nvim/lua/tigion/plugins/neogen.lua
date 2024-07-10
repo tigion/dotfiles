@@ -5,7 +5,7 @@ return {
   keys = {
     {
       '<leader>cn',
-      '<cmd>Neogen<cr>',
+      '<Cmd>Neogen<CR>',
       desc = 'Generate Annotations (Neogen)',
     },
   },
