@@ -32,6 +32,12 @@ keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up' })
 keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
 keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result' })
 
+-- TODO: Testing some special keymaps for german keyboard layout.
+keymap.set('n', 'ü', '[', { desc = '[' })
+keymap.set('n', 'ä', ']', { desc = ']' })
+keymap.set('n', 'Ü', '{zz', { desc = 'Previous empty line' })
+keymap.set('n', 'Ä', '}zz', { desc = 'Next empty line' })
+
 -- quickfix/location list
 
 -- quickfix list
