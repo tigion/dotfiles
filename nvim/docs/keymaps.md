@@ -22,6 +22,7 @@
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
     - [lsp-zero.nvim](#lsp-zeronvim)
+    - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
@@ -264,6 +265,14 @@ CMP - Completion Menu:
 |      | `<C-b>`           | Go to previous snippet placeholder                |
 |      | `<C-u>`           | Scroll completion documentation up                |
 |      | `<C-d>`           | Scroll completion documentation down              |
+
+### [mini.hipatterns]
+
+[mini.hipatterns]: https://github.com/echasnovski/mini.hipatterns
+
+| Mode | Keymap       | Description       |
+| ---- | ------------ | ----------------- |
+| `n`  | `<Leader>th` | Toggle hipatterns |
 
 ### [neogen]
 

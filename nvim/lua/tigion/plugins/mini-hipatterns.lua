@@ -2,6 +2,10 @@ return {
   'echasnovski/mini.hipatterns',
   enabled = true,
   version = false,
+  event = 'VeryLazy',
+  keys = {
+    { '<leader>th', '<cmd>lua require("mini.hipatterns").toggle()<cr>', desc = 'Toggle hipatterns' },
+  },
   opts = {},
   config = function(_, opts)
     require('mini.hipatterns').setup(opts)
@@ -107,7 +111,17 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color({ style = 'inline', inline_text = ' ' }),
 
         -- `#f00`
-        hex_color_short = { pattern = '#%x%x%x%f[%X]', group = hex_color_short, extmark_opts = my_extmark_opts },
+        -- Checks:
+        -- - true: #0f0 '#0f0'  "#0f0" #0f0 :#0f0 (#0f0)
+        -- - false: #f #f0 #f000 #f0000 #f00tor (like #factor) #facc #f00ö (like #dafür)
+        -- - Allow? #ff0#ff0
+        hex_color_short = {
+          -- pattern = '#%x%x%x%f[%X]', -- ! `#f00tor`, `#f00ö`
+          -- pattern = '()#%x%x%x()%f[^%x%w]', -- ! match `#f00ö`
+          pattern = '#%x%x%x%f[%p%s%c%z]',
+          group = hex_color_short,
+          extmark_opts = my_extmark_opts,
+        },
 
         -- `rgb(255, 0, 0)`
         rgb_color = { pattern = 'rgb%(%d+, ?%d+, ?%d+%)', group = rgb_color, extmark_opts = my_extmark_opts },
