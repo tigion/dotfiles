@@ -6,5 +6,13 @@ return {
   cmd = { 'AsciiDocPreview' },
   ft = { 'asciidoc' },
   build = 'cd server && npm install',
-  opts = {},
+  opts = {
+    -- server = {
+    --   port = 11234,
+    --   converter = 'js',
+    -- },
+    -- preview = {
+    --   position = 'current',
+    -- },
+  },
 }
