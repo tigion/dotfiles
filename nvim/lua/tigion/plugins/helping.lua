@@ -5,7 +5,7 @@ return {
     'tris203/precognition.nvim',
     event = 'VeryLazy',
     keys = {
-      { '<Leader>?p', '<Cmd>Precognition toggle<CR>', desc = 'Toggle Precognition' },
+      { '<Leader>tp', '<Cmd>Precognition toggle<CR>', desc = 'Toggle Precognition' },
     },
     opts = {
       startVisible = false,

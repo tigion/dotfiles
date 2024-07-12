@@ -347,7 +347,7 @@ CMP - Completion Menu:
 
 | Mode | Keymap       | Description         |
 | ---- | ------------ | ------------------- |
-| `n`  | `<Leader>?p` | Toggle precognition |
+| `n`  | `<Leader>tp` | Toggle precognition |
 
 ### [telescope.nvim]
 
