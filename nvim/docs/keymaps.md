@@ -35,6 +35,7 @@
     - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
+    - [which-key.nvim](#which-keynvim)
     - [zen-mode.nvim](#zen-modenvim)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
@@ -208,7 +209,7 @@
 
 | Mode | Keymap       | Description     |
 | ---- | ------------ | --------------- |
-| `n`  | `<Leader>?h` | Toggle hardtime |
+| `n`  | `<Leader>th` | Toggle hardtime |
 
 ### [inc-rename.nvim]
 
@@ -430,6 +431,15 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | ---- | ------ | ------------------ |
 | `n`  | `++`   | Next reference     |
 | `n`  | `üü`   | Previous reference |
+
+### [which-key.nvim]
+
+[which-key.nvim]: https://github.com/folke/which-key.nvim
+
+| Mode | Keymap       | Description               |
+| ---- | ------------ | ------------------------- |
+| `n`  | `<Leader>?`  | Show local buffer keymaps |
+| `n`  | `<Leader>??` | Show global keymaps       |
 
 ### [zen-mode.nvim]
 

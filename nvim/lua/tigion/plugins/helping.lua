@@ -17,7 +17,7 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
     event = 'VeryLazy',
     keys = {
-      { '<Leader>?h', '<Cmd>Hardtime toggle<CR>', desc = 'Toggle Hardtime' },
+      { '<Leader>th', '<Cmd>Hardtime toggle<CR>', desc = 'Toggle Hardtime' },
     },
     opts = {
       disable_mouse = false,

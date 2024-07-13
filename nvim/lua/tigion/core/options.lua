@@ -102,6 +102,8 @@ opt.updatetime = 50
 opt.wildignore:append({ '*/node_modules/*' })
 --opt.colorcolumn = "80"
 opt.fillchars:append('eob: ') -- no ~ on not existent lines
+opt.timeout = true
+opt.timeoutlen = 300 -- quickly trigger keymaps (default 1000)
 
 -- Clippboard
 if isMac then

@@ -1,29 +1,45 @@
 return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end,
-  opts = {},
-  config = function(_, opts)
-    require('which-key').setup(opts)
-
-    -- TODO: keymap groups
-    require('which-key').register({
-      -- ['<leader>g'] = { name = 'Git', _ = 'which_key_ignore' },
-      -- ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-      -- -- ['<leader>l'] = { name = 'LSP', _ = 'which_key_ignore' },
-      -- ['<leader>t'] = { name = 'Toggle', _ = 'which_key_ignore' },
-      -- ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
-      -- ['ö'] = { name = 'Telescope', _ = 'which_key_ignore' },
-      ['<leader>'] = {
-        g = 'Git',
-        c = 'Code',
-        t = 'Toggle',
-        x = 'Trouble',
-      },
-      ['ö'] = 'Telescope',
-    })
-  end,
+  opts = {
+    preset = 'classic', ---@type false | "classic" | "modern" | "helix"
+    -- delay = 300,
+    delay = function()
+      local delay = 200
+      -- NOTE: To make `<Leader>d` and `<Leader>dd` keymaps work
+      --       make sure that opts.delay >= timeoutlen.
+      --       - https://github.com/folke/which-key.nvim/issues/648#issuecomment-2226881346
+      return delay < vim.o.timeoutlen and vim.o.timeoutlen or delay
+    end,
+    -- icons = {
+    --   rules = false,
+    -- },
+    spec = {
+      { '<Esc>', hidden = true },
+      { '<Leader>c', desc = 'Code' },
+      { '<Leader>g', desc = 'Git' },
+      { '<Leader>t', desc = 'Toggle' },
+      { '<Leader>x', desc = 'Trouble' },
+      { 'ö', desc = 'Telescope' },
+    },
+  },
+  keys = {
+    {
+      '<leader>?',
+      function() require('which-key').show({ global = false }) end,
+      desc = 'Buffer Local Keymaps (which-key)',
+    },
+    {
+      '<leader>??',
+      function() require('which-key').show() end,
+      desc = 'Global Keymaps (which-key)',
+    },
+  },
+  -- config = function(_, opts)
+  --   require('which-key').setup(opts)
+  --   -- print(opts.delay() .. ' vs ' .. vim.o.timeoutlen)
+  --
+  --   -- require('which-key').add({
+  --   -- })
+  -- end,
 }
