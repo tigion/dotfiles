@@ -59,6 +59,8 @@ return {
       floats = 'dark',
     },
     lualine_bold = true,
+    -- TODO: Use `on_colors` or `style = `custom` to modify the colors?
+    --       - https://github.com/folke/tokyonight.nvim/issues/595
     on_colors = function(colors)
       -- https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/moon.lua
       -- bg             = "#222436",
