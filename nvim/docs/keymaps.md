@@ -354,24 +354,24 @@ CMP - Completion Menu:
 
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
 
-| Mode     | Keymap    | Description                                        |
-| -------- | --------- | -------------------------------------------------- |
-| `n`      | `öf`      | Find files in workspace                            |
-| `n`      | `ör`      | Find previously opened files in workspace          |
-| `n`      | `öb`      | Find open buffers                                  |
-| `n`      | `ög`      | Find in current buffer                             |
-| `n`      | `ögg`     | Find in workspace                                  |
-| `n`, `v` | `öG`      | Find string under cursor or selection in workspace |
-| `n`      | `öh`      | Find in help                                       |
-| `n`      | `öd`      | Find in diagnostics                                |
-| `n`      | `ö:`      | Find in commands                                   |
-| `n`      | `ö::`     | Find in command history                            |
-| `n`      | `ö/`      | Find in search history                             |
-| `n`      | ~~`öc`~~  | Find in git commits in current buffer              |
-| `n`      | ~~`öcc`~~ | Find in git commits                                |
-| `n`      | `öt`      | Find in treesitter symbols                         |
-| `n`      | `öö`      | Reopen previous Telescope search                   |
-| `n`      | ~~`sf`~~  | Open file browser                                  |
+| Mode     | Keymap    | Description                                      |
+| -------- | --------- | ------------------------------------------------ |
+| `n`      | `öf`      | Find files in workspace                          |
+| `n`      | `ör`      | Find previously opened files in workspace        |
+| `n`      | `öb`      | Find open buffers                                |
+| `n`      | `ög`      | Find in current buffer                           |
+| `n`      | `ögg`     | Find in workspace                                |
+| `n`, `v` | `öw`      | Find word under cursor or selection in workspace |
+| `n`      | `öh`      | Find in help                                     |
+| `n`      | `öd`      | Find in diagnostics                              |
+| `n`      | `ö:`      | Find in commands                                 |
+| `n`      | `ö::`     | Find in command history                          |
+| `n`      | `ö/`      | Find in search history                           |
+| `n`      | ~~`öc`~~  | Find in git commits in current buffer            |
+| `n`      | ~~`öcc`~~ | Find in git commits                              |
+| `n`      | `öt`      | Find in treesitter symbols                       |
+| `n`      | `öö`      | Reopen previous Telescope search                 |
+| `n`      | ~~`sf`~~  | Open file browser                                |
 
 In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings)):
 
