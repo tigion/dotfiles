@@ -1,15 +1,17 @@
 return {
   'nvim-tree/nvim-tree.lua', -- file explorer
   dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  config = function()
-    local tree = require('nvim-tree')
+  keys = {
+    { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle file explorer' },
+  },
+  opts = function()
     local icons = require('tigion.core.icons')
 
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
-    tree.setup({
+    return {
       -- disable_netrw = true,
       filters = {
         dotfiles = false,
@@ -50,8 +52,6 @@ return {
         --},
       },
       update_focused_file = { enable = true },
-    })
-
-    vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<Cr>', { silent = true, desc = 'Toggle file explorer' })
+    }
   end,
 }
