@@ -14,6 +14,9 @@ return {
     -- icons = {
     --   rules = false,
     -- },
+    expand = function(node)
+      return not node.desc -- expand only nodes without a description
+    end,
     spec = {
       { '<Esc>', hidden = true },
       { '<Leader>c', desc = 'Code' },
