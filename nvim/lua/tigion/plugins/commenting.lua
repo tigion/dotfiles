@@ -31,7 +31,7 @@ return {
       {
         '<Leader>xt',
         '<Cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>',
-        desc = 'Trouble: Show TODO comments',
+        desc = 'Show TODO comments (Trouble)',
       },
       { 'öt', '<Cmd>TodoTelescope<CR>', desc = 'Find in TODO comments' },
     },

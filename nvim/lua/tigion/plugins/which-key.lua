@@ -14,16 +14,14 @@ return {
     -- icons = {
     --   rules = false,
     -- },
-    expand = function(node)
-      return not node.desc -- expand only nodes without a description
-    end,
+    expand = 1,
     spec = {
       { '<Esc>', hidden = true },
-      { '<Leader>c', desc = 'Code' },
-      { '<Leader>g', desc = 'Git' },
-      { '<Leader>t', desc = 'Toggle' },
-      { '<Leader>x', desc = 'Trouble' },
-      { 'ö', desc = 'Telescope' },
+      { '<Leader>c', group = 'Code' },
+      { '<Leader>g', group = 'Git' },
+      { '<Leader>t', group = 'Toggle' },
+      { '<Leader>x', group = 'Trouble' },
+      { 'ö', group = 'Telescope' },
     },
   },
   keys = {
