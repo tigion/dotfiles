@@ -85,7 +85,7 @@ keymap.set(
   'n',
   '<Leader>s',
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = 'Search and replace word under cursor' }
+  { desc = 'Substitute current word' }
 )
 -- increment/decrement numbers
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment

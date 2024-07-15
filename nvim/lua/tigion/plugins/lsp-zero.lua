@@ -114,26 +114,27 @@ return {
       -- Deactivated: See inc-rename.lua (inc-rename.nvim)
       -- opts.desc = 'LSP: Rename with all references'
       -- keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
-      opts.desc = 'LSP: Rename with all references'
-      keymap.set('n', '<Leader>Rn', vim.lsp.buf.rename, opts)
+      opts.desc = 'Rename with references (lsp)'
+      keymap.set('n', '<Leader>rN', vim.lsp.buf.rename, opts)
 
       -- Deactivated: See formatting.lua (conform.nvim)
       -- opts.desc = 'LSP: Format current buffer'
       -- keymap.set('n', '<Leader>f', vim.lsp.buf.format, opts)
 
-      opts.desc = 'Show diagnostics for current line'
+      opts.desc = 'Show line diagnostics'
       keymap.set('n', '<Leader>d', vim.diagnostic.open_float, opts)
-      opts.desc = icon_telescope .. ' Show diagnostics for current buffer'
-      keymap.set('n', '<Leader>dd', '<Cmd>Telescope diagnostics bufnr=0<CR>', opts)
-      opts.desc = icon_telescope .. ' Show diagnostics for all buffers'
-      keymap.set('n', '<Leader>da', '<Cmd>Telescope diagnostics<CR>', opts)
+      -- Deactivated: See telescope.lua (telescope.nvim)
+      -- opts.desc = icon_telescope .. ' Show diagnostics for buffer'
+      -- keymap.set('n', '<Leader>dd', '<Cmd>Telescope diagnostics bufnr=0<CR>', opts)
+      -- opts.desc = icon_telescope .. ' Show diagnostics for all buffers'
+      -- keymap.set('n', '<Leader>da', '<Cmd>Telescope diagnostics<CR>', opts)
 
       opts.desc = 'Next diagnostic'
       keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
       opts.desc = 'Previous diagnostic'
       keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
 
-      opts.desc = 'LSP: Restart LSP servers for current buffer'
+      opts.desc = 'Restart LSP servers (buffer)'
       keymap.set('n', '<Leader>rs', ':LspRestart<CR>', opts)
     end)
 

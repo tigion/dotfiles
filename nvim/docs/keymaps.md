@@ -240,11 +240,11 @@
 | `n`  | `gdt`            | Go to type definition(s) (wuc)                                              | T   |
 | `n`  | `gI`             | Go to implementation(s)                                                     | T   |
 | `n`  | `<Leader>ca`     | Show code actions                                                           |     |
-| `n`  | ~~`<Leader>rn`~~ | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
+| `n`  | `<Leader>rN`     | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
 | `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
-| `n`  | `<Leader>d`      | Show diagnostics for current line                                           |     |
-| `n`  | `<Leader>dd`     | Show diagnostics for current buffer                                         | T   |
-| `n`  | `<Leader>da`     | Show diagnostics for all buffers                                            | T   |
+| `n`  | `<Leader>d`      | Show line diagnostics                                                       |     |
+| `n`  | ~~`<Leader>dd`~~ | Show diagnostics for current buffer                                         | T   |
+| `n`  | ~~`<Leader>da`~~ | Show diagnostics for all buffers                                            | T   |
 | `n`  | `+d`             | Next diagnostic                                                             |     |
 | `n`  | `üd`             | Previous diagnostic                                                         |     |
 | `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
@@ -357,24 +357,25 @@ CMP - Completion Menu:
 
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
 
-| Mode     | Keymap    | Description                                      |
-| -------- | --------- | ------------------------------------------------ |
-| `n`      | `öf`      | Find files in workspace                          |
-| `n`      | `ör`      | Find previously opened files in workspace        |
-| `n`      | `öb`      | Find open buffers                                |
-| `n`      | `ög`      | Find in current buffer                           |
-| `n`      | `ögg`     | Find in workspace                                |
-| `n`, `v` | `öw`      | Find word under cursor or selection in workspace |
-| `n`      | `öh`      | Find in help                                     |
-| `n`      | `öd`      | Find in diagnostics                              |
-| `n`      | `ö:`      | Find in commands                                 |
-| `n`      | `ö::`     | Find in command history                          |
-| `n`      | `ö/`      | Find in search history                           |
-| `n`      | ~~`öc`~~  | Find in git commits in current buffer            |
-| `n`      | ~~`öcc`~~ | Find in git commits                              |
-| `n`      | `öt`      | Find in treesitter symbols                       |
-| `n`      | `öö`      | Reopen previous Telescope search                 |
-| `n`      | ~~`sf`~~  | Open file browser                                |
+| Mode     | Keymap    | Description                |
+| -------- | --------- | -------------------------- |
+| `n`      | `öf`      | Find files in (cwd)        |
+| `n`      | `ör`      | Find recent files (cwd)    |
+| `n`      | `öb`      | Find open buffers          |
+| `n`      | `ög`      | Find string (buffer)       |
+| `n`      | `ögg`     | Find string (cwd)          |
+| `n`, `v` | `öw`      | Find current cursor (cwd)  |
+| `n`      | `öh`      | Find help tags             |
+| `n`      | `öd`      | Find diagnostics (buffer)  |
+| `n`      | `ödd`     | Find diagnostics (buffers) |
+| `n`      | `ö:`      | Find commands              |
+| `n`      | `ö::`     | Find command history       |
+| `n`      | `ö/`      | Find search history        |
+| `n`      | ~~`öc`~~  | Find git commits (buffer)  |
+| `n`      | ~~`öcc`~~ | Find git commits           |
+| `n`      | `öt`      | Find treesitter symbols    |
+| `n`      | `öö`      | Reopen previous search     |
+| `n`      | `ööb`     | Find telescope builtin     |
 
 In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings)):
 

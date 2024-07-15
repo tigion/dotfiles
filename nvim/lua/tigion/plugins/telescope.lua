@@ -8,22 +8,34 @@ return {
   keys = {
     -- https://github.com/nvim-telescope/telescope.nvim#pickers
     -- :Telescope builtin
-    { 'öf', '<Cmd>Telescope find_files<CR>', desc = 'Find files in cwd' },
-    { 'ör', '<Cmd>Telescope oldfiles cwd_only=true<CR>', desc = 'Find recent files in cwd' },
+    -- Files
+    { 'öf', '<Cmd>Telescope find_files<CR>', desc = 'Find files (cwd)' },
+    { 'ör', '<Cmd>Telescope oldfiles cwd_only=true<CR>', desc = 'Find recent files (cwd)' },
+    -- Buffers
     { 'öb', '<Cmd>Telescope buffers<CR>', desc = 'Find open buffers' },
-    { 'ög', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Find in buffer' },
-    { 'ögg', '<Cmd>Telescope live_grep<CR>', desc = 'Find in cwd' },
-    { 'öw', '<Cmd>Telescope grep_string<CR>', desc = 'Find word under cursor in cwd' },
-    { 'öw', '<Cmd>Telescope grep_string<CR>', mode = 'v', desc = 'Find selection in cwd' },
-    { 'öh', '<Cmd>Telescope help_tags<CR>', desc = 'Find in help' },
-    { 'öd', '<Cmd>Telescope diagnostics<CR>', desc = 'Find in diagnostics' },
-    { 'ö:', '<Cmd>Telescope commands<CR>', desc = 'Find in commands' },
-    { 'ö::', '<Cmd>Telescope command_history<CR>', desc = 'Find in command history' },
-    { 'ö/', '<Cmd>Telescope search_history<CR>', desc = 'Find in search history' },
-    -- { 'öc', '<Cmd>Telescope git_bcommits<CR>', desc = 'Find in git commits in buffer' },
-    -- { 'öcc', '<Cmd>Telescope git_commits<CR>', desc = 'Find in git commits' },
-    { 'ös', '<Cmd>Telescope treesitter<CR>', desc = 'Find in treesitter symbols' },
+    -- Strings
+    { 'ög', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Find string (buffer)' },
+    { 'ögg', '<Cmd>Telescope live_grep<CR>', desc = 'Find string (cwd)' },
+    { 'öw', '<Cmd>Telescope grep_string<CR>', desc = 'Find current word (cwd)' },
+    { 'öw', '<Cmd>Telescope grep_string<CR>', mode = 'v', desc = 'Find selection (cwd)' },
+    -- Help tags
+    { 'öh', '<Cmd>Telescope help_tags<CR>', desc = 'Find help tags' },
+    -- Diagnostics
+    { 'öd', '<Cmd>Telescope diagnostics bufnr=0<CR>', desc = 'Find diagnostics (buffer)' },
+    { 'ödd', '<Cmd>Telescope diagnostics<CR>', desc = 'Find diagnostics (buffers)' },
+    -- Commands and command history
+    { 'ö:', '<Cmd>Telescope commands<CR>', desc = 'Find commands' },
+    { 'ö::', '<Cmd>Telescope command_history<CR>', desc = 'Find command history' },
+    -- Search history
+    { 'ö/', '<Cmd>Telescope search_history<CR>', desc = 'Find search history' },
+    -- Git
+    -- { 'öc', '<Cmd>Telescope git_bcommits<CR>', desc = 'Find git commits (buffer)' },
+    -- { 'öcc', '<Cmd>Telescope git_commits<CR>', desc = 'Find git commits' },
+    -- Treesitter
+    { 'öt', '<Cmd>Telescope treesitter<CR>', desc = 'Find treesitter symbols' },
+    -- Telescope
     { 'öö', '<Cmd>Telescope resume<CR>', desc = 'Reopen previous search' },
+    { 'ööb', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
   },
   opts = function()
     local actions = require('telescope.actions')
