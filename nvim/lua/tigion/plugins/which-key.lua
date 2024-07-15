@@ -7,7 +7,7 @@ return {
     -- icons = {
     --   rules = false,
     -- },
-    expand = 1,
+    expand = 2, -- expand groups with max 2 child keymaps
     spec = {
       { '<Esc>', hidden = true },
       { '<Leader>c', group = 'Code' },
