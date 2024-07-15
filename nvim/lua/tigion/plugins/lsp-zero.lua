@@ -126,7 +126,7 @@ return {
       opts.desc = icon_telescope .. ' Show diagnostics for current buffer'
       keymap.set('n', '<Leader>dd', '<Cmd>Telescope diagnostics bufnr=0<CR>', opts)
       opts.desc = icon_telescope .. ' Show diagnostics for all buffers'
-      keymap.set('n', '<Leader>ddd', '<Cmd>Telescope diagnostics<CR>', opts)
+      keymap.set('n', '<Leader>da', '<Cmd>Telescope diagnostics<CR>', opts)
 
       opts.desc = 'Next diagnostic'
       keymap.set('n', '+d', vim.diagnostic.goto_next, opts)

@@ -58,7 +58,9 @@
 
 | Keymap      | Description |
 | ----------- | ----------- |
+| `<Leader>c` | +Code       |
 | `<Leader>g` | +Git        |
+| `<Leader>t` | +Toggle     |
 | `<Leader>x` | +Trouble    |
 | `ö`         | +Telescope  |
 
@@ -70,6 +72,7 @@
 | ---- | ------------- | --------------------------------- |
 | `n`  | `<Esc><Esc>`  | Remove search highlights          |
 | `i`  | `jj`, `<C-c>` | Exit insert mode                  |
+| `i`  | `jk`          | Exit insert mode and save         |
 | `n`  | `<C-a>`       | Select all                        |
 | `v`  | `J`           | Move selection down               |
 | `v`  | `K`           | Move selection up                 |
@@ -241,7 +244,7 @@
 | `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
 | `n`  | `<Leader>d`      | Show diagnostics for current line                                           |     |
 | `n`  | `<Leader>dd`     | Show diagnostics for current buffer                                         | T   |
-| `n`  | `<Leader>ddd`    | Show diagnostics for all buffers                                            | T   |
+| `n`  | `<Leader>da`     | Show diagnostics for all buffers                                            | T   |
 | `n`  | `+d`             | Next diagnostic                                                             |     |
 | `n`  | `üd`             | Previous diagnostic                                                         |     |
 | `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
