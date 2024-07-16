@@ -74,8 +74,8 @@
 | `i`  | `jj`, `<C-c>` | Exit insert mode                  |
 | `i`  | `jk`          | Exit insert mode and save         |
 | `n`  | `<C-a>`       | Select all                        |
-| `v`  | `J`           | Move selection down               |
-| `v`  | `K`           | Move selection up                 |
+| `x`  | `J`           | Move selection down               |
+| `x`  | `K`           | Move selection up                 |
 | `n`  | `<Leader>s`   | Search and replace template (wuc) |
 
 - `wuc` ... Word under cursor
@@ -163,8 +163,8 @@
 | ---- | ------ | ----------------------------------------- |
 | `n`  | `gcc`  | Toggle linewise comment for current line  |
 | `n`  | `gbc`  | Toggle blockwise comment for current line |
-| `v`  | `gc`   | Toggle linewise comment for selection     |
-| `v`  | `gb`   | Toggle blockwise comment for selection    |
+| `x`  | `gc`   | Toggle linewise comment for selection     |
+| `x`  | `gb`   | Toggle blockwise comment for selection    |
 | `n`  | `gco`  | Insert comment to the next line           |
 | `n`  | `gcO`  | Insert comment to the previous line       |
 | `n`  | `gcA`  | Insert comment to end of the current line |
@@ -178,7 +178,7 @@
 
 | Mode     | Keymap      | Description                     |
 | -------- | ----------- | ------------------------------- |
-| `n`, `v` | `<Leader>f` | Format buffer/file or selection |
+| `n`, `x` | `<Leader>f` | Format buffer/file or selection |
 
 ### [gitsigns.nvim]
 
@@ -313,7 +313,7 @@ CMP - Completion Menu:
 
 | Mode    | Keymap      | Description         |
 | ------- | ----------- | ------------------- |
-| `n`,`v` | `<Leader>i` | Invert text/operand |
+| `n`,`x` | `<Leader>i` | Invert text/operand |
 
 ### [nvim-tree]
 
@@ -334,8 +334,8 @@ CMP - Completion Menu:
 | Mode | Keymap | Description                             |
 | ---- | ------ | --------------------------------------- |
 | `n`  | `<CR>` | Init selection (current node)           |
-| `v`  | `<CR>` | Expand selection to outer (parent) node |
-| `v`  | `<BS>` | Reduce selection to inner (child) node  |
+| `x`  | `<CR>` | Expand selection to outer (parent) node |
+| `x`  | `<BS>` | Reduce selection to inner (child) node  |
 
 ### [outline.nvim]
 
@@ -364,7 +364,7 @@ CMP - Completion Menu:
 | `n`      | `öb`      | Find open buffers          |
 | `n`      | `ög`      | Find string (buffer)       |
 | `n`      | `ögg`     | Find string (cwd)          |
-| `n`, `v` | `öw`      | Find current cursor (cwd)  |
+| `n`, `x` | `öw`      | Find current cursor (cwd)  |
 | `n`      | `öh`      | Find help tags             |
 | `n`      | `öd`      | Find diagnostics (buffer)  |
 | `n`      | `ödd`     | Find diagnostics (buffers) |

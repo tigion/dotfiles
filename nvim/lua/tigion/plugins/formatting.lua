@@ -11,7 +11,7 @@ return {
           timeout_ms = 1000,
         })
       end,
-      mode = { 'n', 'v' }, -- FIX: Format in visual mode doesn't work! (Use `<Cmd>=<CR>` as an alternative?)
+      mode = { 'n', 'x' }, -- FIX: Format in visual mode doesn't work! (Use `<Cmd>=<CR>` as an alternative?)
       desc = 'Format buffer or selection',
     },
   },

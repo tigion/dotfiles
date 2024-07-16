@@ -16,11 +16,10 @@ return {
     })
 
     vim.keymap.set(
-      { 'n', 'v' },
+      { 'n', 'x' },
       '<Leader>i',
       toggler.toggle,
       { noremap = true, silent = true, desc = 'Invert text/operand' }
     )
   end,
 }
-
