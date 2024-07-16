@@ -2,9 +2,11 @@
 
 # Settings
 DEBUG=false
-show_text=1
-show_ac_power=0
+show_text=true
+show_text_warning=50
+show_ac_power=false
 
+# Options
 while :; do
   case "$1" in
   --debug) DEBUG=true ;;
@@ -20,8 +22,6 @@ charging_symbol=""
 charging_symbol_full="󰂄"
 level_symbols1="󰂎󱊡󱊢󱊣"
 level_symbols2="󰂎󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹"
-level_symbols3=""
-level_symbols4="󰢟󰢜󰂆󰂇󰂈󰢝󰂉󰢞󰂊󰂋󰂅"
 
 # Get battery level in percentage
 level=""
@@ -43,10 +43,12 @@ fi
 
 # Checks if we have battery or battery level
 if [[ -z "$has_battery" ]]; then
-  [[ $show_ac_power -eq 1 ]] && echo "$cable_symbol"
+  [[ $show_ac_power == true ]] && echo "$cable_symbol"
   exit 0
 elif [[ -z "$level" ]]; then
   echo "$unknown_symbol" && exit 0
+elif [[ "$level" -eq 100 ]]; then
+  echo "$charging_symbol_full" && exit 0
 fi
 
 # Gets battery level symbol
@@ -69,16 +71,13 @@ if [[ $DEBUG == "true" ]]; then
   for i in $(seq 0 1 100); do
     bp1=$(get_level_symbol "$i" "$level_symbols1")
     bp2=$(get_level_symbol "$i" "$level_symbols2")
-    bp3=$(get_level_symbol "$i" "$level_symbols3")
-    bp4=$(get_level_symbol "$i" "$level_symbols4")
-    bp5=$(get_level_symbol "$i" "$charging_symbol_full")
-    printf "%3d%% %s%s %s %s %s\n" "$i" "$bp1" "$bp2" "$bp3" "$bp4" "$bp5"
+    printf "%3d%% %s %s\n" "$i" "$bp1" "$bp2"
   done
 fi
 
 # Sets output
 output=$(get_level_symbol "$level" "$level_symbols1")
-[[ $has_ac_power == "AC Power" ]] && output="$charging_symbol$output"
-[[ $show_text -eq 1 ]] && output="${output}${level}%"
+[[ $has_ac_power == "AC Power" ]] && output="${charging_symbol}${output}"
+[[ $show_text == true || $level -le $show_text_warning ]] && output="${output}${level}%"
 
-echo "${output}"
+echo "$output"
