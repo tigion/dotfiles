@@ -5,7 +5,6 @@ return {
     {
       '<Leader>f',
       function()
-        print('Formatting...')
         require('conform').format({
           async = false,
           lsp_format = 'fallback',
