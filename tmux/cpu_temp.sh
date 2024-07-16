@@ -1,6 +1,6 @@
 #!/bin/bash
 
-temp="-"
+temp=""
 
 if [[ $(uname -s) == "Linux" ]]; then
   file=/sys/class/thermal/thermal_zone0/temp
@@ -9,4 +9,4 @@ if [[ $(uname -s) == "Linux" ]]; then
   fi
 fi
 
-echo "${temp}°C"
+[[ -n "$temp" ]] && echo "${temp}°C"

@@ -3,6 +3,7 @@
 # Settings
 DEBUG=false
 show_text=1
+show_ac_power=0
 
 while :; do
   case "$1" in
@@ -40,9 +41,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
   level=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 fi
 
-# Checks if we have no battery or no battery level
+# Checks if we have battery or battery level
 if [[ -z "$has_battery" ]]; then
-  echo "$cable_symbol" && exit 0
+  [[ $show_ac_power -eq 1 ]] && echo "$cable_symbol"
+  exit 0
 elif [[ -z "$level" ]]; then
   echo "$unknown_symbol" && exit 0
 fi
