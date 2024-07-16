@@ -1,6 +1,4 @@
 return {
-  -- FIX: Keymaps ^d and ^u in which-key window don't work
-  --
   'folke/which-key.nvim',
   dependencies = { 'echasnovski/mini.icons', version = false },
   event = 'VeryLazy',
