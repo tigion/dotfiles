@@ -337,12 +337,12 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         -- defaults:
-        -- <Ctrl-y>: Confirms selection
-        -- <Ctrl-e>: Cancel completion
+        -- <C-y>: Confirms selection
+        -- <C-e>: Cancel completion
         -- <Down>: Navigate to the next item on the list
         -- <Up>: Navigate to previous item on the list
-        -- <Ctrl-n>: If the completion menu is visible, go to the next item. Else, trigger completion menu.
-        -- <Ctrl-p>: If the completion menu is visible, go to the previous item. Else, trigger completion menu.
+        -- <C-n>: If the completion menu is visible, go to the next item. Else, trigger completion menu.
+        -- <C-p>: If the completion menu is visible, go to the previous item. Else, trigger completion menu.
 
         -- Navigate between suggestions
         ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -352,7 +352,7 @@ return {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
         -- Confirm completion with replace
-        -- TODO: <S-CR> Don't work in Tmux => fallback <C+r>
+        -- TODO: <S-CR> Don't work in Tmux => fallback <C-r>
         ['<S-CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         ['<C-r>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 

@@ -18,14 +18,14 @@ return {
         expr = true,
       },
       {
-        '<C-f>', -- NOTE: Must `C`, don't works with `Ctrl`
+        '<C-f>',
         function() return vim.fn['codeium#CycleCompletions'](1) end,
         mode = { 'i' },
         desc = 'Codeium: Cycle completions',
         expr = true,
       },
       {
-        '<Ctrl-x>', -- NOTE: Must `C`, don't works with `Ctrl`
+        '<C-x>',
         function() return vim.fn['codeium#Clear']() end,
         mode = { 'i' },
         desc = 'Codeium: Clear',
