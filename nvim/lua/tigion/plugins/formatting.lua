@@ -51,6 +51,11 @@ return {
       pint = {
         prepend_args = { '--preset', 'psr12' },
       },
+      shfmt = {
+        -- FIX: shfmt ignores `.editorconfig` in conform.nvim
+        --      Workaround: Use `-ci` global in `prepend_args`
+        prepend_args = { '-ci' }, -- Switch cases will be indented (--case-indent)
+      },
     },
   },
 }
