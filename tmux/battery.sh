@@ -36,14 +36,19 @@ has_battery=false
 battery_level=""
 is_charging=false
 if [[ $(uname -s) == "Darwin" ]]; then
+  # pmset -g batt
   pmset -g batt | grep -qE "InternalBattery" && has_battery=true
   if $has_battery; then
     battery_level=$(pmset -g batt | grep -oE "\d+%" | cut -d% -f1)
     pmset -g batt | grep -qE " charging" && is_charging=true
   fi
 elif [[ $(uname -s) == "Linux" ]]; then
-  # TODO: Add support for Linux
-  exit 0
+  # https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power
+  grep -qE "1" 2>/dev/null </sys/class/power_supply/BAT0/present && has_battery=true
+  if $has_battery; then
+    battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
+    grep -qE "^Charging" 2>/dev/null </sys/class/power_supply/BAT0/status && is_charging=true
+  fi
 fi
 
 # Checks if we have a battery
@@ -52,7 +57,7 @@ if ! $has_battery; then
   exit 0
 fi
 
-# Checks if we habe a battery level
+# Checks if we have a battery level
 [[ -z $battery_level ]] && echo "$unknown_symbol" && exit 0
 
 # Checks if we have a full battery and charging
@@ -74,7 +79,7 @@ function get_level_symbol() {
 }
 
 # Test output
-if [[ $DEBUG == "true" ]]; then
+if $DEBUG; then
   for i in $(seq 0 1 100); do
     bp1=$(get_level_symbol "$i" "$level_symbols1")
     bp2=$(get_level_symbol "$i" "$level_symbols2")
