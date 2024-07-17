@@ -17,8 +17,8 @@ DEBUG=false
 # Parse options
 while :; do
   case "$1" in
-  --debug) DEBUG=true ;;
-  *) break ;;
+    --debug) DEBUG=true ;;
+    *) break ;;
   esac
   shift
 done
