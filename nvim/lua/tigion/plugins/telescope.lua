@@ -58,8 +58,8 @@ return {
             ['<C-r>'] = actions.toggle_all, -- toggle (reverse) selection of all items
             ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist, -- send smart (all or selected items) to quickfix list (replace default behavior)
             ['<C-h>'] = 'which_key', -- help
-            -- ['<C-h>'] = actions.preview_scrolling_left,
-            -- ['<C-l>'] = actions.preview_scrolling_right,
+            -- ['<C-f>'] = actions.preview_scrolling_left, -- NOTE: Not yet in the 0.1.x branch!
+            -- ['<C-k>'] = actions.preview_scrolling_right, -- NOTE: Not yet in the 0.1.x branch!
           },
         },
         file_ignore_patterns = { '%.git/' }, -- ignore .git/ folders
