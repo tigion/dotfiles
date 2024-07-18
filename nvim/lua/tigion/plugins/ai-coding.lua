@@ -1,6 +1,6 @@
 return {
   {
-    -- TODO: clean up ~/.codeium/bin from old folders
+    -- NOTE: clean up ~/.codeium/bin from old folders
     --       with language_server_macos_arm binaries
     --
     -- current version is now working, but the folder `~/.codeium/code_tracker/` musst be removed
