@@ -44,7 +44,9 @@ opt.number = true -- toggle with <F9>
 opt.signcolumn = 'yes'
 
 -- Line wrapping
-opt.wrap = false -- disable line wrapping
+opt.wrap = false -- disable line wrapping (toggle with <F7>)
+opt.linebreak = true -- If wrapping, don't break in the middle of words
+opt.smoothscroll = true -- If wrapping, use smooth scrolling
 
 -- Indent
 opt.smarttab = true
@@ -94,7 +96,7 @@ opt.splitright = true -- open new split right
 -- Others
 opt.backspace = { 'start', 'eol', 'indent' }
 opt.cmdheight = 1
-opt.laststatus = 2
+opt.laststatus = 3 -- global statusline (2 local)
 opt.path:append({ '**' }) -- Finding files - Search down into subfolders
 opt.scrolloff = 10
 opt.showcmd = true
