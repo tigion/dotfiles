@@ -373,7 +373,7 @@ CMP - Completion Menu:
 | `n`      | `ö/`      | Find search history        |
 | `n`      | ~~`öc`~~  | Find git commits (buffer)  |
 | `n`      | ~~`öcc`~~ | Find git commits           |
-| `n`      | `öt`      | Find treesitter symbols    |
+| `n`      | `ös`      | Find treesitter symbols    |
 | `n`      | `öö`      | Reopen previous search     |
 | `n`      | `ööb`     | Find telescope builtin     |
 
