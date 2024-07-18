@@ -31,7 +31,7 @@ return {
       'n',
       'üü',
       function() illuminate.goto_prev_reference(false) end,
-      { desc = 'Previous reference (Illuminate)' }
+      { desc = 'Prev reference (Illuminate)' }
     )
   end,
 }

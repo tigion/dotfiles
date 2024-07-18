@@ -131,7 +131,7 @@ return {
 
       opts.desc = 'Next diagnostic'
       keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
-      opts.desc = 'Previous diagnostic'
+      opts.desc = 'Prev diagnostic'
       keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
 
       opts.desc = 'Restart LSP servers (buffer)'

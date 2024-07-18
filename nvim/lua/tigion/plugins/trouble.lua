@@ -29,7 +29,7 @@ return {
     {
       'üt',
       function() require('trouble').prev({ skip_groups = true, jump = true }) end,
-      desc = 'Previous item (Trouble)',
+      desc = 'Prev item (Trouble)',
     },
     { '+t', function() require('trouble').next({ skip_groups = true, jump = true }) end, desc = 'Next item (Trouble)' },
   },

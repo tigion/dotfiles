@@ -3,7 +3,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   keys = {
     {
-      '<Leader>f',
+      '<Leader>cf',
       function()
         require('conform').format({
           async = false,

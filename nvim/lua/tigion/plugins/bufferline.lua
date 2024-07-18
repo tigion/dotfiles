@@ -8,7 +8,7 @@ return {
   --       Workaround: Declare keymaps in the plugin config.
   --
   --   { '+t', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
-  --   { 'üt', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Previous buffer' },
+  --   { 'üt', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Prev buffer' },
   -- },
   opts = function()
     local bufferline = require('bufferline')
@@ -67,6 +67,6 @@ return {
 
     -- Add keymaps
     vim.keymap.set('n', '+t', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
-    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer' })
   end,
 }

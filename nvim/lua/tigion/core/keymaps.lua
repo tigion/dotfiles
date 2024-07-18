@@ -16,9 +16,10 @@ keymap.set('i', 'jk', '<Esc>:w<CR>', { desc = 'Exit insert mode and save' })
 keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
--- keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
+keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 
 -- F-Keys
+keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line break' })
 keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
 keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
 keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
@@ -26,18 +27,16 @@ keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
 
 -- Navigation
 
--- keep cursor in middle position when scrolling down / up
-keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down' })
-keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up' })
--- keep cursor in middle position when go to next/prev search result
-keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
-keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result' })
-
 -- TODO: Testing some special keymaps for german keyboard layout.
-keymap.set('n', 'ü', '[', { desc = '[' })
-keymap.set('n', 'ä', ']', { desc = ']' })
-keymap.set('n', 'Ü', '{zz', { desc = 'Previous empty line' })
-keymap.set('n', 'Ä', '}zz', { desc = 'Next empty line' })
+--
+-- keymap.set('n', 'ü', '[', { desc = '[' })
+-- keymap.set('n', 'ä', ']', { desc = ']' })
+keymap.set('n', 'üm', '[m', { desc = 'Prev method start' })
+keymap.set('n', '+m', ']m', { desc = 'Next method start' })
+keymap.set('n', 'üM', '[M', { desc = 'Prev method end' })
+keymap.set('n', '+M', ']m', { desc = 'Next method start' })
+keymap.set('n', 'Ü', '{', { desc = 'Prev empty line' })
+keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
 
 -- quickfix/location list
 
@@ -53,7 +52,7 @@ keymap.set('n', '<Leader>xq', function()
   vim.cmd.copen()
 end, { desc = 'Toggle quickfix list' })
 keymap.set('n', '+q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
-keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Previous quickfix' })
+keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 
 -- location list
 -- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
@@ -65,21 +64,25 @@ keymap.set('n', '<Leader>xl', function()
   end
 end, { desc = 'Toggle location list' })
 keymap.set('n', '+l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
-keymap.set('n', 'ül', '<Cmd>lprev<CR>zz', { desc = 'Previous location' })
+keymap.set('n', 'ül', '<Cmd>lprev<CR>zz', { desc = 'Prev location' })
 
 -- Manipulation
 
 -- better identing (repeatable)
 keymap.set('x', '<', '<gv', { desc = 'Decrease indent' })
 keymap.set('x', '>', '>gv', { desc = 'Increase indent' })
+
 -- dont affect register
 keymap.set('n', 'x', '"_x') -- delete character without copying (register)
 -- ('v', P') -> keymap.set('x', '<Leader>p', [["_dP]]) -- preserve highlight source
+--
 -- move highlighted line
 keymap.set('x', 'J', ":m '>+1<CR>gv=gv") -- down
 keymap.set('x', 'K', ":m '<-2<CR>gv=gv") -- up
+
 -- keep cursor position with line concatenation
-keymap.set('n', 'J', 'mzJ`z')
+-- keymap.set('n', 'J', 'mzJ`z')
+--
 -- search and replace template for the current word under cursor
 keymap.set(
   'n',
@@ -87,30 +90,40 @@ keymap.set(
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = 'Substitute current word' }
 )
+
 -- increment/decrement numbers
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
 keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
--- keymap.set('n', 'dw', 'vb"_d', { desc = 'Delete a word backwards not forwards' })
+
+-- Buffers
+-- keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+-- keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+keymap.set('n', 'üb', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+keymap.set('n', '+b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 
 -- Windows
 
 -- Split window
 keymap.set('n', 'sh', ':split<Return>', { desc = 'Split window horizontally' })
 keymap.set('n', 'sv', ':vsplit<Return>', { desc = 'Split window vertically' })
+
 -- Switch window
 -- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
 keymap.set('', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
 keymap.set('', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
 keymap.set('', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
 keymap.set('', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
--- keymap.set('', 'sh', '<C-w>h', { desc = 'Go to left window' })
--- keymap.set('', 'sj', '<C-w>j', { dess = 'Go to lower window' })
--- keymap.set('', 'sk', '<C-w>k', { desc = 'Go to upper window' })
--- keymap.set('', 'sl', '<C-w>l', { desc = 'Go to right window' })
+
 -- Resize window
-keymap.set('n', '<C-w><Left>', '<C-w><', { desc = 'Decrease window width' })
-keymap.set('n', '<C-w><Right>', '<C-w>>', { desc = 'Increase window width' })
-keymap.set('n', '<C-w><Down>', '<C-w>-', { desc = 'Decrease window height' })
-keymap.set('n', '<C-w><Up>', '<C-w>+', { desc = 'Increase window height' })
+keymap.set('n', '<C-w><Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width' })
+keymap.set('n', '<C-w><Down>', '<Cmd>resize -2<CR>', { desc = 'Decrease window height' })
+keymap.set('n', '<C-w><Up>', '<Cmd>resize +2<CR>', { desc = 'Increase window height' })
+keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width' })
 
 -- Tabs
+
+-- Other
+
+-- Inspect (Treesitter) highlights (under cursor)
+keymap.set('n', '<Leader>ui', '<Cmd>Inspect<CR>', { desc = 'Inspect Pos' })
+keymap.set('n', '<Leader>uI', '<Cmd>InspectTree<CR>', { desc = 'Inspect Tree' })

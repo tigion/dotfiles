@@ -12,6 +12,7 @@
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Tabs](#tabs)
     - [Windows](#windows)
+    - [Others](#others)
   - [Plugins](#plugins)
     - [bufferline.nvim](#bufferlinenvim)
     - [codeium.vim](#codeiumvim)
@@ -84,6 +85,7 @@
 
 | Mode | Keymap  | Description                  |
 | ---- | ------- | ---------------------------- |
+|      | `<F7>`  | Toggle line wrapping         |
 |      | `<F8>`  | Toggle relative line numbers |
 |      | `<F9>`  | Toggle line numbers          |
 |      | `<F10>` | Toggle spell checking        |
@@ -127,6 +129,13 @@
 | `n`  | `<C-w><Right>` | Increase window width      |
 | `n`  | `<C-w><Down>`  | Decrease window height     |
 | `n`  | `<C-w><Up>`    | Increase window height     |
+
+### Others
+
+| Mode | Keymap       | Description                          |
+| ---- | ------------ | ------------------------------------ |
+| `n`  | `<Leader>ui` | Inspect Pos (Treesitter highlights)  |
+| `n`  | `<Leader>uI` | Inspect Tree (Treesitter highlights) |
 
 ## Plugins
 
@@ -176,9 +185,9 @@
 
 [conform.nvim]: https://github.com/stevearc/conform.nvim
 
-| Mode     | Keymap      | Description                     |
-| -------- | ----------- | ------------------------------- |
-| `n`, `x` | `<Leader>f` | Format buffer/file or selection |
+| Mode     | Keymap       | Description                     |
+| -------- | ------------ | ------------------------------- |
+| `n`, `x` | `<Leader>cf` | Format buffer/file or selection |
 
 ### [gitsigns.nvim]
 
