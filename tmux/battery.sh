@@ -33,11 +33,13 @@ level_symbols2="󰂎󰁺󰁻󰁼󰁽󰁾󰁿󰂀󰂁󰂂󰁹"
 
 # Get battery values
 has_battery=false
+has_ac_power=false
 battery_level=""
 is_charging=false
 if [[ $(uname -s) == "Darwin" ]]; then
   # pmset -g batt
   pmset -g batt | grep -qE "InternalBattery" && has_battery=true
+  pmset -g batt | grep -qE "AC Power" && has_ac_power=true
   if $has_battery; then
     battery_level=$(pmset -g batt | grep -oE "\d+%" | cut -d% -f1)
     pmset -g batt | grep -qE " charging" && is_charging=true
@@ -45,10 +47,20 @@ if [[ $(uname -s) == "Darwin" ]]; then
 elif [[ $(uname -s) == "Linux" ]]; then
   # https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power
   grep -qE "1" 2>/dev/null </sys/class/power_supply/BAT0/present && has_battery=true
+  # TODO: Status: "Unknown", "Charging", "Discharging", "Not charging", "Full"
+  grep -qE "Full" 2>/dev/null </sys/class/power_supply/BAT0/status && has_ac_power=true
   if $has_battery; then
     battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
     grep -qE "^Charging" 2>/dev/null </sys/class/power_supply/BAT0/status && is_charging=true
   fi
+fi
+
+# Test output
+if $DEBUG; then
+  printf "has_battery: %s\n" "$has_battery"
+  printf "has_ac_power: %s\n" "$has_ac_power"
+  printf "battery_level: %s\n" "$battery_level"
+  printf "is_charging: %s\n" "$is_charging"
 fi
 
 # Checks if we have a battery
@@ -60,8 +72,11 @@ fi
 # Checks if we have a battery level
 [[ -z $battery_level ]] && echo "$unknown_symbol" && exit 0
 
+# Converts battery level to integer
+battery_level=$((battery_level))
+
 # Checks if we have a full battery and charging
-[[ $battery_level -gt 100 ]] && $is_charging && echo "$charging_symbol_full" && exit 0
+[[ $battery_level -ge 100 ]] && $has_ac_power && echo "$charging_symbol_full" && exit 0
 
 # Gets battery level symbol
 # - $1: battery level
@@ -79,13 +94,13 @@ function get_level_symbol() {
 }
 
 # Test output
-if $DEBUG; then
-  for i in $(seq 0 1 100); do
-    bp1=$(get_level_symbol "$i" "$level_symbols1")
-    bp2=$(get_level_symbol "$i" "$level_symbols2")
-    printf "%3d%% %s %s\n" "$i" "$bp1" "$bp2"
-  done
-fi
+# if $DEBUG; then
+#   for i in $(seq 0 1 100); do
+#     bp1=$(get_level_symbol "$i" "$level_symbols1")
+#     bp2=$(get_level_symbol "$i" "$level_symbols2")
+#     printf "%3d%% %s %s\n" "$i" "$bp1" "$bp2"
+#   done
+# fi
 
 # Sets output
 output=$(get_level_symbol "$battery_level" "$level_symbols1")
