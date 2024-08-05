@@ -32,6 +32,7 @@
     - [nvim-treesitter](#nvim-treesitter)
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
+    - [render-markdown.nvim](#render-markdownnvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
@@ -362,6 +363,14 @@ CMP - Completion Menu:
 | ---- | ------------ | ------------------- |
 | `n`  | `<Leader>tp` | Toggle precognition |
 
+### [render-markdown.nvim]
+
+[render-markdown.nvim]: https://github.com/MeanderingProgrammer/render-markdown.nvim
+
+| Mode | Keymap       | Description            |
+| ---- | ------------ | ---------------------- |
+| `n`  | `<Leader>tm` | Toggle Render Markdown |
+
 ### [telescope.nvim]
 
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
@@ -404,8 +413,8 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 |         | `<C-v>`                    | Go to file selection as a vsplit            |
 |         | `<C-u>`                    | Scroll up in preview window                 |
 |         | `<C-d>`                    | Scroll down in preview window               |
-|         | ⚠️ `<C-f>`                 | Scroll left in preview window               |
-|         | ⚠️ `<C-b>`                 | Scroll right in preview window              |
+|         | !`<C-f>`                   | Scroll left in preview window               |
+|         | !`<C-b>`                   | Scroll right in preview window              |
 
 ### [todo-comments.nvim]
 
