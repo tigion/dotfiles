@@ -44,8 +44,12 @@ local opts = {
     notify = false,
   },
   dev = {
-    path = get_local_dev_path,
-    -- path = '~/projects/neovim',
+    -- FIX: get_local_dev_path or function doesn't work
+    --      - https://github.com/folke/lazy.nvim/issues/1707
+    --
+    -- path = get_local_dev_path,
+    -- path = function() return '~/projects/neovim' end,
+    path = '~/projects/neovim',
   },
 }
 
