@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Util functions
 
----Returns the first path from a set of paths in which
+---Returns the first plugin directory from a set of paths in which
 ---the local dev version of the plugin is located.
 ---@param plugin LazyPlugin
 ---@return string
@@ -21,9 +21,11 @@ local function get_local_dev_path(plugin)
     '~/projects/private/neovim/fork',
   }
   for _, path in ipairs(search_paths) do
-    if vim.fn.isdirectory(vim.fn.expand(path) .. '/' .. plugin.name) == 1 then return path end
+    local plugin_dir = vim.fn.expand(path) .. '/' .. plugin.name
+    -- if vim.fn.isdirectory(plugin_dir) == 1 then return path end
+    if vim.fn.isdirectory(plugin_dir) == 1 then return plugin_dir end
   end
-  return search_paths[1]
+  return ''
 end
 
 -- Setup lazy.nvim
@@ -44,12 +46,8 @@ local opts = {
     notify = false,
   },
   dev = {
-    -- FIX: get_local_dev_path or function doesn't work
-    --      - https://github.com/folke/lazy.nvim/issues/1707
-    --
-    -- path = get_local_dev_path,
-    -- path = function() return '~/projects/neovim' end,
-    path = '~/projects/neovim',
+    path = get_local_dev_path,
+    -- path = '~/projects/neovim',
   },
 }
 
