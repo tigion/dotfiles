@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Opens or create a note via callback URL with defined
 # size and position in Bear, a note app for macOS.
 
-# check
+# Checks if the required Bear.app is installed
 if [ ! -d "/Applications/Bear.app" ]; then
   echo "The required Bear.app is not installed."
   exit 1
@@ -12,9 +12,15 @@ fi
 command="$1"
 parameter="$2"
 
-# encode string for url
+BEAR_URL="bear://x-callback-url"
+
+# Encodes string for url
+#
+# FIX: This encodes not correctly `ä` and `☕️`
+#
 # https://gist.github.com/cdown/1163649?permalink_comment_id=4292547#gistcomment-4292547
 raw_url_encode() {
+  # local LC_ALL=C
   local string="${1}"
   local strlen=${#string}
   local encoded=""
@@ -28,53 +34,83 @@ raw_url_encode() {
     esac
     encoded+="${o}"
   done
-  echo "${encoded}"  # You can either set a return variable (FASTER)
-  REPLY="${encoded}" #+or echo the result (EASIER)... or both... :p
+  echo "${encoded}"
 }
 
-# create new note with title
+# Creates new note with title
 create_note() {
   if [[ -z "$1" ]]; then
     echo "Invalid note title!"
     exit 1
   fi
-  title=$(raw_url_encode "$1")
-  callback_url="bear://x-callback-url/create?title=${title}&open_note=yes&new_window=yes&edit=yes"
+  local title && title=$(raw_url_encode "$1")
+  local args="&open_note=yes&new_window=yes&edit=yes"
+  local callback_url="${BEAR_URL}/create?title=${title}${args}"
+  echo "$callback_url"
 }
 
-# open note via id
-open_note() {
-  id="$1"
-  rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
-  if [[ "$id" =~ $rx ]]; then
-    callback_url="bear://x-callback-url/open-note?id=${id}&open_note=yes&new_window=yes"
-  else
+# Opens note via id
+open_note_by_id() {
+  local id="$1"
+  local rx="^[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}-[A-Z0-9]{5}-[A-Z0-9]{16}$"
+  local args="&open_note=yes&new_window=yes"
+  if [[ ! "$id" =~ $rx ]]; then
     echo "Invalid note id!"
     exit 1
   fi
+  local callback_url="${BEAR_URL}/open-note?id=${id}"
+  echo "$callback_url"
 }
 
-# open TODO note via title or create new one
+# Opens note via title
+open_note_by_title() {
+  if [[ -z "$1" ]]; then
+    echo "Invalid note title!"
+    exit 1
+  fi
+  local title
+  if [[ "$2" == "--no-url-encode" ]]; then
+    title="$1"
+  else
+    title=$(raw_url_encode "$1")
+  fi
+  local args="&exclude_trashed=yes&open_note=yes&new_window=yes&edit=no"
+  local error_callback_url="${BEAR_URL}/create?title=${title}${args}"
+  local args_error && args_error="&x-error=$(raw_url_encode "$error_callback_url")"
+  local callback_url="${BEAR_URL}/open-note?title=${title}${args}${args_error}"
+  echo "$callback_url"
+}
+
+# Opens TODO note via title or create new one
 open_todo() {
-  callback_url="bear://x-callback-url/open-note?title=TODO&exclude_trashed=yes&open_note=yes&new_window=yes&edit=yes&x-error=bear%3A%2F%2Fx-callback-url%2Fcreate%3Ftitle%3DTODO%26open_note%3Dyes%26new_window%3Dyes%26edit%3dyes"
+  open_note_by_title "TODO"
 }
 
-# command switch
+# Opens Vim note via title or create new one
+open_vim() {
+  # open_note_by_title "☕️ Vim - CheatSheet"
+  open_note_by_title "%E2%98%95%EF%B8%8F%20Vim%20-%20CheatSheet" --no-url-encode
+}
+
+# Gets the command based callback url
+callback_url=""
 if [[ "$command" == "create" ]]; then
-  create_note "$parameter"
-elif [[ "$command" == "open-note" ]]; then
-  open_note "$parameter"
-elif [[ "$command" == "open-todo" ]]; then
-  open_todo
+  callback_url=$(create_note "$parameter")
+elif [[ "$command" == "note" ]]; then
+  callback_url=$(open_note "$parameter")
+elif [[ "$command" == "todo" ]]; then
+  callback_url=$(open_todo)
+elif [[ "$command" == "vim" ]]; then
+  callback_url=$(open_vim)
 else
   echo "TODO: Nothing to do"
   exit 1
 fi
 
-# open bear via callback url
+# Opens bear via callback url
 open "$callback_url"
 
-# set window position and size
+# Sets the window position and size
 osascript <<EOS
   tell application "System Events"
     set appWindow to the front window of application process "Bear"
@@ -96,4 +132,3 @@ osascript <<EOS
     set the size of appWindow to [550, _h -50]
   end tell
 EOS
-
