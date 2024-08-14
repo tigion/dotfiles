@@ -42,6 +42,7 @@ brew "ruby"
 # casks
 cask "kitty"
 cask "docker"
+#cask "libreoffice"
 
 # nice to have
 #cask "fliqlo"
