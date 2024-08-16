@@ -2,50 +2,93 @@
 #
 # Starts one or multiple new Tmux sessions and attach to first one.
 
-# check arguments
+# Check arguments
 if [[ $# -eq 0 ]]; then
   echo "Usage: $(basename "$0") <session-name> [<session-name> ...]"
   exit 1
 fi
 
-# check if tmux server is running
+# Checks if tmux server is running.
 is_running() { tmux run &>/dev/null; }
 
-# check if session exists
+# Check if the given session exists
 is_session() {
   # has-session (alias: has)
   # -t target-session
   tmux has-session -t "$1" 2>/dev/null
 }
 
-# check if session is attached
+# Check if the given session is attached.
 is_attached() {
   # list-session (alias: ls)
   tmux ls 2>/dev/null | grep -q "^${1}:.*(attached)$"
 }
 
-# get first session
+# Checks if a directory exists.
+is_directory() {
+  [[ -d "$1" ]]
+}
+
+# Gets start directory for session.
+get_start_directory() {
+  # Sets the default start directory
+  local default_directory="${HOME}/projects"
+  is_directory "${default_directory}" || default_directory="${HOME}"
+
+  # Uses the default start directory if no session name is provided
+  if [[ -z "$1" ]]; then
+    echo "$default_directory"
+    return
+  fi
+
+  # Converts session name to lowercase
+  # local session_name="${1,,}" # Only works with Bash 4.0+
+  local session_name && session_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+
+  # Sets the project name
+  local project_name="${session_name}"
+  # Handles session names that differ from project names
+  if [[ "$session_name" == "nvim" ]]; then
+    project_name="neovim"
+  fi
+
+  # Sets the start directory based on session name
+  local start_directory="${HOME}/projects/${project_name}"
+  is_directory "${start_directory}" || start_directory="${default_directory}"
+
+  echo "$start_directory"
+}
+
+# Sets first session
 first_session_name="$1"
 
-# start given sessions
+# Starts the given sessions
 for session_name in "$@"; do
-  # skip existing sessions
+  # Skips existing sessions
   if is_session "${session_name}"; then
     echo "Session '${session_name}' already exists!"
     continue
   fi
 
-  # create new session
+  # Creates new session
   echo "Create new session '${session_name}'"
   # new-session (alias: new)
   # -d ... dont attach new session to current terminal (needed to create multiple sessions)
   # -s session-name
-  tmux new-session -d -s "$session_name"
-  # wait, hopefully prevents .gitconfig lock error
+  # -c start-directory
+  tmux new-session -d -s "$session_name" -c "$(get_start_directory "$session_name")"
+
+  # Waits, hopefully prevents .gitconfig lock error
   sleep .5
+
+  # Runs session/window specific shell commands
+  if [[ "$session_name" == "DEV" ]]; then
+    # Uses first window for my dotfile project
+    tmux send-keys -t DEV:1 "cd dotfiles" Enter
+  fi
 done
 
-# attach to first session
+# Attaches to first session
 if is_session "${first_session_name}"; then
   echo ""
   if is_attached "${first_session_name}"; then
