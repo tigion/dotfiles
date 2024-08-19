@@ -21,6 +21,7 @@ return {
       enabled = false, -- Enable/disable by default (toggle with `<Leader>tm`)
       code = {
         sign = false,
+        style = 'normal', -- Don't show icon + name for language (like 'full')
         width = 'block',
         left_pad = 1,
         right_pad = 1,
