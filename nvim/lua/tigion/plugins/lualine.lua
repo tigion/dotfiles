@@ -17,18 +17,6 @@ return {
     -- custom_theme.replace['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.replace.a.bg }
     -- custom_theme.terminal['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.terminal.a.bg }
 
-    -- get customized Codeium status
-    local function getCodeiumStatus()
-      if not pcall(vim.fn['codeium#Enabled']) then return '' end
-      if not vim.fn['codeium#Enabled']() then return '' end
-
-      local status = icons.codeium -- '󰘦'
-      -- vim.api.nvim_call_function("codeium#GetStatusString", {})
-      local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
-      if str ~= 'ON' and str ~= '' then status = status .. ' ' .. str end
-      return status
-    end
-
     lualine.setup({
       options = {
         icons_enabled = true,
@@ -71,13 +59,20 @@ return {
             'diagnostics',
             sources = { 'nvim_diagnostic' },
             symbols = icons.diagnostics,
+            on_click = function() vim.cmd('Trouble diagnostics toggle') end,
           },
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
+            on_click = function() vim.cmd('Lazy') end,
           },
-          { getCodeiumStatus },
+          { require('tigion.core.util').codeium.status },
           -- '%S󰘦 %3{codeium#GetStatusString()}',
+          {
+            require('tigion.core.util').info.lsp_servers,
+            color = { fg = '#545c7e', gui = 'italic' },
+            on_click = function() vim.cmd('LspInfo') end,
+          },
           'encoding',
           'fileformat',
           'filetype',

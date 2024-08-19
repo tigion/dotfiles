@@ -1,5 +1,7 @@
 local M = {}
 
+local icons = require('tigion.core.icons')
+
 M.info = {}
 
 ---Returns the Neovim version as formatted string.
@@ -17,6 +19,20 @@ function M.info.plugin_count()
   -- local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', false, 1))
   local plugin_count = require('lazy').stats().count
   return plugin_count
+end
+
+---Returns the LSP servers attached to the current buffer as formatted string.
+---@return string
+function M.info.lsp_servers()
+  local clients = vim.lsp.get_clients({ bufnr = 0 }) -- 0 = current buffer
+  local names = {}
+  for _, client in pairs(clients) do
+    table.insert(names, client.name)
+  end
+  return table.concat(names, ',')
+  -- local lsp_names = ''
+  -- if #names > 0 then lsp_names = '' .. table.concat(names, ',') end -- 
+  -- return lsp_names
 end
 
 M.color = {}
@@ -239,6 +255,20 @@ end
 ---@return table
 function M.bufferline.fixed_highlights(bg_default, bg_inactive)
   return M.bufferline.background_highlights(bg_default, nil, bg_inactive)
+end
+
+M.codeium = {}
+
+---Returns Codeium status as formatted string.
+---@return string
+function M.codeium.status()
+  if not pcall(vim.fn['codeium#Enabled']) then return '' end
+  if not vim.fn['codeium#Enabled']() then return '' end
+  local status = icons.codeium -- '󰘦'
+  -- vim.api.nvim_call_function("codeium#GetStatusString", {})
+  local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
+  if str ~= 'ON' and str ~= '' then status = status .. ' ' .. str end
+  return status
 end
 
 return M
