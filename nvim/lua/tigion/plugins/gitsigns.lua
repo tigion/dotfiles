@@ -11,6 +11,8 @@ return {
     { '<Leader>gs', '<Cmd>Gitsigns stage_hunk<CR>', desc = 'Stage git hunk' },
     { '<Leader>gu', '<Cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Unstage git hunk' },
     { '<Leader>gR', '<Cmd>Gitsigns reset_hunk<CR>', desc = 'Reset git hunk' },
+    -- diff
+    { '<Leader>gd', '<Cmd>Gitsigns diffthis<CR>', desc = 'Show git diff' },
   },
   opts = {},
 }
