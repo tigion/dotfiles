@@ -33,6 +33,7 @@ end
 ---@type LazySpec
 local spec = {
   { import = 'tigion.plugins' },
+  { import = 'tigion.plugins.lsp' },
 }
 
 ---@type LazyConfig

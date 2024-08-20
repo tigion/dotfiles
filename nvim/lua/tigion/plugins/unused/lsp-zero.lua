@@ -1,6 +1,6 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  -- enabled = false,
+  enabled = false,
   branch = 'v3.x',
   dependencies = {
     -- LSP Support
@@ -432,7 +432,7 @@ return {
     -- if vim.fn.has('nvim-0.10') == 1 then
     -- else
     -- end
-    for name, icon in pairs(require('tigion.core.icons').diagnostics) do
+    for name, icon in pairs(require('tigion.core.icons').diagnostic.signs) do
       name = 'DiagnosticSign' .. name
       vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
     end

@@ -58,7 +58,7 @@ return {
           {
             'diagnostics',
             sources = { 'nvim_diagnostic' },
-            symbols = icons.diagnostics,
+            symbols = icons.diagnostic.signs,
             on_click = function() vim.cmd('Trouble diagnostics toggle') end,
           },
           {

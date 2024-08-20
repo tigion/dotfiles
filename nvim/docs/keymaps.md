@@ -22,10 +22,10 @@
     - [harpoon](#harpoon)
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
-    - [lsp-zero.nvim](#lsp-zeronvim)
     - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
+    - [nvim-lspconfig](#nvim-lspconfig)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
@@ -232,9 +232,13 @@
 | ---- | ------------ | -------------------------------- |
 | `n`  | `<Leader>rn` | Rename with all references (wuc) |
 
-### [lsp-zero.nvim]
+### [nvim-lspconfig]
 
-[lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim
+<!-- ### [lsp-zero.nvim] -->
+
+[nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
+
+<!-- [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim -->
 
 | Mode | Keymap           | Description                                                                 | P   |
 | ---- | ---------------- | --------------------------------------------------------------------------- | --- |
@@ -242,6 +246,7 @@
 | `i`  | ~~`<C-k>`~~      | Show hover information                                                      |     |
 | `n`  | `gK`             | Show signature help                                                         |     |
 | `i`  | `<C-k>`          | Show signature help                                                         |     |
+| `n`  | `ti`             | Toggle inlay hints                                                          |     |
 | `n`  | `gs`             | Show symbols in current buffer                                              | T   |
 | `n`  | `gss`            | Show symbols in workspace (sbt)                                             | T   |
 | `n`  | `gr`             | Show references (wuc)                                                       | T   |

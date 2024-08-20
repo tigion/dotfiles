@@ -13,7 +13,7 @@ return {
   opts = function()
     local bufferline = require('bufferline')
 
-    local icons = require('tigion.core.icons').diagnostics
+    local icons = require('tigion.core.icons').diagnostic.signs
     local mix_hex_colors = require('tigion.core.util').color.mix_hex_colors
     local fixed_highlights = require('tigion.core.util').bufferline.fixed_highlights
 

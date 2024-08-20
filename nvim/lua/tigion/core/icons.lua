@@ -1,18 +1,27 @@
 local M = {}
 
 -- diagnostics
-local diagnostics = {
-  error = '', --  
-  warn = '', -- 
-  hint = '󱧢', -- 󰌵 󱧢
-  info = '', -- 
+M.diagnostic = {
+  signs = {
+    error = '', --  
+    warn = '', -- 
+    info = '', -- 
+    hint = '󱧢', -- 󰌵 󱧢
+  },
+  virtual_text_prefix = '',
 }
-M.diagnostics = {}
-for k, v in pairs(diagnostics) do
-  -- v = v .. ' ' -- add a space after icon
-  M.diagnostics[k:lower()] = v
-  M.diagnostics[k:sub(1, 1):upper() .. k:sub(2, -1):lower()] = v
-end
+-- local diagnostic_signs = {
+--   error = '', --  
+--   warn = '', -- 
+--   info = '', -- 
+--   hint = '󱧢', -- 󰌵 󱧢
+-- }
+-- for k, v in pairs(diagnostic_signs) do
+--   -- Adds signs in lowercase and first letter uppercase
+--   -- v = v .. ' ' -- add a space after icon
+--   M.diagnostic.signs[k:lower()] = v
+--   M.diagnostic.signs[k:sub(1, 1):upper() .. k:sub(2, -1):lower()] = v
+-- end
 
 -- folding markers
 M.folding = {
