@@ -14,6 +14,10 @@
     - [Windows](#windows)
     - [Others](#others)
   - [Plugins](#plugins)
+    - [LSP/CMP/Snippets](#lspcmpsnippets)
+      - [LuaSnip](#luasnip)
+      - [nvim-cmp](#nvim-cmp)
+      - [nvim-lspconfig](#nvim-lspconfig)
     - [bufferline.nvim](#bufferlinenvim)
     - [codeium.vim](#codeiumvim)
     - [Comment.nvim](#commentnvim)
@@ -25,7 +29,6 @@
     - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
-    - [nvim-lspconfig](#nvim-lspconfig)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
@@ -140,6 +143,72 @@
 
 ## Plugins
 
+### LSP/CMP/Snippets
+
+#### [LuaSnip]
+
+[LuaSnip]: https://github.com/L3MON4D3/LuaSnip
+
+| Mode     | Keymap  | Description                        |
+| -------- | ------- | ---------------------------------- |
+| `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
+| `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
+
+#### [nvim-cmp]
+
+[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
+
+CMP - Completion Menu:
+
+| Mode | Keymap            | Description                                       |
+| ---- | ----------------- | ------------------------------------------------- |
+| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
+| `i`  | `<C-e>`           | Cancel completion                                 |
+| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
+| `i`  | `<C-Space>`       | Trigger completion menu                           |
+| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
+| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
+| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
+| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
+|      | `<C-u>`           | Scroll completion documentation up                |
+|      | `<C-d>`           | Scroll completion documentation down              |
+
+#### [nvim-lspconfig]
+
+<!-- ### [lsp-zero.nvim] -->
+
+[nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
+
+<!-- [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim -->
+
+| Mode | Keymap           | Description                                                                 | P   |
+| ---- | ---------------- | --------------------------------------------------------------------------- | --- |
+| `n`  | `K`              | Show hover information                                                      |     |
+| `i`  | ~~`<C-k>`~~      | Show hover information                                                      |     |
+| `n`  | `gK`             | Show signature help                                                         |     |
+| `i`  | `<C-k>`          | Show signature help                                                         |     |
+| `n`  | `ti`             | Toggle inlay hints                                                          |     |
+| `n`  | `gs`             | Show symbols in current buffer                                              | T   |
+| `n`  | `gss`            | Show symbols in workspace (sbt)                                             | T   |
+| `n`  | `gr`             | Show references (wuc)                                                       | T   |
+| `n`  | `gd`             | Go to definition(s) (wuc)                                                   | T   |
+| `n`  | `gD`             | Go to declaration (wuc)                                                     |     |
+| `n`  | `gdt`            | Go to type definition(s) (wuc)                                              | T   |
+| `n`  | `gI`             | Go to implementation(s)                                                     | T   |
+| `n`  | `<Leader>ca`     | Show code actions                                                           |     |
+| `n`  | `<Leader>rN`     | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
+| `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
+| `n`  | `<Leader>d`      | Show line diagnostics                                                       |     |
+| `n`  | ~~`<Leader>dd`~~ | Show diagnostics for current buffer                                         | T   |
+| `n`  | ~~`<Leader>da`~~ | Show diagnostics for all buffers                                            | T   |
+| `n`  | `+d`             | Next diagnostic                                                             |     |
+| `n`  | `üd`             | Previous diagnostic                                                         |     |
+| `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
+
+- `wuc` ... Word under cursor
+- `sbt` ... Same buffer (file) type?
+- `T` ... [telescope.nvim](#telescopenvim)
+
 ### [bufferline.nvim]
 
 [bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
@@ -231,59 +300,6 @@
 | Mode | Keymap       | Description                      |
 | ---- | ------------ | -------------------------------- |
 | `n`  | `<Leader>rn` | Rename with all references (wuc) |
-
-### [nvim-lspconfig]
-
-<!-- ### [lsp-zero.nvim] -->
-
-[nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
-
-<!-- [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim -->
-
-| Mode | Keymap           | Description                                                                 | P   |
-| ---- | ---------------- | --------------------------------------------------------------------------- | --- |
-| `n`  | `K`              | Show hover information                                                      |     |
-| `i`  | ~~`<C-k>`~~      | Show hover information                                                      |     |
-| `n`  | `gK`             | Show signature help                                                         |     |
-| `i`  | `<C-k>`          | Show signature help                                                         |     |
-| `n`  | `ti`             | Toggle inlay hints                                                          |     |
-| `n`  | `gs`             | Show symbols in current buffer                                              | T   |
-| `n`  | `gss`            | Show symbols in workspace (sbt)                                             | T   |
-| `n`  | `gr`             | Show references (wuc)                                                       | T   |
-| `n`  | `gd`             | Go to definition(s) (wuc)                                                   | T   |
-| `n`  | `gD`             | Go to declaration (wuc)                                                     |     |
-| `n`  | `gdt`            | Go to type definition(s) (wuc)                                              | T   |
-| `n`  | `gI`             | Go to implementation(s)                                                     | T   |
-| `n`  | `<Leader>ca`     | Show code actions                                                           |     |
-| `n`  | `<Leader>rN`     | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
-| `n`  | ~~`<Leader>f`~~  | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
-| `n`  | `<Leader>d`      | Show line diagnostics                                                       |     |
-| `n`  | ~~`<Leader>dd`~~ | Show diagnostics for current buffer                                         | T   |
-| `n`  | ~~`<Leader>da`~~ | Show diagnostics for all buffers                                            | T   |
-| `n`  | `+d`             | Next diagnostic                                                             |     |
-| `n`  | `üd`             | Previous diagnostic                                                         |     |
-| `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
-
-- `wuc` ... Word under cursor
-- `sbt` ... Same buffer (file) type?
-- `T` ... [telescope.nvim](#telescopenvim)
-
-CMP - Completion Menu:
-
-| Mode | Keymap            | Description                                       |
-| ---- | ----------------- | ------------------------------------------------- |
-| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
-| `i`  | `<C-e>`           | Cancel completion                                 |
-| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
-| `i`  | `<C-Space>`       | Trigger completion menu                           |
-| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
-| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
-| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
-| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
-|      | `<C-f>`           | Go to next snippet placeholder                    |
-|      | `<C-b>`           | Go to previous snippet placeholder                |
-|      | `<C-u>`           | Scroll completion documentation up                |
-|      | `<C-d>`           | Scroll completion documentation down              |
 
 ### [mini.hipatterns]
 
