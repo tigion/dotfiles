@@ -122,6 +122,10 @@ keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increas
 
 -- Tabs
 
+-- Sessions
+keymap.set('n', '<Leader>ws', require('tigion.core.util').session.save, { desc = 'Save session (cwd)' })
+keymap.set('n', '<Leader>wl', require('tigion.core.util').session.load, { desc = 'Load session (cwd)' })
+
 -- Other
 
 -- Inspect (Treesitter) highlights (under cursor)
