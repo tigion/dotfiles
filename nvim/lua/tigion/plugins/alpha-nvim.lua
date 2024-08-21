@@ -31,17 +31,26 @@ return {
 
     -- Sets the buttons with icons and text in the Menu.
     dashboard.section.buttons.val = {
-      dashboard.button('e', '󰈔 New file', ':ene <BAR> startinsert<CR>'),
-      dashboard.button('r', '󱔗 Recent files', ':Telescope oldfiles <CR>'),
-      dashboard.button('f', '󰱼 Find file', ':Telescope find_files<CR>'),
-      dashboard.button('g', '󰺮 Find text', ':Telescope live_grep <CR>'),
-      dashboard.button('h', '󱤇 Find help tag', ':Telescope help_tags <CR>'),
-      -- dashboard.button('s', ' Settings', ':cd ' .. vim.fn.stdpath('config') .. '<CR> :e .<CR>'),
-      dashboard.button('s', ' Settings', ':cd ' .. vim.fn.stdpath('config') .. '<CR>:NvimTreeOpen<CR>'),
-      dashboard.button('p', ' Check plugins', ':Lazy check<CR>'),
-      dashboard.button('c', ' Check health', ':checkhealth<CR>'),
-      dashboard.button('q', ' Quit', ':qa<CR>'),
+      dashboard.button('e', '󰈔 New file', '<Cmd>ene <BAR> startinsert<CR>'),
+      dashboard.button('r', '󱔗 Recent files', '<Cmd>Telescope oldfiles <CR>'),
+      dashboard.button('f', '󰱼 Find file', '<Cmd>Telescope find_files<CR>'),
+      dashboard.button('g', '󰺮 Find text', '<Cmd>Telescope live_grep <CR>'),
+      dashboard.button('h', '󱤇 Find help tag', '<Cmd>Telescope help_tags <CR>'),
+      -- dashboard.button('s', ' Settings', '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR> <Cmd>e .<CR>'),
+      dashboard.button('s', ' Settings', '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR><Cmd>NvimTreeOpen<CR>'),
+      dashboard.button('p', ' Check plugins', '<Cmd>Lazy check<CR>'),
+      dashboard.button('c', ' Check health', '<Cmd>checkhealth<CR>'),
+      dashboard.button('q', ' Quit', '<Cmd>qa<CR>'),
     }
+
+    -- Adds the session button if a session for the current working directory exists.
+    if require('tigion.core.util').session.exists() then
+      table.insert(
+        dashboard.section.buttons.val,
+        3,
+        dashboard.button('l', ' Load session', '<Cmd>lua require("tigion.core.util").session.load()<CR>')
+      )
+    end
 
     -- Sets the footer text.
     local version, count, date = nvim_version(), plugin_count(), os.date('%d.%m.%Y')
@@ -60,14 +69,8 @@ return {
     -- Returns the height of the dashboard content.
     ---@return integer
     local function get_dashboard_height()
-      local banner_height = 0
-      for _ in pairs(dashboard.section.header.val) do
-        banner_height = banner_height + 1
-      end
-      local button_count = 0
-      for _ in pairs(dashboard.section.buttons.val) do
-        button_count = button_count + 1
-      end
+      local banner_height = #dashboard.section.header.val
+      local button_count = #dashboard.section.buttons.val
       local buttons_height = 2 * button_count
       local footer_height = 1
       local dashboard_height = banner_height + dashboard.opts.layout[3].val + buttons_height + footer_height
@@ -77,10 +80,10 @@ return {
     -- Reduce dashboard size for small window heights
     if win_height < get_dashboard_height() + 3 then
       dashboard.section.header.val = { 'Neovim' }
-      table.remove(dashboard.section.buttons.val, 5)
-      table.remove(dashboard.section.buttons.val, 5)
-      table.remove(dashboard.section.buttons.val, 5)
-      table.remove(dashboard.section.buttons.val, 5)
+      table.remove(dashboard.section.buttons.val, #dashboard.section.buttons.val - 1)
+      table.remove(dashboard.section.buttons.val, #dashboard.section.buttons.val - 1)
+      table.remove(dashboard.section.buttons.val, #dashboard.section.buttons.val - 1)
+      table.remove(dashboard.section.buttons.val, #dashboard.section.buttons.val - 1)
     end
 
     -- Align dashboard vertically
