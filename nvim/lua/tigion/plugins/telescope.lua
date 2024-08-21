@@ -5,6 +5,7 @@ return {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy find
   },
+  cmd = 'Telescope', -- used in alpha-nvim
   keys = {
     -- https://github.com/nvim-telescope/telescope.nvim#pickers
     -- :Telescope builtin
