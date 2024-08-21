@@ -33,7 +33,10 @@ return {
     -- { 'öcc', '<Cmd>Telescope git_commits<CR>', desc = 'Find git commits' },
     -- Treesitter
     { 'ös', '<Cmd>Telescope treesitter<CR>', desc = 'Find treesitter symbols' },
+    -- Register
+    { 'öR', '<Cmd>Telescope registers<CR>', desc = 'Find registers' },
     -- Telescope
+    --
     { 'öö', '<Cmd>Telescope resume<CR>', desc = 'Reopen previous search' },
     { 'ööb', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
   },

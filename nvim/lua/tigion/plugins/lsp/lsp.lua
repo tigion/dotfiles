@@ -119,7 +119,7 @@ return {
           source = true,
           border = border,
         },
-        update_in_insert = true,
+        update_in_insert = false,
         severity_sort = true,
       })
 
