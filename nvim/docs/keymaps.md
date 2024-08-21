@@ -12,6 +12,7 @@
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Tabs](#tabs)
     - [Windows](#windows)
+    - [Sessions](#sessions)
     - [Others](#others)
   - [Plugins](#plugins)
     - [LSP/CMP/Snippets](#lspcmpsnippets)
