@@ -183,6 +183,13 @@ local function get_session_filename()
   return filename .. '.session.vim'
 end
 
+function M.session.exists()
+  local session_dir = get_session_directory()
+  local session_file = get_session_filename()
+  local session_filepath = session_dir .. '/' .. session_file
+  return vim.fn.filereadable(session_filepath) == 1
+end
+
 ---Saves the session for the current working directory.
 function M.session.save()
   local session_dir = get_session_directory()
@@ -206,7 +213,9 @@ function M.session.load()
   local session_filepath = session_dir .. '/' .. session_file
   -- check if session file exists
   if vim.fn.filereadable(session_filepath) ~= 1 then
-    vim.notify('Session file not found: ' .. session_filepath, vim.log.levels.INFO)
+    -- vim.notify('Session file not found: ' .. session_filepath, vim.log.levels.INFO)
+    vim.notify('Session file not found')
+    return
   end
   -- load session
   vim.cmd('source ' .. session_filepath)
@@ -226,6 +235,20 @@ function M.session.info()
   if vim.fn.filereadable(session_filepath) ~= 1 then message = message .. ' not' end
   message = message .. ' found: ' .. session_file
   print(message)
+end
+
+---Deletes the session for the current working directory.
+---@param all? boolean If true, deletes all sessions.
+function M.session.delete(all)
+  all = all or false
+  local session_dir = get_session_directory()
+  local session_file = get_session_filename()
+  local session_filepath = session_dir .. '/' .. session_file
+  if all then
+    vim.fn.delete(session_dir, 'rf')
+  else
+    vim.fn.delete(session_filepath)
+  end
 end
 
 M.bufferline = {}
