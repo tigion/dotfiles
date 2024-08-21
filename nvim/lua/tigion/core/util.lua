@@ -204,6 +204,7 @@ function M.session.save()
   vim.cmd('set sessionoptions-=blank')
   -- save session
   vim.cmd('mksession! ' .. session_filepath)
+  vim.notify('Session saved')
 end
 
 ---Loads the session for the current working directory.
@@ -245,9 +246,17 @@ function M.session.delete(all)
   local session_file = get_session_filename()
   local session_filepath = session_dir .. '/' .. session_file
   if all then
-    vim.fn.delete(session_dir, 'rf')
+    if vim.fn.delete(session_dir, 'rf') == 0 then
+      vim.notify('All sessions deleted')
+    else
+      vim.notify('No sessions to delete')
+    end
   else
-    vim.fn.delete(session_filepath)
+    if vim.fn.delete(session_filepath) == 0 then
+      vim.notify('Session deleted')
+    else
+      vim.notify('No session to delete')
+    end
   end
 end
 
