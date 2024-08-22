@@ -44,12 +44,8 @@ return {
     }
 
     -- Adds the session button if a session for the current working directory exists.
-    if require('tigion.core.util').session.exists() then
-      table.insert(
-        dashboard.section.buttons.val,
-        3,
-        dashboard.button('l', ' Load session', '<Cmd>lua require("tigion.core.util").session.load()<CR>')
-      )
+    if require('sessions').exists() then
+      table.insert(dashboard.section.buttons.val, 3, dashboard.button('l', ' Load session', '<Cmd>Session load<CR>'))
     end
 
     -- Sets the footer text.

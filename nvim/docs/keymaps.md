@@ -12,7 +12,6 @@
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Tabs](#tabs)
     - [Windows](#windows)
-    - [Sessions](#sessions)
     - [Others](#others)
   - [Plugins](#plugins)
     - [LSP/CMP/Snippets](#lspcmpsnippets)
@@ -30,6 +29,7 @@
     - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
+    - [nvim-sessions](#nvim-sessions)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
@@ -134,13 +134,6 @@
 | `n`  | `<C-w><Right>` | Increase window width      |
 | `n`  | `<C-w><Down>`  | Decrease window height     |
 | `n`  | `<C-w><Up>`    | Increase window height     |
-
-### Sessions
-
-| Mode | Keymap       | Description                      |
-| ---- | ------------ | -------------------------------- |
-| `n`  | `<Leader>ws` | Save session (Working directory) |
-| `n`  | `<Leader>wl` | Load session (Working directory) |
 
 ### Others
 
@@ -332,6 +325,15 @@ CMP - Completion Menu:
 | Mode | Keymap          | Description              |
 | ---- | --------------- | ------------------------ |
 | `n`  | ~~`<Leader>l`~~ | Lint current buffer/file |
+
+### [nvim-sessions]
+
+[nvim-sessions]: https://github.com/tigion/nvim-sessions
+
+| Mode | Keymap       | Description                      |
+| ---- | ------------ | -------------------------------- |
+| `n`  | `<Leader>ws` | Save session (Working directory) |
+| `n`  | `<Leader>wl` | Load session (Working directory) |
 
 ### [nvim-tmux-navigation]
 
