@@ -17,6 +17,8 @@ keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
 keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
+keymap.set('n', 'oo', 'o<Esc>k', { desc = 'Insert line below' })
+keymap.set('n', 'OO', 'O<Esc>j', { desc = 'Insert line above' })
 
 -- F-Keys
 keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line break' })

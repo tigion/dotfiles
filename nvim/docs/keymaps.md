@@ -83,6 +83,8 @@
 | `x`  | `J`           | Move selection down               |
 | `x`  | `K`           | Move selection up                 |
 | `n`  | `<Leader>s`   | Search and replace template (wuc) |
+| `n`  | `oo`          | Insert line below (normal mode)   |
+| `n`  | `OO`          | Insert line above (normal mode)   |
 
 - `wuc` ... Word under cursor
 
