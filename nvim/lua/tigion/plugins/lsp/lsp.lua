@@ -178,12 +178,12 @@ return {
           })
         end,
 
-        ['tsserver'] = function()
+        ['ts_ls'] = function()
           local vue_typescript_plugin = require('mason-registry').get_package('vue-language-server'):get_install_path()
             .. '/node_modules/@vue/language-server'
             .. '/node_modules/@vue/typescript-plugin'
 
-          lspconfig.tsserver.setup({
+          lspconfig.ts_ls.setup({
             capabilities = capabilities,
             init_options = {
               plugins = {

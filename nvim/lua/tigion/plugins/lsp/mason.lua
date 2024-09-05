@@ -23,7 +23,7 @@ return {
         'marksman', -- Markdown
         'phpactor', -- PHP
         'pyright', -- Python
-        'tsserver', -- JavaScript, TypeScript
+        'ts_ls', -- JavaScript, TypeScript
         'vimls', -- VimScript
         'volar', -- Vue.js
         'yamlls', -- Yaml
