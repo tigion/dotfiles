@@ -7,16 +7,19 @@ brew "font-meslo-lg-nerd-font"
 #brew "font-hack-nerd-font"
 
 # tools
-brew "git"
 brew "tree"
 brew "curl"
 brew "wget"
-brew "lazygit"
 brew "httpie"
 brew "tmux"
 brew "fzf"
 brew "bat"
 brew "eza"
+
+# git
+brew "git"
+brew "lazygit"
+brew "git-delta"
 
 # nvim
 brew "neovim"
