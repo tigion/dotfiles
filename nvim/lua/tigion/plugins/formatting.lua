@@ -34,13 +34,14 @@ return {
       typescript = { 'prettier' },
       vue = { 'prettier' },
       yaml = { 'prettier' },
+      gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- filetypes that don't have other formatters
       ['_'] = { 'trim_whitespace', 'trim_newlines' },
       -- all filetypes
       -- ['*'] = { '' },
     },
     format_on_save = {
-      lsp_fallback = true,
+      lsp_format = 'fallback',
       async = false,
       timeout_ms = 1000,
     },
@@ -57,6 +58,15 @@ return {
       --   -- Workaround: Use `-ci` global in `prepend_args`
       --   prepend_args = { '-ci' }, -- Switch cases will be indented (--case-indent)
       -- },
+
+      -- Custom formatter to auto indent buffer.
+      my_auto_indent = {
+        format = function(_, _, _, callback)
+          -- save cursor position in ` mark -> indent -> restore cursor position
+          vim.cmd.normal('m`gg=G``')
+          callback()
+        end,
+      },
     },
   },
 }
