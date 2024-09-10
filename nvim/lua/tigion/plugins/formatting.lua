@@ -61,9 +61,15 @@ return {
 
       -- Custom formatter to auto indent buffer.
       my_auto_indent = {
-        format = function(_, _, _, callback)
+        format = function(_, ctx, _, callback)
           -- save cursor position in ` mark -> indent -> restore cursor position
-          vim.cmd.normal('m`gg=G``')
+          if ctx.range == nil then
+            -- no range, use whole buffer
+            vim.cmd.normal({ 'm`gg=G``', bang = true })
+          else
+            -- use range
+            vim.cmd.normal({ 'm`=``', bang = true })
+          end
           callback()
         end,
       },
