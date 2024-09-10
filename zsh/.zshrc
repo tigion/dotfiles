@@ -77,7 +77,12 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting ohmyzsh-full-autoupdate)
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  ohmyzsh-full-autoupdate
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Load my seperated config files
+# Load my separated config files
 for file in "$HOME/.config/zsh/"*.zsh; do
   [[ -e "${file}" ]] && source "${file}"
 done
@@ -115,4 +120,3 @@ unset file
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
