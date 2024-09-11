@@ -60,16 +60,13 @@ return {
       -- },
 
       -- Custom formatter to auto indent buffer.
+      -- - Indents with neovim's builtin indentation `=`.
+      -- - Saves and restores cursor position in ` mark.
       my_auto_indent = {
         format = function(_, ctx, _, callback)
-          -- save cursor position in ` mark -> indent -> restore cursor position
-          if ctx.range == nil then
-            -- no range, use whole buffer
-            vim.cmd.normal({ 'm`gg=G``', bang = true })
-          else
-            -- use range
-            vim.cmd.normal({ 'm`=``', bang = true })
-          end
+          -- no range, use whole buffer otherwise use selection
+          local cmd = ctx.range == nil and 'gg=G' or '='
+          vim.cmd.normal({ 'm`' .. cmd .. '``', bang = true })
           callback()
         end,
       },
