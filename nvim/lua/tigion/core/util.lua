@@ -271,4 +271,15 @@ function M.codeium.status()
   return status
 end
 
+M.supermaven = {}
+
+---Returns Supermaven status as formatted string.
+---@return string
+function M.supermaven.status()
+  if not pcall(require('supermaven-nvim.api').is_running) then return '' end
+  if not require('supermaven-nvim.api').is_running() then return '' end
+  local status = icons.supermaven or '󱙺' -- 
+  return status
+end
+
 return M

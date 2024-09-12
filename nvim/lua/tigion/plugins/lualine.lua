@@ -66,6 +66,7 @@ return {
             cond = require('lazy.status').has_updates,
             on_click = function() vim.cmd('Lazy') end,
           },
+          { require('tigion.core.util').supermaven.status },
           { require('tigion.core.util').codeium.status },
           -- '%S󰘦 %3{codeium#GetStatusString()}',
           {

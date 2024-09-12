@@ -53,6 +53,7 @@ M.neovim = ''
 M.telescope = ''
 M.codeium = '󰘦'
 M.copilot = ''
+M.supermaven = '󱙺'
 
 -- code symbols
 M.code = {
