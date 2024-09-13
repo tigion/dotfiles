@@ -277,8 +277,8 @@ M.supermaven = {}
 ---@return string
 function M.supermaven.status()
   if not pcall(require('supermaven-nvim.api').is_running) then return '' end
-  if not require('supermaven-nvim.api').is_running() then return '' end
-  local status = icons.supermaven or '󱙺' -- 
+  if not require('supermaven-nvim.api').is_running() then return '' end -- 󱙻
+  local status = icons.supermaven or '󱙺'
   return status
 end
 
