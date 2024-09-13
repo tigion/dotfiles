@@ -40,11 +40,19 @@ return {
       -- all filetypes
       -- ['*'] = { '' },
     },
-    format_on_save = {
-      lsp_format = 'fallback',
-      async = false,
-      timeout_ms = 1000,
-    },
+    -- format_on_save = {
+    --   lsp_format = 'fallback',
+    --   async = false,
+    --   timeout_ms = 1000,
+    -- },
+    format_on_save = function()
+      if vim.g.conform_disable_format_on_save then return end
+      return {
+        lsp_format = 'fallback',
+        async = false,
+        timeout_ms = 1000,
+      }
+    end,
     formatters = {
       -- black = {
       --   prepend_args = { '--fast', '--line-length', '120' },
@@ -72,4 +80,25 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('conform').setup(opts)
+
+    -- https://github.com/stevearc/conform.nvim/issues/39
+    -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
+    vim.api.nvim_create_user_command(
+      'ConformFormatOnSaveToggle',
+      function() vim.g.conform_disable_format_on_save = not vim.g.conform_disable_format_on_save end,
+      {
+        desc = 'Toggle format on save',
+        bang = true,
+      }
+    )
+
+    vim.keymap.set(
+      'n',
+      '<Leader>tf',
+      ':ConformFormatOnSaveToggle<CR>',
+      { desc = 'Toggle format on save', noremap = true, silent = true }
+    )
+  end,
 }

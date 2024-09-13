@@ -261,6 +261,7 @@ CMP - Completion Menu:
 | Mode     | Keymap       | Description                     |
 | -------- | ------------ | ------------------------------- |
 | `n`, `x` | `<Leader>cf` | Format buffer/file or selection |
+| `n`      | `<Leader>tf` | Toggle format on save           |
 
 ### [gitsigns.nvim]
 
