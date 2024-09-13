@@ -35,6 +35,7 @@ return {
       sources = cmp.config.sources({ -- check with `:CmpStatus`
         { name = 'nvim_lsp' }, -- lsp server
         { name = 'luasnip' }, -- snippets
+        -- { name = 'supermaven' }, -- supermaven
         -- { name = 'codeium', max_item_count = 5 }, -- codeium
         { name = 'buffer', keyword_length = 3, max_item_count = 10 }, -- buffer words
         { name = 'path' }, -- files, paths
@@ -81,6 +82,7 @@ return {
             nvim_lsp = '[lsp]',
             lazydev = '[lazydev]',
             luasnip = '[luasnip]',
+            supermaven = '[supermaven]',
             codeium = '[codeium]',
             buffer = '[buffer]',
             path = '[path]',

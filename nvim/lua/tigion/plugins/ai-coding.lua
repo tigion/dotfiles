@@ -13,8 +13,10 @@ return {
       },
       -- ignore_filetypes = { cpp = true }, -- or { "cpp", }
       -- color = {
-      --   suggestion_color = '#ffffff',
-      --   cterm = 244,
+      --   -- suggestion_color = '#ffffff',
+      --   -- cterm = 244,
+      --   -- suggestion_color = vim.api.nvim_get_hl(0, { name = 'NonText' }).fg,
+      --   -- cterm = vim.api.nvim_get_hl(0, { name = 'NonText' }).cterm,
       -- },
       -- log_level = 'info', -- set to "off" to disable logging completely
       -- disable_inline_completion = false, -- disables inline completion for use with cmp

@@ -92,6 +92,7 @@ M.code = {
   Property = '',
   Reference = '',
   Snippet = '',
+  Supermaven = M.supermaven,
   StaticMethod = '',
   String = '',
   Struct = '󰆼',
