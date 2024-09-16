@@ -7,6 +7,7 @@ return {
     'saadparwaiz1/cmp_luasnip', -- source for LuaSnip snippets
     -- 'hrsh7th/cmp-cmdline', -- source for vim's cmdline
     -- 'dmitmel/cmp-cmdline-history', -- source for cmdline history
+    'hrsh7th/cmp-calc',
     'onsails/lspkind-nvim', -- vscode-like pictograms
     'folke/lazydev.nvim', -- NOTE: Is here needed to get source `lazydev` from lsp.lua to work
   },
@@ -26,6 +27,7 @@ return {
         -- completion = cmp.config.window.bordered(),
         completion = cmp.config.window.bordered({
           winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
+          col_offset = -1,
         }),
         -- documentation = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered({
@@ -39,6 +41,7 @@ return {
         -- { name = 'codeium', max_item_count = 5 }, -- codeium
         { name = 'buffer', keyword_length = 3, max_item_count = 10 }, -- buffer words
         { name = 'path' }, -- files, paths
+        { name = 'calc' }, -- math calculation
       }),
       mapping = cmp.mapping.preset.insert({
         -- defaults:
@@ -76,8 +79,9 @@ return {
       -- formatting = cmp_format,
       ---@diagnostic disable-next-line missing-fields
       formatting = {
+        -- fields = { 'abbr', 'kind', 'menu' },
         format = lspkind.cmp_format({
-          mode = 'symbol_text', -- show only symbol annotations
+          mode = 'symbol_text', -- 'text', 'text_symbol', 'symbol_text', 'symbol'
           menu = {
             nvim_lsp = '[lsp]',
             lazydev = '[lazydev]',
@@ -86,9 +90,10 @@ return {
             codeium = '[codeium]',
             buffer = '[buffer]',
             path = '[path]',
+            calc = '[calc]',
           },
           maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          ellipsis_char = '…', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         }),
       },
     }
