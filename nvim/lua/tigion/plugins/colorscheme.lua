@@ -67,17 +67,23 @@ return {
       colors.comment = '#626784' -- use a more gray comment
     end,
     on_highlights = function(hl, c)
+      -- darker bg_float variants
+      local bg_float2 = '#14151f'
+      local bg_float3 = '#0a0b10'
+
+      -- Cmp
+      hl.CmpDocumentation.bg = bg_float2
+      hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
+
       -- Telescope
-      local own_bg = '#14151f'
-      hl.TelescopeBorder = { fg = own_bg, bg = own_bg }
-      hl.TelescopeNormal = { fg = c.fg, bg = own_bg }
-      hl.TelescopeTitle = { fg = c.c1, bg = c.blue }
+      hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
+      hl.TelescopeNormal = { fg = c.fg, bg = bg_float2 }
+      hl.TelescopeTitle = { fg = bg_float2, bg = c.blue }
       hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
       hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
       hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
-      own_bg = '#0a0b10'
-      hl.TelescopePreviewBorder = { fg = own_bg, bg = own_bg }
-      hl.TelescopePreviewNormal = { fg = c.fg, bg = own_bg }
+      hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
+      hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
     end,
   },
   config = function(_, opts)
