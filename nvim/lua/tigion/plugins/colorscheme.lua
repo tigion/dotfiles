@@ -51,8 +51,7 @@ return {
   priority = 1000,
   opts = {
     style = 'moon', -- moon, storm, night, day
-    transparent = true, -- FIX: Doesn't set the background to transparent or is ignored.
-    --      Only `styles { sidebars = "transparent" }` works.
+    transparent = true,
     styles = {
       -- Background styles. Can be "dark", "transparent" or "normal"
       sidebars = 'transparent',
