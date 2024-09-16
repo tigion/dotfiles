@@ -31,9 +31,15 @@ return {
       require('supermaven-nvim').setup(opts)
       local api = require('supermaven-nvim.api')
 
-      -- stop supermaven at start if running
+      local in_git_repo = require('tigion.core.util').info.in_git_repo
+
+      -- stop supermaven at start if not in a git repo and it is running
       -- because it will start automatically through setup()
-      if api.is_running() then api.stop() end
+      if in_git_repo() then
+        vim.g.supermaven_enable = true
+      else
+        if api.is_running() then api.stop() end
+      end
 
       vim.keymap.set('n', '<Leader>ts', function()
         -- toggle global variable for stop condition

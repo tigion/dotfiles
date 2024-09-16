@@ -35,6 +35,19 @@ function M.info.lsp_servers()
   -- return lsp_names
 end
 
+---Returns true if we are in a Git repository otherwise false.
+---@return boolean
+function M.info.in_git_repo()
+  -- local cwd = vim.uv.cwd()
+  -- local cmd = 'cd "' .. cwd .. '"; git rev-parse --show-toplevel 2> /dev/null'
+  local cmd = 'git rev-parse --show-toplevel 2> /dev/null'
+  local handle = io.popen(cmd)
+  if handle == nil then return false end
+  local result = handle:read('*a')
+  handle:close()
+  return result ~= ''
+end
+
 M.color = {}
 
 ---Limits a value between min and max.
