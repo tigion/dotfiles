@@ -293,9 +293,9 @@ CMP - Completion Menu:
 
 [hardtime.nvim]: https://github.com/m4xshen/hardtime.nvim
 
-| Mode | Keymap       | Description     |
-| ---- | ------------ | --------------- |
-| `n`  | `<Leader>th` | Toggle hardtime |
+| Mode | Keymap        | Description     |
+| ---- | ------------- | --------------- |
+| `n`  | `<Leader>tha` | Toggle Hardtime |
 
 ### [inc-rename.nvim]
 
@@ -309,9 +309,9 @@ CMP - Completion Menu:
 
 [mini.hipatterns]: https://github.com/echasnovski/mini.hipatterns
 
-| Mode | Keymap       | Description       |
-| ---- | ------------ | ----------------- |
-| `n`  | `<Leader>th` | Toggle hipatterns |
+| Mode | Keymap        | Description            |
+| ---- | ------------- | ---------------------- |
+| `n`  | `<Leader>thi` | Toggle mini.hipatterns |
 
 ### [neogen]
 
@@ -395,7 +395,7 @@ CMP - Completion Menu:
 
 | Mode | Keymap       | Description         |
 | ---- | ------------ | ------------------- |
-| `n`  | `<Leader>tp` | Toggle precognition |
+| `n`  | `<Leader>tp` | Toggle Precognition |
 
 ### [render-markdown.nvim]
 

@@ -4,7 +4,7 @@ return {
   version = false,
   event = 'VeryLazy',
   keys = {
-    { '<leader>th', '<cmd>lua require("mini.hipatterns").toggle()<cr>', desc = 'Toggle hipatterns' },
+    { '<leader>thi', '<cmd>lua require("mini.hipatterns").toggle()<cr>', desc = 'Toggle mini.hipatterns' },
   },
   opts = {},
   config = function(_, opts)
