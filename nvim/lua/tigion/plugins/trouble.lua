@@ -25,7 +25,8 @@ return {
     -- v2: { '<Leader>xQ', '<Cmd>TroubleToggle quickfix<CR>', desc = 'Toggle quickfix list' },
     { '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Toggle quickfix list' },
 
-    -- ALternative: se `üd`, `+d` for diagnostics
+    -- Alternative: use `üd`, `+d` for diagnostics
+    -- TODO: https://github.com/folke/trouble.nvim/issues/577
     {
       'üt',
       function() require('trouble').prev({ skip_groups = true, jump = true }) end,

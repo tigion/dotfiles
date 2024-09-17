@@ -54,7 +54,9 @@ keymap.set('n', '<Leader>xq', function()
   vim.cmd.copen()
 end, { desc = 'Toggle quickfix list' })
 keymap.set('n', '+q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
+-- keymap.set('n', '<C-n>', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
 keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
+-- keymap.set('n', '<C-q>', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 
 -- location list
 -- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
