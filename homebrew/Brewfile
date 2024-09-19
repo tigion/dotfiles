@@ -1,10 +1,10 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
+# tap "homebrew/cask"
+# tap "homebrew/core"
 
 # fonts
-brew "font-meslo-lg-nerd-font"
-#brew "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
+#cask "font-hack-nerd-font"
 
 # tools
 brew "tree"
