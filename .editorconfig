@@ -26,6 +26,7 @@ indent_style = tab
 [*.md]
 insert_final_newline = true
 trim_trailing_whitespace = false
+# max_line_length = 80
 
 # Shell script
 [*.sh]
