@@ -16,7 +16,8 @@ return {
       -- python = { 'ruff' }, -- replaced with ruff_lsp
       -- python = { 'pylint' }, -- replaced with ruff
       -- python = { 'flake8' }, -- replaced with ruff
-      markdown = { 'markdownlint' },
+      markdown = { 'markdownlint-cli2' },
+      -- markdown = { 'markdownlint' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })

@@ -47,7 +47,8 @@ return {
         'pint', -- PHP (Formatter)
         -- 'eslint_d', -- JS/TS (Linter)
         { 'eslint_d', version = '13.1.2' }, -- JS/TS (Linter) FIX: (:MasonInstall eslint_d@13.1.2) Pin to older version to support the old config style (not the new flat config)
-        'markdownlint', -- Markdown (Linter)
+        'markdownlint-cli2', -- Markdown (Linter)
+        -- 'markdownlint', -- Markdown (Linter)
         'codespell', -- Code (Linter: words)
         -- { 'volar', version = '1.8.27' }, -- Vue.js FIX: (:MasonInstall volar@1.8.27)
       },

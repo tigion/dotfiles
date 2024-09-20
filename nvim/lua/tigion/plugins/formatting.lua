@@ -22,7 +22,7 @@ return {
       javascript = { 'prettier' },
       json = { 'prettier' },
       lua = { 'stylua' },
-      markdown = { 'prettier' },
+      markdown = { 'prettier', 'markdownlint-cli2' },
       php = { 'pint' },
       -- python = { 'isort', 'black' }, -- replaced with ruff-ls
       -- python = { 'black' }, -- replaced with ruff-ls
