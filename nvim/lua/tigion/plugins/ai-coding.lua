@@ -2,9 +2,9 @@ return {
   {
     'supermaven-inc/supermaven-nvim',
     event = 'BufEnter',
-    -- keys = {
-    --   { '<Leader>ts', '<Cmd>SupermavenToggle<CR>', desc = 'Toggle Supermaven' },
-    -- },
+    keys = {
+      { '<Leader>ts', '<Cmd>SupermavenToggle<CR>', desc = 'Toggle Supermaven' },
+    },
     opts = {
       keymaps = {
         accept_suggestion = '<Tab>',
@@ -22,10 +22,10 @@ return {
       -- disable_inline_completion = false, -- disables inline completion for use with cmp
       -- disable_keymaps = false, -- disables built in keymaps for more manual control
       -- condition = function() return false end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-      condition = function()
-        -- use global variable for stop condition
-        return not vim.g.supermaven_enable
-      end,
+      -- condition = function()
+      --   -- use global variable for stop condition
+      --   return not vim.g.supermaven_enable
+      -- end,
     },
     config = function(_, opts)
       require('supermaven-nvim').setup(opts)
@@ -35,24 +35,22 @@ return {
 
       -- stop supermaven at start if not in a git repo and it is running
       -- because it will start automatically through setup()
-      if in_git_repo() then
-        vim.g.supermaven_enable = true
-      else
-        if api.is_running() then api.stop() end
-      end
+      if not in_git_repo() and api.is_running() then api.stop() end
 
-      vim.keymap.set('n', '<Leader>ts', function()
-        -- toggle global variable for stop condition
-        -- first toggle sets the none existing variable to true
-        vim.g.supermaven_enable = not vim.g.supermaven_enable
-        -- stop or start supermaven
-        if vim.g.supermaven_enable then
-          if not api.is_running() then api.start() end
-        else
-          -- api.stop()
-          if api.is_running() then api.stop() end
-        end
-      end, { desc = 'Toggle Supermaven' })
+      -- vim.keymap.set('n', '<Leader>ts', function() api.toggle() end, { desc = 'Toggle Supermaven' })
+
+      -- vim.keymap.set('n', '<Leader>ts', function()
+      --   -- toggle global variable for stop condition
+      --   -- first toggle sets the none existing variable to true
+      --   vim.g.supermaven_enable = not vim.g.supermaven_enable
+      --   -- stop or start supermaven
+      --   if vim.g.supermaven_enable then
+      --     if not api.is_running() then api.start() end
+      --   else
+      --     -- api.stop()
+      --     if api.is_running() then api.stop() end
+      --   end
+      -- end, { desc = 'Toggle Supermaven' })
     end,
   },
 
