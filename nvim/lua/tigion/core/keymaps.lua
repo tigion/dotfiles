@@ -40,6 +40,10 @@ keymap.set('n', '+M', ']m', { desc = 'Next method start' })
 keymap.set('n', 'Ü', '{', { desc = 'Prev empty line' })
 keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
 
+-- Diagnostic
+keymap.set('n', '+d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+keymap.set('n', 'üd', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
+
 -- quickfix/location list
 
 -- quickfix list
@@ -127,8 +131,6 @@ keymap.set('n', '<C-w><Up>', '<Cmd>resize +2<CR>', { desc = 'Increase window hei
 keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width' })
 
 -- Tabs
-
--- Other
 
 -- Inspect (Treesitter) highlights (under cursor)
 keymap.set('n', '<Leader>ui', '<Cmd>Inspect<CR>', { desc = 'Inspect Pos' })

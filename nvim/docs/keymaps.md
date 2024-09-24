@@ -8,6 +8,7 @@
     - [Keymap Groups](#keymap-groups)
   - [General](#general)
     - [Goodies](#goodies)
+    - [Diagnostics](#diagnostics)
     - [F-Keys](#f-keys)
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Tabs](#tabs)
@@ -86,6 +87,13 @@
 | `n`      | `<Leader>sw`  | Search and replace word under cursor |
 | `n`      | `oo`          | Insert line below (normal mode)      |
 | `n`      | `OO`          | Insert line above (normal mode)      |
+
+### Diagnostics
+
+| Mode | Keymap | Description         |
+| ---- | ------ | ------------------- |
+| `n`  | `+d`   | Next diagnostic     |
+| `n`  | `üd`   | Previous diagnostic |
 
 ### F-Keys
 
@@ -203,8 +211,6 @@ CMP - Completion Menu:
 | `n`  | `<Leader>d`      | Show line diagnostics                                                       |     |
 | `n`  | ~~`<Leader>dd`~~ | Show diagnostics for current buffer                                         | T   |
 | `n`  | ~~`<Leader>da`~~ | Show diagnostics for all buffers                                            | T   |
-| `n`  | `+d`             | Next diagnostic                                                             |     |
-| `n`  | `üd`             | Previous diagnostic                                                         |     |
 | `n`  | `<Leader>rs`     | Restart LSP servers for current buffer                                      |     |
 
 - `wuc` ... Word under cursor

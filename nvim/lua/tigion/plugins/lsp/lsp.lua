@@ -91,10 +91,11 @@ return {
           -- opts.desc = icon_telescope .. ' Show diagnostics for all buffers'
           -- keymap.set('n', '<Leader>da', '<Cmd>Telescope diagnostics<CR>', opts)
 
-          opts.desc = 'Next diagnostic'
-          keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
-          opts.desc = 'Prev diagnostic'
-          keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
+          -- Deactivated: See keymaps.lua
+          -- opts.desc = 'Next diagnostic'
+          -- keymap.set('n', '+d', vim.diagnostic.goto_next, opts)
+          -- opts.desc = 'Prev diagnostic'
+          -- keymap.set('n', 'üd', vim.diagnostic.goto_prev, opts)
 
           opts.desc = 'Restart LSP servers (buffer)'
           keymap.set('n', '<Leader>rs', ':LspRestart<CR>', opts)
