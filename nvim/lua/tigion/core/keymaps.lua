@@ -36,9 +36,13 @@ keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
 keymap.set('n', 'üm', '[m', { desc = 'Prev method start' })
 keymap.set('n', '+m', ']m', { desc = 'Next method start' })
 keymap.set('n', 'üM', '[M', { desc = 'Prev method end' })
-keymap.set('n', '+M', ']m', { desc = 'Next method start' })
+keymap.set('n', '+M', ']M', { desc = 'Next method end' })
 keymap.set('n', 'Ü', '{', { desc = 'Prev empty line' })
 keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
+
+-- Spelling
+keymap.set('n', 'üs', '[s', { desc = 'Prev spelling mistake' })
+keymap.set('n', '+s', ']s', { desc = 'Next spelling mistake' })
 
 -- Diagnostic
 keymap.set('n', '+d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
