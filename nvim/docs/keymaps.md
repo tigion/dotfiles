@@ -74,19 +74,18 @@
 
 ### Goodies
 
-| Mode | Keymap        | Description                       |
-| ---- | ------------- | --------------------------------- |
-| `n`  | `<Esc><Esc>`  | Remove search highlights          |
-| `i`  | `jj`, `<C-c>` | Exit insert mode                  |
-| `i`  | `jk`          | Exit insert mode and save         |
-| `n`  | `<C-a>`       | Select all                        |
-| `x`  | `J`           | Move selection down               |
-| `x`  | `K`           | Move selection up                 |
-| `n`  | `<Leader>s`   | Search and replace template (wuc) |
-| `n`  | `oo`          | Insert line below (normal mode)   |
-| `n`  | `OO`          | Insert line above (normal mode)   |
-
-- `wuc` ... Word under cursor
+| Mode     | Keymap        | Description                          |
+| -------- | ------------- | ------------------------------------ |
+| `n`      | `<Esc><Esc>`  | Remove search highlights             |
+| `i`      | `jj`, `<C-c>` | Exit insert mode                     |
+| `i`      | `jk`          | Exit insert mode and save            |
+| `n`      | `<C-a>`       | Select all                           |
+| `x`      | `J`           | Move selection down                  |
+| `x`      | `K`           | Move selection up                    |
+| `n`, `x` | `<Leader>ss`  | Search and replace template          |
+| `n`      | `<Leader>sw`  | Search and replace word under cursor |
+| `n`      | `oo`          | Insert line below (normal mode)      |
+| `n`      | `OO`          | Insert line above (normal mode)      |
 
 ### F-Keys
 

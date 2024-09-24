@@ -86,11 +86,13 @@ keymap.set('x', 'K', ":m '<-2<CR>gv=gv") -- up
 
 -- keep cursor position with line concatenation
 -- keymap.set('n', 'J', 'mzJ`z')
---
--- search and replace template for the current word under cursor
+
+-- Sustitute (search and replace)
+keymap.set('n', '<Leader>ss', [[:%s/\v]], { desc = 'Substitute template' })
+keymap.set('x', '<Leader>ss', [[:s/\v]], { desc = 'Substitute template' })
 keymap.set(
   'n',
-  '<Leader>s',
+  '<Leader>sw',
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = 'Substitute current word' }
 )
