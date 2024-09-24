@@ -24,6 +24,7 @@ return {
         'phpactor', -- PHP
         'pyright', -- Python
         'ts_ls', -- JavaScript, TypeScript
+        'typos_lsp', -- Typos (Code Spell Checker)
         'vimls', -- VimScript
         'volar', -- Vue.js
         'yamlls', -- Yaml
@@ -49,7 +50,7 @@ return {
         { 'eslint_d', version = '13.1.2' }, -- JS/TS (Linter) FIX: (:MasonInstall eslint_d@13.1.2) Pin to older version to support the old config style (not the new flat config)
         'markdownlint-cli2', -- Markdown (Linter)
         -- 'markdownlint', -- Markdown (Linter)
-        'codespell', -- Code (Linter: words)
+        -- 'codespell', -- Code (Linter: words) use typos_lsp instead
         -- { 'volar', version = '1.8.27' }, -- Vue.js FIX: (:MasonInstall volar@1.8.27)
       },
     })

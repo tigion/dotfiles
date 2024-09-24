@@ -26,7 +26,7 @@ return {
       group = lint_augroup,
       callback = function()
         lint.try_lint()
-        lint.try_lint('codespell')
+        -- lint.try_lint('codespell') -- Deactivated: use typos_lsp instead
       end,
     })
 

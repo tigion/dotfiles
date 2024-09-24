@@ -233,6 +233,15 @@ return {
             },
           })
         end,
+
+        ['typos_lsp'] = function()
+          lspconfig.typos_lsp.setup({
+            capabilities = capabilities,
+            init_options = {
+              diagnosticSeverity = 'Info', -- Error, Warning, Info or Hint
+            },
+          })
+        end,
       })
     end,
   },
