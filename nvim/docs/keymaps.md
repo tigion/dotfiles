@@ -20,7 +20,6 @@
       - [nvim-cmp](#nvim-cmp)
       - [nvim-lspconfig](#nvim-lspconfig)
     - [bufferline.nvim](#bufferlinenvim)
-    - [codeium.vim](#codeiumvim)
     - [Comment.nvim](#commentnvim)
     - [conform.nvim](#conformnvim)
     - [gitsigns.nvim](#gitsignsnvim)
@@ -38,12 +37,15 @@
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
+    - [supermaven-nvim](#supermaven-nvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
     - [which-key.nvim](#which-keynvim)
     - [zen-mode.nvim](#zen-modenvim)
+    - [Deactivated](#deactivated)
+      - [codeium.vim](#codeiumvim)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
     - [Help](#help)
@@ -228,20 +230,6 @@ CMP - Completion Menu:
 | `n`  | `+t`     | Go to next tab        |
 | `n`  | `üt`     | Go to previous tab    |
 
-### [codeium.vim]
-
-[codeium.vim]: https://github.com/Exafunction/codeium.vim
-
-| Mode | Keymap       | Description                      |
-| ---- | ------------ | -------------------------------- |
-| `n`  | `<Leader>tc` | Toggle Codeium                   |
-| `i`  | `<Tab>`      | Accept completion                |
-| `i`  | `<C-x>`      | Cancel/Clear current completions |
-| `f`  | `<C-f>`      | Cycle completions forwards       |
-
-- ? `<S-Tab>` for Cancel
-- ? `<C-e>` for Cancel/Clear like CMP
-
 ### [Comment.nvim]
 
 [Comment.nvim]: https://github.com/numToStr/Comment.nvim
@@ -410,6 +398,17 @@ CMP - Completion Menu:
 | ---- | ------------ | ---------------------- |
 | `n`  | `<Leader>tm` | Toggle Render Markdown |
 
+### [supermaven-nvim]
+
+[supermaven-nvim]: https://github.com/supermaven-inc/supermaven-nvim
+
+| Mode | Keymap       | Description       |
+| ---- | ------------ | ----------------- |
+| `n`  | `<Leader>ts` | Toggle Supermaven |
+| `i`  | `<Tab>`      | Accept suggestion |
+| `i`  | `<C-x>`      | Clear suggestion  |
+| `i`  | `<C-f>`      | Accept word       |
+
 ### [telescope.nvim]
 
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
@@ -510,6 +509,24 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | Mode | Keymap      | Description     |
 | ---- | ----------- | --------------- |
 | `n`  | `<Leader>z` | Toggle zen mode |
+
+### Deactivated
+
+#### [codeium.vim]
+
+[codeium.vim]: https://github.com/Exafunction/codeium.vim
+
+- Currently deactivated
+
+| Mode | Keymap       | Description                      |
+| ---- | ------------ | -------------------------------- |
+| `n`  | `<Leader>tc` | Toggle Codeium                   |
+| `i`  | `<Tab>`      | Accept completion                |
+| `i`  | `<C-x>`      | Cancel/Clear current completions |
+| `f`  | `<C-f>`      | Cycle completions forwards       |
+
+- ? `<S-Tab>` for Cancel
+- ? `<C-e>` for Cancel/Clear like CMP
 
 ## ftplugin
 
