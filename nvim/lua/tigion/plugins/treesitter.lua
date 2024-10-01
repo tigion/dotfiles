@@ -5,7 +5,7 @@ return {
     local status, ts = pcall(require, 'nvim-treesitter.configs')
     if not status then return end
 
-    -- NOTE:The following line suppresses the warning 'Missing required fields'
+    -- NOTE: The following line suppresses the warning 'Missing required fields'
     -- Source: https://github.com/LuaLS/lua-language-server/issues/2214
     -- Alternative add an global `disable = { 'missing-fields' }` to the lua_la config above
     --
