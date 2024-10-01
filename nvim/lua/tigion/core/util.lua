@@ -22,17 +22,21 @@ function M.info.plugin_count()
 end
 
 ---Returns the LSP servers attached to the current buffer as formatted string.
----@return string
+---@return string?
 function M.info.lsp_servers()
+  local mode = 'symbol' -- 'symbol' | 'text'
   local clients = vim.lsp.get_clients({ bufnr = 0 }) -- 0 = current buffer
+  local count = #clients
+
+  -- return symbol with count
+  if mode == 'symbol' then return count > 0 and icons.lsp.server_active .. count or '' end
+
+  -- return names
   local names = {}
   for _, client in pairs(clients) do
     table.insert(names, client.name)
   end
   return table.concat(names, ',')
-  -- local lsp_names = ''
-  -- if #names > 0 then lsp_names = '' .. table.concat(names, ',') end -- 
-  -- return lsp_names
 end
 
 ---Returns true if we are in a Git repository otherwise false.

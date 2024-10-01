@@ -71,7 +71,7 @@ return {
           -- '%S󰘦 %3{codeium#GetStatusString()}',
           {
             require('tigion.core.util').info.lsp_servers,
-            color = { fg = '#545c7e', gui = 'italic' },
+            -- color = { fg = '#545c7e', gui = 'italic' },
             on_click = function() vim.cmd('LspInfo') end,
           },
           'encoding',

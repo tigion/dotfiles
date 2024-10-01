@@ -48,6 +48,12 @@ M.git.diff = {
   removed = M.git.deleted,
 }
 
+-- lsp
+M.lsp = {
+  server_active = '󱎴',
+  server_none = '󰶐',
+}
+
 -- tools
 M.neovim = ''
 M.telescope = ''
