@@ -11,6 +11,12 @@ return {
       ---@diagnostic disable-next-line missing-fields
       require('ts_context_commentstring').setup({
         enable_autocmd = false,
+        languages = {
+          -- NOTE: Allow single line and block comments in C files.
+          -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/issues/82#issuecomment-2213944325
+          -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/blob/main/lua/ts_context_commentstring/config.lua
+          c = { __default = '// %s', __multiline = '/* %s */' }, -- default is only `c = '/* %s */'`
+        },
       })
 
       ---@diagnostic disable-next-line missing-fields
