@@ -18,14 +18,7 @@ return {
       --   -- suggestion_color = vim.api.nvim_get_hl(0, { name = 'NonText' }).fg,
       --   -- cterm = vim.api.nvim_get_hl(0, { name = 'NonText' }).cterm,
       -- },
-      -- log_level = 'info', -- set to "off" to disable logging completely
-      -- disable_inline_completion = false, -- disables inline completion for use with cmp
-      -- disable_keymaps = false, -- disables built in keymaps for more manual control
-      -- condition = function() return false end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-      -- condition = function()
-      --   -- use global variable for stop condition
-      --   return not vim.g.supermaven_enable
-      -- end,
+      log_level = 'off', -- info, set to "off" to disable logging completely
     },
     config = function(_, opts)
       require('supermaven-nvim').setup(opts)
