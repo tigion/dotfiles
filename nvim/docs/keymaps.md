@@ -7,9 +7,11 @@
   - [Info](#info)
     - [Keymap Groups](#keymap-groups)
   - [General](#general)
+    - [Options](#options)
+      - [Global options](#global-options)
+      - [Local options](#local-options)
     - [Goodies](#goodies)
     - [Diagnostics](#diagnostics)
-    - [F-Keys](#f-keys)
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Tabs](#tabs)
     - [Windows](#windows)
@@ -75,6 +77,25 @@
 
 ## General
 
+### Options
+
+#### Global options
+
+| Mode | Keymap  | Description                  |
+| ---- | ------- | ---------------------------- |
+|      | `<F7>`  | Toggle line wrapping         |
+|      | `<F8>`  | Toggle relative line numbers |
+|      | `<F9>`  | Toggle line numbers          |
+|      | `<F10>` | Toggle spell checking        |
+
+#### Local options
+
+| Mode | Keymap        | Description                                            |
+| ---- | ------------- | ------------------------------------------------------ |
+| `n`  | `<Leader>tow` | Toggle line wrapping                                   |
+| `n`  | `<Leader>ton` | Toggle line numbers between absolute, relative and off |
+| `n`  | `<Leader>tos` | Toggle spell checking (local)                          |
+
 ### Goodies
 
 | Mode     | Keymap        | Description                          |
@@ -96,15 +117,6 @@
 | ---- | ------ | ------------------- |
 | `n`  | `+d`   | Next diagnostic     |
 | `n`  | `üd`   | Previous diagnostic |
-
-### F-Keys
-
-| Mode | Keymap  | Description                  |
-| ---- | ------- | ---------------------------- |
-|      | `<F7>`  | Toggle line wrapping         |
-|      | `<F8>`  | Toggle relative line numbers |
-|      | `<F9>`  | Toggle line numbers          |
-|      | `<F10>` | Toggle spell checking        |
 
 ### Quickfix/Location List
 

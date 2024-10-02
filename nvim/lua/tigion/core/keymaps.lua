@@ -8,6 +8,34 @@ local keymap = vim.keymap
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Options
+
+-- NOTE:
+-- Set global and local option:     `:set`,       `vim.o`,      `vim.opt`
+-- Set only local no global option: `:setlocal`,  `vim.[w|b]o`, `vim.opt_local`
+-- Set only global no local option: `:setglobal`, `vim.og`,     `vim.opt_global`
+-- vim.o      ... string
+-- vim.opt    ... table
+
+-- global options
+keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line wrap' })
+keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
+keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
+keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
+
+-- local options
+keymap.set('n', '<Leader>tow', ':setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
+keymap.set('n', '<Leader>ton', function()
+  -- Toggle line numbers between absolute, relative and off.
+  if vim.wo.number then
+    if vim.wo.relativenumber then vim.wo.number = false end
+    vim.wo.relativenumber = not vim.wo.relativenumber
+  else
+    vim.wo.number = true
+  end
+end, { desc = 'Toggle line numbers (local)' })
+keymap.set('n', '<Leader>tos', ':setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
+
 -- Goodies
 
 keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
@@ -19,13 +47,6 @@ keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 keymap.set('n', 'oo', 'o<Esc>k', { desc = 'Insert line below' })
 keymap.set('n', 'OO', 'O<Esc>j', { desc = 'Insert line above' })
-
--- F-Keys
-keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line break' })
-keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
-keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
-keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
--- keymap.set('', '<F10>', ':setlocal spell!<CR>', { desc = 'Toggle spell checking for current buffer' })
 
 -- Navigation
 
