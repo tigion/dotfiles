@@ -86,6 +86,9 @@ opt.formatoptions:append({ 'r' })
 -- Spell checking
 -- - "de": new German spelling
 -- - "de_de": old and new German spelling
+-- - "en": all English regions
+-- - "en_us": American English
+-- - "en_gb": British English
 opt.spell = false -- toggle with <F10>
 opt.spelllang = { 'de', 'en_us' }
 

@@ -62,6 +62,16 @@ return {
             on_click = function() vim.cmd('Trouble diagnostics toggle') end,
           },
           {
+            require('tigion.core.util').info.spell,
+            separator = '',
+            padding = { left = 1, right = 0 },
+            on_click = function() print('Spell languages: ' .. table.concat(vim.opt.spelllang:get(), ', ')) end,
+          },
+          {
+            require('tigion.core.util').info.spell_languages,
+            color = { fg = '#545c7e', gui = 'italic' },
+          },
+          {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
             on_click = function() vim.cmd('Lazy') end,

@@ -39,6 +39,22 @@ function M.info.lsp_servers()
   return table.concat(names, ',')
 end
 
+---Returns the spell checking status as formatted string.
+---@return string
+function M.info.spell()
+  if not vim.wo.spell then return '' end
+  return icons.option.spell
+end
+
+---Returns spell languages as formatted string if spell checking is enabled.
+---@return string
+function M.info.spell_languages()
+  if not vim.wo.spell then return '' end
+  -- local languages = vim.o.spelllang
+  local languages = table.concat(vim.opt.spelllang:get(), ',')
+  return languages
+end
+
 ---Returns true if we are in a Git repository otherwise false.
 ---@return boolean
 function M.info.in_git_repo()

@@ -48,6 +48,10 @@ M.git.diff = {
   removed = M.git.deleted,
 }
 
+M.option = {
+  spell = '󰓆',
+}
+
 -- lsp
 M.lsp = {
   server_active = '󱎴',
