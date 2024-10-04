@@ -344,6 +344,29 @@ use_neovim() {
     subtitle "Neovim"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
     #is_active && nvim --headless +PackerInstall +q
+    # install spell files
+    # '$HOME/.config/nvim/spell/'
+    # wget 'https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.spl'
+    # wget 'https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.sug'
+    local installed=false
+    if [[ ! -d "$HOME/.config/nvim/spell" ]]; then
+      is_active && mkdir -p "$HOME/.config/nvim/spell"
+    fi
+    local file="de.utf-8.spl"
+    if [[ ! -f "$HOME/.config/nvim/spell/${file}" ]]; then
+      is_active && curl "https://ftp.nluug.nl/pub/vim/runtime/spell/${file}" -o "$HOME/.config/nvim/spell/${file}"
+      installed=true
+    fi
+    file="de.utf-8.sug"
+    if [[ ! -f "$HOME/.config/nvim/spell/${file}" ]]; then
+      is_active && curl "https://ftp.nluug.nl/pub/vim/runtime/spell/${file}" -o "$HOME/.config/nvim/spell/${file}"
+      installed=true
+    fi
+    if [[ $installed == true ]]; then
+      success "Installed German spell files"
+    else
+      success "German spell files are already installed"
+    fi
   fi
 }
 
