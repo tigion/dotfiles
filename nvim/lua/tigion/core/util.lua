@@ -52,6 +52,25 @@ function M.info.in_git_repo()
   return result ~= ''
 end
 
+-- M.vim = {}
+--
+-- ---Sets special keymappings for prev/next.
+-- ---@param mode string
+-- ---@param rhs string
+-- ---@param opts table
+-- function M.vim.keymap_set_prev_next(mode, rhs, opts)
+--   local mappings = { ['['] = 'ü', [']'] = { '+', 'ä' }, ['{'] = 'Ü', ['}'] = 'Ä' }
+--   local starts_with = string.sub(rhs, 1, 1)
+--   if mappings[starts_with] ~= nil then
+--     local value = mappings[starts_with]
+--     local mapping = type(value) == 'table' and value or { value }
+--     for _, map in pairs(mapping) do
+--       local lhs = string.gsub(rhs, '%' .. starts_with, map)
+--       vim.keymap.set(mode, lhs, rhs, opts)
+--     end
+--   end
+-- end
+
 M.color = {}
 
 ---Limits a value between min and max.

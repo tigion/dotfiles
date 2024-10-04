@@ -8,8 +8,7 @@ local keymap = vim.keymap
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Options
-
+-- Options ---------------------------------------------------------------------
 -- NOTE:
 -- Set global and local option:     `:set`,       `vim.o`,      `vim.opt`
 -- Set only local no global option: `:setlocal`,  `vim.[w|b]o`, `vim.opt_local`
@@ -17,13 +16,13 @@ vim.g.maplocalleader = ' '
 -- vim.o      ... string
 -- vim.opt    ... table
 
--- global options
+-- Global options
 keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line wrap' })
 keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
 keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
 keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
 
--- local options
+-- Local options
 keymap.set('n', '<Leader>tow', ':setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
 keymap.set('n', '<Leader>ton', function()
   -- Toggle line numbers between absolute, relative and off.
@@ -36,7 +35,7 @@ keymap.set('n', '<Leader>ton', function()
 end, { desc = 'Toggle line numbers (local)' })
 keymap.set('n', '<Leader>tos', ':setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 
--- Goodies
+-- Goodies ---------------------------------------------------------------------
 
 keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
 keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
@@ -48,12 +47,12 @@ keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 keymap.set('n', 'oo', 'o<Esc>k', { desc = 'Insert line below' })
 keymap.set('n', 'OO', 'O<Esc>j', { desc = 'Insert line above' })
 
--- Navigation
+-- Navigation ------------------------------------------------------------------
+-- NOTE: Some special prev/next keymaps for a German keyboard layout.
+--       - `ü`, `+` or `ü`, `ä` -> `[`, `]`
+--       -             `Ü`, `Ä` -> `{`, `}`
 
--- TODO: Testing some special keymaps for german keyboard layout.
---
--- keymap.set('n', 'ü', '[', { desc = '[' })
--- keymap.set('n', 'ä', ']', { desc = ']' })
+-- Code
 keymap.set('n', 'üm', '[m', { desc = 'Prev method start' })
 keymap.set('n', '+m', ']m', { desc = 'Next method start' })
 keymap.set('n', 'üM', '[M', { desc = 'Prev method end' })
@@ -69,9 +68,8 @@ keymap.set('n', '+s', ']s', { desc = 'Next spelling mistake' })
 keymap.set('n', '+d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 keymap.set('n', 'üd', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
 
--- quickfix/location list
+-- Quickfix list ---------------------------------------------------------------
 
--- quickfix list
 -- keymap.set('n', '<Leader>xq', '<Cmd>copen<CR>', { desc = 'Open quickfix list' })
 keymap.set('n', '<Leader>xq', function()
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -87,7 +85,8 @@ keymap.set('n', '+q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
 keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 -- keymap.set('n', '<C-q>', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 
--- location list
+-- Location list ---------------------------------------------------------------
+
 -- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
 keymap.set('n', '<Leader>xl', function()
   if vim.fn.getloclist(0, { winid = 0 }).winid == 0 then
@@ -99,7 +98,7 @@ end, { desc = 'Toggle location list' })
 keymap.set('n', '+l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
 keymap.set('n', 'ül', '<Cmd>lprev<CR>zz', { desc = 'Prev location' })
 
--- Manipulation
+-- Manipulation ----------------------------------------------------------------
 
 -- better identing (repeatable)
 keymap.set('x', '<', '<gv', { desc = 'Decrease indent' })
@@ -130,13 +129,14 @@ keymap.set(
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
 keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
--- Buffers
+-- Buffers ---------------------------------------------------------------------
+
 -- keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 -- keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 keymap.set('n', 'üb', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', '+b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 
--- Windows
+-- Windows ---------------------------------------------------------------------
 
 -- Split window
 keymap.set('n', 'sh', ':split<Return>', { desc = 'Split window horizontally' })
@@ -155,7 +155,9 @@ keymap.set('n', '<C-w><Down>', '<Cmd>resize -2<CR>', { desc = 'Decrease window h
 keymap.set('n', '<C-w><Up>', '<Cmd>resize +2<CR>', { desc = 'Increase window height' })
 keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width' })
 
--- Tabs
+-- Tabs ------------------------------------------------------------------------
+
+-- Other -----------------------------------------------------------------------
 
 -- Inspect (Treesitter) highlights (under cursor)
 keymap.set('n', '<Leader>ui', '<Cmd>Inspect<CR>', { desc = 'Inspect Pos' })
