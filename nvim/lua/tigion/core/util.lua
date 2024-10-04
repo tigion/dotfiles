@@ -21,17 +21,22 @@ function M.info.plugin_count()
   return plugin_count
 end
 
+---Returns the lsp server status as formatted string.
+---@return string
+function M.info.lsp()
+  local clients = vim.lsp.get_clients({ bufnr = 0 }) -- 0 = current buffer
+  local count = #clients
+  if count < 1 then return '' end
+  return icons.lsp.server_active .. ' ' .. count
+end
+
 ---Returns the LSP servers attached to the current buffer as formatted string.
 ---@return string?
 function M.info.lsp_servers()
-  local mode = 'symbol' -- 'symbol' | 'text'
+  -- bashls, clangd, cssls, jdtls, marksman, phpactor, pyright, vimls,
+  -- yamlls, ts_ls, html, typos_lsp, jsonls, ruff_lsp, lua_ls, volar
   local clients = vim.lsp.get_clients({ bufnr = 0 }) -- 0 = current buffer
-  local count = #clients
 
-  -- return symbol with count
-  if mode == 'symbol' then return count > 0 and icons.lsp.server_active .. count or '' end
-
-  -- return names
   local names = {}
   for _, client in pairs(clients) do
     table.insert(names, client.name)
