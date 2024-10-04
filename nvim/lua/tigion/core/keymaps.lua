@@ -1,6 +1,14 @@
 -- Keymaps
 -- with useful keymaps from devaslife, ThePrimeagen, LazyVim, *
 
+-- NOTE: `:h <Cmd>`, `:h :` for more info
+-- - The <Cmd> pseudokey begins a "command mapping", which executes the command
+--   directly without changing modes. `:...<CR>` -> `<Cmd>...<CR>`
+-- - <Cmd> avoids mode-changes (unlike ":") it does not triggers
+--   `CmdlineEnter` and `CmdlineLeave` events. This helps performance.
+-- - Whit <Cmd> the command is not echo'ed, no need for `silent = true`.
+-- - <Cmd> commands must terminate, that is, they must be followed by <CR>.
+
 local keymap = vim.keymap
 
 -- Set <space> as the leader key
@@ -17,13 +25,13 @@ vim.g.maplocalleader = ' '
 -- vim.opt    ... table
 
 -- Global options
-keymap.set('', '<F7>', ':set wrap!<CR>', { desc = 'Toggle line wrap' })
-keymap.set('', '<F8>', ':set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
-keymap.set('', '<F9>', ':set number!<CR>', { desc = 'Toggle line numbers' })
-keymap.set('', '<F10>', ':set spell!<CR>', { desc = 'Toggle spell checking' })
+keymap.set('', '<F7>', '<Cmd>set wrap!<CR>', { desc = 'Toggle line wrap' })
+keymap.set('', '<F8>', '<Cmd>set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
+keymap.set('', '<F9>', '<Cmd>set number!<CR>', { desc = 'Toggle line numbers' })
+keymap.set('', '<F10>', '<Cmd>set spell!<CR>', { desc = 'Toggle spell checking' })
 
 -- Local options
-keymap.set('n', '<Leader>tow', ':setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
+keymap.set('n', '<Leader>tow', '<Cmd>setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
 keymap.set('n', '<Leader>ton', function()
   -- Toggle line numbers between absolute, relative and off.
   if vim.wo.number then
@@ -33,13 +41,13 @@ keymap.set('n', '<Leader>ton', function()
     vim.wo.number = true
   end
 end, { desc = 'Toggle line numbers (local)' })
-keymap.set('n', '<Leader>tos', ':setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
+keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 
 -- Goodies ---------------------------------------------------------------------
 
-keymap.set('n', '<Esc><Esc>', ':noh<CR>', { desc = 'Remove search highlights' })
+keymap.set('n', '<Esc><Esc>', '<Cmd>noh<CR>', { desc = 'Remove search highlights' })
 keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
-keymap.set('i', 'jk', '<Esc>:w<CR>', { desc = 'Exit insert mode and save' })
+keymap.set('i', 'jk', '<Esc><Cmd>w<CR>', { desc = 'Exit insert mode and save' })
 keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
@@ -126,21 +134,21 @@ keymap.set(
 )
 
 -- increment/decrement numbers
-keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
-keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
+keymap.set('n', '<Leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
+keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- Buffers ---------------------------------------------------------------------
 
 -- keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 -- keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set('n', 'üb', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-keymap.set('n', '+b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+keymap.set('n', 'üb', '<Cmd>bprevious<CR>', { desc = 'Prev Buffer' })
+keymap.set('n', '+b', '<Cmd>bnext<CR>', { desc = 'Next Buffer' })
 
 -- Windows ---------------------------------------------------------------------
 
 -- Split window
-keymap.set('n', 'sh', ':split<Return>', { desc = 'Split window horizontally' })
-keymap.set('n', 'sv', ':vsplit<Return>', { desc = 'Split window vertically' })
+keymap.set('n', 'sh', '<Cmd>split<Return>', { desc = 'Split window horizontally' })
+keymap.set('n', 'sv', '<Cmd>vsplit<Return>', { desc = 'Split window vertically' })
 
 -- Switch window
 -- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
