@@ -18,6 +18,7 @@ return {
         'clangd', -- C, C++
         'cssls', -- CSS, SCSS, LESS
         'html', -- HTML
+        'intelephense', -- PHP
         'jdtls', -- Java
         'lua_ls', -- Lua
         'marksman', -- Markdown
@@ -45,7 +46,7 @@ return {
         -- 'ruff', -- Python (Linter/Formatter)
         -- 'black', -- Python (Formatter)
         -- 'isort', -- Python (Formatter: includes)
-        'pint', -- PHP (Formatter)
+        -- 'pint', -- PHP (Formatter) -- Use LSP fallback from intelephense TODO: configure to also format embedded HTML
         -- 'eslint_d', -- JS/TS (Linter)
         { 'eslint_d', version = '13.1.2' }, -- JS/TS (Linter) FIX: (:MasonInstall eslint_d@13.1.2) Pin to older version to support the old config style (not the new flat config)
         'markdownlint-cli2', -- Markdown (Linter)

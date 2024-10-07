@@ -23,7 +23,7 @@ return {
       json = { 'prettier' },
       lua = { 'stylua' },
       markdown = { 'prettier', 'markdownlint-cli2' },
-      php = { 'pint' },
+      -- php = { 'pint' }, -- Pint is built on top of PHP-CS-Fixer
       -- python = { 'isort', 'black' }, -- replaced with ruff-ls
       -- python = { 'black' }, -- replaced with ruff-ls
       -- python = { -- ruff is replaced with ruff-ls
@@ -57,9 +57,9 @@ return {
       -- black = {
       --   prepend_args = { '--fast', '--line-length', '120' },
       -- },
-      pint = {
-        prepend_args = { '--preset', 'psr12' },
-      },
+      -- pint = {
+      --   prepend_args = { '--preset', 'psr12' },
+      -- },
       -- shfmt = {
       --   -- Fixed in https://github.com/stevearc/conform.nvim/commit/acc7d93f4a080fec587a99fcb36cffa29adc4bad
       --   -- shfmt ignores `.editorconfig` in conform.nvim
