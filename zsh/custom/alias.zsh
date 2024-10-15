@@ -1,20 +1,26 @@
 # --- Aliases ---
 
 # open colored tree without .git folder and ignored files, follow symbolic links
-alias tree='tree -a -l -C -I ".git" --gitignore --dirsfirst'
+# alias tree='tree -a -l -C -I ".git" --gitignore --dirsfirst'
+alias tree='tree -a -l -C -I ".git" --dirsfirst'
 
 # echo PATH variable line by line
 alias echoPATH='echo "${PATH//:/\\n}"'
 
-# find in history
-# alias fh='history | grep'
-alias fh='history | fzf'
+# (fuzzy) search
+alias öh='history | fzf'
+alias öa='alias | fzf'
+# Searches for directories and files in the current directory and cd into it.
+alias öd='cd $(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type d -print | fzf)'
+alias öf='cd $(dirname $(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type f -print | fzf))'
 
-# open tty-clock with my preferred settings
-alias ti-clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
+# replacements
+alias cat='bat -p'
+# alias tree='eza --tree -a -I .git --group-directories-first --icons'
 
-# Lazygit
+# shortcuts
 alias lg='lazygit'
+alias clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
 
 # Python
 # virtual environment
@@ -22,8 +28,6 @@ alias vc='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
 alias vd='deactivate'
 alias vu='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
-
-# -- Change directory
 
 # -- macOS --
 
