@@ -11,8 +11,8 @@ alias echoPATH='echo "${PATH//:/\\n}"'
 alias öh='history | fzf'
 alias öa='alias | fzf'
 # Searches for directories and files in the current directory and cd into it.
-alias öd='cd $(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type d -print | fzf)'
-alias öf='cd $(dirname $(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type f -print | fzf))'
+alias öd='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type d -print | fzf) && cd "$tmp"'
+alias öf='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*.photoslibrary" -o -path "*/node_modules" \) -prune -o -type f -print | fzf) && cd $(dirname "$tmp")'
 
 # replacements
 alias cat='bat -p'
