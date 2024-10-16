@@ -68,6 +68,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   use_kitty
   use_lazygit
   use_httpie
+  use_fzf
 fi
 
 echo ""

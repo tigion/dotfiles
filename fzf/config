@@ -1,0 +1,6 @@
+# vim: ft=conf
+
+--height=~50%
+--info=inline # default, inline, hidden
+--border=rounded
+# --reverse

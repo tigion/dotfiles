@@ -393,3 +393,11 @@ use_httpie() {
     link "$DOTFILES_ROOT/httpie" "$HOME/.config/httpie"
   fi
 }
+
+# fzf
+use_fzf() {
+  if is_command fzf; then
+    subtitle "fzf"
+    link "$DOTFILES_ROOT/fzf" "$HOME/.config/fzf"
+  fi
+}
