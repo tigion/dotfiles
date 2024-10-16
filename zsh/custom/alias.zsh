@@ -8,17 +8,21 @@ alias tree='tree -a -l -C -I ".git" --dirsfirst'
 alias echoPATH='echo "${PATH//:/\\n}"'
 
 # (fuzzy) search
-alias öh='history | fzf --tmux'
-alias öa='alias | fzf --tmux'
+alias öh='history | sort --reverse | cut -c 8- | fzf --tmux --border-label="  History "'
+alias öa='alias | fzf --tmux --border-label="  Aliases "'
 # Searches for directories and files in the current directory and cd into it.
 # alias öd='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*/node_modules" \) -prune -o -type d -print | fzf) && cd "$tmp"'
 # alias öf='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*/node_modules" \) -prune -o -type f -print | fzf) && cd $(dirname "$tmp")'
-alias öd='tmp=$(fzf --tmux --walker dir,follow,hidden --walker-skip .git,node_modules,target,Library,Applications) && cd "$tmp"'
-alias öf='tmp=$(fzf --tmux --walker file,follow,hidden --walker-skip .git,node_modules,target,Library,Applications) && cd $(dirname "$tmp")'
+alias öd='tmp=$(fzf --tmux --border-label="  Directories " --walker dir,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd "$tmp"'
+alias öD='tmp=$(fzf --tmux --border-label="  Directories (~/) " --walker-root="$HOME" --walker dir,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd "$tmp"'
+alias öf='tmp=$(fzf --tmux --border-label="  Files " --walker file,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd $(dirname "$tmp")'
+alias öF='tmp=$(fzf --tmux --border-label="  Files (~/) " --walker-root="$HOME" --walker file,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd $(dirname "$tmp")'
 
 # replacements
 alias cat='bat -p'
+alias ls2='eza --icons'
 # alias tree='eza --tree -a -I .git --group-directories-first --icons'
+alias tree2='eza --tree -L 2 -a -I .git --group-directories-first --icons'
 
 # shortcuts
 alias lg='lazygit'
