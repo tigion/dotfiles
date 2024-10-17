@@ -8,7 +8,7 @@ alias tree='tree -a -l -C -I ".git" --dirsfirst'
 alias echoPATH='echo "${PATH//:/\\n}"'
 
 # (fuzzy) search
-alias öh='history | sort --reverse | cut -c 8- | fzf --tmux --border-label="  History "'
+alias öh='history | cut -c 8- | fzf --scheme=history --tac --tmux --border-label="  History "'
 alias öa='alias | fzf --tmux --border-label="  Aliases "'
 # Searches for directories and files in the current directory and cd into it.
 # alias öd='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*/node_modules" \) -prune -o -type d -print | fzf) && cd "$tmp"'
