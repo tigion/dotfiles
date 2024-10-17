@@ -24,6 +24,11 @@ is_attached() {
   tmux ls 2>/dev/null | grep -q "^${1}:.*(attached)$"
 }
 
+# Checks if we are within a tmux session.
+is_in_tmux() {
+  [[ -n $TMUX ]]
+}
+
 # Checks if a directory exists.
 is_directory() {
   [[ -d "$1" ]]
@@ -97,11 +102,17 @@ if is_session "${first_session_name}"; then
     echo ""
     if [[ "$answer" != "y" && "$answer" != "Y" ]]; then exit 0; fi
   fi
-  echo "Attach to session '${first_session_name}'"
-  # attach-session (alias: attach, a)
-  # -t target-session
-  # -d ... detache other clients
-  tmux attach-session -t "$first_session_name"
+  if is_in_tmux; then
+    echo "Switch to session '${first_session_name}'"
+    # switch to session inside of tmux
+    tmux switch -t "$first_session_name"
+  else
+    echo "Attach to session '${first_session_name}'"
+    # attach-session (alias: attach, a)
+    # -t target-session
+    # -d ... detache other clients
+    tmux attach-session -t "$first_session_name"
+  fi
 else
   echo "Session '${first_session_name}' does not exist!"
 fi
