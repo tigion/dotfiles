@@ -50,15 +50,20 @@ get_start_directory() {
   # local session_name="${1,,}" # Only works with Bash 4.0+
   local session_name && session_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 
-  # Sets the project name
-  local project_name="${session_name}"
   # Handles session names that differ from project names
   if [[ "$session_name" == "nvim" ]]; then
-    project_name="neovim"
+    session_name="neovim"
   fi
 
   # Sets the start directory based on session name
-  local start_directory="${HOME}/projects/${project_name}"
+  local start_directory="${HOME}/projects/${session_name}"
+
+  # Handles session names that are not projects
+  if [[ "$session_name" == "home" ]]; then
+    start_directory="${HOME}"
+  fi
+
+  # Checks the start directory
   is_directory "${start_directory}" || start_directory="${default_directory}"
 
   echo "$start_directory"
