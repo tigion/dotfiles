@@ -18,7 +18,7 @@ return {
       --   -- suggestion_color = vim.api.nvim_get_hl(0, { name = 'NonText' }).fg,
       --   -- cterm = vim.api.nvim_get_hl(0, { name = 'NonText' }).cterm,
       -- },
-      log_level = 'off', -- info, set to "off" to disable logging completely
+      -- log_level = 'off', -- info, set to "off" to disable logging completely
     },
     config = function(_, opts)
       require('supermaven-nvim').setup(opts)
