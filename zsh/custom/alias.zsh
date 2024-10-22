@@ -24,6 +24,19 @@ alias ls2='eza --icons'
 # alias tree='eza --tree -a -I .git --group-directories-first --icons'
 alias tree2='eza --tree -L 2 -a -I .git --group-directories-first --icons'
 
+# alias l="eza --icons"
+# alias ls="eza --icons"
+# alias ll="eza -lg --icons"
+# alias la="eza -lag --icons"
+# alias lt="eza -lTg --icons"
+# alias lt1="eza -lTg --level=1 --icons"
+# alias lt2="eza -lTg --level=2 --icons"
+# alias lt3="eza -lTg --level=3 --icons"
+# alias lta="eza -lTag --icons"
+# alias lta1="eza -lTag --level=1 --icons"
+# alias lta2="eza -lTag --level=2 --icons"
+# alias lta3="eza -lTag --level=3 --icons"
+
 # shortcuts
 alias lg='lazygit'
 alias clock='tty-clock -c -C3 -f "%A %d.%m.%Y"'
