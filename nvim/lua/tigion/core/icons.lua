@@ -64,6 +64,7 @@ M.telescope = ''
 M.codeium = '󰘦'
 M.copilot = ''
 M.supermaven = '󱙺'
+M.supermaven_error = '󱙻'
 
 -- code symbols
 M.code = {

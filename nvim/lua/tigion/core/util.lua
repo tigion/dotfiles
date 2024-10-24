@@ -336,6 +336,11 @@ function M.supermaven.status()
   if not pcall(require('supermaven-nvim.api').is_running) then return '' end
   if not require('supermaven-nvim.api').is_running() then return '' end -- 󱙻
   local status = icons.supermaven or '󱙺'
+
+  -- FIX: Workaround for connection timeout behind a proxy
+  local http_proxy = vim.trim(vim.fn.system('echo $http_proxy'))
+  if http_proxy ~= '' then status = icons.supermaven_error or '󱙻' end
+
   return status
 end
 
