@@ -1,3 +1,4 @@
+notARepository: "quit"
 gui:
   language: "auto"
   mouseEvents: true
