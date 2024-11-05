@@ -167,6 +167,9 @@ keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increas
 
 -- Other -----------------------------------------------------------------------
 
+-- Help for word under cursor (lua: vim.fn.expand('<cword>'))
+--keymap.set('n', '<Leader>k', [[:help <C-r><C-w><CR>]], { desc = 'Help for word under cursor' })
+
 -- Inspect (Treesitter) highlights (under cursor)
 keymap.set('n', '<Leader>ui', '<Cmd>Inspect<CR>', { desc = 'Inspect Pos' })
 keymap.set('n', '<Leader>uI', '<Cmd>InspectTree<CR>', { desc = 'Inspect Tree' })
