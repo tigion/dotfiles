@@ -20,6 +20,7 @@ return {
         'html', -- HTML
         'intelephense', -- PHP
         'jdtls', -- Java
+        'jsonls', -- JSON
         'lua_ls', -- Lua
         'marksman', -- Markdown
         'phpactor', -- PHP
@@ -53,6 +54,7 @@ return {
         -- 'markdownlint', -- Markdown (Linter)
         -- 'codespell', -- Code (Linter: words) use typos_lsp instead
         -- { 'volar', version = '1.8.27' }, -- Vue.js FIX: (:MasonInstall volar@1.8.27)
+        -- 'jsonlint', -- JSON (Linter)
       },
     })
   end,

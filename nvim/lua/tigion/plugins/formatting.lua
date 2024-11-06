@@ -21,6 +21,7 @@ return {
       html = { 'prettier' },
       javascript = { 'prettier' },
       json = { 'prettier' },
+      jsonc = { 'prettier' },
       lua = { 'stylua' },
       markdown = { 'prettier', 'markdownlint-cli2' },
       -- php = { 'pint' }, -- Pint is built on top of PHP-CS-Fixer
