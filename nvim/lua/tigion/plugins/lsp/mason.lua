@@ -25,6 +25,7 @@ return {
         'marksman', -- Markdown
         'phpactor', -- PHP
         'pyright', -- Python
+        'ruff', -- Python (LSP/Linter/Formatter)
         'ts_ls', -- JavaScript, TypeScript
         'typos_lsp', -- Typos (Code Spell Checker)
         'vimls', -- VimScript
@@ -43,8 +44,7 @@ return {
         'shfmt', -- Shell (Formatter)
         -- 'pylint', -- Python (Linter)
         -- 'flake8', -- Python (Linter)
-        'ruff-lsp', -- Python (LSP/Linter/Formatter)
-        -- 'ruff', -- Python (Linter/Formatter)
+        -- 'ruff-lsp', -- Python (LSP/Linter/Formatter) -- replaced by new ruff (06.11.2024)
         -- 'black', -- Python (Formatter)
         -- 'isort', -- Python (Formatter: includes)
         -- 'pint', -- PHP (Formatter) -- Use LSP fallback from intelephense TODO: configure to also format embedded HTML
