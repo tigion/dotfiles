@@ -1,52 +1,78 @@
+// vim: filetype=jsonc
 {
-  // vim
-  // https://stackoverflow.com/questions/61818446/how-do-i-add-a-keyboard-shortcut-to-activate-disable-a-vscode-extension 
+  // General
+
+  "workbench.colorTheme": "Tokyo Night",
+  "editor.fontFamily": "'MesloLGSDZ Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": false,
+  "editor.fontSize": 16,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
+  "cSpell.language": "en,de-DE",
+
+  // Extension: Asciidoc
+
+  "asciidoc.preview.useEditorStyle": false,
+  "asciidoc.extensions.enableKroki": true,
+
+  // Extension: Markdown All in One
+
+  "markdown.extension.toc.levels": "2..6",
+
+  // Extension: Markdown Preview GitHub Styling
+
+  "markdown-preview-github-styles.colorTheme": "light",
+
+  // Extension: Material Icon Theme
+
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.theme": "classic",
+  "material-icon-theme.opacity": 0.75,
+
+  // Extension: Vim
+
   "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
-  "vim.leader": "<space>",
+  "vim.leader": "<Space>",
   "vim.normalModeKeyBindingsNonRecursive": [
+    // Toggle sidebar
     {
-      "before": [ "<Esc>", "<Esc>" ],
-      "commands": [ ":nohl" ]
+      "before": ["Leader", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
     },
-    /*{
-      "before": [ "<C-a>" ],
-      "commands": [ "gg<S-v>G" ] // select all
-    },*/
+    // Find files (workspace)
     {
-      "before": [ "s", "s" ],
-      "commands": [ ":split" ] // "<Return><C-w>w"
+      "before": ["ö", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
+    // find string (workspace)
     {
-      "before": [ "s", "v" ],
-      "commands": [ ":vsplit" ] // "<Return><C-w>w"
+      "before": ["ö", "g", "g"],
+      "commands": ["workbench.action.findInFiles"]
     },
+    { "before": ["<Esc>", "<Esc>"], "commands": [":nohl"] },
+    // { "before": ["<C-a>"], "after": ["g", "g", "V", "G"] },
+    { "before": ["<C-a>"], "commands": ["editor.action.selectAll"] },
+    { "before": ["s", "h"], "commands": [":split"] },
+    { "before": ["s", "v"], "commands": [":vsplit"] }
   ],
   "vim.insertModeKeyBindings": [
+    { "before": ["j", "j"], "after": ["<Esc>"] },
+    // { "before": ["j", "k"], "after": ["<Esc>", ":", "w", "<CR>"] },
     {
-      "before": [ "j", "j" ],
-      "after": [ "<Esc>" ]
+      "before": ["j", "k"],
+      "after": ["<Esc>"],
+      "commands": ["workbench.action.files.save"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": [ "J" ],
-      "commands": [ "editor.action.moveLinesDownAction" ]
-    },
-    {
-      "before": [ "K" ],
-      "commands": [ "editor.action.moveLinesUpAction" ]
-    },
-    {
-      "before": [ ">" ],
-      "commands": [ "editor.action.indentLines" ]
-    },
-    {
-      "before": [ "<" ],
-      "commands": [ "editor.action.outdentLines" ]
-    },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
   ]
 }
