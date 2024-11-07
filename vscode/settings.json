@@ -2,22 +2,28 @@
 {
   // General
 
-  "workbench.colorTheme": "Tokyo Night",
+  "breadcrumbs.enabled": false,
+  "diffEditor.renderSideBySide": true,
   "editor.fontFamily": "'MesloLGSDZ Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": false,
   "editor.fontSize": 16,
   "git.autofetch": true,
   "git.confirmSync": false,
-
-  "cSpell.language": "en,de-DE",
+  "workbench.colorTheme": "Tokyo Night",
 
   // Extension: Asciidoc
 
   "asciidoc.preview.useEditorStyle": false,
   "asciidoc.extensions.enableKroki": true,
 
+  // Extension: Code Spell Checker
+
+  "cSpell.enabled": true,
+  "cSpell.language": "en,de-DE",
+
   // Extension: Markdown All in One
 
+  "markdown.extension.toc.updateOnSave": false,
   "markdown.extension.toc.levels": "2..6",
 
   // Extension: Markdown Preview GitHub Styling
