@@ -26,7 +26,7 @@ opt.shell = 'zsh'
 opt.termguicolors = true
 opt.background = 'dark'
 opt.pumblend = 0
-opt.winblend = 10
+opt.winblend = 0 -- floating window background transparency
 
 -- Highlight current line
 opt.cursorline = true
@@ -39,7 +39,7 @@ api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Line numbers
-opt.relativenumber = false -- toggle with <F8>
+opt.relativenumber = true -- toggle with <F8>
 opt.number = true -- toggle with <F9>
 opt.signcolumn = 'yes'
 
