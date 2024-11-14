@@ -2,5 +2,9 @@
   "html": false,
   "MD013": {
     "tables": false
+  },
+  "MD018": false,
+  "MD024": {
+    "siblings_only": true
   }
 }
