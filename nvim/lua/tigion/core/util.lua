@@ -337,9 +337,11 @@ function M.supermaven.status()
   if not require('supermaven-nvim.api').is_running() then return '' end -- 󱙻
   local status = icons.supermaven or '󱙺'
 
+  -- BUG: The `vim.fn.system` produces a cursor flickering with the lualine plugin!
+  --      The command is executed with every lualine refresh.
   -- FIX: Workaround for connection timeout behind a proxy
-  local http_proxy = vim.trim(vim.fn.system('echo $http_proxy'))
-  if http_proxy ~= '' then status = icons.supermaven_error or '󱙻' end
+  -- local http_proxy = vim.trim(vim.fn.system('echo $http_proxy'))
+  -- if http_proxy ~= '' then status = icons.supermaven_error or '󱙻' end
 
   return status
 end
