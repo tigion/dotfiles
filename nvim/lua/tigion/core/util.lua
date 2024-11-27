@@ -73,6 +73,31 @@ function M.info.in_git_repo()
   return result ~= ''
 end
 
+M.toggle = {}
+
+local diagnostics_visible = true
+---Toggle diagnostics visibility for all or current buffer.
+---@param buffer_only boolean? When `true` hide diagnostics in current buffer only.
+---                            When `false` or omitted, hide diagnostics in all buffers.
+---@return nil
+function M.toggle.diagnostics_visibility(buffer_only)
+  buffer_only = buffer_only or false
+  if diagnostics_visible then
+    if buffer_only == true then
+      vim.diagnostic.hide(nil, 0) -- current buffer only
+    else
+      vim.diagnostic.hide() -- all buffers
+    end
+  else
+    if buffer_only == true then
+      vim.diagnostic.show(nil, 0) -- current buffer only
+    else
+      vim.diagnostic.show() -- all buffers
+    end
+  end
+  diagnostics_visible = not diagnostics_visible
+end
+
 -- M.vim = {}
 --
 -- ---Sets special keymappings for prev/next.

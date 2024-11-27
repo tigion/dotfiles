@@ -113,10 +113,11 @@
 
 ### Diagnostics
 
-| Mode | Keymap | Description         |
-| ---- | ------ | ------------------- |
-| `n`  | `+d`   | Next diagnostic     |
-| `n`  | `üd`   | Previous diagnostic |
+| Mode | Keymap       | Description                   |
+| ---- | ------------ | ----------------------------- |
+| `n`  | `+d`         | Next diagnostic               |
+| `n`  | `üd`         | Previous diagnostic           |
+| `n`  | `<Leader>td` | Toggle diagnostics visibility |
 
 ### Quickfix/Location List
 

@@ -11,6 +11,8 @@
 
 local keymap = vim.keymap
 
+local toggle = require('tigion.core.util').toggle
+
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -72,7 +74,9 @@ keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
 keymap.set('n', 'üs', '[s', { desc = 'Prev spelling mistake' })
 keymap.set('n', '+s', ']s', { desc = 'Next spelling mistake' })
 
--- Diagnostic
+-- Diagnostics -----------------------------------------------------------------
+
+keymap.set('n', '<Leader>td', toggle.diagnostics_visibility, { desc = 'Toggle diagnostics visibility' })
 keymap.set('n', '+d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 keymap.set('n', 'üd', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
 
