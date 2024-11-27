@@ -76,24 +76,15 @@ end
 M.toggle = {}
 
 local diagnostics_visible = true
----Toggle diagnostics visibility for all or current buffer.
----@param buffer_only boolean? When `true` hide diagnostics in current buffer only.
----                            When `false` or omitted, hide diagnostics in all buffers.
+---Toggle diagnostics visibility for current buffer.
 ---@return nil
-function M.toggle.diagnostics_visibility(buffer_only)
-  buffer_only = buffer_only or false
+function M.toggle.diagnostics_visibility()
   if diagnostics_visible then
-    if buffer_only == true then
-      vim.diagnostic.hide(nil, 0) -- current buffer only
-    else
-      vim.diagnostic.hide() -- all buffers
-    end
+    vim.diagnostic.hide(nil, 0) -- current buffer
+    -- vim.diagnostic.hide() -- all buffers
   else
-    if buffer_only == true then
-      vim.diagnostic.show(nil, 0) -- current buffer only
-    else
-      vim.diagnostic.show() -- all buffers
-    end
+    vim.diagnostic.show(nil, 0) -- current buffer
+    -- vim.diagnostic.show() -- all buffers
   end
   diagnostics_visible = not diagnostics_visible
 end
