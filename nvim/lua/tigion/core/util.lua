@@ -73,6 +73,34 @@ function M.info.in_git_repo()
   return result ~= ''
 end
 
+local proxy_active = nil
+---Returns true if we are in a proxy environment otherwise false.
+---@return boolean
+function M.is_proxy_active()
+  -- BUG: The `vim.fn.system` produces a cursor flickering with the lualine plugin!
+  --      The command is executed with every lualine refresh.
+  --
+  -- Workaround: Check for proxy only once ( TODO: per nvim startup).
+  if proxy_active ~= nil then return proxy_active end
+
+  -- TODO: What is the difference between `vim.fn.system()` and `io.popen()`?
+  --       What is better in this case?
+
+  -- Variant 1: `vim.fn.system()`
+  local result = vim.trim(vim.fn.system('echo $http_proxy'))
+  proxy_active = result ~= ''
+
+  -- Variant 2: `io.popen()`
+  -- local cmd = 'echo $http_proxy'
+  -- local handle = io.popen(cmd)
+  -- if handle == nil then return false end
+  -- local result = vim.trim(handle:read('*a'))
+  -- handle:close()
+  -- proxy_active = result ~= ''
+
+  return proxy_active
+end
+
 M.toggle = {}
 
 local diagnostics_visible = true
@@ -353,11 +381,9 @@ function M.supermaven.status()
   if not require('supermaven-nvim.api').is_running() then return '' end -- 󱙻
   local status = icons.supermaven or '󱙺'
 
-  -- BUG: The `vim.fn.system` produces a cursor flickering with the lualine plugin!
-  --      The command is executed with every lualine refresh.
   -- FIX: Workaround for connection timeout behind a proxy
-  -- local http_proxy = vim.trim(vim.fn.system('echo $http_proxy'))
-  -- if http_proxy ~= '' then status = icons.supermaven_error or '󱙻' end
+  --
+  if M.is_proxy_active() == true then status = icons.supermaven_error or '󱙻' end
 
   return status
 end
