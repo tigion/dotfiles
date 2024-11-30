@@ -8,7 +8,7 @@ return {
         require('conform').format({
           async = false,
           lsp_format = 'fallback',
-          timeout_ms = 1000,
+          timeout_ms = 5000,
         })
       end,
       mode = { 'n', 'x' }, -- FIX: Format in visual mode doesn't work! (Use `<Cmd>=<CR>` as an alternative?)
@@ -51,7 +51,7 @@ return {
       return {
         lsp_format = 'fallback',
         async = false,
-        timeout_ms = 1000,
+        timeout_ms = 5000,
       }
     end,
     formatters = {
