@@ -1,0 +1,198 @@
+/*------------------------------------------------------------------------------
+               Obsidian Colored Sidebar Items by CyanVoxel v2.0.0
+
+                   A colored sidebar CSS snippet inspired by
+                   the "Coloured Folders" snippet by Lithou.
+
+This snippet targets folders beginning with numbered prefixes, and applies full
+color formatting based on the root colors listed below. The prefixes are both
+customizable and extensible; feel free to change, add, and remove them based on
+your own titles and vault structure! By default I have a range of 8+1 colors,
+however I've provided some other common colors as a starting point for your own
+customization. Just swap out the color variable names in the prefix groups.
+
+- https://github.com/CyanVoxel/Obsidian-Colored-Sidebar
+- https://github.com/seb3point0/Obsidian-Colored-Sidebar
+------------------------------------------------------------------------------*/
+
+/* Tokyo Night Palette
+- https://lospec.com/palette-list/tokyo-night
+
+#1f2335 #24283b #292e42 #3b4261 #414868
+#545c7e #565f89 #737aa2 #a9b1d6 #c0caf5
+#394b70 #3d59a1 #7aa2f7 #7dcfff #b4f9f8
+#bb9af7 #9d7cd8
+#ff757f #c53b53 #ff007c
+#ff9e64 #ffc777
+#c3e88d #4fd6be #41a6b5
+*/
+
+:root {
+  /* Base colors */
+  --color-01-base: #4fd6be;
+  --color-02-base: #c3e88d;
+  --color-03-base: #ffc777;
+  --color-04-base: #ff757f;
+  --color-05-base: #bb9af7;
+  --color-06-base: #7aa2f7;
+  --color-07-base: #3d59a1;
+  --color-08-base: #545c7e;
+
+  /* Light theme colors equal base colors */
+  --color-01: var(--color-01-base);
+  --color-02: var(--color-02-base);
+  --color-03: var(--color-03-base);
+  --color-04: var(--color-04-base);
+  --color-05: var(--color-05-base);
+  --color-06: var(--color-06-base);
+  --color-07: var(--color-07-base);
+  --color-08: var(--color-08-base);
+
+  /* Other defaults */
+  --default-text-color: inherit;
+  --highlight: #fff;
+  --shadow: #0b0c2c;
+  --nav-item-weight-hover: bold;
+}
+
+/* Light Theme Specific Properties */
+
+.theme-light {
+  --contrast-color: var(--shadow);
+  --default-text-color: var(--shadow);
+  --bg-contrast-amount: 70%;
+  --fg-contrast-amount: 30%;
+  --medium-contrast-amount: 60%;
+  --active-contrast-amount: 30%;
+
+  /* TODO: Adjust colors for light theme */
+
+  /* --color-01: color-mix(in srgb, var(--color-01-base) 80%, var(--shadow)); */
+  /* --color-02: color-mix(in srgb, var(--color-02-base) 80%, var(--shadow)); */
+}
+
+/* Dark Theme Specific Properties */
+
+.theme-dark {
+  --contrast-color: var(--highlight);
+  --bg-contrast-amount: 15%;
+  --fg-contrast-amount: 40%;
+  --medium-contrast-amount: 20%;
+  --active-contrast-amount: 10%;
+}
+
+/* Common Folder Title Styles */
+
+.nav-folder-title {
+  font-weight: inherit; /* bold; */
+  border-radius: 5px;
+}
+
+/* @media only screen and (min-width: 768px) { */
+/*   .nav-file-title, */
+/*   .nav-folder-title { */
+/*     padding-top: 3px !important; */
+/*     padding-right: 5px !important; */
+/*     padding-bottom: 2px !important; */
+/*     padding-left: 15px; */
+/*   } */
+/* } */
+
+/* Common hover and active states for all folders */
+
+.nav-folder-title:hover {
+  --nav-collapse-icon-color: color-mix(
+    in srgb,
+    currentColor 60%,
+    var(--contrast-color)
+  );
+}
+
+/* Common indentation and file title styles for all folders */
+
+.tree-item-children .nav-folder {
+  --nav-indentation-guide-color: color-mix(
+    in srgb,
+    currentColor var(--medium-contrast-amount),
+    transparent
+  );
+}
+
+.tree-item-children .nav-file-title {
+  color: color-mix(
+    in srgb,
+    currentColor var(--medium-contrast-amount),
+    var(--default-text-color)
+  );
+  --nav-item-background-hover: color-mix(
+    in srgb,
+    color-mix(in srgb, currentColor 50%, var(--highlight))
+      var(--bg-contrast-amount),
+    transparent
+  );
+  --background-modifier-border-focus: color-mix(
+    in srgb,
+    currentColor 40%,
+    transparent
+  );
+  --nav-item-background-active: color-mix(
+    in srgb,
+    currentColor var(--active-contrast-amount),
+    transparent
+  );
+}
+
+/* Template for folder prefixes */
+
+.nav-folder-title {
+  --color: var(--default-text-color); /* default color */
+  color: var(--color);
+  background-color: color-mix(
+    in srgb,
+    var(--color) 10%,
+    /*var(--bg-contrast-amount),*/ transparent
+  );
+  --nav-item-color-hover: color-mix(
+    in srgb,
+    var(--color) var(--fg-contrast-amount),
+    var(--contrast-color)
+  );
+  --nav-item-background-hover: color-mix(
+    in srgb,
+    var(--color) var(--bg-contrast-amount),
+    transparent
+  );
+  --background-modifier-border-focus: color-mix(
+    in srgb,
+    var(--color) 40%,
+    transparent
+  );
+  --nav-collapse-icon-color: color-mix(in srgb, var(--color) 60%, transparent);
+}
+
+/* Specific color per folder group */
+
+.nav-folder-title[data-path^="0 "] /* Inbox */ {
+  --color: var(--color-01);
+}
+.nav-folder-title[data-path^="1 "] /* Daily */ {
+  --color: var(--color-02);
+}
+.nav-folder-title[data-path^="2 "] /* Projects */ {
+  --color: var(--color-03);
+}
+.nav-folder-title[data-path^="3 "] /* Areas */ {
+  --color: var(--color-04);
+}
+.nav-folder-title[data-path^="4 "] /* Work */ {
+  --color: var(--color-05);
+}
+.nav-folder-title[data-path^="5 "] /* Resources */ {
+  --color: var(--color-06);
+}
+.nav-folder-title[data-path^="6 "] /* Archives */ {
+  --color: var(--color-07);
+}
+.nav-folder-title[data-path^="9 "] /* Meta */ {
+  --color: var(--color-08);
+}
