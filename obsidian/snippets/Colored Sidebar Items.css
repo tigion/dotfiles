@@ -84,7 +84,8 @@ customization. Just swap out the color variable names in the prefix groups.
 /* Common Folder Title Styles */
 
 .nav-folder-title {
-  font-weight: inherit; /* bold; */
+  font-weight: bold;
+  /* font-weight: inherit; */
   border-radius: 5px;
 }
 
@@ -110,7 +111,11 @@ customization. Just swap out the color variable names in the prefix groups.
 
 /* Common indentation and file title styles for all folders */
 
-.tree-item-children .nav-folder {
+.tree-item {
+  color: var(--default-text-color);
+}
+
+.tree-item .nav-folder {
   --nav-indentation-guide-color: color-mix(
     in srgb,
     currentColor var(--medium-contrast-amount),
@@ -118,23 +123,25 @@ customization. Just swap out the color variable names in the prefix groups.
   );
 }
 
-.tree-item-children .nav-file-title {
-  color: color-mix(
-    in srgb,
-    currentColor var(--medium-contrast-amount),
-    var(--default-text-color)
-  );
+.tree-item .nav-file-title {
+  color: color-mix(in srgb, currentColor, var(--color) 40%);
+
+  background-color: color-mix(in srgb, var(--color) 6%, transparent);
+
   --nav-item-background-hover: color-mix(
     in srgb,
-    color-mix(in srgb, currentColor 50%, var(--highlight))
-      var(--bg-contrast-amount),
+    var(--color) 10%,
     transparent
   );
+
+  /* --background-modifier-border-focus: yellow; */
   --background-modifier-border-focus: color-mix(
     in srgb,
     currentColor 40%,
     transparent
   );
+
+  /* --nav-item-background-active: green; */
   --nav-item-background-active: color-mix(
     in srgb,
     currentColor var(--active-contrast-amount),
@@ -144,8 +151,7 @@ customization. Just swap out the color variable names in the prefix groups.
 
 /* Template for folder prefixes */
 
-.nav-folder-title {
-  --color: var(--default-text-color); /* default color */
+.tree-item .nav-folder-title {
   color: var(--color);
   background-color: color-mix(
     in srgb,
@@ -172,27 +178,27 @@ customization. Just swap out the color variable names in the prefix groups.
 
 /* Specific color per folder group */
 
-.nav-folder-title[data-path^="0 "] /* Inbox */ {
+.tree-item:has(.nav-folder-title[data-path^="0 "]) /* Inbox */ {
   --color: var(--color-01);
 }
-.nav-folder-title[data-path^="1 "] /* Daily */ {
+.tree-item:has(.nav-folder-title[data-path^="1 "]) /* Daily */ {
   --color: var(--color-02);
 }
-.nav-folder-title[data-path^="2 "] /* Projects */ {
+.tree-item:has(.nav-folder-title[data-path^="2 "]) /* Projects */ {
   --color: var(--color-03);
 }
-.nav-folder-title[data-path^="3 "] /* Areas */ {
+.tree-item:has(.nav-folder-title[data-path^="3 "]) /* Areas */ {
   --color: var(--color-04);
 }
-.nav-folder-title[data-path^="4 "] /* Work */ {
+.tree-item:has(.nav-folder-title[data-path^="4 "]) /* Work */ {
   --color: var(--color-05);
 }
-.nav-folder-title[data-path^="5 "] /* Resources */ {
+.tree-item:has(.nav-folder-title[data-path^="5 "]) /* Resources */ {
   --color: var(--color-06);
 }
-.nav-folder-title[data-path^="6 "] /* Archives */ {
+.tree-item:has(.nav-folder-title[data-path^="6 "]) /* Archives */ {
   --color: var(--color-07);
 }
-.nav-folder-title[data-path^="9 "] /* Meta */ {
+.tree-item:has(.nav-folder-title[data-path^="9 "]) /* Meta */ {
   --color: var(--color-08);
 }
