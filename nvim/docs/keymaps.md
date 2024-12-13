@@ -42,6 +42,7 @@
     - [supermaven-nvim](#supermaven-nvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
+    - [treewalker.nvim](#treewalkernvim)
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
     - [which-key.nvim](#which-keynvim)
@@ -479,6 +480,17 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 - `T` ... [telescope.nvim](#telescopenvim)
 - `TR` ... [trouble.nvim](#troublenvim)
+
+### [treewalker.nvim]
+
+[treewalker.nvim]: https://github.com/aaronik/treewalker.nvim
+
+| Mode | Keymap | Description |
+| ---- | ------ | ----------- |
+| `n`  | `äj`   | Down        |
+| `n`  | `äk`   | Up          |
+| `n`  | `äh`   | Left        |
+| `n`  | `äl`   | Right       |
 
 ### [trouble.nvim]
 
