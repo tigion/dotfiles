@@ -19,8 +19,10 @@ return {
         menu = {
           border = 'rounded',
           draw = {
+            treesitter = true,
             -- columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
             columns = {
+              { 'kind_icon' },
               { 'label', 'label_description', gap = 1 },
               { 'kind_icon', 'kind', gap = 1 },
               { 'source_name' },
@@ -36,17 +38,27 @@ return {
         },
       },
 
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
-      },
-
       -- default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
         default = { 'lsp', 'snippets', 'buffer', 'path' },
         -- optionally disable cmdline completions
         -- cmdline = {},
+        providers = {
+          snippets = {
+            min_keyword_length = 1,
+            -- opts = {
+            --   friendly_snippets = true,
+            --   search_paths = { vim.fn.stdpath('config') .. '/snippets' },
+            -- },
+          },
+        },
+      },
+
+      appearance = {
+        -- use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono',
+        kind_icons = require('tigion.core.icons').code,
       },
     },
     -- allows extending the providers array elsewhere in your config

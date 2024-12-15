@@ -76,11 +76,11 @@ return {
       -- hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
 
       -- blink.cmp
-      hl.BlinkCmpMenu = { bg = bg_float2 }
-      hl.BlinkCmpMenuBorder = { fg = c.blue, bg = bg_float2 }
+      hl.BlinkCmpMenuBorder = { fg = c.border_highlight, bg = c.bg_float }
       hl.BlinkCmpSource = { fg = c.comment }
       hl.BlinkCmpDoc.bg = bg_float2
-      hl.BlinkCmpDocBorder = { fg = c.comment, bg = bg_float2 }
+      hl.BlinkCmpDocBorder = { fg = c.comment, bg = hl.BlinkCmpDoc.bg }
+      hl.BlinkCmpDocSeparator = hl.BlinkCmpDocBorder
 
       -- Telescope
       hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
