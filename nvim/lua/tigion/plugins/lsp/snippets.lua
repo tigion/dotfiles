@@ -1,5 +1,6 @@
 return {
   'L3MON4D3/LuaSnip', -- snippet engine
+  enabled = false, -- TODO: Disabled for now, use blink.nvim snippets integration instead.
   dependencies = {
     'rafamadriz/friendly-snippets', -- snippets
   },

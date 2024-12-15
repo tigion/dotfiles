@@ -71,9 +71,16 @@ return {
       local bg_float2 = '#14151f'
       local bg_float3 = '#0a0b10'
 
-      -- Cmp
-      hl.CmpDocumentation.bg = bg_float2
-      hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
+      -- cmp-nvim
+      -- hl.CmpDocumentation.bg = bg_float2
+      -- hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
+
+      -- blink.cmp
+      hl.BlinkCmpMenu = { bg = bg_float2 }
+      hl.BlinkCmpMenuBorder = { fg = c.blue, bg = bg_float2 }
+      hl.BlinkCmpSource = { fg = c.comment }
+      hl.BlinkCmpDoc.bg = bg_float2
+      hl.BlinkCmpDocBorder = { fg = c.comment, bg = bg_float2 }
 
       -- Telescope
       hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }

@@ -10,7 +10,6 @@ return {
 
       local lspconfig = require('lspconfig')
       local mason_lspconfig = require('mason-lspconfig')
-      local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
       local keymap = vim.keymap
       local icon_telescope = require('tigion.core.icons').telescope
@@ -133,7 +132,10 @@ return {
       })
 
       -- used to enable autocompletion (assign to every lsp server config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      -- nvim-cmp -> cmp-nvim-lsp:
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      -- blink.cmp:
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Sets up LSP servers installed via `mason.nvim`
       mason_lspconfig.setup_handlers({
@@ -279,6 +281,7 @@ return {
   },
   { -- optional completion source for require statements and module annotations
     'hrsh7th/nvim-cmp',
+    enabled = false,
     opts = function(_, opts)
       opts.sources = opts.sources or {}
       table.insert(opts.sources, {
@@ -286,5 +289,22 @@ return {
         group_index = 0, -- set group index to 0 to skip loading LuaLS completions
       })
     end,
+  },
+  { -- optional blink completion source for require statements and module annotations
+    'saghen/blink.cmp',
+    enabled = true,
+    opts = {
+      sources = {
+        -- add lazydev to your completion providers
+        completion = {
+          enabled_providers = { 'lsp', 'snippets', 'buffer', 'path', 'lazydev' },
+        },
+        providers = {
+          -- dont show LuaLS require statements when lazydev has items
+          lsp = { fallback_for = { 'lazydev' } },
+          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        },
+      },
+    },
   },
 }
