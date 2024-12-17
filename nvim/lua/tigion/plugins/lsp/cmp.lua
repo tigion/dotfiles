@@ -13,7 +13,12 @@ return {
     ---@type blink.cmp.Config
     ---@diagnostic disable: missing-fields
     opts = {
-      keymap = { preset = 'enter' },
+      keymap = {
+        preset = 'enter',
+        ['<C-y>'] = { 'select_and_accept' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+      },
 
       completion = {
         menu = {
@@ -41,7 +46,10 @@ return {
       -- default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
-        default = { 'lsp', 'snippets', 'buffer', 'path' },
+        -- default = { 'lsp', 'snippets', 'buffer', 'path' },
+        completion = {
+          enabled_providers = { 'lsp', 'snippets', 'buffer', 'path' },
+        },
         -- optionally disable cmdline completions
         -- cmdline = {},
         providers = {
@@ -63,7 +71,8 @@ return {
     },
     -- allows extending the providers array elsewhere in your config
     -- without having to redefine it
-    opts_extend = { 'sources.default' },
+    -- opts_extend = { 'sources.default' },
+    opts_extend = { 'sources.completion.enabled_providers' },
   },
   {
     'hrsh7th/nvim-cmp',

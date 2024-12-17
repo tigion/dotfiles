@@ -296,8 +296,9 @@ return {
     opts = {
       sources = {
         -- add lazydev to your completion providers
+        -- default = { 'lazydev' },
         completion = {
-          enabled_providers = { 'lsp', 'snippets', 'buffer', 'path', 'lazydev' },
+          enabled_providers = { 'lazydev' },
         },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
