@@ -28,6 +28,21 @@ return {
     end,
   },
 
+  { -- generate annotation comments
+    'danymat/neogen',
+    keys = {
+      {
+        '<leader>cn',
+        '<Cmd>Neogen<CR>',
+        desc = 'Generate Annotations (Neogen)',
+      },
+    },
+    opts = {
+      -- snippet_engine = 'luasnip',
+      snippet_engine = 'nvim',
+    },
+  },
+
   { -- highlight and search for todo comments
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
