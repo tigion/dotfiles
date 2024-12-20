@@ -21,10 +21,13 @@ return {
       },
 
       completion = {
+        list = {
+          selection = 'auto_insert',
+        },
         menu = {
           border = 'rounded',
           draw = {
-            treesitter = true,
+            treesitter = { 'lsp' },
             columns = {
               { 'kind_icon' },
               { 'label', 'label_description', gap = 1 },
@@ -44,35 +47,34 @@ return {
       -- default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
-        -- default = { 'lsp', 'snippets', 'buffer', 'path' },
-        completion = {
-          enabled_providers = { 'lsp', 'snippets', 'buffer', 'path' },
-        },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
         -- optionally disable cmdline completions
         -- cmdline = {},
         providers = {
           snippets = {
-            min_keyword_length = 1,
+            -- min_keyword_length = 1,
             -- opts = {
             --   friendly_snippets = true,
             --   search_paths = { vim.fn.stdpath('config') .. '/snippets' },
             -- },
           },
           buffer = {
-            -- min_keyword_length = 3,
+            min_keyword_length = 3,
+          },
+          cmdline = {
+            min_keyword_length = 2,
           },
         },
       },
 
       appearance = {
-        -- use_nvim_cmp_as_default = true,
+        use_nvim_cmp_as_default = false,
         nerd_font_variant = 'mono',
         kind_icons = require('tigion.core.icons').code,
       },
     },
     -- allows extending the providers array elsewhere in your config
     -- without having to redefine it
-    -- opts_extend = { 'sources.default' },
-    opts_extend = { 'sources.completion.enabled_providers' },
+    opts_extend = { 'sources.default' },
   },
 }
