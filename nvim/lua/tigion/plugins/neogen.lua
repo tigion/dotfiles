@@ -10,7 +10,8 @@ return {
     },
   },
   opts = {
-    snippet_engine = 'luasnip',
+    -- snippet_engine = 'luasnip',
+    snippet_engine = 'nvim',
   },
   -- config = function(_, opts)
   --   require('neogen').setup(opts)
