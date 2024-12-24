@@ -13,6 +13,14 @@ return {
     ---@type blink.cmp.Config
     ---@diagnostic disable: missing-fields
     opts = {
+      -- disable cmp for specific filetypes
+      enabled = function()
+        return not vim.tbl_contains({}, vim.bo.filetype)
+          and vim.bo.buftype ~= 'nofile'
+          and vim.bo.buftype ~= 'prompt'
+          and vim.b.completion ~= false
+      end,
+
       keymap = {
         preset = 'enter',
         ['<C-y>'] = { 'select_and_accept' },
@@ -22,7 +30,8 @@ return {
 
       completion = {
         list = {
-          selection = 'auto_insert',
+          -- selection = 'auto_insert',
+          selection = function(ctx) return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect' end,
         },
         menu = {
           border = 'rounded',
