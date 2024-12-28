@@ -401,3 +401,11 @@ use_fzf() {
     link "$DOTFILES_ROOT/fzf" "$HOME/.config/fzf"
   fi
 }
+
+# ghostty
+use_ghostty() {
+  if is_command ghostty; then
+    subtitle "Ghostty"
+    link "$DOTFILES_ROOT/ghostty" "$HOME/.config/ghostty"
+  fi
+}

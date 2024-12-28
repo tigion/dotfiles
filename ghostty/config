@@ -1,0 +1,22 @@
+# vim:filetype=toml
+
+# Font
+font-family = MesloLGSDZ Nerd Font Mono
+font-size = 17
+
+# Colors
+theme = tokyonight
+background = #000000
+background-opacity = 0.85
+
+# Window layout
+window-save-state = never
+window-width  = 80
+window-height = 30
+# window-step-resize = true
+window-padding-x = 5,0
+window-padding-y = 5,0
+# window-padding-balance = true
+
+# macOS
+macos-titlebar-style = hidden

@@ -69,6 +69,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   use_lazygit
   use_httpie
   use_fzf
+  use_ghostty
 fi
 
 echo ""
