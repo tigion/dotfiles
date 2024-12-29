@@ -1,6 +1,12 @@
 # vim:filetype=toml
 
-# Font
+# Helpful commands:
+# `ghostty +show-config` ... to see the current config values
+# `ghostty +show-config --default --docs` ... to see the default config values with documentation
+# `ghostty +list-fonts` ... to see the list of available fonts
+# `ghostty +list-themes` ... to see the list of available themes
+
+# Fonts
 font-family = MesloLGSDZ Nerd Font Mono
 font-size = 17
 
@@ -8,15 +14,35 @@ font-size = 17
 theme = tokyonight
 background = #000000
 background-opacity = 0.85
+background-blur-radius = 10
 
-# Window layout
+# Windows
 window-save-state = never
 window-width  = 80
 window-height = 30
 # window-step-resize = true
-window-padding-x = 5,0
-window-padding-y = 5,0
-# window-padding-balance = true
+window-padding-x = 5
+window-padding-y = 5
+window-padding-balance = true
+window-colorspace = display-p3
+window-padding-color = extend
+# window-decoration = false
+
+# Adjusts
+adjust-underline-position = 3
+# adjust-underline-thickness = 1
+adjust-cursor-thickness = 2
+
+# Cursor
+## shell-integration-features = cursor,no-sudo,title
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Shell
 
 # macOS
 macos-titlebar-style = hidden
+
+# Keymaps
+keybind = cmd+shift+t=toggle_quick_terminal
