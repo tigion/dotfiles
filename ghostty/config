@@ -11,10 +11,11 @@ font-family = MesloLGSDZ Nerd Font Mono
 font-size = 17
 
 # Colors
-theme = tokyonight
-background = #000000
-background-opacity = 0.85
-background-blur-radius = 10
+theme = tokyonight_night
+# theme = tokyonight
+background = #0a0b10
+background-opacity = 0.9
+background-blur-radius = 20
 
 # Windows
 window-save-state = never
