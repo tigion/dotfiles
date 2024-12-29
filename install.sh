@@ -70,6 +70,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   use_httpie
   use_fzf
   use_ghostty
+  use_btop
 fi
 
 echo ""

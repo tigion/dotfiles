@@ -409,3 +409,11 @@ use_ghostty() {
     link "$DOTFILES_ROOT/ghostty" "$HOME/.config/ghostty"
   fi
 }
+
+# btop
+use_btop() {
+  if is_command btop; then
+    subtitle "btop"
+    link "$DOTFILES_ROOT/btop" "$HOME/.config/btop"
+  fi
+}
