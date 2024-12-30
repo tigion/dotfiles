@@ -46,4 +46,5 @@ mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 
 # Keymaps
-keybind = cmd+shift+t=toggle_quick_terminal
+# keybind = global:cmd+shift+t=toggle_quick_terminal
+keybind = global:ctrl+´=toggle_quick_terminal
