@@ -71,6 +71,7 @@ if [[ "$INSTALL_CONFIG" == "true" ]]; then
   use_fzf
   use_ghostty
   use_btop
+  use_fastfetch
 fi
 
 echo ""

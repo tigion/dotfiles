@@ -417,3 +417,11 @@ use_btop() {
     link "$DOTFILES_ROOT/btop" "$HOME/.config/btop"
   fi
 }
+
+# fastfetch
+use_fastfetch() {
+  if is_command fastfetch; then
+    subtitle "fastfetch"
+    link "$DOTFILES_ROOT/fastfetch" "$HOME/.config/fastfetch"
+  fi
+}
