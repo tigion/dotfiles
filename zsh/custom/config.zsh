@@ -1,4 +1,6 @@
 # --- Zsh ---
+setopt noautocd # don't change directory without `cd`
+
 # Command History
 export HISTFILE=~/.zsh_history # history file
 export HISTFILESIZE=1000000000 # history file size
