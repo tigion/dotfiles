@@ -34,7 +34,7 @@
     // "swap",
     // "disk",
     { "key": "󰩟 network ", "type": "localip", "format": "{ipv4} ({ifname})" },
-    "battery",
+    { "key": "󱊢 battery ", "type": "battery" },
     { "key": " power   ", "type": "poweradapter" },
     { "key": " locale  ", "type": "locale" },
     "break",
