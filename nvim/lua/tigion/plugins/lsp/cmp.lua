@@ -1,5 +1,7 @@
 return {
-  -- TODO: Update keymaps.md with cmp mappings and cleanup (remove unused nvim-cmp mappings)
+  -- TODO:
+  -- [ ] Update keymaps.md with cmp mappings and cleanup (remove unused nvim-cmp mappings)
+  -- [ ] Support for `omnifunc` (Ctrl-x Ctrl-o, `:h omnifunc`)
   {
     'saghen/blink.cmp',
     enabled = true,

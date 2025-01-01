@@ -8,7 +8,7 @@ return {
     opts = {
       keymaps = {
         accept_suggestion = '<Tab>',
-        clear_suggestion = '<C-x>',
+        clear_suggestion = '<C-e>',
         accept_word = '<C-f>',
       },
       -- ignore_filetypes = { cpp = true }, -- or { "cpp", }
@@ -74,7 +74,7 @@ return {
         expr = true,
       },
       {
-        '<C-x>',
+        '<C-e>',
         function() return vim.fn['codeium#Clear']() end,
         mode = { 'i' },
         desc = 'Codeium: Clear',

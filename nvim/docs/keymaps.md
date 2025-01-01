@@ -420,7 +420,7 @@ CMP - Completion Menu:
 | ---- | ------------ | ----------------- |
 | `n`  | `<Leader>ts` | Toggle Supermaven |
 | `i`  | `<Tab>`      | Accept suggestion |
-| `i`  | `<C-x>`      | Clear suggestion  |
+| `i`  | `<C-e>`      | Clear suggestion  |
 | `i`  | `<C-f>`      | Accept word       |
 
 ### [telescope.nvim]
@@ -547,7 +547,7 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | ---- | ------------ | -------------------------------- |
 | `n`  | `<Leader>tc` | Toggle Codeium                   |
 | `i`  | `<Tab>`      | Accept completion                |
-| `i`  | `<C-x>`      | Cancel/Clear current completions |
+| `i`  | `<C-e>`      | Cancel/Clear current completions |
 | `f`  | `<C-f>`      | Cycle completions forwards       |
 
 - ? `<S-Tab>` for Cancel
