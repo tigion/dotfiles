@@ -566,7 +566,7 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 | Mode | Keymap | Description                              |
 | ---- | ------ | ---------------------------------------- |
-| `n`  | `gd`   | Go to help tag (definition) like `<C-]>` |
+| `n`  | `gh`   | Go to help tag (definition) like `<C-]>` |
 
 ### Markdown
 
