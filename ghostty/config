@@ -1,10 +1,15 @@
-# vim:filetype=toml
-
 # Helpful commands:
-# `ghostty +show-config` ... to see the current config values
-# `ghostty +show-config --default --docs` ... to see the default config values with documentation
-# `ghostty +list-fonts` ... to see the list of available fonts
-# `ghostty +list-themes` ... to see the list of available themes
+# `ghostty +show-config` ... shows the current config values
+# `ghostty +show-config --default --docs` ... shows the default config values with documentation
+# `ghostty +list-fonts` ... shows the list of available fonts
+# `ghostty +list-themes` ... shows the list of available themes
+# `ghostty +validate-config`... validates the current config
+
+# Ghostty syntax support for Neovim (macOS)
+# variant in share:
+#   `cp -r /Applications/Ghostty.app/Contents/Resources/nvim/site ~/.local/share/nvim/`
+# variant in config:
+#   `cp -r /Applications/Ghostty.app/Contents/Resources/nvim/site/* ~/.config/nvim/after/`
 
 # Fonts
 font-family = MesloLGSDZ Nerd Font Mono
