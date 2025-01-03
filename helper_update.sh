@@ -34,7 +34,11 @@ update_homebrew() {
       #rm -rf $(brew --cache)
     fi
     subtitle "brew doctor"
+    # `brew doctor` exits with a non-zero status if any potential problems are found.
+    # So we need to deactivate exit on error before and activate it again afterwards.
+    set +e
     brew doctor
+    set -e
   fi
 }
 
