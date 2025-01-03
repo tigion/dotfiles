@@ -40,6 +40,7 @@ set -e
 
 # load helper functions
 source "${DOTFILES_ROOT}/helper.sh"
+source "${DOTFILES_ROOT}/helper_install.sh"
 
 # start
 title "Start installation"
