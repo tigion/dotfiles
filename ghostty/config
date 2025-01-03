@@ -11,6 +11,10 @@
 # variant in config:
 #   `cp -r /Applications/Ghostty.app/Contents/Resources/nvim/site/* ~/.config/nvim/after/`
 
+# Update ghostty
+auto-update = check
+auto-update-channel = stable
+
 # Fonts
 font-family = MesloLGSDZ Nerd Font Mono
 font-size = 17
