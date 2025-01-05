@@ -46,6 +46,9 @@
 -- }
 
 return {
+  -- NOTE: To clear the theme color cache after changing highlight groups
+  --       use `:lua require("tokyonight.util").cache.clear()`
+
   'folke/tokyonight.nvim',
   lazy = false,
   priority = 1000,
@@ -76,7 +79,6 @@ return {
       -- hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
 
       -- blink.cmp
-      hl.BlinkCmpMenuBorder = { fg = c.border_highlight, bg = c.bg_float }
       hl.BlinkCmpSource = { fg = c.comment }
       hl.BlinkCmpDoc.bg = bg_float2
       hl.BlinkCmpDocBorder = { fg = c.comment, bg = hl.BlinkCmpDoc.bg }
