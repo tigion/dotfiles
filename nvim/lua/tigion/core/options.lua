@@ -31,13 +31,6 @@ opt.winblend = 0 -- floating window background transparency
 -- Highlight current line
 opt.cursorline = true
 
--- Highlight when yanking (copying) text (on `yy` or `yap` for example)
-api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = api.nvim_create_augroup('highlight_yank', { clear = true }),
-  callback = function() vim.highlight.on_yank({ higroup = 'Visual' }) end,
-})
-
 -- Line numbers
 opt.relativenumber = true -- toggle with <F8>
 opt.number = true -- toggle with <F9>
@@ -74,12 +67,6 @@ opt.swapfile = false
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Turn off paste mode when leaving insert
-api.nvim_create_autocmd('InsertLeave', {
-  pattern = '*',
-  command = 'set nopaste',
-})
-
 -- Add asterisks in block comments
 opt.formatoptions:append({ 'r' })
 
@@ -99,16 +86,17 @@ opt.splitright = true -- open new split right
 -- Others
 opt.backspace = { 'start', 'eol', 'indent' }
 opt.cmdheight = 1
-opt.laststatus = 3 -- global statusline (2 local)
-opt.path:append({ '**' }) -- Finding files - Search down into subfolders
-opt.scrolloff = 10
-opt.showcmd = true
-opt.updatetime = 50
-opt.wildignore:append({ '*/node_modules/*' })
 --opt.colorcolumn = "80"
 opt.fillchars:append('eob: ') -- no ~ on not existent lines
+opt.laststatus = 3 -- global statusline (2 local)
+opt.path:append({ '**' }) -- Finding files - Search down into subfolders
+opt.scrolloff = 4
+opt.showcmd = true
+opt.smoothscroll = true
 opt.timeout = true
 opt.timeoutlen = 300 -- quickly trigger keymaps (default 1000)
+opt.updatetime = 50
+opt.wildignore:append({ '*/node_modules/*' })
 
 -- Clippboard
 if isMac then

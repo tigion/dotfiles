@@ -3,3 +3,4 @@
 -- core
 require('tigion.core.options')
 require('tigion.core.keymaps')
+require('tigion.core.autocmds')

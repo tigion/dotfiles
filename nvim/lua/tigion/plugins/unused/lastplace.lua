@@ -1,5 +1,6 @@
 return {
   'ethanholz/nvim-lastplace', -- reopen files at last edit position
+  enabled = false,
   opts = {
     lastplace_ignore_buftype = { 'quickfix', 'nofile', 'help' },
     lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
@@ -15,4 +16,3 @@ return {
 --   lastplace_ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
 --   lastplace_open_folds = true,
 -- }
-
