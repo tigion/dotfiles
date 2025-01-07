@@ -1,7 +1,7 @@
 return {
   'windwp/nvim-autopairs', -- auto pairs (cmp, treesitter)
   event = 'InsertEnter',
-  dependencies = { 'hrsh7th/nvim-cmp' },
+  -- dependencies = { 'hrsh7th/nvim-cmp' },
   config = function()
     local autopairs = require('nvim-autopairs')
 
