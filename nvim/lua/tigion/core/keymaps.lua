@@ -43,7 +43,6 @@ keymap.set('n', '<Leader>ton', function()
     vim.wo.number = true
   end
 end, { desc = 'Toggle line numbers (local)' })
-keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 
 -- Goodies ---------------------------------------------------------------------
 
@@ -71,6 +70,7 @@ keymap.set('n', 'Ü', '{', { desc = 'Prev empty line' })
 keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
 
 -- Spelling
+keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 keymap.set('n', 'üs', '[s', { desc = 'Prev spelling mistake' })
 keymap.set('n', '+s', ']s', { desc = 'Next spelling mistake' })
 

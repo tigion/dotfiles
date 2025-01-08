@@ -1,12 +1,10 @@
 return {
-  -- TODO:
-  -- [ ] Update keymaps.md with cmp mappings and cleanup (remove unused nvim-cmp mappings)
-  -- [x] Support for `omnifunc` (Ctrl-x Ctrl-o, `:h omnifunc`)
   {
     -- NOTE: Source provider for blink.cmp that allow you to use nvim-cmp completion sources.
     --       Only for not supported native blink.cmp sources.
     --
-    -- Needed for: `omnifunc` (hrsh7th/cmp-omni) completions
+    -- Needed for:
+    -- - hrsh7th/cmp-omni completions (Ctrl-x Ctrl-o, `:h omnifunc`)
     'saghen/blink.compat',
     version = '*',
     lazy = true,

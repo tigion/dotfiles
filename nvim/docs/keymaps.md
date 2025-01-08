@@ -11,15 +11,17 @@
       - [Global options](#global-options)
       - [Local options](#local-options)
     - [Goodies](#goodies)
+    - [Code Navigation](#code-navigation)
     - [Diagnostics](#diagnostics)
     - [Quickfix/Location List](#quickfixlocation-list)
+    - [Spelling](#spelling)
+    - [Buffers](#buffers)
     - [Tabs](#tabs)
     - [Windows](#windows)
     - [Others](#others)
   - [Plugins](#plugins)
     - [LSP/CMP/Snippets](#lspcmpsnippets)
-      - [LuaSnip](#luasnip)
-      - [nvim-cmp](#nvim-cmp)
+      - [blink.cmp](#blinkcmp)
       - [nvim-lspconfig](#nvim-lspconfig)
     - [bufferline.nvim](#bufferlinenvim)
     - [Comment.nvim](#commentnvim)
@@ -49,6 +51,8 @@
     - [zen-mode.nvim](#zen-modenvim)
     - [Deactivated](#deactivated)
       - [codeium.vim](#codeiumvim)
+      - [LuaSnip](#luasnip)
+      - [nvim-cmp](#nvim-cmp)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
     - [Help](#help)
@@ -95,7 +99,6 @@
 | ---- | ------------- | ------------------------------------------------------ |
 | `n`  | `<Leader>tow` | Toggle line wrapping                                   |
 | `n`  | `<Leader>ton` | Toggle line numbers between absolute, relative and off |
-| `n`  | `<Leader>tos` | Toggle spell checking (local)                          |
 
 ### Goodies
 
@@ -112,13 +115,24 @@
 | `n`      | `oo`          | Insert line below (normal mode)      |
 | `n`      | `OO`          | Insert line above (normal mode)      |
 
+### Code Navigation
+
+| Mode | Keymap | Description       |
+| ---- | ------ | ----------------- |
+| `n`  | `üm`   | Prev method start |
+| `n`  | `+m`   | Next method start |
+| `n`  | `üM`   | Prev method end   |
+| `n`  | `+M`   | Next method end   |
+| `n`  | `Ü`    | Prev empty line   |
+| `n`  | `Ä`    | Next empty line   |
+
 ### Diagnostics
 
 | Mode | Keymap       | Description                   |
 | ---- | ------------ | ----------------------------- |
+| `n`  | `<Leader>td` | Toggle diagnostics visibility |
 | `n`  | `+d`         | Next diagnostic               |
 | `n`  | `üd`         | Previous diagnostic           |
-| `n`  | `<Leader>td` | Toggle diagnostics visibility |
 
 ### Quickfix/Location List
 
@@ -132,6 +146,21 @@
 | `n`  | `ül`         | Prev location        |
 
 - See also [trouble.nvim](#troublenvim)
+
+### Spelling
+
+| Mode | Keymap        | Description                   |
+| ---- | ------------- | ----------------------------- |
+| `n`  | `<Leader>tos` | Toggle spell checking (local) |
+| `n`  | `+s`          | Next spelling mistake         |
+| `n`  | `üs`          | Previous spelling mistake     |
+
+### Buffers
+
+| Mode | Keymap | Description |
+| ---- | ------ | ----------- |
+| `n`  | `üb`   | Prev Buffer |
+| `n`  | `+b`   | Next Buffer |
 
 ### Tabs
 
@@ -171,33 +200,30 @@
 
 ### LSP/CMP/Snippets
 
-#### [LuaSnip]
+#### [blink.cmp]
 
-[LuaSnip]: https://github.com/L3MON4D3/LuaSnip
+[blink.cmp]: https://github.com/Saghen/blink.cmp
 
-| Mode     | Keymap  | Description                        |
-| -------- | ------- | ---------------------------------- |
-| `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
-| `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
+Completion:
 
-#### [nvim-cmp]
+| Mode | Keymap                     | Description                                             |
+| ---- | -------------------------- | ------------------------------------------------------- |
+| `i`  | `<C-Space>`                | Show completion menu                                    |
+| `i`  | `<C-e>`                    | Hide completion menu                                    |
+| `i`  | `<CR>`                     | Accept                                                  |
+| `i`  | `<C-j>`, `<C-n>`, `<Down>` | Select next                                             |
+| `i`  | `<C-k>`, `<C-p>`, `<Up>`   | Select previous                                         |
+| `i`  | `<C-y>`                    | Select and accept                                       |
+| `i`  | `<C-Space>`                | Show/Hide documentation (if completion menu is visible) |
+| `i`  | `<C-b>`                    | Scroll documentation up                                 |
+| `i`  | `<C-f>`                    | Scroll documentation down                               |
 
-[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
+Snippets:
 
-CMP - Completion Menu:
-
-| Mode | Keymap            | Description                                       |
-| ---- | ----------------- | ------------------------------------------------- |
-| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
-| `i`  | `<C-e>`           | Cancel completion                                 |
-| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
-| `i`  | `<C-Space>`       | Trigger completion menu                           |
-| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
-| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
-| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
-| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
-|      | `<C-u>`           | Scroll completion documentation up                |
-|      | `<C-d>`           | Scroll completion documentation down              |
+| Mode     | Keymap    | Description                        |
+| -------- | --------- | ---------------------------------- |
+| `i`, `s` | `<Tab>`   | Go to next snippet placeholder     |
+| `i`, `s` | `<S-Tab>` | Go to previous snippet placeholder |
 
 #### [nvim-lspconfig]
 
@@ -552,6 +578,34 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 - ? `<S-Tab>` for Cancel
 - ? `<C-e>` for Cancel/Clear like CMP
+
+#### [LuaSnip]
+
+[LuaSnip]: https://github.com/L3MON4D3/LuaSnip
+
+| Mode     | Keymap  | Description                        |
+| -------- | ------- | ---------------------------------- |
+| `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
+| `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
+
+#### [nvim-cmp]
+
+[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
+
+CMP - Completion Menu:
+
+| Mode | Keymap            | Description                                       |
+| ---- | ----------------- | ------------------------------------------------- |
+| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
+| `i`  | `<C-e>`           | Cancel completion                                 |
+| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
+| `i`  | `<C-Space>`       | Trigger completion menu                           |
+| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
+| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
+| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
+| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
+|      | `<C-u>`           | Scroll completion documentation up                |
+|      | `<C-d>`           | Scroll completion documentation down              |
 
 ## ftplugin
 
