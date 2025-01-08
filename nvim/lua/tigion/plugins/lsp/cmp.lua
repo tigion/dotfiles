@@ -16,12 +16,11 @@ return {
     'saghen/blink.cmp',
     enabled = true,
     lazy = false, -- lazy loading handled internally
+    version = 'v0.*',
     dependencies = {
       { 'rafamadriz/friendly-snippets' }, -- optional: provides snippets for the snippet source
       { 'hrsh7th/cmp-omni' }, -- optional: provides `omnifunc` completions
     },
-
-    version = 'v0.*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -44,8 +43,15 @@ return {
 
       completion = {
         list = {
-          -- selection = 'auto_insert',
-          selection = function(ctx) return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect' end,
+          selection = {
+            -- No preselect for cmdline mode
+            preselect = function(ctx) return ctx.mode ~= 'cmdline' end,
+            -- No preselect for cmdline mode and snippet placeholders
+            -- preselect = function(ctx)
+            --   return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
+            -- end,
+            auto_insert = true,
+          },
         },
         menu = {
           border = 'rounded',
