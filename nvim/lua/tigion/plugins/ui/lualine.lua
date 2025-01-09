@@ -1,6 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim', -- styled statusline
-  dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
+  dependencies = { 'echasnovski/mini.icons' }, -- optional, for file icons
+  -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   config = function()
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')

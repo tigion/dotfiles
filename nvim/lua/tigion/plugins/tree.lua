@@ -1,6 +1,7 @@
 return {
   'nvim-tree/nvim-tree.lua', -- file explorer
-  dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  dependencies = { 'echasnovski/mini.icons' },
+  -- dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   cmd = 'NvimTreeOpen', -- used in alpha-nvim
   keys = {
     { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle file explorer' },

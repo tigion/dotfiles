@@ -1,6 +1,8 @@
 return {
   'akinsho/bufferline.nvim', -- styled tabs
-  dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
+  enabled = true,
+  dependencies = { 'echasnovski/mini.icons' }, -- optional, for file icons
+  -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
   version = '*',
   event = 'VeryLazy',
   -- keys = {
