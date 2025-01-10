@@ -1,5 +1,8 @@
 return {
   {
+    -- This plugin lets you use Suppermaven in Neovim.
+    -- Link: https://github.com/supermaven-inc/supermaven-nvim
+
     'supermaven-inc/supermaven-nvim',
     event = 'BufEnter',
     keys = {
@@ -48,10 +51,13 @@ return {
   },
 
   {
+    -- This plugin lets you use Codeium in Neovim.
+    -- Link: https://github.com/Exafunction/codeium.vim
+
     -- NOTE: clean up ~/.codeium/bin from old folders
     --       with language_server_macos_arm binaries
-    --
-    -- current version is now working, but the folder `~/.codeium/code_tracker/` musst be removed
+
+    -- NOTE: current version is now working, but the folder `~/.codeium/code_tracker/` musst be removed
     -- version = '1.8.37', -- pin to version 1.8.37 because of error (not working) in current version
 
     'Exafunction/codeium.vim',

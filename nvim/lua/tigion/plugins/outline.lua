@@ -1,4 +1,7 @@
 return {
+  -- This plugin adds a code outline sidebar powered by LSP to Neovim.
+  -- Link: https://github.com/hedyhli/outline.nvim
+
   'hedyhli/outline.nvim',
   keys = { { '<Leader>o', '<Cmd>Outline<CR>', desc = 'Toggle outline of symbols' } },
   cmd = 'Outline',

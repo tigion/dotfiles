@@ -1,5 +1,8 @@
 return {
-  'nvim-telescope/telescope.nvim', -- telescope
+  -- This plugin adds a highly extendable fuzzy finder over lists to Neovim.
+  -- Link: https://github.com/nvim-telescope/telescope.nvim
+
+  'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',

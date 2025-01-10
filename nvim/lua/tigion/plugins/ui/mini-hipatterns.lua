@@ -1,4 +1,7 @@
 return {
+  -- This plugin highlight patterns in text in Neovim.
+  -- Link: https://github.com/echasnovski/mini.hipatterns
+
   'echasnovski/mini.hipatterns',
   enabled = true,
   version = false,

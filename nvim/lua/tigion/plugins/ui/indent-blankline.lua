@@ -1,15 +1,18 @@
 return {
-  'lukas-reineke/indent-blankline.nvim', -- highlight indentation level
+  -- This plugin adds indentation guides to Neovim.
+  -- Link: https://github.com/lukas-reineke/indent-blankline.nvim
+
+  -- NOTE: scope != current idention level
+  -- - highlight groups: 'IblIndent', 'IblWhitespace', 'IblScope'
+  --   configured in colorscheme.lua
+
+  'lukas-reineke/indent-blankline.nvim',
   event = { 'BufReadPost', 'BufNewFile' },
-  dependencies = { 'nvim-tree/nvim-tree.lua' }, -- treesitter
+  dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- treesitter
   main = 'ibl',
+  ---@module "ibl"
+  ---@type ibl.config
   opts = {
-    --[[
-    Note:
-    - scope != current idention level
-    - default highlight groups: 'IblIndent', 'IblWhitespace', 'IblScope'
-      - configured in theme.lua
-    ]]
     indent = {
       char = '┊',
     },

@@ -1,4 +1,8 @@
 return {
+  -- This plugin adds a pretty list to help you solve all the trouble
+  -- your code is causing to Neovim.
+  -- Link: https://github.com/folke/trouble.nvim
+
   'folke/trouble.nvim',
   dependencies = { 'echasnovski/mini.icons' },
   -- dependencies = { 'nvim-tree/nvim-web-devicons' },

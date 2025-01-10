@@ -1,5 +1,8 @@
 return {
-  { -- comment handling
+  {
+    -- This plugin adds a smart and powerful commenting to Neovim.
+    -- Link: https://github.com/numToStr/Comment.nvim
+
     'numToStr/Comment.nvim',
     -- opts = {},
     lazy = false,
@@ -28,7 +31,10 @@ return {
     end,
   },
 
-  { -- generate annotation comments
+  {
+    -- This plugin adds a better annotation generator to Neovim.
+    -- Link: https://github.com/danymat/neogen
+
     'danymat/neogen',
     keys = {
       {
@@ -43,7 +49,11 @@ return {
     },
   },
 
-  { -- highlight and search for todo comments
+  {
+    -- This plugin highlights, lists and searches todo comments in your
+    -- projects in Neovim.
+    -- Link: https://github.com/folke/todo-comments.nvim
+
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'VimEnter',

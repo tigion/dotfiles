@@ -1,4 +1,7 @@
 return {
+  -- This plugin adds a Lightweight yet powerful formatter to Neovim.
+  -- Link: https://github.com/stevearc/conform.nvim
+
   'stevearc/conform.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
   keys = {
@@ -10,8 +13,9 @@ return {
           lsp_format = 'fallback',
           timeout_ms = 5000,
         })
+        print('Formatted buffer')
       end,
-      mode = { 'n', 'x' }, -- FIX: Format in visual mode doesn't work! (Use `<Cmd>=<CR>` as an alternative?)
+      mode = { 'n', 'x' },
       desc = 'Format buffer or selection',
     },
   },

@@ -1,5 +1,9 @@
 return {
   {
+    -- This plugin providing basic, default Nvim LSP client configurations
+    -- for various LSP servers.
+    -- Link: https://github.com/neovim/nvim-lspconfig
+
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
@@ -249,7 +253,11 @@ return {
   },
 
   {
-    'j-hui/fidget.nvim', -- LSP status view
+    -- This plugin adds an Extensible UI for Neovim notifications and
+    -- LSP progress messages to Neovim.
+    -- Link: https://github.com/j-hui/fidget.nvim
+
+    'j-hui/fidget.nvim',
     event = 'LspAttach',
     opts = {
       progress = {
@@ -266,7 +274,11 @@ return {
   },
 
   {
-    'folke/lazydev.nvim', -- Configures LuaLS for editing your Neovim config
+    -- This plugin configures LuaLS for editing your Neovim config by lazily
+    -- updating your workspace libraries.
+    -- Link: https://github.com/folke/lazydev.nvim
+
+    'folke/lazydev.nvim',
     dependencies = {
       { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
     },
@@ -279,7 +291,8 @@ return {
       },
     },
   },
-  -- { -- optional completion source for require statements and module annotations
+  -- { -- Optional addon for lazydev.nvim
+  --   -- optional completion source for require statements and module annotations
   --   'hrsh7th/nvim-cmp',
   --   enabled = false,
   --   opts = function(_, opts)
@@ -290,7 +303,8 @@ return {
   --     })
   --   end,
   -- },
-  { -- optional blink completion source for require statements and module annotations
+  { -- Optional addon for lazydev.nvim
+    -- optional blink completion source for require statements and module annotations
     'saghen/blink.cmp',
     enabled = true,
     opts = {

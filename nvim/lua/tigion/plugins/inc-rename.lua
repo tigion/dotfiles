@@ -1,4 +1,8 @@
 return {
+  -- This plugin adds a command for LSP renaming with immediate
+  -- visual feedback to Neovim.
+  -- Link: https://github.com/smjonas/inc-rename.nvim
+
   'smjonas/inc-rename.nvim',
   event = 'VeryLazy',
   cmd = 'IncRename',
@@ -11,13 +15,9 @@ return {
     },
   },
   opts = {
+    -- NOTE: The input in the command line and in the popup window of
+    -- dressing is irritating. So I'm disabling it for now.
+    --
     -- input_buffer_type = 'dressing',
   },
-  -- config = function(_, opts)
-  --   require('inc_rename').setup(opts)
-  --
-  --   vim.keymap.set('n', '<Leader>rm', function()
-  --     return ':IncRename ' .. vim.fn.expand('<cword>')
-  --   end, { expr = true, desc = 'LSP: Rename with all references' })
-  -- end,
 }

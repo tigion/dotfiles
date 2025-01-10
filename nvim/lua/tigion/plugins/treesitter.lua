@@ -1,5 +1,8 @@
 return {
-  'nvim-treesitter/nvim-treesitter', -- treesitter
+  -- This plugin adds a Treesitter configuration and abstraction layer to Neovim.
+  -- Link: https://github.com/nvim-treesitter/nvim-treesitter
+
+  'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   config = function()
     local status, ts = pcall(require, 'nvim-treesitter.configs')

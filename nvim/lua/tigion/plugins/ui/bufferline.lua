@@ -1,8 +1,10 @@
 return {
-  'akinsho/bufferline.nvim', -- styled tabs
+  -- This plugin adds a buffer line (with tabpage integration) to Neovim.
+  -- Link: https://github.com/akinsho/bufferline.nvim
+
+  'akinsho/bufferline.nvim',
   enabled = true,
-  dependencies = { 'echasnovski/mini.icons' }, -- optional, for file icons
-  -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
+  dependencies = { 'echasnovski/mini.icons' },
   version = '*',
   event = 'VeryLazy',
   -- keys = {

@@ -1,7 +1,9 @@
 return {
-  'nvim-lualine/lualine.nvim', -- styled statusline
-  dependencies = { 'echasnovski/mini.icons' }, -- optional, for file icons
-  -- dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
+  -- This plugin adds a fast and easy to configure statusline to Neovim.
+  -- Link: https://github.com/nvim-lualine/lualine.nvim
+
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'echasnovski/mini.icons' },
   config = function()
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')
@@ -79,18 +81,10 @@ return {
           },
           { require('tigion.core.util').supermaven.status },
           { require('tigion.core.util').codeium.status },
-          -- '%S󰘦 %3{codeium#GetStatusString()}',
           {
             require('tigion.core.util').info.lsp,
-            -- separator = '',
-            -- padding = { left = 1, right = 0 },
             on_click = function() print('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
           },
-          -- {
-          --   require('tigion.core.util').info.lsp_servers,
-          --   color = { fg = '#545c7e', gui = 'italic' },
-          --   on_click = function() vim.cmd('LspInfo') end,
-          -- },
           'encoding',
           'fileformat',
           'filetype',

@@ -1,5 +1,8 @@
 return {
-  'windwp/nvim-autopairs', -- auto pairs (cmp, treesitter)
+  -- This plugin adds a powerful autopair to Neovim.
+  -- Link: https://github.com/windwp/nvim-autopairs
+
+  'windwp/nvim-autopairs',
   event = 'InsertEnter',
   -- dependencies = { 'hrsh7th/nvim-cmp' },
   config = function()
@@ -17,8 +20,7 @@ return {
       },
     })
 
-    -- TODO: Is this also for blink.cmp needed?
-    --
+    -- Needed for nvim-cmp:
     -- make autopairs and completion work together
     -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     -- local cmp = require('cmp')

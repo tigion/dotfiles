@@ -1,9 +1,15 @@
 return {
+  -- This plugin adds a color scheme to Neovim.
+  -- Link: https://github.com/williamboman/mason.nvim
+
   'williamboman/mason.nvim',
   dependencies = {
+    -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
+    -- Link: https://github.com/williamboman/mason-lspconfig.nvim
     'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim', -- helper for mason to preinstall packages like 'shellsheck' which are not LSPs
-    -- 'neovim/nvim-lspconfig',
+    -- Install or upgrade all of your third-party tools.
+    -- Link: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   opts = {},
   config = function(_, opts)

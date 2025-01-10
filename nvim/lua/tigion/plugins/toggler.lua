@@ -1,4 +1,7 @@
 return {
+  -- This plugin inverts text in Neovim.
+  -- Link: https://github.com/nguyenvukhang/nvim-toggler
+
   'nguyenvukhang/nvim-toggler',
   enabled = true,
   event = { 'BufReadPost', 'BufNewFile' },

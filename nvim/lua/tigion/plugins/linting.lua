@@ -1,4 +1,7 @@
 return {
+  -- This plugin adds an asynchronous linter plugin to Neovim.
+  -- Link: https://github.com/mfussenegger/nvim-lint
+
   'mfussenegger/nvim-lint',
   event = {
     'BufReadPre',

@@ -1,4 +1,7 @@
 return {
+  -- This plugin is an icon provider to Neovim.
+  -- Link: https://github.com/echasnovski/mini.icons
+
   {
     'echasnovski/mini.icons',
     opts = {},

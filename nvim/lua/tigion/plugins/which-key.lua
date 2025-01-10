@@ -1,9 +1,12 @@
 return {
+  -- This plugin helps you to remember your Neovim keymaps in Neovim.
+  -- Link: https://github.com/folke/which-key.nvim
+
   'folke/which-key.nvim',
   dependencies = { 'echasnovski/mini.icons' },
   event = 'VeryLazy',
   opts = {
-    -- preset = 'classic', ---@type false | "classic" | "modern" | "helix"
+    preset = 'helix', ---@type false | "classic" | "modern" | "helix"
     delay = 300,
     -- icons = {
     --   rules = false,

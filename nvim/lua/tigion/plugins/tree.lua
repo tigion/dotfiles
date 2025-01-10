@@ -1,7 +1,9 @@
 return {
-  'nvim-tree/nvim-tree.lua', -- file explorer
+  -- This plugin adds a file explorer tree to Neovim.
+  -- Link: https://github.com/nvim-tree/nvim-tree.lua
+
+  'nvim-tree/nvim-tree.lua',
   dependencies = { 'echasnovski/mini.icons' },
-  -- dependencies = 'nvim-tree/nvim-web-devicons', -- optional, for file icons
   cmd = 'NvimTreeOpen', -- used in alpha-nvim
   keys = {
     { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle file explorer' },

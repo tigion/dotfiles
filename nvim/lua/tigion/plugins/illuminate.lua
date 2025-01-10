@@ -1,4 +1,8 @@
 return {
+  -- This plugin adds automatically highlighting and navigation
+  -- other uses of the word under the cursor to Neovim.
+  -- Link: https://github.com/RRethy/vim-illuminate
+
   'RRethy/vim-illuminate',
   event = 'VeryLazy',
   opts = {

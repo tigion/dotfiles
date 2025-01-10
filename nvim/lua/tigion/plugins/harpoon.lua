@@ -1,4 +1,7 @@
 return {
+  -- This plugin adds a list of freqiently used files with hot keys to Neovim.
+  -- Link: https://github.com/ThePrimeagen/harpoon
+
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
   keys = function()

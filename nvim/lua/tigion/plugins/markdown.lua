@@ -1,11 +1,13 @@
 return {
   {
+    -- This plugin improves the viewing of Markdown files in Neovim.
+    -- Link: https://github.com/MeanderingProgrammer/render-markdown.nvim
+
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'echasnovski/mini.icons', -- if you use standalone mini plugins
       -- 'echasnovski/mini.nvim', -- if you use the mini.nvim suite
-      -- 'nvim-tree/nvim-web-devicons', -- if you prefer nvim-web-devicons
     },
     -- ft = { 'markdown' },
     -- cmd = { 'RenderMarkdown' },
@@ -33,14 +35,18 @@ return {
       },
     },
   },
+
   -- {
+  --   -- This plugin adds a Highly customisable markdown previewer to Neovim.
+  --   -- Link: https://github.com/OXY2DEV/markview.nvim
+  --
   --   'OXY2DEV/markview.nvim',
   --   lazy = false, -- Recommended
   --   -- ft = "markdown" -- If you decide to lazy-load anyway
   --
   --   dependencies = {
   --     'nvim-treesitter/nvim-treesitter',
-  --     'nvim-tree/nvim-web-devicons',
+  --     -- 'nvim-tree/nvim-web-devicons',
   --   },
   --   keys = {
   --     {
@@ -52,13 +58,21 @@ return {
   --   },
   --   opts = {},
   -- },
+
   {
+    -- This plugin adds a Markdown file preview in your browser to Neovim.
+    -- Link: https://github.com/iamcco/markdown-preview.nvim
+
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     ft = { 'markdown' },
     build = function() vim.fn['mkdp#util#install']() end,
   },
+
   {
+    -- This plugin adds image support to Neovim.
+    -- Link: https://github.com/3rd/image.nvim
+
     '3rd/image.nvim',
     enabled = false,
     build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239

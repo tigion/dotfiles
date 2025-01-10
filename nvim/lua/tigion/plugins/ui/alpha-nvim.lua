@@ -1,5 +1,9 @@
 return {
+  -- This plugin adds a fast and fully programmable greeter for neovim.
+  -- Link: https://github.com/goolord/alpha-nvim
+
   'goolord/alpha-nvim',
+  dependencies = { 'echasnovski/mini.icons' },
   config = function()
     local alpha = require('alpha')
     local dashboard = require('alpha.themes.dashboard')

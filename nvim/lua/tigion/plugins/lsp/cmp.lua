@@ -1,16 +1,23 @@
 return {
   {
-    -- NOTE: Source provider for blink.cmp that allow you to use nvim-cmp completion sources.
-    --       Only for not supported native blink.cmp sources.
-    --
-    -- Needed for:
-    -- - hrsh7th/cmp-omni completions (Ctrl-x Ctrl-o, `:h omnifunc`)
+    -- This plugin adds a source provider for blink.cmp to Neovim
+    -- that allow you to use nvim-cmp completion sources.
+    -- Link: https://github.com/saghen/blink.compat
+
+    -- WARN: Only for not supported native blink.cmp sources.
+
+    -- NOTE: Needed for:
+    -- - hrsh7th/cmp-omni, a `:h omnifunc` completion source
+
     'saghen/blink.compat',
     version = '*',
     lazy = true,
     opts = {},
   },
   {
+    -- This plugin adds a performant completion to Neovim.
+    -- Link: https://github.com/saghen/blink.cmp
+
     'saghen/blink.cmp',
     enabled = true,
     lazy = false, -- lazy loading handled internally
@@ -62,7 +69,6 @@ return {
             },
           },
         },
-
         documentation = {
           auto_show = true,
           window = {

@@ -1,4 +1,7 @@
 return {
+  -- This plugin adds a simple session management to Neovim.
+  -- Link: https://github.com/tigion/nvim-sessions
+
   'tigion/nvim-sessions',
   dev = false,
   keys = {

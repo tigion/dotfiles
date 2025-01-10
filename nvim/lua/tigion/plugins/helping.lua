@@ -1,7 +1,8 @@
 return {
   {
-    -- Assists with discovering motions (Both vertical and horizontal)
-    -- to navigate your current buffer.
+    -- This plugin assists with motions to navigate your current buffer in Neovim.
+    -- Link: https://github.com/tris203/precognition.nvim
+
     'tris203/precognition.nvim',
     event = 'VeryLazy',
     keys = {
@@ -11,8 +12,12 @@ return {
       startVisible = false,
     },
   },
+
   {
-    -- Establish good command workflow and quit bad habit.
+    -- This plugin establishes a good command workflow and
+    -- quits bad habits in Neovim.
+    -- Link: https://github.com/m4xshen/hardtime.nvim
+
     'm4xshen/hardtime.nvim',
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
     event = 'VeryLazy',

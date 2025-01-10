@@ -1,4 +1,68 @@
+-- NOTE: Color code notes are in `nvim/docs/colors.md`
+
+return {
+  -- This plugin adds a color scheme to Neovim.
+  -- Link: https://github.com/folke/tokyonight.nvim
+
+  -- WARN: To clear the theme color cache after changing highlight
+  -- groups use `:lua require("tokyonight.util").cache.clear()`
+
+  -- TODO: Use `on_colors` or `style = `custom` to modify the colors?
+  -- - https://github.com/folke/tokyonight.nvim/issues/595
+
+  'folke/tokyonight.nvim',
+  lazy = false,
+  priority = 1000,
+  opts = {
+    style = 'moon', -- moon, night, (storm, day)
+    transparent = true,
+    styles = {
+      -- dark, transparent or normal
+      sidebars = 'transparent',
+      floats = 'dark',
+    },
+    lualine_bold = true,
+    on_colors = function(colors)
+      colors.comment = '#626784' -- use a more gray comment
+    end,
+    on_highlights = function(hl, c)
+      -- darker bg_float variants
+      local bg_float2 = '#14151f'
+      local bg_float3 = '#0a0b10'
+
+      -- cmp-nvim
+      -- hl.CmpDocumentation.bg = bg_float2
+      -- hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
+
+      -- blink.cmp
+      hl.BlinkCmpSource = { fg = c.comment }
+      hl.BlinkCmpDoc.bg = bg_float2
+      hl.BlinkCmpDocBorder = { fg = c.comment, bg = hl.BlinkCmpDoc.bg }
+      hl.BlinkCmpDocSeparator = hl.BlinkCmpDocBorder
+
+      -- Telescope
+      hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
+      hl.TelescopeNormal = { fg = c.fg, bg = bg_float2 }
+      hl.TelescopeTitle = { fg = bg_float2, bg = c.blue }
+      hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
+      hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
+      hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
+      hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
+      hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
+    end,
+  },
+  config = function(_, opts)
+    require('tokyonight').setup(opts)
+    -- load the colorscheme here
+    -- vim.cmd([[colorscheme tokyonight]])
+    vim.cmd.colorscheme('tokyonight')
+  end,
+}
+
 -- return {
+--  -- This plugin adds a color scheme to Neovim.
+--  -- Link: https://github.com/craftzdog/solarized-osaka.nvim
+--
 --   'craftzdog/solarized-osaka.nvim',
 --   -- enabled = false,
 --   lazy = false,
@@ -45,65 +109,10 @@
 --   end,
 -- }
 
-return {
-  -- NOTE: To clear the theme color cache after changing highlight groups
-  --       use `:lua require("tokyonight.util").cache.clear()`
-
-  'folke/tokyonight.nvim',
-  lazy = false,
-  priority = 1000,
-  opts = {
-    style = 'moon', -- moon, night, (storm, day)
-    transparent = true,
-    styles = {
-      -- dark, transparent or normal
-      sidebars = 'transparent',
-      floats = 'dark',
-    },
-    lualine_bold = true,
-    -- Color code notes are in `nvim/docs/colors.md`
-    --
-    -- TODO: Use `on_colors` or `style = `custom` to modify the colors?
-    --       - https://github.com/folke/tokyonight.nvim/issues/595
-    --
-    on_colors = function(colors)
-      colors.comment = '#626784' -- use a more gray comment
-    end,
-    on_highlights = function(hl, c)
-      -- darker bg_float variants
-      local bg_float2 = '#14151f'
-      local bg_float3 = '#0a0b10'
-
-      -- cmp-nvim
-      -- hl.CmpDocumentation.bg = bg_float2
-      -- hl.CmpDocumentationBorder = { fg = c.comment, bg = bg_float2 }
-
-      -- blink.cmp
-      hl.BlinkCmpSource = { fg = c.comment }
-      hl.BlinkCmpDoc.bg = bg_float2
-      hl.BlinkCmpDocBorder = { fg = c.comment, bg = hl.BlinkCmpDoc.bg }
-      hl.BlinkCmpDocSeparator = hl.BlinkCmpDocBorder
-
-      -- Telescope
-      hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
-      hl.TelescopeNormal = { fg = c.fg, bg = bg_float2 }
-      hl.TelescopeTitle = { fg = bg_float2, bg = c.blue }
-      hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
-      hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
-      hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
-      hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
-      hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
-    end,
-  },
-  config = function(_, opts)
-    require('tokyonight').setup(opts)
-    -- load the colorscheme here
-    -- vim.cmd([[colorscheme tokyonight]])
-    vim.cmd.colorscheme('tokyonight')
-  end,
-}
-
 -- return {
+--  -- This plugin adds a color scheme to Neovim.
+--  -- Link: https://github.com/catppuccin/nvim
+--
 --   'catppuccin/nvim',
 --   name = 'catppuccin',
 --   priority = 1000,
@@ -124,6 +133,9 @@ return {
 -- }
 
 -- return {
+--  -- This plugin adds a color scheme to Neovim.
+--  -- Link: https://github.com/olimorris/onedarkpro.nvim
+--
 --   'olimorris/onedarkpro.nvim',
 --   priority = 1000,
 --   opts = {

@@ -1,6 +1,9 @@
 return {
-  'windwp/nvim-ts-autotag', -- auto tags
-  dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- treesitter
+  -- This plugin uses treesitter to auto close and auto rename html tags in Neovim.
+  -- Link: https://github.com/windwp/nvim-ts-autotag
+
+  'windwp/nvim-ts-autotag',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   opts = {
     opts = {
       -- Defaults
