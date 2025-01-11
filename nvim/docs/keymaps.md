@@ -126,6 +126,13 @@
 | `n`  | `Ü`    | Prev empty line   |
 | `n`  | `Ä`    | Next empty line   |
 
+### Commenting
+
+| Mode | Keymap | Description                              |
+| ---- | ------ | ---------------------------------------- |
+| `n`  | `gcc`  | Toggle linewise comment for current line |
+| `x`  | `gc`   | Toggle linewise comment for selection    |
+
 ### Diagnostics
 
 | Mode | Keymap       | Description                   |
@@ -269,23 +276,6 @@ Snippets:
 | `n`  | ~~`üb`~~ | Go to previous buffer |
 | `n`  | `+t`     | Go to next tab        |
 | `n`  | `üt`     | Go to previous tab    |
-
-### [Comment.nvim]
-
-[Comment.nvim]: https://github.com/numToStr/Comment.nvim
-
-| Mode | Keymap | Description                               |
-| ---- | ------ | ----------------------------------------- |
-| `n`  | `gcc`  | Toggle linewise comment for current line  |
-| `n`  | `gbc`  | Toggle blockwise comment for current line |
-| `x`  | `gc`   | Toggle linewise comment for selection     |
-| `x`  | `gb`   | Toggle blockwise comment for selection    |
-| `n`  | `gco`  | Insert comment to the next line           |
-| `n`  | `gcO`  | Insert comment to the previous line       |
-| `n`  | `gcA`  | Insert comment to end of the current line |
-| `n`  | `gc}`  | Toggle until the next blank line          |
-| `n`  | `gcip` | Toggle inside of paragraph                |
-| `n`  | `gca}` | Toggle around curly brackets              |
 
 ### [conform.nvim]
 
@@ -578,6 +568,23 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 - ? `<S-Tab>` for Cancel
 - ? `<C-e>` for Cancel/Clear like CMP
+
+### [Comment.nvim]
+
+[Comment.nvim]: https://github.com/numToStr/Comment.nvim
+
+| Mode | Keymap | Description                               |
+| ---- | ------ | ----------------------------------------- |
+| `n`  | `gcc`  | Toggle linewise comment for current line  |
+| `n`  | `gbc`  | Toggle blockwise comment for current line |
+| `x`  | `gc`   | Toggle linewise comment for selection     |
+| `x`  | `gb`   | Toggle blockwise comment for selection    |
+| `n`  | `gco`  | Insert comment to the next line           |
+| `n`  | `gcO`  | Insert comment to the previous line       |
+| `n`  | `gcA`  | Insert comment to end of the current line |
+| `n`  | `gc}`  | Toggle until the next blank line          |
+| `n`  | `gcip` | Toggle inside of paragraph                |
+| `n`  | `gca}` | Toggle around curly brackets              |
 
 #### [LuaSnip]
 
