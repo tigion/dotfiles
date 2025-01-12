@@ -39,6 +39,7 @@ return {
       typescript = { 'prettier' },
       vue = { 'prettier' },
       yaml = { 'prettier' },
+      zsh = { 'shfmt' },
       gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- filetypes that don't have other formatters
       ['_'] = { 'trim_whitespace', 'trim_newlines' },
