@@ -68,8 +68,8 @@ fi
 # -- Python --
 
 # virtual environment
-alias vc='python3 -m venv ./venv'
-alias va='source ./venv/bin/activate'
+alias vc='python3 -m venv .venv'
+alias va='source .venv/bin/activate'
 alias vd='deactivate'
 alias vu='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
 
