@@ -5,7 +5,20 @@ return {
   {
     'echasnovski/mini.icons',
     version = false, -- Main
-    opts = {},
+    opts = {
+      file = {
+        ['.prettierrc'] = { glyph = '' },
+        -- config = { glyph = '󰒓', hl = 'MiniIconsCyan' },
+      },
+      extension = {
+        -- conf = { glyph = '󰒓', hl = 'MiniIconsGray' },
+      },
+      filetype = {
+        -- sh = { glyph = '' },
+        kitty = { glyph = '󰒓', hl = 'MiniIconsGray' },
+        ghostty = { glyph = '󰒓', hl = 'MiniIconsGray' },
+      },
+    },
     config = function(_, opts)
       require('mini.icons').setup(opts)
       MiniIcons.mock_nvim_web_devicons()
