@@ -5,6 +5,12 @@ is_cmd() {
   type "$1" >/dev/null 2>&1
 }
 
+# Check if in a python venv
+is_venv() {
+  if [[ ! -n "$VIRTUAL_ENV" ]]; then echo "Not in activated python venv"; fi
+  [[ -n "$VIRTUAL_ENV" ]]
+}
+
 # --- Aliases ---
 
 # source zsh config
@@ -68,10 +74,13 @@ fi
 # -- Python --
 
 # virtual environment
-alias vc='python3 -m venv .venv'
-alias va='source .venv/bin/activate'
-alias vd='deactivate'
-alias vu='pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
+alias vc='python3 -m venv .venv && echo "Python venv is created."'
+alias va='source .venv/bin/activate && echo "Python venv is activated."'
+alias vd='if is_venv; then deactivate; echo "Python venv is deactivated."; fi'
+alias vi='if is_venv; then pip install -r requirements.txt; fi'
+alias vl='is_venv && pip list'
+alias vo='is_venv && pip list --outdated'
+alias vu='is_venv && pip freeze --require-virtualenv | cut -d'=' -f1 | xargs -n1 pip install -U'
 
 # -- macOS --
 
