@@ -15,9 +15,9 @@ is_venv() {
 
 # source zsh config
 alias reload='
-  printf "cleanup aliases ... ";
+  printf "Cleanup aliases ... ";
   unalias -a;
-  printf "done\nsource .zshrc ... ";
+  printf "done\nSource ~/.zshrc ... ";
   source ~/.zshrc; echo "done"'
 
 # echo PATH variable line by line
