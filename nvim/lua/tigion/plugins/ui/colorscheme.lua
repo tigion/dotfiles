@@ -49,6 +49,9 @@ return {
       hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
       hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
       hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
+
+      -- NvimTree
+      hl.NvimTreeExecFile = { fg = c.red }
     end,
   },
   config = function(_, opts)
