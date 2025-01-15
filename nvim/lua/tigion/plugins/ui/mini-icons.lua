@@ -14,7 +14,7 @@ return {
         -- conf = { glyph = '󰒓', hl = 'MiniIconsGray' },
       },
       filetype = {
-        -- sh = { glyph = '' },
+        sh = { glyph = '' },
         kitty = { glyph = '󰒓', hl = 'MiniIconsGray' },
         ghostty = { glyph = '󰒓', hl = 'MiniIconsGray' },
       },
