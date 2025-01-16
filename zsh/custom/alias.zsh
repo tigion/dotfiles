@@ -62,6 +62,7 @@ fi
 if is_cmd 'fzf'; then
   alias öh='history | cut -c 8- | fzf --scheme=history --tac --tmux --border-label="  History "'
   alias öa='alias | fzf --tmux --border-label="  Aliases "'
+
   # Searches for directories and files in the current directory and cd into it.
   alias öd='tmp=$(fzf --tmux --border-label="  Directories " --walker dir,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd "$tmp"'
   # alias öd='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*/node_modules" \) -prune -o -type d -print | fzf) && cd "$tmp"'
@@ -69,6 +70,15 @@ if is_cmd 'fzf'; then
   alias öf='tmp=$(fzf --tmux --border-label="  Files " --walker file,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd $(dirname "$tmp")'
   # alias öf='tmp=$(find . -type d \( -path "*/.*" -o -path "./Library" -o -path "*/node_modules" \) -prune -o -type f -print | fzf) && cd $(dirname "$tmp")'
   alias öF='tmp=$(fzf --tmux --border-label="  Files (~/) " --walker-root="$HOME" --walker file,follow,hidden --walker-skip .git,node_modules,target,.venv,Library,Applications) && cd $(dirname "$tmp")'
+
+  # Searches for git commits and shows the diff.
+  alias öc='tmp=$(\
+      git log --color --date=format:%d.%m.%Y \
+              --format="%C(red)%h %C(yellow)%cd %C(default)%s%C(red)%d" \
+      | fzf --tmux 80% --border-label="  Git Commits " \
+            --ansi --reverse --no-sort --preview="git show --color {1} | delta" \
+      | cut -d " " -f1\
+    ) && if [[ "$tmp" != "" ]]; then git show --color "$tmp"; fi'
 fi
 
 # -- Python --
