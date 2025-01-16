@@ -26,7 +26,7 @@ return {
     -- Link: https://github.com/RRethy/vim-illuminate
 
     'RRethy/vim-illuminate',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       delay = 200,
       large_file_cutoff = 2000,
