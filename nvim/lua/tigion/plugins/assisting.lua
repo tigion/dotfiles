@@ -47,6 +47,7 @@ return {
 
     'windwp/nvim-ts-autotag',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       opts = {
         -- Defaults
@@ -87,27 +88,28 @@ return {
     end,
   },
 
-  -- {
-  --   -- This plugin extends and creates a/i textobjects in Neovim.
-  --   -- Link: https://github.com/echasnovski/mini.ai
-  --
-  --   -- NOTE: For text-objects is `nvim-treesitter/nvim-treesitter-textobjects`
-  --   --       in `tigion/plugins/treesitter.lua` required.
-  --
-  --   'echasnovski/mini.ai',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-  --   version = false,
-  --   event = 'VeryLazy',
-  --   opts = function()
-  --     return {
-  --       n_lines = 200,
-  --       custom_textobjects = {
-  --         o = require('mini.ai').gen_spec.treesitter({ -- code block
-  --           a = { '@block.outer', '@conditional.outer', '@loop.outer' },
-  --           i = { '@block.inner', '@conditional.inner', '@loop.inner' },
-  --         }),
-  --       },
-  --     }
-  --   end,
-  -- },
+  {
+    -- This plugin extends and creates a/i textobjects in Neovim.
+    -- Link: https://github.com/echasnovski/mini.ai
+
+    -- NOTE: For text-objects like `@block.inner` is the dependency
+    --       `nvim-treesitter/nvim-treesitter-textobjects` required.
+    --       Extra config is in `tigion/plugins/treesitter.lua`.
+
+    'echasnovski/mini.ai',
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    version = false,
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = function()
+      return {
+        n_lines = 200,
+        custom_textobjects = {
+          -- o = require('mini.ai').gen_spec.treesitter({ -- code block
+          --   a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+          --   i = { '@block.inner', '@conditional.inner', '@loop.inner' },
+          -- }),
+        },
+      }
+    end,
+  },
 }
