@@ -3,20 +3,29 @@ return {
   -- Link: https://github.com/stevearc/conform.nvim
 
   'stevearc/conform.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufNewFile' },
+  cmd = { 'ConformInfo' },
   keys = {
     {
       '<Leader>cf',
       function()
         require('conform').format({
-          async = false,
+          async = true,
           lsp_format = 'fallback',
           timeout_ms = 5000,
         })
-        print('Formatted buffer')
+        vim.notify('Formatted ' .. (vim.api.nvim_get_mode().mode == 'n' and 'buffer' or 'selection'))
       end,
       mode = { 'n', 'x' },
       desc = 'Format buffer or selection',
+    },
+    {
+      '<Leader>tf',
+      function()
+        vim.g.conform_disable_format_on_save = not vim.g.conform_disable_format_on_save
+        vim.notify('Format on save: ' .. (vim.g.conform_disable_format_on_save and 'OFF' or 'ON'))
+      end,
+      desc = 'Toggle format on save',
     },
   },
   opts = {
@@ -42,15 +51,10 @@ return {
       zsh = { 'shfmt' },
       gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- filetypes that don't have other formatters
-      ['_'] = { 'trim_whitespace', 'trim_newlines' },
+      ['_'] = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- all filetypes
       -- ['*'] = { '' },
     },
-    -- format_on_save = {
-    --   lsp_format = 'fallback',
-    --   async = false,
-    --   timeout_ms = 1000,
-    -- },
     format_on_save = function()
       if vim.g.conform_disable_format_on_save then return end
       return {
@@ -86,25 +90,4 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require('conform').setup(opts)
-
-    -- https://github.com/stevearc/conform.nvim/issues/39
-    -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
-    vim.api.nvim_create_user_command(
-      'ConformFormatOnSaveToggle',
-      function() vim.g.conform_disable_format_on_save = not vim.g.conform_disable_format_on_save end,
-      {
-        desc = 'Toggle format on save',
-        bang = true,
-      }
-    )
-
-    vim.keymap.set(
-      'n',
-      '<Leader>tf',
-      ':ConformFormatOnSaveToggle<CR>',
-      { desc = 'Toggle format on save', noremap = true, silent = true }
-    )
-  end,
 }
