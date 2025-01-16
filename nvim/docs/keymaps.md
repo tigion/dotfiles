@@ -12,6 +12,7 @@
       - [Local options](#local-options)
     - [Goodies](#goodies)
     - [Code Navigation](#code-navigation)
+    - [Commenting](#commenting)
     - [Diagnostics](#diagnostics)
     - [Quickfix/Location List](#quickfixlocation-list)
     - [Spelling](#spelling)
@@ -24,12 +25,12 @@
       - [blink.cmp](#blinkcmp)
       - [nvim-lspconfig](#nvim-lspconfig)
     - [bufferline.nvim](#bufferlinenvim)
-    - [Comment.nvim](#commentnvim)
     - [conform.nvim](#conformnvim)
     - [gitsigns.nvim](#gitsignsnvim)
     - [harpoon](#harpoon)
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
+    - [mini.ai](#miniai)
     - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
@@ -51,6 +52,7 @@
     - [zen-mode.nvim](#zen-modenvim)
     - [Deactivated](#deactivated)
       - [codeium.vim](#codeiumvim)
+    - [Comment.nvim](#commentnvim)
       - [LuaSnip](#luasnip)
       - [nvim-cmp](#nvim-cmp)
   - [ftplugin](#ftplugin)
@@ -327,6 +329,19 @@ Snippets:
 | Mode | Keymap       | Description                      |
 | ---- | ------------ | -------------------------------- |
 | `n`  | `<Leader>rn` | Rename with all references (wuc) |
+
+### [mini.ai]
+
+[mini.ai]: https://github.com/echasnovski/mini.ai
+
+| Mode | Keymap       | Description                                                     |
+| ---- | ------------ | --------------------------------------------------------------- |
+| `n`  | `vab`, `vib` | Select around/in brackets (`([{`)                               |
+| `n`  | `vag`, `vig` | Select around/in single/double quotes and backticks (`` "'` ``) |
+| `n`  | `va#`, `vi#` | Select around/in given character (`#` is a placeholder)         |
+| `n`  | ...          | ... and more                                                    |
+
+- To expand the selection in `((...))`, use after `vib` `ib` again.
 
 ### [mini.hipatterns]
 
