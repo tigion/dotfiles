@@ -30,7 +30,8 @@ return {
         'lua_ls', -- Lua
         'marksman', -- Markdown
         'phpactor', -- PHP
-        'pyright', -- Python
+        'basedpyright', -- Python (better fork of pyright)
+        -- 'pyright', -- Python
         'ruff', -- Python (LSP/Linter/Formatter)
         'ts_ls', -- JavaScript, TypeScript
         'typos_lsp', -- Typos (Code Spell Checker)
