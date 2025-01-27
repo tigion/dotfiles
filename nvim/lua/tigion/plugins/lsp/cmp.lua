@@ -81,7 +81,7 @@ return {
         -- use_typo_resistance = false,
         -- max_typos = 0.0,
         -- max_typos = function(keyword) return math.floor(#keyword / 4) end,
-        max_typos = function() return 0.0 end,
+        -- max_typos = function() return 0.0 end,
       },
 
       -- default list of enabled providers defined so that you can extend it
