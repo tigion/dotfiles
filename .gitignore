@@ -14,7 +14,7 @@ vim/.vim/spell/*
 
 # nvim
 nvim/**/.luarc.json
-nvim/lazy-lock.json
+# nvim/lazy-lock.json
 nvim/spell/*
 
 # Homebrew
