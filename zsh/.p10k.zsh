@@ -34,6 +34,7 @@
     # os_icon               # os identifier
     dir                     # current directory
     vcs                     # git status
+    python_venv_version     # python virtual environment version
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -1657,6 +1658,13 @@
     p10k segment -f 2 -i '⭐' -t 'hello, %n'
   }
 
+  function prompt_python_venv_version() {
+    if [[ ! -z $VIRTUAL_ENV ]]; then
+      # p10k segment -f 6 -i '' -t "${${$(python3 -V)#* }//\%/%%}"
+      p10k segment -f 6 -i '' -t "$(python -V | cut -d' ' -f2)"
+    fi
+  }
+
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
   # is to generate the prompt segment for display in instant prompt. See
   # https://github.com/romkatv/powerlevel10k#instant-prompt.
@@ -1674,6 +1682,7 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+    prompt_python_version
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
