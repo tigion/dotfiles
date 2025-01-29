@@ -12,3 +12,77 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+
+customCommands:
+  # - key: "C"
+  - key: "<c-v>"
+    # Create a conventional commit.
+    #
+    # TODO: Add support for multiline commit messages.
+    #
+    # NOTE: Multiline comments are currently not supported.
+    # - https://github.com/jesseduffield/lazygit/issues/3476
+    # - https://github.com/jesseduffield/lazygit/pull/3548
+    #
+    # Source: https://github.com/jesseduffield/lazygit/issues/41#issuecomment-2592014367
+    command: 'git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}{{if eq .Form.Breaking `yes`}}!{{end}}: {{ .Form.Description }}"'
+    loadingText: "Creating conventional commit..."
+    description: "Commit changes with conventional commits"
+    context: "files"
+    prompts:
+      - type: "menu"
+        title: "Select the type of change you are committing."
+        key: "Type"
+        options:
+          - name: "feat"
+            description: "A new feature"
+            value: "feat"
+          - name: "fix"
+            description: "A bug fix"
+            value: "fix"
+          - name: "docs"
+            description: "Documentation only changes"
+            value: "docs"
+          - name: "style"
+            description: "Changes that do not affect the meaning of the code"
+            value: "style"
+          - name: "refactor"
+            description: "A code change that neither fixes a bug nor adds a feature"
+            value: "refactor"
+          - name: "perf"
+            description: "A code change that improves performance"
+            value: "perf"
+          - name: "test"
+            description: "Adding missing tests or correcting existing tests"
+            value: "test"
+          - name: "build"
+            description: "Changes that affect the build system or external dependencies"
+            value: "build"
+          - name: "ci"
+            description: "Changes to our CI configuration files and scripts"
+            value: "ci"
+          - name: "chore"
+            description: "Other changes that don't modify src or test files"
+            value: "chore"
+          - name: "revert"
+            description: "Reverts a previous commit"
+            value: "revert"
+      - type: "input"
+        title: "Enter the scope(s) of this change (empty for none)."
+        key: "Scopes"
+      - type: "input"
+        title: "Enter the short description of the change."
+        key: "Description"
+      - type: "menu"
+        title: "Is this a breaking change?"
+        key: "Breaking"
+        options:
+          - name: "No"
+            description: "This change does not introduce a breaking change."
+            value: "no"
+          - name: "Yes"
+            description: "This change introduces a breaking change."
+            value: "yes"
+      - type: "confirm"
+        title: "Is the commit message correct?"
+        body: "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}{{if eq .Form.Breaking `yes`}}!{{end}}: {{ .Form.Description }}"
