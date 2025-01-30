@@ -154,6 +154,19 @@ return {
 
         -- Dedicated handlers, which overrides default handlers for specific servers.
 
+        ['basedpyright'] = function()
+          lspconfig.basedpyright.setup({
+            capabilities = capabilities,
+            settings = {
+              basedpyright = {
+                analysis = {
+                  typeCheckingMode = 'standard', -- Use 'standard' like pyright instead of the default 'recommended'.
+                },
+              },
+            },
+          })
+        end,
+
         ['html'] = function()
           -- lspconfig['html'].setup({
           lspconfig.html.setup({
