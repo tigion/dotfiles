@@ -42,6 +42,8 @@
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
+    - [snacks.notifier](#snacksnotifier)
+    - [snacks.zen](#snackszen)
     - [supermaven-nvim](#supermaven-nvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
@@ -49,10 +51,9 @@
     - [trouble.nvim](#troublenvim)
     - [vim-illuminate](#vim-illuminate)
     - [which-key.nvim](#which-keynvim)
-    - [zen-mode.nvim](#zen-modenvim)
     - [Deactivated](#deactivated)
       - [codeium.vim](#codeiumvim)
-    - [Comment.nvim](#commentnvim)
+      - [Comment.nvim](#commentnvim)
       - [LuaSnip](#luasnip)
       - [nvim-cmp](#nvim-cmp)
   - [ftplugin](#ftplugin)
@@ -443,6 +444,23 @@ Snippets:
 | ---- | ------------ | ---------------------- |
 | `n`  | `<Leader>tm` | Toggle Render Markdown |
 
+### [snacks.notifier]
+
+[snacks.notifier]: https://github.com/folke/snacks.nvim
+
+| Mode | Keymap       | Description             |
+| ---- | ------------ | ----------------------- |
+| `n`  | `<Leader>tn` | Toggle Notifier History |
+
+### [snacks.zen]
+
+[snacks.zen]: https://github.com/folke/snacks.nvim
+
+| Mode | Keymap      | Description          |
+| ---- | ----------- | -------------------- |
+| `n`  | `<Leader>z` | Toggle Zen Mode      |
+| `n`  | `<Leader>Z` | Toggle Zen Zoom Mode |
+
 ### [supermaven-nvim]
 
 [supermaven-nvim]: https://github.com/supermaven-inc/supermaven-nvim
@@ -558,14 +576,6 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `<Leader>?`  | Show local buffer keymaps |
 | `n`  | `<Leader>??` | Show global keymaps       |
 
-### [zen-mode.nvim]
-
-[zen-mode.nvim]: https://github.com/folke/zen-mode.nvim
-
-| Mode | Keymap      | Description     |
-| ---- | ----------- | --------------- |
-| `n`  | `<Leader>z` | Toggle zen mode |
-
 ### Deactivated
 
 #### [codeium.vim]
@@ -584,7 +594,7 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 - ? `<S-Tab>` for Cancel
 - ? `<C-e>` for Cancel/Clear like CMP
 
-### [Comment.nvim]
+#### [Comment.nvim]
 
 [Comment.nvim]: https://github.com/numToStr/Comment.nvim
 
