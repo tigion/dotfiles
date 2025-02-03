@@ -13,12 +13,15 @@ function M.info.nvim_version()
   return v
 end
 
----Returns the number of used plugins (lazy.nvim).
----@return number
-function M.info.plugin_count()
-  -- local plugin_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath('data') .. '/lazy', '*', false, 1))
-  local plugin_count = require('lazy').stats().count
-  return plugin_count
+---Returns the plugin stats.
+---@return table
+function M.info.plugin_stats()
+  local stats = require('lazy').stats()
+  return {
+    count = stats.count,
+    loaded = stats.loaded,
+    startuptime = (math.floor(stats.startuptime * 100 + 0.5) / 100),
+  }
 end
 
 ---Returns the lsp server status as formatted string.

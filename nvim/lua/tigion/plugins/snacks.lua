@@ -9,7 +9,74 @@ return {
   ---@type snacks.Config
   opts = {
     -- bigfile = { enabled = true },
-    -- dashboard = { enabled = true },
+
+    -- Beautiful declarative dashboards
+    dashboard = {
+      enabled = true,
+      width = math.min(math.max(vim.fn.winwidth(0) - 10, 40), 60),
+      preset = {
+        keys = {
+          { icon = '󰈔 ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+          { icon = '󱔗 ', key = 'r', desc = 'Recent Files', action = ':Telescope oldfiles' },
+          { icon = ' ', key = 'l', desc = 'Load Session', action = ':Session load' },
+          { icon = '󰱼 ', key = 'f', desc = 'Find File', action = ':Telescope find_files' },
+          { icon = '󰺮 ', key = 'g', desc = 'Find Text', action = ':Telescope live_grep' },
+          { icon = '󱤇 ', key = 'h', desc = 'Find Help Tag', action = ':Telescope live_grep' },
+          {
+            icon = ' ',
+            key = 's',
+            desc = 'Settings',
+            action = '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR><Cmd>NvimTreeOpen<CR>',
+          },
+          { icon = ' ', key = 'p', desc = 'Check Plugins', action = ':Lazy' },
+          { icon = ' ', key = 'c', desc = 'Check Health', action = ':checkhealth' },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
+        -- header = {
+        --   [[  _  _             _        ]],
+        --   [[ | \| |___ _____ _(_)_ __   ]],
+        --   [[ | .` / -_) _ \ V / | '  \  ]],
+        --   [[ |_|\_\___\___/\_/|_|_|_|_| ]],
+        -- },
+        header = table.concat({
+          [[  _  _             _        ]],
+          [[ | \| |___ _____ _(_)_ __   ]],
+          [[ | .` / -_) _ \ V / | '  \  ]],
+          [[ |_|\_\___\___/\_/|_|_|_|_| ]],
+        }, '\n'),
+      },
+      sections = {
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        ---Returns the custom footer text section.
+        function()
+          local nvim_version = require('tigion.core.util').info.nvim_version
+          local plugin_stats = require('tigion.core.util').info.plugin_stats
+          local version, date = nvim_version(), os.date('%d.%m.%Y')
+          local count = plugin_stats().count
+          local startuptime = plugin_stats().startuptime
+          local loaded = plugin_stats().loaded
+          -- local text = ' ' .. version .. '   ' .. count .. '   ' .. date
+          return {
+            align = 'center',
+            text = {
+              { ' ', hl = 'footer' },
+              { '' .. version, hl = 'special' },
+              { '   ', hl = 'footer' },
+              -- { '' .. loaded, hl = 'special' },
+              { loaded .. '/', hl = 'footer' },
+              { '' .. count, hl = 'special' },
+              { '  󰛕 ', hl = 'footer' },
+              { '' .. startuptime, hl = 'special' },
+              { ' ms', hl = 'footer' },
+              -- { '   ', hl = 'footer' },
+              -- { date, hl = 'special' },
+            },
+          }
+        end,
+        -- { section = 'startup' },
+      },
+    },
 
     -- Indent guides and scopes
     indent = {
@@ -50,4 +117,21 @@ return {
     { '<Leader>z', function() Snacks.zen.zen() end, desc = 'Toggle Zen Mode' },
     { '<Leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zen Zoom Mode' },
   },
+
+  config = function(_, opts)
+    local snacks = require('snacks')
+
+    -- Reduces the size of the dashboard for small window heights.
+    local win_height = vim.fn.winheight(0)
+    local dashboard_height = 4 + 1 + 2 * #opts.dashboard.preset.keys + 1 + 1
+    if win_height < dashboard_height + 3 then
+      opts.dashboard.preset.header = 'Neovim'
+      table.remove(opts.dashboard.preset.keys, #opts.dashboard.preset.keys - 1)
+      table.remove(opts.dashboard.preset.keys, #opts.dashboard.preset.keys - 1)
+      table.remove(opts.dashboard.preset.keys, #opts.dashboard.preset.keys - 1)
+      table.remove(opts.dashboard.preset.keys, #opts.dashboard.preset.keys - 1)
+    end
+
+    snacks.setup(opts)
+  end,
 }

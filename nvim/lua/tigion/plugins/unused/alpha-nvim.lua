@@ -3,13 +3,14 @@ return {
   -- Link: https://github.com/goolord/alpha-nvim
 
   'goolord/alpha-nvim',
+  enabled = false,
   dependencies = { 'echasnovski/mini.icons' },
   config = function()
     local alpha = require('alpha')
     local dashboard = require('alpha.themes.dashboard')
 
     local nvim_version = require('tigion.core.util').info.nvim_version
-    local plugin_count = require('tigion.core.util').info.plugin_count
+    local plugin_stats = require('tigion.core.util').info.plugin_stats
 
     -- local variables
     local win_height = vim.fn.winheight(0)
@@ -53,7 +54,7 @@ return {
     end
 
     -- Sets the footer text.
-    local version, count, date = nvim_version(), plugin_count(), os.date('%d.%m.%Y')
+    local version, count, date = nvim_version(), plugin_stats().count, os.date('%d.%m.%Y')
     dashboard.section.footer.val = ' ' .. version .. '   ' .. count .. '   ' .. date
 
     -- Sets the color highlight groups of the color scheme.
