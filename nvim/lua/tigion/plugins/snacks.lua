@@ -15,7 +15,7 @@ return {
       animate = { enabled = false },
       scope = { char = '┊' },
     },
-    -- input = { enabled = true },
+    input = { enabled = true },
     -- picker = { enabled = true },
     -- notifier = { enabled = true },
     -- quickfile = { enabled = true },

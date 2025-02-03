@@ -3,6 +3,7 @@ return {
   -- Link: https://github.com/stevearc/dressing.nvim
 
   'stevearc/dressing.nvim',
+  enabled = false,
   event = 'VeryLazy',
   opts = {},
 }
