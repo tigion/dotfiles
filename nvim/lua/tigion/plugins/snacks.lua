@@ -22,8 +22,27 @@ return {
     -- scroll = { enabled = true },
     -- statuscolumn = { enabled = true },
     -- words = { enabled = true },
+    zen = {
+      toggles = {
+        dim = false,
+        git_signs = true,
+        mini_diff_signs = true,
+        diagnostics = true,
+        inlay_hints = false,
+      },
+      show = {
+        statusline = true, -- can only be shown when using the global statusline
+        tabline = false,
+      },
+      win = {
+        backdrop = { transparent = false },
+        -- width = 120,
+      },
+    },
   },
   keys = {
     { '<Leader>tn', function() Snacks.notifier.show_history() end, desc = 'Toggle Notifier History' },
+    { '<Leader>z', function() Snacks.zen.zen() end, desc = 'Toggle Zen Mode' },
+    { '<Leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zen Zoom Mode' },
   },
 }
