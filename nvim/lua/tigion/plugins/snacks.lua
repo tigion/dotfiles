@@ -17,10 +17,13 @@ return {
     },
     input = { enabled = true },
     -- picker = { enabled = true },
-    -- notifier = { enabled = true },
+    notifier = { enabled = true },
     -- quickfile = { enabled = true },
     -- scroll = { enabled = true },
     -- statuscolumn = { enabled = true },
     -- words = { enabled = true },
+  },
+  keys = {
+    { '<Leader>tn', function() Snacks.notifier.show_history() end, desc = 'Toggle Notifier History' },
   },
 }
