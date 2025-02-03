@@ -1,6 +1,6 @@
 return {
   -- This plugin adds a collection of small QoL plugins to Neovim.
-  -- Link: https://github.com/folke/snack.nvim
+  -- Link: https://github.com/folke/snacks.nvim
 
   'folke/snacks.nvim',
   priority = 1000,
