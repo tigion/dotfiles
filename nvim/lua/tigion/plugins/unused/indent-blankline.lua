@@ -7,6 +7,7 @@ return {
   --   configured in colorscheme.lua
 
   'lukas-reineke/indent-blankline.nvim',
+  enabled = false,
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- treesitter
   main = 'ibl',
