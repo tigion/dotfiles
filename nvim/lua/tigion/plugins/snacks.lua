@@ -56,21 +56,25 @@ return {
           local count = plugin_stats().count
           local startuptime = plugin_stats().startuptime
           local loaded = plugin_stats().loaded
-          -- local text = ' ' .. version .. '   ' .. count .. '   ' .. date
+          local updates = ''
+          if plugin_stats().updates > 0 then updates = '  ' .. plugin_stats().updates .. '' end
           return {
             align = 'center',
+            -- text = {
+            --   ' ' .. version .. '   ' .. count .. updates .. '  󰛕 ' .. startuptime .. ' ms',
+            --   hl = 'NonText',
+            -- },
+
             text = {
               { ' ', hl = 'footer' },
-              { '' .. version, hl = 'special' },
-              { '   ', hl = 'footer' },
-              -- { '' .. loaded, hl = 'special' },
-              { loaded .. '/', hl = 'footer' },
-              { '' .. count, hl = 'special' },
-              { '  󰛕 ', hl = 'footer' },
-              { '' .. startuptime, hl = 'special' },
-              { ' ms', hl = 'footer' },
-              -- { '   ', hl = 'footer' },
-              -- { date, hl = 'special' },
+              { '' .. version, hl = 'NonText' },
+              { '    ', hl = 'footer' },
+              { '' .. count, hl = 'NonText' },
+              { updates, hl = 'special' },
+              { '   󰛕 ', hl = 'footer' },
+              { startuptime .. ' ms', hl = 'NonText' },
+              -- { '    ', hl = 'footer' },
+              -- { date, hl = 'NonText' },
             },
           }
         end,
