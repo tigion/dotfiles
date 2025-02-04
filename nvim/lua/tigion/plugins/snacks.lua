@@ -116,9 +116,11 @@ return {
     { '<Leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zen Zoom Mode' },
   },
 
-  -- config = function(_, opts)
-  --   local snacks = require('snacks')
-  --
-  --   snacks.setup(opts)
-  -- end,
+  config = function(_, opts)
+    local snacks = require('snacks')
+    snacks.setup(opts)
+
+    -- FIX: This is a workaround to show updates in the dashboard.
+    vim.defer_fn(function() Snacks.dashboard.update() end, 500)
+  end,
 }
