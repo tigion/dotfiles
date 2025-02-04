@@ -48,23 +48,17 @@ return {
       sections = {
         { section = 'header' },
         { section = 'keys', gap = 1, padding = 1 },
-        ---Returns the custom footer text section.
+        ---Returns a custom footer text section.
         function()
           local nvim_version = require('tigion.core.util').info.nvim_version
           local plugin_stats = require('tigion.core.util').info.plugin_stats
           local version, date = nvim_version(), os.date('%d.%m.%Y')
           local count = plugin_stats().count
           local startuptime = plugin_stats().startuptime
-          local loaded = plugin_stats().loaded
           local updates = ''
           if plugin_stats().updates > 0 then updates = '  ' .. plugin_stats().updates .. '' end
           return {
             align = 'center',
-            -- text = {
-            --   ' ' .. version .. '   ' .. count .. updates .. '  󰛕 ' .. startuptime .. ' ms',
-            --   hl = 'NonText',
-            -- },
-
             text = {
               { ' ', hl = 'footer' },
               { '' .. version, hl = 'NonText' },
@@ -73,12 +67,11 @@ return {
               { updates, hl = 'special' },
               { '   󰛕 ', hl = 'footer' },
               { startuptime .. ' ms', hl = 'NonText' },
-              -- { '    ', hl = 'footer' },
-              -- { date, hl = 'NonText' },
+              { '    ', hl = 'footer' },
+              { date, hl = 'NonText' },
             },
           }
         end,
-        -- { section = 'startup' },
       },
     },
 
