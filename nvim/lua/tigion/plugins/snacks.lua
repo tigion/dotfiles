@@ -88,6 +88,12 @@ return {
     -- Pretty `vim.notify`
     notifier = { enabled = true },
 
+    -- Auto-show LSP references and quickly navigate between them
+    words = {
+      enabled = true,
+      -- modes = { 'n' },
+    },
+
     -- Zen mode • distraction-free coding
     zen = {
       toggles = {
@@ -110,7 +116,12 @@ return {
 
   -- Keymaps for the snacks plugin
   keys = {
+    -- notifier
     { '<Leader>tn', function() Snacks.notifier.show_history() end, desc = 'Toggle Notifier History' },
+    -- words
+    { '++', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
+    { 'üü', function() Snacks.words.jump(-1) end, desc = 'Prev Reference' },
+    -- zen
     { '<Leader>z', function() Snacks.zen.zen() end, desc = 'Toggle Zen Mode' },
     { '<Leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zen Zoom Mode' },
   },
