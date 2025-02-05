@@ -17,12 +17,12 @@ end
 ---@return table
 function M.info.plugin_stats()
   local stats = require('lazy').stats()
-  local updates = require('lazy.status').updates()
+  local updates = require('lazy.manage.checker').updated
   return {
     count = stats.count,
     loaded = stats.loaded,
     startuptime = (math.floor(stats.startuptime * 100 + 0.5) / 100),
-    updates = updates ~= false and tonumber(string.sub(updates, 4), 10) or 0,
+    updates = #updates,
   }
 end
 
