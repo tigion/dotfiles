@@ -126,18 +126,23 @@ return {
     snacks.setup(opts)
 
     -- FIX: This is a workaround to show updates in the dashboard at startup.
-    -- vim.defer_fn(function() Snacks.dashboard.update() end, 500)
+    --      The dashboard is loaded before lazy.nvim has the information
+    --      about updates. So it is updated again after 500 ms.
+    vim.defer_fn(function()
+      snacks.dashboard.update()
+      -- vim.notify('Dashboard updated', vim.log.levels.DEBUG, { title = 'Snacks Setup' })
+    end, 500)
 
-    -- FIX: This is a workaround to update the dashboard when lazy.nvim checks for updates.
+    -- FIX: This is a workaround to update the dashboard
+    --      every time when lazy.nvim checks for updates.
     vim.api.nvim_create_autocmd('User', {
       pattern = 'LazyCheck',
-      callback = function()
-        vim.notify('Lazy.nvim checked for updates', vim.log.levels.DEBUG)
-        -- snacks.dashboard.update()
-        vim.defer_fn(function()
+      callback = function(ev)
+        if vim.bo[ev.buf].filetype == 'snacks_dashboard' then
+          -- vim.notify('Lazy.nvim checked for updates', vim.log.levels.DEBUG, { title = 'Snacks Autocmd' })
           snacks.dashboard.update()
-          vim.notify('Dashboard updated', vim.log.levels.DEBUG)
-        end, 500)
+          -- vim.notify('Dashboard updated', vim.log.levels.DEBUG, { title = 'Snacks Autocmd' })
+        end
       end,
     })
   end,
