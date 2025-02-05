@@ -11,6 +11,11 @@ return {
     -- bigfile = { enabled = true },
 
     -- Beautiful declarative dashboards
+    -- NOTE:
+    -- - `:lua Snacks.dashboard.open()`
+    -- - `:lua Snacks.dashboard.update()`
+    -- - `:lua require("lazy.manage.checker").check()`
+    --
     dashboard = {
       enabled = true,
       width = math.min(math.max(vim.o.columns - 10, 40), 60),
@@ -120,7 +125,20 @@ return {
     local snacks = require('snacks')
     snacks.setup(opts)
 
-    -- FIX: This is a workaround to show updates in the dashboard.
-    vim.defer_fn(function() Snacks.dashboard.update() end, 500)
+    -- FIX: This is a workaround to show updates in the dashboard at startup.
+    -- vim.defer_fn(function() Snacks.dashboard.update() end, 500)
+
+    -- FIX: This is a workaround to update the dashboard when lazy.nvim checks for updates.
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'LazyCheck',
+      callback = function()
+        vim.notify('Lazy.nvim checked for updates', vim.log.levels.DEBUG)
+        -- snacks.dashboard.update()
+        vim.defer_fn(function()
+          snacks.dashboard.update()
+          vim.notify('Dashboard updated', vim.log.levels.DEBUG)
+        end, 500)
+      end,
+    })
   end,
 }
