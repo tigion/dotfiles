@@ -85,6 +85,12 @@ return {
         toggler.toggle,
         { noremap = true, silent = true, desc = 'Invert text/operand' }
       )
+      vim.keymap.set(
+        { 'n', 'x' },
+        '<Leader>I',
+        require('tigion.core.util').switch_word_to_opposite_word,
+        { noremap = true, silent = true, desc = 'Invert text/operand' }
+      )
     end,
   },
 
