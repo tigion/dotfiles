@@ -14,7 +14,11 @@ return {
           lsp_format = 'fallback',
           timeout_ms = 5000,
         })
-        vim.notify('Formatted ' .. (vim.api.nvim_get_mode().mode == 'n' and 'buffer' or 'selection'))
+        vim.notify(
+          'Formatted ' .. (vim.api.nvim_get_mode().mode == 'n' and 'buffer' or 'selection'),
+          vim.log.levels.INFO,
+          { id = 'toggle_conform', title = 'Conform' }
+        )
       end,
       mode = { 'n', 'x' },
       desc = 'Format buffer or selection',
@@ -23,7 +27,11 @@ return {
       '<Leader>tf',
       function()
         vim.g.conform_disable_format_on_save = not vim.g.conform_disable_format_on_save
-        vim.notify('Format on save: ' .. (vim.g.conform_disable_format_on_save and 'OFF' or 'ON'))
+        vim.notify(
+          'Format on save: ' .. (vim.g.conform_disable_format_on_save and 'OFF' or 'ON'),
+          vim.log.levels.INFO,
+          { id = 'toggle_conform', title = 'Conform' }
+        )
       end,
       desc = 'Toggle format on save',
     },
