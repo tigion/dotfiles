@@ -68,7 +68,7 @@ return {
             require('tigion.core.util').info.spell,
             separator = '',
             padding = { left = 1, right = 0 },
-            on_click = function() print('Spell languages: ' .. table.concat(vim.opt.spelllang:get(), ', ')) end,
+            on_click = function() vim.notify('Spell languages: ' .. table.concat(vim.opt.spelllang:get(), ', ')) end,
           },
           {
             require('tigion.core.util').info.spell_languages,
@@ -83,7 +83,7 @@ return {
           { require('tigion.core.util').codeium.status },
           {
             require('tigion.core.util').info.lsp,
-            on_click = function() print('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
+            on_click = function() vim.notify('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
           },
           'encoding',
           'fileformat',
