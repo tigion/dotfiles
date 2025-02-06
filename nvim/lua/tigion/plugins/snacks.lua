@@ -83,6 +83,9 @@ return {
     -- Pretty `vim.notify`
     notifier = { enabled = true },
 
+    -- Smooth scrolling for Neovim
+    scroll = { enabled = true },
+
     -- Auto-show LSP references and quickly navigate between them
     words = {
       enabled = true,
