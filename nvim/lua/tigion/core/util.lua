@@ -122,6 +122,81 @@ function M.toggle.diagnostics_visibility()
   diagnostics_visible = not diagnostics_visible
 end
 
+function M.invert_word()
+  local col = vim.fn.col('.')
+  local line = vim.fn.getline('.')
+  local inversions = {
+    ['true'] = 'false',
+    ['True'] = 'False',
+    ['yes'] = 'no',
+    ['on'] = 'off',
+    ['left'] = 'right',
+    ['up'] = 'down',
+    ['enable'] = 'disable',
+    ['!='] = '==',
+    ['>='] = '<=',
+    ['>'] = '<',
+  }
+
+  local function find_word1(l, c, w)
+    local min_idx = c - #w
+    local idx = vim.fn.match(l, w, min_idx)
+    if idx ~= -1 and idx < c then return idx end
+    return -1
+  end
+
+  local function find_word2(l, c, w)
+    c = c + 1
+    local min_idx = c - #w
+    local idx = string.find(l, w, min_idx)
+    if idx ~= nil and idx < c then return idx end
+    return -1
+  end
+
+  for w, i in pairs(inversions) do
+    local idx = find_word2(line, col, w)
+    if idx ~= -1 then
+      vim.notify('Found: ' .. w .. ' (' .. i .. ') at ' .. idx)
+      break
+    end
+    idx = find_word2(line, col, i)
+    if idx ~= -1 then
+      vim.notify('Found: ' .. i .. ' (' .. w .. ') at ' .. idx)
+      break
+    end
+
+    -- local min_idx = col - #w
+    -- local idx = vim.fn.match(line, w, min_idx)
+    -- if idx ~= -1 and idx < col then
+    --   vim.notify('Found: ' .. w .. '/' .. i .. ' at ' .. idx)
+    --   break
+    -- end
+    -- ab ciw fg ciw aciwd
+    -- 0123456789012345678
+    --    ^      ^|   ^
+
+    --        ciwac
+    --          ciwac
+    --            ciwac
+    -- 0123456789012345678
+    --        x x |
+
+    -- string.gsub(line, '([%w_]+)', word)
+  end
+
+  -- local word = vim.fn.expand('<cword>')
+  -- for w, i in pairs(inversions) do
+  --   if word == w then
+  --     vim.cmd('normal! ciw' .. i)
+  --     break
+  --   end
+  --   if word == i then
+  --     vim.cmd('normal! ciw' .. w)
+  --     break
+  --   end
+  -- end
+end
+
 -- M.vim = {}
 --
 -- ---Sets special keymappings for prev/next.
