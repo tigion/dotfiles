@@ -138,15 +138,14 @@ return {
       -- vim.notify('Dashboard updated', vim.log.levels.DEBUG, { title = 'Snacks Setup' })
     end, 500)
 
-    -- FIX: This is a workaround to update the dashboard
-    --      every time when lazy.nvim checks for updates.
+    -- Updates an existing dashboard every time when lazy.nvim checks or updates plugins.
     vim.api.nvim_create_autocmd('User', {
-      pattern = 'LazyCheck',
-      callback = function(ev)
-        if vim.bo[ev.buf].filetype == 'snacks_dashboard' then
-          -- vim.notify('Lazy.nvim checked for updates', vim.log.levels.DEBUG, { title = 'Snacks Autocmd' })
-          snacks.dashboard.update()
-          -- vim.notify('Dashboard updated', vim.log.levels.DEBUG, { title = 'Snacks Autocmd' })
+      pattern = { 'LazyCheck', 'LazyUpdate' },
+      callback = function()
+        for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+          if vim.api.nvim_get_option_value('filetype', { buf = bufnr }) == 'snacks_dashboard' then
+            snacks.dashboard.update()
+          end
         end
       end,
     })
