@@ -60,41 +60,6 @@ return {
   },
 
   {
-    -- This plugin inverts text in Neovim.
-    -- Link: https://github.com/nguyenvukhang/nvim-toggler
-
-    'nguyenvukhang/nvim-toggler',
-    enabled = true,
-    event = { 'BufReadPost', 'BufNewFile' },
-
-    config = function()
-      local toggler = require('nvim-toggler')
-
-      toggler.setup({
-        inverses = {
-          ['>='] = '<=',
-          ['>'] = '<',
-        },
-        remove_default_keybinds = true,
-        remove_default_inverses = false,
-      })
-
-      vim.keymap.set(
-        { 'n', 'x' },
-        '<Leader>i',
-        toggler.toggle,
-        { noremap = true, silent = true, desc = 'Invert text/operand' }
-      )
-      vim.keymap.set(
-        { 'n', 'x' },
-        '<Leader>I',
-        require('tigion.core.util').switch_word_to_opposite_word,
-        { noremap = true, silent = true, desc = 'Invert text/operand' }
-      )
-    end,
-  },
-
-  {
     -- This plugin extends and creates a/i textobjects in Neovim.
     -- Link: https://github.com/echasnovski/mini.ai
 

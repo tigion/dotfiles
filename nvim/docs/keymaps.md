@@ -36,7 +36,6 @@
     - [nvim-lint](#nvim-lint)
     - [nvim-sessions](#nvim-sessions)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
-    - [nvim-toggler](#nvim-toggler)
     - [nvim-tree](#nvim-tree)
     - [nvim-treesitter](#nvim-treesitter)
     - [outline.nvim](#outlinenvim)
@@ -117,6 +116,7 @@
 | `n`      | `<Leader>sw`  | Search and replace word under cursor |
 | `n`      | `oo`          | Insert line below (normal mode)      |
 | `n`      | `OO`          | Insert line above (normal mode)      |
+| `n`      | `<Leader>i`   | Switch to opposite word              |
 
 ### Code Navigation
 
@@ -389,14 +389,6 @@ Snippets:
 |      | `<C-l>`     | Go to the right window/pane    |
 |      | `<C-\\>`    | Go to the previous window/pane |
 |      | `<C-Space>` | Go to the next window/pane     |
-
-### [nvim-toggler]
-
-[nvim-toggler]: https://github.com/nguyenvukhang/nvim-toggler
-
-| Mode    | Keymap      | Description         |
-| ------- | ----------- | ------------------- |
-| `n`,`x` | `<Leader>i` | Invert text/operand |
 
 ### [nvim-tree]
 

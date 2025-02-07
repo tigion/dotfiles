@@ -12,6 +12,7 @@
 local keymap = vim.keymap
 
 local toggle = require('tigion.core.util').toggle
+local addons = require('tigion.core.addons')
 
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -140,6 +141,9 @@ keymap.set(
 -- increment/decrement numbers
 keymap.set('n', '<Leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
 keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
+
+-- Switch word under cursor to opposite word
+keymap.set('n', '<Leader>i', addons.switch_word_to_opposite_word, { desc = 'Switch to opposite word' })
 
 -- Buffers ---------------------------------------------------------------------
 
