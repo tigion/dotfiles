@@ -83,4 +83,22 @@ return {
       }
     end,
   },
+
+  {
+    -- A Neovim plugin to quickly switch the word under the cursor to its opposite word.
+    -- Link: https://github.com/tigion/nvim-opposites
+
+    'tigion/nvim-opposites',
+    dev = false,
+    -- event = { 'BufReadPost', 'BufNewFile' },
+    keys = {
+      { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch to opposite word' },
+    },
+    ---@type opposites.Config
+    opts = {
+      opposites = {
+        ['ja'] = 'nein',
+      },
+    },
+  },
 }

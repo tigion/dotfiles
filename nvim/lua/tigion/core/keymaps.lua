@@ -143,7 +143,7 @@ keymap.set('n', '<Leader>+', '<C-a>', { desc = 'Increment number' }) -- incremen
 keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- Switch word under cursor to opposite word
-keymap.set('n', '<Leader>i', addons.switch_word_to_opposite_word, { desc = 'Switch to opposite word' })
+-- keymap.set('n', '<Leader>i', addons.switch_word_to_opposite_word, { desc = 'Switch to opposite word' })
 
 -- Buffers ---------------------------------------------------------------------
 

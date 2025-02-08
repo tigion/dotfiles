@@ -34,6 +34,7 @@
     - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
+    - [nvim-opposites](#nvim-opposites)
     - [nvim-sessions](#nvim-sessions)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-tree](#nvim-tree)
@@ -41,6 +42,7 @@
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
+    - [snacks.words](#snackswords)
     - [snacks.notifier](#snacksnotifier)
     - [snacks.zen](#snackszen)
     - [supermaven-nvim](#supermaven-nvim)
@@ -48,7 +50,6 @@
     - [todo-comments.nvim](#todo-commentsnvim)
     - [treewalker.nvim](#treewalkernvim)
     - [trouble.nvim](#troublenvim)
-    - [vim-illuminate](#vim-illuminate)
     - [which-key.nvim](#which-keynvim)
     - [Deactivated](#deactivated)
       - [codeium.vim](#codeiumvim)
@@ -116,7 +117,6 @@
 | `n`      | `<Leader>sw`  | Search and replace word under cursor |
 | `n`      | `oo`          | Insert line below (normal mode)      |
 | `n`      | `OO`          | Insert line above (normal mode)      |
-| `n`      | `<Leader>i`   | Switch to opposite word              |
 
 ### Code Navigation
 
@@ -368,6 +368,14 @@ Snippets:
 | ---- | --------------- | ------------------------ |
 | `n`  | ~~`<Leader>l`~~ | Lint current buffer/file |
 
+### [nvim-opposites]
+
+[nvim-opposites]: https://github.com/tigion/nvim-opposites
+
+| Mode | Keymap      | Description             |
+| ---- | ----------- | ----------------------- |
+| `n`  | `<Leader>i` | Switch to opposite word |
+
 ### [nvim-sessions]
 
 [nvim-sessions]: https://github.com/tigion/nvim-sessions
@@ -435,6 +443,15 @@ Snippets:
 | Mode | Keymap       | Description            |
 | ---- | ------------ | ---------------------- |
 | `n`  | `<Leader>tm` | Toggle Render Markdown |
+
+### [snacks.words]
+
+[snacks.words]: https://github.com/folke/snacks.nvim
+
+| Mode | Keymap | Description        |
+| ---- | ------ | ------------------ |
+| `n`  | `++`   | Next Reference     |
+| `n`  | `üü`   | Previous Reference |
 
 ### [snacks.notifier]
 
@@ -549,15 +566,6 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `üt`         | Previous item                              |
 
 - See also [Quickfix/Location List](#quickfixlocation-list)
-
-### [vim-illuminate]
-
-[vim-illuminate]: https://github.com/RRethy/vim-illuminate
-
-| Mode | Keymap | Description        |
-| ---- | ------ | ------------------ |
-| `n`  | `++`   | Next reference     |
-| `n`  | `üü`   | Previous reference |
 
 ### [which-key.nvim]
 
