@@ -46,7 +46,7 @@ return {
         ['<C-j>'] = { 'select_next', 'fallback' },
         cmdline = {
           preset = 'enter',
-          ['S-<Tab>'] = { 'select_prev', 'fallback' }, -- FIX: Doesn't work in tmux
+          ['<S-Tab>'] = { 'select_prev', 'fallback' },
           ['<Tab>'] = { 'select_next', 'fallback' },
         },
       },
