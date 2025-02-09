@@ -90,13 +90,16 @@ opt.cmdheight = 1
 opt.fillchars:append('eob: ') -- no ~ on not existent lines
 opt.laststatus = 3 -- global statusline (2 local)
 opt.path:append({ '**' }) -- Finding files - Search down into subfolders
+opt.ruler = false -- hide the ruler
 opt.scrolloff = 4
 opt.showcmd = true
+opt.showmode = false -- hide mode (is in extra statusline)
 opt.smoothscroll = true
 opt.timeout = true
 opt.timeoutlen = 300 -- quickly trigger keymaps (default 1000)
 opt.updatetime = 50
 opt.wildignore:append({ '*/node_modules/*' })
+opt.wildmode = 'longest:full,full'
 
 -- Clippboard
 if isMac then
