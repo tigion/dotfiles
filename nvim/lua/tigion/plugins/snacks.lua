@@ -78,7 +78,7 @@ return {
           local hour = tonumber(vim.fn.strftime('%H'))
           local part_id = math.floor((hour + 6) / 8) + 1
           local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
-          local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
+          local username = vim.loop.os_getenv('USER_ALIAS_NAME') or vim.loop.os_get_passwd()['username'] or 'user'
           return {
             align = 'center',
             text = { ('“Good %s, %s”'):format(day_part, username), hl = 'NonText' },
