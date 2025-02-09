@@ -21,7 +21,7 @@ return {
       width = math.min(math.max(vim.o.columns - 10, 40), 60),
       preset = {
         keys = function()
-          local enabled = vim.o.lines >= 30
+          local enabled = vim.o.lines >= 21
           local settings_action = '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR><Cmd>NvimTreeOpen<CR>'
           return {
             { icon = '󰈔 ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
@@ -29,7 +29,7 @@ return {
             { icon = ' ', key = 'l', desc = 'Load Session', action = ':Session load' },
             { icon = '󰱼 ', key = 'f', desc = 'Find File', action = ':Telescope find_files' },
             { icon = '󰺮 ', key = 'g', desc = 'Find Text', action = ':Telescope live_grep' },
-            { icon = '󱤇 ', key = 'h', desc = 'Find Help Tag', action = ':Telescope live_grep', enabled = enabled },
+            { icon = '󱤇 ', key = 'h', desc = 'Find Help Tag', action = ':Telescope help_tags', enabled = enabled },
             { icon = ' ', key = 's', desc = 'Settings', action = settings_action, enabled = enabled },
             { icon = ' ', key = 'p', desc = 'Check Plugins', action = ':Lazy', enabled = enabled },
             { icon = ' ', key = 'c', desc = 'Check Health', action = ':checkhealth', enabled = enabled },
@@ -37,16 +37,19 @@ return {
           }
         end,
         header = table.concat({
-          [[  _  _             _        ]],
-          [[ | \| |___ _____ _(_)_ __   ]],
-          [[ | .` / -_) _ \ V / | '  \  ]],
-          [[ |_|\_\___\___/\_/|_|_|_|_| ]],
+          [[   █  █   ]],
+          [[   █ ██   ]],
+          [[   ████   ]],
+          [[   ██ ███   ]],
+          [[   █  █   ]],
+          [[             ]],
+          [[ n e o v i m ]],
         }, '\n'),
       },
       sections = {
         { section = 'header' },
         { section = 'keys', gap = 1, padding = 1 },
-        ---Returns a custom footer text section.
+        -- Prints some information about Neovim, the plugins and the date.
         function()
           local version = require('tigion.core.util').info.nvim_version()
           local plugin_stats = require('tigion.core.util').info.plugin_stats()
@@ -65,6 +68,20 @@ return {
               { '    ', hl = 'footer' },
               { date, hl = 'NonText' },
             },
+            padding = 1,
+          }
+        end,
+        -- Greets the user depending on the time of day.
+        function()
+          -- Source: https://github.com/echasnovski/mini.nvim/blob/main/lua/mini/starter.lua
+          -- [02:00, 10:00)(8h) - morning, [10:00, 18:00)(8h) - day, [18:00, 02:00)(8h) - evening
+          local hour = tonumber(vim.fn.strftime('%H'))
+          local part_id = math.floor((hour + 6) / 8) + 1
+          local day_part = ({ 'evening', 'morning', 'afternoon', 'evening' })[part_id]
+          local username = vim.loop.os_get_passwd()['username'] or 'USERNAME'
+          return {
+            align = 'center',
+            text = { ('“Good %s, %s”'):format(day_part, username), hl = 'NonText' },
           }
         end,
       },
@@ -126,6 +143,11 @@ return {
 
   config = function(_, opts)
     local snacks = require('snacks')
+
+    -- Change dashboard content depending on the height of the screen.
+    if vim.o.lines < 37 then opts.dashboard.sections[2].gap = 0 end
+    if vim.o.lines < 28 then opts.dashboard.preset.header = 'N E O V I M' end
+
     snacks.setup(opts)
 
     -- Dashboard autocommands
