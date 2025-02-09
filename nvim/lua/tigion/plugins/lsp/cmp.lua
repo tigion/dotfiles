@@ -44,6 +44,11 @@ return {
         ['<C-y>'] = { 'select_and_accept' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
+        cmdline = {
+          preset = 'enter',
+          ['S-<Tab>'] = { 'select_prev', 'fallback' }, -- FIX: Doesn't work in tmux
+          ['<Tab>'] = { 'select_next', 'fallback' },
+        },
       },
 
       completion = {
@@ -102,7 +107,11 @@ return {
             min_keyword_length = 2,
           },
           cmdline = {
-            min_keyword_length = 2,
+            -- min_keyword_length = 2,
+            min_keyword_length = function(ctx)
+              -- only applies when typing a command, doesn't apply to arguments
+              return string.find(ctx.line, ' ') == nil and 2 or 0
+            end,
           },
           omni = {
             name = 'omni', -- IMPORTANT: use the same name as you would for nvim-cmp
