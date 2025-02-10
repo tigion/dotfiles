@@ -90,12 +90,12 @@ return {
 
     'tigion/nvim-opposites',
     dev = false,
-    -- event = { 'BufReadPost', 'BufNewFile' },
     keys = {
       { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch to opposite word' },
     },
     ---@type opposites.Config
     opts = {
+      -- use_case_sensitive_mask = false,
       opposites = {
         ['ja'] = 'nein',
       },
