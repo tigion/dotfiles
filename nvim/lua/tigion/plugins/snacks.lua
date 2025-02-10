@@ -22,15 +22,26 @@ return {
       preset = {
         keys = function()
           local enabled = vim.o.lines >= 21
-          local settings_action = '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR><Cmd>NvimTreeOpen<CR>'
           return {
             { icon = '󰈔 ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
             { icon = '󱔗 ', key = 'r', desc = 'Recent Files', action = ':Telescope oldfiles' },
-            { icon = ' ', key = 'l', desc = 'Load Session', action = ':Session load' },
+            {
+              icon = ' ',
+              key = 'l',
+              desc = 'Load Session',
+              action = ':Session load',
+              enabled = require('sessions').exists(),
+            },
             { icon = '󰱼 ', key = 'f', desc = 'Find File', action = ':Telescope find_files' },
             { icon = '󰺮 ', key = 'g', desc = 'Find Text', action = ':Telescope live_grep' },
             { icon = '󱤇 ', key = 'h', desc = 'Find Help Tag', action = ':Telescope help_tags', enabled = enabled },
-            { icon = ' ', key = 's', desc = 'Settings', action = settings_action, enabled = enabled },
+            {
+              icon = ' ',
+              key = 's',
+              desc = 'Settings',
+              action = '<Cmd>cd ' .. vim.fn.stdpath('config') .. '<CR><Cmd>NvimTreeOpen<CR>',
+              enabled = enabled,
+            },
             { icon = ' ', key = 'p', desc = 'Check Plugins', action = ':Lazy', enabled = enabled },
             { icon = ' ', key = 'c', desc = 'Check Health', action = ':checkhealth', enabled = enabled },
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
