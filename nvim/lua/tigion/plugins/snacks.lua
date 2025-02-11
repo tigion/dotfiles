@@ -108,6 +108,35 @@ return {
     -- Better `vim.ui.input`
     input = { enabled = true },
 
+    -- A modern fuzzy-finder. (Like Telescope)
+    picker = {
+      ui_select = true, -- Better `vim.ui.select`
+      layout = {
+        preset = 'telescope',
+      },
+      sources = {
+        files = { hidden = true },
+        grep = { hidden = true },
+        explorer = { hidden = true },
+      },
+      win = {
+        -- input window
+        input = {
+          keys = {
+            ['<Esc>'] = { 'close', mode = { 'n', 'i' } }, -- Closes the picker on ESC instead of going to normal mode.
+          },
+        },
+        preview = {
+          wo = {
+            foldcolumn = '0',
+            number = false,
+            relativenumber = false,
+            signcolumn = 'no',
+          },
+        },
+      },
+    },
+
     -- Pretty `vim.notify`
     notifier = { enabled = true },
 
@@ -144,9 +173,63 @@ return {
   keys = {
     -- notifier
     { '<Leader>tn', function() Snacks.notifier.show_history() end, desc = 'Toggle Notifier History' },
+
+    -- picker
+    -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-sources
+    -- :lua Snacks.picker.pickers()
+    -- Files
+    { 'Öf', function() Snacks.picker.files() end, desc = 'Find files (cwd)' },
+    {
+      'Ör',
+      function() Snacks.picker.recent({ filter = { cwd = true } }) end,
+      desc = 'Find recent files (cwd)',
+    },
+    -- Buffers
+    { 'Öb', function() Snacks.picker.buffers() end, desc = 'Find open buffers' },
+    -- Strings
+    { 'Ög', function() Snacks.picker.lines({ preset = 'telescope' }) end, desc = 'Find string (buffer)' },
+    { 'Ögg', function() Snacks.picker.grep() end, desc = 'Find string (cwd)' },
+    {
+      'Öw',
+      function() Snacks.picker.grep_word() end,
+      mode = { 'n', 'x' },
+      desc = 'Find current word/selection (cwd)',
+    },
+    -- Help tags
+    -- Diagnostics
+    { 'Öd', function() Snacks.picker.diagnostics_buffer() end, desc = 'Find diagnostics (buffer)' },
+    { 'Ödd', function() Snacks.picker.diagnostics() end, desc = 'Find diagnostics (cwd)' },
+    -- Commands and command history
+    { 'Ö:', function() Snacks.picker.commands() end, desc = 'Find commands' },
+    { 'Ö::', function() Snacks.picker.command_history() end, desc = 'Find command history' },
+    -- Search history
+    { 'Ö/', function() Snacks.picker.search_history() end, desc = 'Find search history' },
+    -- Git
+    { 'Öc', function() Snacks.picker.git_log_file() end, desc = 'Find git commits (buffer)' },
+    { 'Öcc', function() Snacks.picker.git_log() end, desc = 'Find git commits' },
+    -- Treesitter
+    {
+      'Ös',
+      -- function() Snacks.picker.treesitter() end,
+      function() Snacks.picker.treesitter({ filter = { default = true } }) end,
+      desc = 'Find Treesitter symbols',
+    },
+    {
+      'ÖS',
+      function() Snacks.picker.lsp_symbols({ tree = false }) end,
+      desc = 'Find LSP symbols',
+    },
+    { 'ÖSS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'Find LSP symbols (cwd)' },
+    -- Register
+    { 'ÖR', function() Snacks.picker.registers() end, desc = 'Find registers' },
+    -- Snacks.picker
+    { 'ÖÖ', function() Snacks.picker.resume() end, desc = 'Reopen previous search' },
+    { 'ÖÖÖ', function() Snacks.picker.pickers() end, desc = 'Find picker sources' },
+
     -- words
     { '++', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
     { 'üü', function() Snacks.words.jump(-1) end, desc = 'Prev Reference' },
+
     -- zen
     { '<Leader>z', function() Snacks.zen.zen() end, desc = 'Toggle Zen Mode' },
     { '<Leader>Z', function() Snacks.zen.zoom() end, desc = 'Toggle Zen Zoom Mode' },
@@ -165,11 +248,11 @@ return {
 
     -- FIX: This is a workaround to show updates in the dashboard at startup.
     --      The dashboard is loaded before lazy.nvim has the information
-    --      about updates. So it is updated again after 500 ms.
+    --      about updates. So it is updated again after a short time.
     vim.defer_fn(function()
       snacks.dashboard.update()
       -- vim.notify('Dashboard updated', vim.log.levels.DEBUG, { title = 'Snacks Setup' })
-    end, 500)
+    end, 1000)
 
     -- Updates an existing dashboard every time when lazy.nvim checks or updates plugins.
     vim.api.nvim_create_autocmd('User', {
