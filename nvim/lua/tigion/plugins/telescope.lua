@@ -20,8 +20,7 @@ return {
     -- Strings
     { 'ög', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Find string (buffer)' },
     { 'ögg', '<Cmd>Telescope live_grep<CR>', desc = 'Find string (cwd)' },
-    { 'öw', '<Cmd>Telescope grep_string<CR>', desc = 'Find current word (cwd)' },
-    { 'öw', '<Cmd>Telescope grep_string<CR>', mode = 'x', desc = 'Find selection (cwd)' },
+    { 'öw', '<Cmd>Telescope grep_string<CR>', mode = { 'n', 'x' }, desc = 'Find current word/selection (cwd)' },
     -- Help tags
     { 'öh', '<Cmd>Telescope help_tags<CR>', desc = 'Find help tags' },
     -- Diagnostics
