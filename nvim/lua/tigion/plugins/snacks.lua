@@ -184,6 +184,9 @@ return {
     -- Pretty `vim.notify`
     notifier = { enabled = true },
 
+    -- Quickly open scratch buffers for testing code, creating notes or just messing around.
+    scratch = {},
+
     -- Smooth scrolling for Neovim
     scroll = { enabled = true },
 
@@ -269,6 +272,10 @@ return {
     -- Snacks.picker
     { 'ÖÖ', function() Snacks.picker.resume() end, desc = 'Reopen previous search' },
     { 'ÖÖÖ', function() Snacks.picker.pickers() end, desc = 'Find picker sources' },
+
+    -- scratch
+    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
+    -- { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
 
     -- words
     { '++', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
