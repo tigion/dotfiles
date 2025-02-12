@@ -58,7 +58,12 @@ return {
       hl.SnacksPickerInputTitle = { fg = c.bg_float, bg = c.orange }
       hl.SnacksPickerInputBorder = { fg = c.bg_float, bg = c.bg_float }
       hl.SnacksPickerPreview = { fg = c.fg, bg = bg_float3 }
+      hl.SnacksPickerPreviewTitle = { fg = bg_float3, bg = c.green }
       hl.SnacksPickerPreviewBorder = { fg = bg_float3, bg = bg_float3 }
+      --
+      hl.SnacksPickerBoxTitle = { fg = c.bg_float, bg = c.orange }
+      hl.SnacksPickerBoxBorder = { fg = c.bg_float, bg = c.bg_float }
+      -- hl.SnacksPickerBoxBorder = { fg = c.blue, bg = c.bg_float }
 
       -- NvimTree
       hl.NvimTreeExecFile = { fg = c.red }
