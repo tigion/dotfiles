@@ -504,7 +504,7 @@ Snippets:
 | `n`      | `ös`      | Find treesitter symbols       |
 | `n`      | `öR`      | Find registers                |
 | `n`      | `öö`      | Reopen previous search        |
-| `n`      | `ööb`     | Find telescope builtin        |
+| `n`      | `ööö`     | Find telescope builtin        |
 
 In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings)):
 

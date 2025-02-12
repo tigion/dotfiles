@@ -41,7 +41,7 @@ return {
     -- Telescope
     --
     { 'öö', '<Cmd>Telescope resume<CR>', desc = 'Reopen previous search' },
-    { 'ööb', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
+    { 'ööö', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
   },
   opts = function()
     local actions = require('telescope.actions')
