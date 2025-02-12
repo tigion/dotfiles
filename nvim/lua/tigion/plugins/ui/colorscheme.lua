@@ -47,6 +47,7 @@ return {
       hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
       hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
       hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
+      hl.TelescopePreviewTitle = { fg = bg_float3, bg = c.magenta }
       hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
       hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
 
@@ -58,7 +59,7 @@ return {
       hl.SnacksPickerInputTitle = { fg = c.bg_float, bg = c.orange }
       hl.SnacksPickerInputBorder = { fg = c.bg_float, bg = c.bg_float }
       hl.SnacksPickerPreview = { fg = c.fg, bg = bg_float3 }
-      hl.SnacksPickerPreviewTitle = { fg = bg_float3, bg = c.green }
+      hl.SnacksPickerPreviewTitle = { fg = bg_float3, bg = c.magenta }
       hl.SnacksPickerPreviewBorder = { fg = bg_float3, bg = bg_float3 }
       --
       hl.SnacksPickerBoxTitle = { fg = c.bg_float, bg = c.orange }

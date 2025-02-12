@@ -111,13 +111,52 @@ return {
     -- A modern fuzzy-finder. (Like Telescope)
     picker = {
       ui_select = true, -- Better `vim.ui.select`
-      layout = {
-        preset = 'telescope',
+      layout = 'telescope', -- The default layout preset.
+      layouts = {
+        -- A borderless layout for the select picker.
+        -- Initial height of the inner root box is item count + 2
+        -- https://github.com/folke/snacks.nvim/blob/70afc4225ac8ae3e6c8af88d205b03991a173af3/lua/snacks/picker/select.lua#L37
+        -- FIX: Workaround to simulate a input box with solid border:
+        --      - in root box: (input + box) + list)
+        --      +----------+
+        --      |          | <- root box border top
+        --      +--------++|
+        --      | >      ||| <- input box no top or bottom border
+        --      +--------+||
+        --      |         || <- box border bottom
+        --      +---------+|
+        --      | 1.      || <- list box no border
+        --      | 2.      ||
+        --      +---------++
+        my_select = {
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.4,
+            min_height = 1,
+            border = 'top',
+            title = '{title}',
+            box = 'vertical', -- root box
+            {
+              box = 'vertical',
+              border = 'bottom', -- inner box top border = 1 line
+              height = 1,
+              { win = 'input', title = '{title}', height = 1, border = 'hpad' }, -- input = 1 line
+            },
+            { win = 'list', border = 'none' }, -- list = #items lines
+          },
+        },
       },
       sources = {
-        files = { hidden = true },
-        grep = { hidden = true },
-        explorer = { hidden = true },
+        files = { hidden = true }, -- Shows hidden files.
+        grep = { hidden = true }, -- Shows hidden files.
+        explorer = { hidden = true }, -- Shows hidden files.
+        select = {
+          layout = {
+            preset = 'my_select',
+          },
+        },
       },
       win = {
         -- input window
@@ -187,7 +226,7 @@ return {
     -- Buffers
     { 'Öb', function() Snacks.picker.buffers() end, desc = 'Find open buffers' },
     -- Strings
-    { 'Ög', function() Snacks.picker.lines({ preset = 'telescope' }) end, desc = 'Find string (buffer)' },
+    { 'Ög', function() Snacks.picker.lines() end, desc = 'Find string (buffer)' },
     { 'Ögg', function() Snacks.picker.grep() end, desc = 'Find string (cwd)' },
     {
       'Öw',
@@ -211,12 +250,12 @@ return {
     {
       'Ös',
       -- function() Snacks.picker.treesitter() end,
-      function() Snacks.picker.treesitter({ filter = { default = true } }) end,
+      function() Snacks.picker.treesitter({ tree = false, filter = { default = true } }) end,
       desc = 'Find Treesitter symbols',
     },
     {
       'ÖS',
-      function() Snacks.picker.lsp_symbols({ tree = false }) end,
+      function() Snacks.picker.lsp_symbols({ tree = false, layout = { preset = 'default' } }) end,
       desc = 'Find LSP symbols',
     },
     { 'ÖSS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'Find LSP symbols (cwd)' },
