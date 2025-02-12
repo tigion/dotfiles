@@ -15,7 +15,7 @@ return {
   priority = 1000,
   opts = {
     style = 'moon', -- moon, night, (storm, day)
-    transparent = true,
+    transparent = false,
     styles = {
       -- dark, transparent or normal
       sidebars = 'transparent',
@@ -23,6 +23,7 @@ return {
     },
     lualine_bold = true,
     on_colors = function(colors)
+      colors.bg = '#1a1b26'
       colors.comment = '#626784' -- use a more gray comment
     end,
     on_highlights = function(hl, c)
