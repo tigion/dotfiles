@@ -110,15 +110,16 @@ return {
 
     -- A modern fuzzy-finder. (Like Telescope)
     picker = {
-      layout = 'telescope', -- The default layout preset.
-      -- TODO: Hide preview if width is too small.
-      --       preview = false, --function(ctx) return vim.o.columns >= 120 and true or false end,
-      --
-      -- layout = {
-      --   -- preview = function() return vim.o.columns >= 120 and true or false end,
-      --   preset = 'telescope',
-      --   layout = {},
-      -- },
+      -- layout = 'telescope', -- The default layout preset.
+      layout = function()
+        if vim.o.columns >= 120 then
+          return 'telescope'
+        elseif vim.o.lines >= 25 then
+          return 'my_telescope_vertical'
+        else
+          return 'my_telescope_no_preview'
+        end
+      end,
       matcher = {
         frecency = true,
       },
@@ -134,6 +135,37 @@ return {
         },
       },
       layouts = {
+        my_telescope_vertical = {
+          reverse = true,
+          layout = {
+            box = 'vertical',
+            backdrop = false,
+            width = 0.8,
+            height = 0.9,
+            border = 'none',
+            {
+              win = 'preview',
+              title = '{preview:Preview}',
+              height = 0.4,
+              border = 'rounded',
+              title_pos = 'center',
+            },
+            { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
+            { win = 'input', height = 1, border = 'rounded', title = '{title} {live} {flags}', title_pos = 'center' },
+          },
+        },
+        my_telescope_no_preview = {
+          reverse = true,
+          layout = {
+            box = 'vertical',
+            backdrop = false,
+            width = 0.8,
+            height = 0.9,
+            border = 'none',
+            { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
+            { win = 'input', height = 1, border = 'rounded', title = '{title} {live} {flags}', title_pos = 'center' },
+          },
+        },
         -- A borderless layout for the select picker.
         -- Initial height of the inner root box is item count + 2
         -- https://github.com/folke/snacks.nvim/blob/70afc4225ac8ae3e6c8af88d205b03991a173af3/lua/snacks/picker/select.lua#L37
