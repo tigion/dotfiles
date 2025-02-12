@@ -41,14 +41,24 @@ return {
       hl.BlinkCmpDocSeparator = hl.BlinkCmpDocBorder
 
       -- Telescope
-      hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
       hl.TelescopeNormal = { fg = c.fg, bg = bg_float2 }
       hl.TelescopeTitle = { fg = bg_float2, bg = c.blue }
+      hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
+      hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
       hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
       hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
-      hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
-      hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
       hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
+      hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
+
+      -- Snacks.picker
+      hl.SnacksPicker = { fg = c.fg, bg = bg_float2 }
+      hl.SnacksPickerTitle = { fg = bg_float2, bg = c.blue }
+      hl.SnacksPickerBorder = { fg = bg_float2, bg = bg_float2 }
+      hl.SnacksPickerInput = { fg = c.fg, bg = c.bg_float }
+      hl.SnacksPickerInputTitle = { fg = c.bg_float, bg = c.orange }
+      hl.SnacksPickerInputBorder = { fg = c.bg_float, bg = c.bg_float }
+      hl.SnacksPickerPreview = { fg = c.fg, bg = bg_float3 }
+      hl.SnacksPickerPreviewBorder = { fg = bg_float3, bg = bg_float3 }
 
       -- NvimTree
       hl.NvimTreeExecFile = { fg = c.red }

@@ -205,7 +205,7 @@ return {
     -- Search history
     { 'Ö/', function() Snacks.picker.search_history() end, desc = 'Find search history' },
     -- Git
-    { 'Öc', function() Snacks.picker.git_log_file() end, desc = 'Find git commits (buffer)' },
+    { 'Öc', function() Snacks.picker.git_log_file() end, desc = 'Find git commits (file)' },
     { 'Öcc', function() Snacks.picker.git_log() end, desc = 'Find git commits' },
     -- Treesitter
     {
