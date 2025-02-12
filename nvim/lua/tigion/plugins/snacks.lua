@@ -111,6 +111,14 @@ return {
     -- A modern fuzzy-finder. (Like Telescope)
     picker = {
       layout = 'telescope', -- The default layout preset.
+      -- TODO: Hide preview if width is too small.
+      --       preview = false, --function(ctx) return vim.o.columns >= 120 and true or false end,
+      --
+      -- layout = {
+      --   -- preview = function() return vim.o.columns >= 120 and true or false end,
+      --   preset = 'telescope',
+      --   layout = {},
+      -- },
       matcher = {
         frecency = true,
       },
