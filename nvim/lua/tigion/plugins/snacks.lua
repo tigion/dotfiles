@@ -110,8 +110,21 @@ return {
 
     -- A modern fuzzy-finder. (Like Telescope)
     picker = {
-      ui_select = true, -- Better `vim.ui.select`
       layout = 'telescope', -- The default layout preset.
+      matcher = {
+        frecency = true,
+      },
+      ui_select = true, -- Better `vim.ui.select` (Snacks.picker.select)
+      sources = {
+        files = { hidden = true }, -- Shows hidden files.
+        grep = { hidden = true }, -- Shows hidden files.
+        explorer = { hidden = true }, -- Shows hidden files.
+        select = {
+          layout = {
+            preset = 'my_select',
+          },
+        },
+      },
       layouts = {
         -- A borderless layout for the select picker.
         -- Initial height of the inner root box is item count + 2
@@ -148,18 +161,7 @@ return {
           },
         },
       },
-      sources = {
-        files = { hidden = true }, -- Shows hidden files.
-        grep = { hidden = true }, -- Shows hidden files.
-        explorer = { hidden = true }, -- Shows hidden files.
-        select = {
-          layout = {
-            preset = 'my_select',
-          },
-        },
-      },
       win = {
-        -- input window
         input = {
           keys = {
             ['<Esc>'] = { 'close', mode = { 'n', 'i' } }, -- Closes the picker on ESC instead of going to normal mode.
@@ -173,6 +175,9 @@ return {
             signcolumn = 'no',
           },
         },
+      },
+      debug = {
+        scores = false,
       },
     },
 
