@@ -110,15 +110,11 @@ return {
 
     -- A modern fuzzy-finder. (Like Telescope)
     picker = {
-      -- layout = 'telescope', -- The default layout preset.
+      -- The default layout preset.
       layout = function()
-        if vim.o.columns >= 120 then
-          return 'telescope'
-        elseif vim.o.lines >= 25 then
-          return 'my_telescope_vertical'
-        else
-          return 'my_telescope_no_preview'
-        end
+        return vim.o.columns >= 120 and 'my_telescope'
+          or vim.o.lines >= 25 and 'my_telescope_vertical'
+          or 'my_telescope_vertical_no_preview'
       end,
       matcher = {
         frecency = true,
@@ -135,7 +131,34 @@ return {
         },
       },
       layouts = {
+        my_telescope = {
+          -- A borderless layout with a vertical split with a preview on the right.
+          -- - Based on the default `telescope` layout.
+          -- - Replaces `rounded` with `solid` borders.
+          reverse = true,
+          layout = {
+            box = 'horizontal',
+            backdrop = false,
+            width = 0.8,
+            height = 0.9,
+            border = 'none',
+            {
+              box = 'vertical',
+              { win = 'list', title = ' Results ', title_pos = 'center', border = 'solid' },
+              { win = 'input', height = 1, border = 'solid', title = '{title} {live} {flags}', title_pos = 'center' },
+            },
+            {
+              win = 'preview',
+              title = '{preview:Preview}',
+              width = 0.45,
+              border = 'solid',
+              title_pos = 'center',
+            },
+          },
+        },
         my_telescope_vertical = {
+          -- A borderless layout with a vertical split with a preview on the top.
+          -- - Based on the `my_telescope` layout.
           reverse = true,
           layout = {
             box = 'vertical',
@@ -147,14 +170,16 @@ return {
               win = 'preview',
               title = '{preview:Preview}',
               height = 0.4,
-              border = 'rounded',
+              border = 'solid',
               title_pos = 'center',
             },
-            { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
-            { win = 'input', height = 1, border = 'rounded', title = '{title} {live} {flags}', title_pos = 'center' },
+            { win = 'list', title = ' Results ', title_pos = 'center', border = 'solid' },
+            { win = 'input', height = 1, border = 'solid', title = '{title} {live} {flags}', title_pos = 'center' },
           },
         },
-        my_telescope_no_preview = {
+        my_telescope_vertical_no_preview = {
+          -- A borderless layout with a vertical split without a preview on.
+          -- - Based on the `my_telescope_vertical` layout.
           reverse = true,
           layout = {
             box = 'vertical',
@@ -162,26 +187,26 @@ return {
             width = 0.8,
             height = 0.9,
             border = 'none',
-            { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
-            { win = 'input', height = 1, border = 'rounded', title = '{title} {live} {flags}', title_pos = 'center' },
+            { win = 'list', title = ' Results ', title_pos = 'center', border = 'solid' },
+            { win = 'input', height = 1, border = 'solid', title = '{title} {live} {flags}', title_pos = 'center' },
           },
         },
-        -- A borderless layout for the select picker.
-        -- Initial height of the inner root box is item count + 2
-        -- https://github.com/folke/snacks.nvim/blob/70afc4225ac8ae3e6c8af88d205b03991a173af3/lua/snacks/picker/select.lua#L37
-        -- FIX: Workaround to simulate a input box with solid border:
-        --      - in root box: (input + box) + list)
-        --      +----------+
-        --      |          | <- root box border top
-        --      +--------++|
-        --      | >      ||| <- input box no top or bottom border
-        --      +--------+||
-        --      |         || <- box border bottom
-        --      +---------+|
-        --      | 1.      || <- list box no border
-        --      | 2.      ||
-        --      +---------++
         my_select = {
+          -- A borderless layout for the select picker.
+          -- Initial height of the inner root box is item count + 2
+          -- https://github.com/folke/snacks.nvim/blob/70afc4225ac8ae3e6c8af88d205b03991a173af3/lua/snacks/picker/select.lua#L37
+          -- FIX: Workaround to simulate a input box with solid border:
+          --      - in root box: (input + box) + list)
+          --      +----------+
+          --      |          | <- root box border top
+          --      +--------++|
+          --      | >      ||| <- input box no top or bottom border
+          --      +--------+||
+          --      |         || <- box border bottom
+          --      +---------+|
+          --      | 1.      || <- list box no border
+          --      | 2.      ||
+          --      +---------++
           layout = {
             backdrop = false,
             width = 0.5,
@@ -224,7 +249,7 @@ return {
     -- Pretty `vim.notify`
     notifier = { enabled = true },
 
-    -- Quickly open scratch buffers for testing code, creating notes or just messing around.
+    -- Scratch buffers with a persistent file
     scratch = {},
 
     -- Smooth scrolling for Neovim
