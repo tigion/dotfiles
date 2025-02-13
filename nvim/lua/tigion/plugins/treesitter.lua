@@ -42,6 +42,7 @@ return {
           'php',
           'phpdoc',
           'python',
+          'regex',
           'toml',
           'tsx',
           'vim',
