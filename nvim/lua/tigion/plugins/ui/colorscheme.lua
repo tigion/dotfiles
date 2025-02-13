@@ -23,13 +23,22 @@ return {
     },
     lualine_bold = true,
     on_colors = function(colors)
-      colors.bg = '#1a1b26'
-      colors.comment = '#626784' -- use a more gray comment
+      colors.bg = '#1a1b26' -- Use the darker background of 'night' style.
+      colors.comment = '#626784' -- Use a more gray comment.
     end,
     on_highlights = function(hl, c)
+      --      #1e1f2c / hsl(234, 18.75%, 14.55%)
+      --      #1c1d29 / hsl(235, 18.75%, 13.55%)
+      -- bg = #1a1b26 / hsl(235, 18.75%, 12.55%)
+      --      #181923 / hsl(235, 18.75%, 11.55%)
+      --      #161720 / hsl(235, 18.75%, 10.55%)
+      --      #14151d / hsl(235, 18.75%,  9.55%)
+      --      #12121a / hsl(235, 18.75%,  8.55%)
+
       -- darker bg_float variants
-      local bg_float2 = '#14151f'
-      local bg_float3 = '#0a0b10'
+      local bg_float1 = c.bg_float
+      local bg_float2 = '#161720'
+      local bg_float3 = '#12121a'
 
       -- cmp-nvim
       -- hl.CmpDocumentation.bg = bg_float2
@@ -45,9 +54,9 @@ return {
       hl.TelescopeNormal = { fg = c.fg, bg = bg_float2 }
       hl.TelescopeTitle = { fg = bg_float2, bg = c.blue }
       hl.TelescopeBorder = { fg = bg_float2, bg = bg_float2 }
-      hl.TelescopePromptNormal = { fg = c.fg, bg = c.bg_float }
-      hl.TelescopePromptTitle = { fg = c.bg_float, bg = c.orange }
-      hl.TelescopePromptBorder = { fg = c.bg_float, bg = c.bg_float }
+      hl.TelescopePromptNormal = { fg = c.fg, bg = bg_float1 }
+      hl.TelescopePromptTitle = { fg = bg_float1, bg = c.orange }
+      hl.TelescopePromptBorder = { fg = bg_float1, bg = bg_float1 }
       hl.TelescopePreviewTitle = { fg = bg_float3, bg = c.magenta }
       hl.TelescopePreviewNormal = { fg = c.fg, bg = bg_float3 }
       hl.TelescopePreviewBorder = { fg = bg_float3, bg = bg_float3 }
@@ -55,17 +64,20 @@ return {
       -- Snacks.picker
       hl.SnacksPicker = { fg = c.fg, bg = bg_float2 }
       hl.SnacksPickerTitle = { fg = bg_float2, bg = c.blue }
+      -- hl.SnacksPickerBorder = { fg = c.blue, bg = bg_float2 }
       hl.SnacksPickerBorder = { fg = bg_float2, bg = bg_float2 }
-      hl.SnacksPickerInput = { fg = c.fg, bg = c.bg_float }
-      hl.SnacksPickerInputTitle = { fg = c.bg_float, bg = c.orange }
-      hl.SnacksPickerInputBorder = { fg = c.bg_float, bg = c.bg_float }
+      hl.SnacksPickerPreviewVisual = { fg = c.fg, bg = c.red }
+      hl.SnacksPickerInput = { fg = c.fg, bg = bg_float1 }
+      hl.SnacksPickerInputTitle = { fg = bg_float1, bg = c.orange }
+      -- hl.SnacksPickerInputBorder = { fg = c.orange, bg = bg_float1 }
+      hl.SnacksPickerInputBorder = { fg = bg_float1, bg = bg_float1 }
       hl.SnacksPickerPreview = { fg = c.fg, bg = bg_float3 }
       hl.SnacksPickerPreviewTitle = { fg = bg_float3, bg = c.magenta }
+      -- hl.SnacksPickerPreviewBorder = { fg = c.magenta, bg = bg_float3 }
       hl.SnacksPickerPreviewBorder = { fg = bg_float3, bg = bg_float3 }
-      --
-      hl.SnacksPickerBoxTitle = { fg = c.bg_float, bg = c.orange }
-      hl.SnacksPickerBoxBorder = { fg = c.bg_float, bg = c.bg_float }
-      -- hl.SnacksPickerBoxBorder = { fg = c.blue, bg = c.bg_float }
+      hl.SnacksPickerBoxTitle = { fg = bg_float1, bg = c.orange }
+      hl.SnacksPickerBoxBorder = { fg = bg_float1, bg = bg_float1 }
+      -- hl.SnacksPickerBoxBorder = { fg = c.blue, bg = bg_float1 }
 
       -- NvimTree
       hl.NvimTreeExecFile = { fg = c.red }
