@@ -322,16 +322,21 @@ return {
     -- Treesitter
     {
       'Ös',
-      -- function() Snacks.picker.treesitter() end,
+      -- function() Snacks.picker.treesitter({ tree = false }) end,
       function() Snacks.picker.treesitter({ tree = false, filter = { default = true } }) end,
       desc = 'Find Treesitter symbols',
     },
     {
       'ÖS',
-      function() Snacks.picker.lsp_symbols({ tree = false, layout = { preset = 'default' } }) end,
+      -- function() Snacks.picker.lsp_symbols({ tree = false }) end,
+      function() Snacks.picker.lsp_symbols({ tree = false, filter = { default = true, lua = true } }) end,
       desc = 'Find LSP symbols',
     },
-    { 'ÖSS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'Find LSP symbols (cwd)' },
+    {
+      'ÖSS',
+      function() Snacks.picker.lsp_workspace_symbols() end,
+      desc = 'Find LSP symbols (cwd)',
+    },
     -- Register
     { 'ÖR', function() Snacks.picker.registers() end, desc = 'Find registers' },
     -- Snacks.picker
