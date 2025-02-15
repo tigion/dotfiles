@@ -1,12 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
 notARepository: "quit"
+
 gui:
   language: "auto"
   mouseEvents: true
   # showBottomLine: false
   nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#ff966c"
+      - bold
+    inactiveBorderColor:
+      - "#82aaff"
+    selectedLineBgColor:
+      - "#2f334d"
+    optionsTextColor:
+      - "#394b70"
+  showNumstatInFilesView: true
+  # showDivergenceFromBaseBranch: "arrowAndNumber"
+
 os:
   edit: "nvim"
   editAtLine: "{{editor}} +{{line}} -- {{filename}}"
+
 git:
   disableForcePushing: true
   paging:
