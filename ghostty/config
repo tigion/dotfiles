@@ -22,8 +22,10 @@ font-size = 17
 # Colors
 theme = tokyonight_night
 # theme = tokyonight
-background = #0a0b10
-background-opacity = 0.9
+# background = #0a0b10
+background = #1a1b26
+# background = #161720
+background-opacity = 0.95
 background-blur-radius = 20
 
 # Windows
