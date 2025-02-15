@@ -15,7 +15,7 @@ return {
   priority = 1000,
   opts = {
     style = 'moon', -- moon, night, (storm, day)
-    transparent = true,
+    transparent = false,
     styles = {
       -- dark, transparent or normal
       sidebars = 'transparent',
