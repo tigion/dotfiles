@@ -112,12 +112,14 @@ return {
     -- },
 
     -- Image viewer using Kitty Graphics Protocol
-    -- image = {
-    --   markdown = {
-    --     inline = false, -- render the image inline in the buffer (takes precedence over `opts.float` on supported terminals)
-    --     float = true, -- render the image in a floating window
-    --   },
-    -- },
+    image = {
+      doc = {
+        inline = false, -- render the image inline in the buffer (takes precedence over `opts.float` on supported terminals)
+        float = true, -- render the image in a floating window
+        max_width = 40,
+        max_height = 30,
+      },
+    },
 
     -- Indent guides and scopes
     indent = {
