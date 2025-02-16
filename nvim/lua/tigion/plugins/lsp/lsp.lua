@@ -16,6 +16,7 @@ return {
       local mason_lspconfig = require('mason-lspconfig')
 
       local keymap = vim.keymap
+      local icon_snacks = require('tigion.core.icons').snacks
       local icon_telescope = require('tigion.core.icons').telescope
       local icons_diagnostic = require('tigion.core.icons').diagnostic
 
@@ -45,19 +46,27 @@ return {
             opts
           )
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Show document symbols'
+          -- keymap.set('n', 'gs', function() Snacks.picker.lsp_symbols({ tree = false }) end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Show document symbols'
           keymap.set('n', 'gs', '<Cmd>Telescope lsp_document_symbols<CR>', opts)
           -- keymap.set('n', '<Leader>gs', vim.lsp.buf.document_symbol, opts)
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Show workspace symbols'
+          -- keymap.set('n', 'gss', function() Snacks.picker.lsp_workspace_symbols({ tree = false }) end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Show workspace symbols'
           keymap.set('n', 'gss', '<Cmd>Telescope lsp_workspace_symbols<CR>', opts)
           -- Telescope lsp_workspace_symbols / lsp_dynamic_workspace_symbols
           -- keymap.set('n', '<Leader>gss', vim.lsp.buf.workspace_symbol, opts)
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Show references'
+          -- keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Show references'
           keymap.set('n', 'gr', '<Cmd>Telescope lsp_references<CR>', opts)
           -- keymap.set('n', '<Leader>vrr', vim.lsp.buf.references, opts)
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Go to definition(s)'
+          -- keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Go to definition(s)'
           keymap.set('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', opts)
           --keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- jumps to the definition
@@ -65,10 +74,14 @@ return {
           opts.desc = 'LSP: Go to declaration'
           keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Go to type definition(s)'
+          -- keymap.set('n', 'gdt', function() Snacks.picker.lsp_type_definitions() end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Go to type definition(s)'
           keymap.set('n', 'gdt', '<Cmd>Telescope lsp_type_definitions<CR>', opts)
           -- keymap.set('n', 'gdt', vim.lsp.buf.type_definition, opts)
 
+          -- opts.desc = 'LSP: ' .. icon_snacks .. ' Go to implementation(s)'
+          -- keymap.set('n', 'gI', function() Snacks.picker.lsp_implementations() end, opts)
           opts.desc = 'LSP: ' .. icon_telescope .. ' Go to implementation(s)'
           keymap.set('n', 'gI', '<Cmd>Telescope lsp_implementations<CR>', opts)
           -- keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)

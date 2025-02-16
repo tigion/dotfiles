@@ -75,13 +75,14 @@
 
 <!--TODO: Rework keymap groups -->
 
-| Keymap      | Description |
-| ----------- | ----------- |
-| `<Leader>c` | +Code       |
-| `<Leader>g` | +Git        |
-| `<Leader>t` | +Toggle     |
-| `<Leader>x` | +Trouble    |
-| `ö`         | +Telescope  |
+| Keymap      | Description    |
+| ----------- | -------------- |
+| `<Leader>c` | +Code          |
+| `<Leader>g` | +Git           |
+| `<Leader>t` | +Toggle        |
+| `<Leader>x` | +Trouble       |
+| `ö`         | +Snacks.picker |
+| `Ö`         | +Telescope     |
 
 ## General
 
@@ -444,6 +445,33 @@ Snippets:
 | ---- | ------------ | ---------------------- |
 | `n`  | `<Leader>tm` | Toggle Render Markdown |
 
+### [snacks.picker]
+
+[snacks.picker]: https://github.com/folke/snacks.nvim
+
+| Mode     | Keymap | Description                       |
+| -------- | ------ | --------------------------------- |
+| `n`      | `öf`   | Find files in (cwd)               |
+| `n`      | `ör`   | Find recent files (cwd)           |
+| `n`      | `öb`   | Find open buffers                 |
+| `n`      | `ög`   | Find string (buffer)              |
+| `n`      | `ögg`  | Find string (cwd)                 |
+| `n`, `x` | `öw`   | Find current word/selection (cwd) |
+| `n`      | `öh`   | Find help tags                    |
+| `n`      | `öd`   | Find diagnostics (buffer)         |
+| `n`      | `ödd`  | Find diagnostics (buffers)        |
+| `n`      | `ö:`   | Find commands                     |
+| `n`      | `ö::`  | Find command history              |
+| `n`      | `ö/`   | Find search history               |
+| `n`      | `öc`   | Find git commits (file)           |
+| `n`      | `öcc`  | Find git commits                  |
+| `n`      | `ös`   | Find treesitter symbols (buffer)  |
+| `n`      | `öS`   | Find LSP symbols (buffer)         |
+| `n`      | `öSS`  | Find LSP symbols (cwd)            |
+| `n`      | `öR`   | Find registers                    |
+| `n`      | `öö`   | Reopen previous search            |
+| `n`      | `ööö`  | Find find sources                 |
+
 ### [snacks.words]
 
 [snacks.words]: https://github.com/folke/snacks.nvim
@@ -487,24 +515,24 @@ Snippets:
 
 | Mode     | Keymap    | Description                   |
 | -------- | --------- | ----------------------------- |
-| `n`      | `öf`      | Find files in (cwd)           |
-| `n`      | `ör`      | Find recent (old) files (cwd) |
-| `n`      | `öb`      | Find open buffers             |
-| `n`      | `ög`      | Find string (buffer)          |
-| `n`      | `ögg`     | Find string (cwd)             |
-| `n`, `x` | `öw`      | Find current cursor (cwd)     |
-| `n`      | `öh`      | Find help tags                |
-| `n`      | `öd`      | Find diagnostics (buffer)     |
-| `n`      | `ödd`     | Find diagnostics (buffers)    |
-| `n`      | `ö:`      | Find commands                 |
-| `n`      | `ö::`     | Find command history          |
-| `n`      | `ö/`      | Find search history           |
-| `n`      | ~~`öc`~~  | Find git commits (buffer)     |
-| `n`      | ~~`öcc`~~ | Find git commits              |
-| `n`      | `ös`      | Find treesitter symbols       |
-| `n`      | `öR`      | Find registers                |
-| `n`      | `öö`      | Reopen previous search        |
-| `n`      | `ööö`     | Find telescope builtin        |
+| `n`      | `Öf`      | Find files in (cwd)           |
+| `n`      | `Ör`      | Find recent (old) files (cwd) |
+| `n`      | `Öb`      | Find open buffers             |
+| `n`      | `Ög`      | Find string (buffer)          |
+| `n`      | `Ögg`     | Find string (cwd)             |
+| `n`, `x` | `Öw`      | Find current cursor (cwd)     |
+| `n`      | `Öh`      | Find help tags                |
+| `n`      | `Öd`      | Find diagnostics (buffer)     |
+| `n`      | `Ödd`     | Find diagnostics (buffers)    |
+| `n`      | `Ö:`      | Find commands                 |
+| `n`      | `Ö::`     | Find command history          |
+| `n`      | `Ö/`      | Find search history           |
+| `n`      | ~~`Öc`~~  | Find git commits (buffer)     |
+| `n`      | ~~`Öcc`~~ | Find git commits              |
+| `n`      | `Ös`      | Find treesitter symbols       |
+| `n`      | `ÖR`      | Find registers                |
+| `n`      | `ÖÖ`      | Reopen previous search        |
+| `n`      | `ÖÖÖ`     | Find telescope builtin        |
 
 In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings)):
 

@@ -60,6 +60,7 @@ M.lsp = {
 
 -- tools
 M.neovim = ''
+M.snacks = '󱥰'
 M.telescope = ''
 M.codeium = '󰘦'
 M.copilot = ''

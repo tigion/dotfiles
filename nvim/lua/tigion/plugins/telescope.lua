@@ -13,35 +13,35 @@ return {
     -- https://github.com/nvim-telescope/telescope.nvim#pickers
     -- :Telescope builtin
     -- Files
-    { 'öf', '<Cmd>Telescope find_files<CR>', desc = 'Find files (cwd)' },
-    { 'ör', '<Cmd>Telescope oldfiles cwd_only=true<CR>', desc = 'Find recent files (cwd)' },
+    { 'Öf', '<Cmd>Telescope find_files<CR>', desc = 'Find files (cwd)' },
+    { 'Ör', '<Cmd>Telescope oldfiles cwd_only=true<CR>', desc = 'Find recent files (cwd)' },
     -- Buffers
-    { 'öb', '<Cmd>Telescope buffers<CR>', desc = 'Find open buffers' },
+    { 'Öb', '<Cmd>Telescope buffers<CR>', desc = 'Find open buffers' },
     -- Strings
-    { 'ög', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Find string (buffer)' },
-    { 'ögg', '<Cmd>Telescope live_grep<CR>', desc = 'Find string (cwd)' },
-    { 'öw', '<Cmd>Telescope grep_string<CR>', mode = { 'n', 'x' }, desc = 'Find current word/selection (cwd)' },
+    { 'Ög', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Find string (buffer)' },
+    { 'Ögg', '<Cmd>Telescope live_grep<CR>', desc = 'Find string (cwd)' },
+    { 'Öw', '<Cmd>Telescope grep_string<CR>', mode = { 'n', 'x' }, desc = 'Find current word/selection (cwd)' },
     -- Help tags
-    { 'öh', '<Cmd>Telescope help_tags<CR>', desc = 'Find help tags' },
+    { 'Öh', '<Cmd>Telescope help_tags<CR>', desc = 'Find help tags' },
     -- Diagnostics
-    { 'öd', '<Cmd>Telescope diagnostics bufnr=0<CR>', desc = 'Find diagnostics (buffer)' },
-    { 'ödd', '<Cmd>Telescope diagnostics<CR>', desc = 'Find diagnostics (buffers)' },
+    { 'Öd', '<Cmd>Telescope diagnostics bufnr=0<CR>', desc = 'Find diagnostics (buffer)' },
+    { 'Ödd', '<Cmd>Telescope diagnostics<CR>', desc = 'Find diagnostics (buffers)' },
     -- Commands and command history
-    { 'ö:', '<Cmd>Telescope commands<CR>', desc = 'Find commands' },
-    { 'ö::', '<Cmd>Telescope command_history<CR>', desc = 'Find command history' },
+    { 'Ö:', '<Cmd>Telescope commands<CR>', desc = 'Find commands' },
+    { 'Ö::', '<Cmd>Telescope command_history<CR>', desc = 'Find command history' },
     -- Search history
-    { 'ö/', '<Cmd>Telescope search_history<CR>', desc = 'Find search history' },
+    { 'Ö/', '<Cmd>Telescope search_history<CR>', desc = 'Find search history' },
     -- Git
-    -- { 'öc', '<Cmd>Telescope git_bcommits<CR>', desc = 'Find git commits (buffer)' },
-    -- { 'öcc', '<Cmd>Telescope git_commits<CR>', desc = 'Find git commits' },
+    -- { 'Öc', '<Cmd>Telescope git_bcommits<CR>', desc = 'Find git commits (buffer)' },
+    -- { 'Öcc', '<Cmd>Telescope git_commits<CR>', desc = 'Find git commits' },
     -- Treesitter
-    { 'ös', '<Cmd>Telescope treesitter<CR>', desc = 'Find treesitter symbols' },
+    { 'Ös', '<Cmd>Telescope treesitter<CR>', desc = 'Find treesitter symbols' },
     -- Register
-    { 'öR', '<Cmd>Telescope registers<CR>', desc = 'Find registers' },
+    { 'ÖR', '<Cmd>Telescope registers<CR>', desc = 'Find registers' },
     -- Telescope
     --
-    { 'öö', '<Cmd>Telescope resume<CR>', desc = 'Reopen previous search' },
-    { 'ööö', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
+    { 'ÖÖ', '<Cmd>Telescope resume<CR>', desc = 'Reopen previous search' },
+    { 'ÖÖÖ', '<Cmd>Telescope builtin<CR>', desc = 'Find telescope builtin' },
   },
   opts = function()
     local actions = require('telescope.actions')

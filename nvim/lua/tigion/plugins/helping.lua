@@ -20,7 +20,8 @@ return {
         { '<Leader>g', group = 'Git' },
         { '<Leader>t', group = 'Toggle' },
         { '<Leader>x', group = 'Trouble' },
-        { 'ö', group = 'Find (Telescope)' },
+        { 'ö', group = 'Find (Snacks.picker)' },
+        { 'Ö', group = 'Find (Telescope)' },
       },
     },
     keys = {

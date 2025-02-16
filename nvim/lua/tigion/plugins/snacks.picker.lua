@@ -159,58 +159,58 @@ return {
     -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-sources
     -- :lua Snacks.picker.pickers()
     -- Files
-    { 'Öf', function() Snacks.picker.files() end, desc = 'Find files (cwd)' },
+    { 'öf', function() Snacks.picker.files() end, desc = 'Find files (cwd)' },
     {
-      'Ör',
+      'ör',
       function() Snacks.picker.recent({ filter = { cwd = true } }) end,
       desc = 'Find recent files (cwd)',
     },
     -- Buffers
-    { 'Öb', function() Snacks.picker.buffers() end, desc = 'Find open buffers' },
+    { 'öb', function() Snacks.picker.buffers() end, desc = 'Find open buffers' },
     -- Strings
-    { 'Ög', function() Snacks.picker.lines() end, desc = 'Find string (buffer)' },
-    { 'Ögg', function() Snacks.picker.grep() end, desc = 'Find string (cwd)' },
+    { 'ög', function() Snacks.picker.lines() end, desc = 'Find string (buffer)' },
+    { 'ögg', function() Snacks.picker.grep() end, desc = 'Find string (cwd)' },
     {
-      'Öw',
+      'öw',
       function() Snacks.picker.grep_word() end,
       mode = { 'n', 'x' },
       desc = 'Find current word/selection (cwd)',
     },
     -- Help tags
-    { 'Öh', function() Snacks.picker.help() end, desc = 'Find help tags' },
+    { 'öh', function() Snacks.picker.help() end, desc = 'Find help tags' },
     -- Diagnostics
-    { 'Öd', function() Snacks.picker.diagnostics_buffer() end, desc = 'Find diagnostics (buffer)' },
-    { 'Ödd', function() Snacks.picker.diagnostics() end, desc = 'Find diagnostics (cwd)' },
+    { 'öd', function() Snacks.picker.diagnostics_buffer() end, desc = 'Find diagnostics (buffer)' },
+    { 'ödd', function() Snacks.picker.diagnostics() end, desc = 'Find diagnostics (buffers)' },
     -- Commands and command history
-    { 'Ö:', function() Snacks.picker.commands() end, desc = 'Find commands' },
-    { 'Ö::', function() Snacks.picker.command_history() end, desc = 'Find command history' },
+    { 'ö:', function() Snacks.picker.commands() end, desc = 'Find commands' },
+    { 'ö::', function() Snacks.picker.command_history() end, desc = 'Find command history' },
     -- Search history
-    { 'Ö/', function() Snacks.picker.search_history() end, desc = 'Find search history' },
+    { 'ö/', function() Snacks.picker.search_history() end, desc = 'Find search history' },
     -- Git
-    { 'Öc', function() Snacks.picker.git_log_file() end, desc = 'Find git commits (file)' },
-    { 'Öcc', function() Snacks.picker.git_log() end, desc = 'Find git commits' },
+    { 'öc', function() Snacks.picker.git_log_file() end, desc = 'Find git commits (file)' },
+    { 'öcc', function() Snacks.picker.git_log() end, desc = 'Find git commits' },
     -- Treesitter
     {
-      'Ös',
+      'ös',
       -- function() Snacks.picker.treesitter({ tree = false }) end,
       function() Snacks.picker.treesitter({ tree = false, filter = { default = true } }) end,
       desc = 'Find Treesitter symbols',
     },
     {
-      'ÖS',
+      'öS',
       function() Snacks.picker.lsp_symbols({ tree = false }) end,
       -- function() Snacks.picker.lsp_symbols({ tree = false, filter = { default = true, lua = true } }) end,
       desc = 'Find LSP symbols',
     },
     {
-      'ÖSS',
+      'öSS',
       function() Snacks.picker.lsp_workspace_symbols() end,
       desc = 'Find LSP symbols (cwd)',
     },
     -- Register
-    { 'ÖR', function() Snacks.picker.registers() end, desc = 'Find registers' },
+    { 'öR', function() Snacks.picker.registers() end, desc = 'Find registers' },
     -- Snacks.picker
-    { 'ÖÖ', function() Snacks.picker.resume() end, desc = 'Reopen previous search' },
-    { 'ÖÖÖ', function() Snacks.picker.pickers() end, desc = 'Find picker sources' },
+    { 'öö', function() Snacks.picker.resume() end, desc = 'Reopen previous search' },
+    { 'ööö', function() Snacks.picker.pickers() end, desc = 'Find picker sources' },
   },
 }
