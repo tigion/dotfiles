@@ -1,19 +1,19 @@
 return {
-  {
-    -- This plugin adds a source provider for blink.cmp to Neovim
-    -- that allow you to use nvim-cmp completion sources.
-    -- Link: https://github.com/saghen/blink.compat
-
-    -- WARN: Only for not supported native blink.cmp sources.
-
-    -- NOTE: Needed for:
-    -- - hrsh7th/cmp-omni, a `:h omnifunc` completion source
-
-    'saghen/blink.compat',
-    version = '*',
-    lazy = true,
-    opts = {},
-  },
+  -- {
+  --   -- This plugin adds a source provider for blink.cmp to Neovim
+  --   -- that allow you to use nvim-cmp completion sources.
+  --   -- Link: https://github.com/saghen/blink.compat
+  --
+  --   -- WARN: Only for not supported native blink.cmp sources.
+  --
+  --   -- NOTE: Needed for:
+  --   -- - ?
+  --
+  --   'saghen/blink.compat',
+  --   version = '*',
+  --   lazy = true,
+  --   opts = {},
+  -- },
   {
     -- This plugin adds a performant completion to Neovim.
     -- Link: https://github.com/saghen/blink.cmp
@@ -24,7 +24,6 @@ return {
     version = 'v0.*',
     dependencies = {
       { 'rafamadriz/friendly-snippets' }, -- optional: provides snippets for the snippet source
-      { 'hrsh7th/cmp-omni' }, -- optional: provides `omnifunc` completions
     },
 
     ---@module 'blink.cmp'
@@ -44,13 +43,7 @@ return {
         ['<C-y>'] = { 'select_and_accept' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
-        cmdline = {
-          preset = 'enter',
-          ['<S-Tab>'] = { 'select_prev', 'fallback' },
-          ['<Tab>'] = { 'select_next', 'fallback' },
-        },
       },
-
       completion = {
         list = {
           selection = {
@@ -87,14 +80,13 @@ return {
         -- max_typos = 0.0,
         -- max_typos = function(keyword) return math.floor(#keyword / 4) end,
         -- max_typos = function() return 0.0 end,
+        -- sorts = { 'exact', 'score', 'sort_text' },
       },
 
       -- default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'omni' },
-        -- optionally disable cmdline completions
-        -- cmdline = {},
         providers = {
           snippets = {
             -- min_keyword_length = 1,
@@ -113,15 +105,6 @@ return {
               return string.find(ctx.line, ' ') == nil and 2 or 0
             end,
           },
-          omni = {
-            name = 'omni', -- IMPORTANT: use the same name as you would for nvim-cmp
-            module = 'blink.compat.source',
-            score_offset = -3,
-            opts = {
-              disable_omnifuncs = { 'v:lua.vim.lsp.omnifunc' },
-            },
-            -- fallbacks = { 'buffer' },
-          },
         },
       },
 
@@ -129,6 +112,14 @@ return {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = 'mono',
         kind_icons = require('tigion.core.icons').code,
+      },
+
+      cmdline = {
+        keymap = {
+          preset = 'enter',
+          ['<S-Tab>'] = { 'select_prev', 'fallback' },
+          ['<Tab>'] = { 'select_next', 'fallback' },
+        },
       },
     },
     -- allows extending the providers array elsewhere in your config
