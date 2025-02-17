@@ -60,6 +60,7 @@ return {
       gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       gitignore = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
       tmux = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
+      kitty = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
       -- filetypes that don't have other formatters
       ['_'] = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- all filetypes
