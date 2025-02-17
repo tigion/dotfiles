@@ -135,13 +135,29 @@ return {
     -- picker: separate config -> snacks.picker.lua
 
     -- Pretty `vim.notify`
-    notifier = { enabled = true },
+    notifier = {
+      enabled = true,
+      margin = { top = 0, right = 1, bottom = 2 },
+      top_down = false,
+    },
 
     -- Scratch buffers with a persistent file
     scratch = {},
 
     -- Smooth scrolling for Neovim
     scroll = { enabled = true },
+
+    ---@type table<string, snacks.win.Config>
+    styles = {
+      snacks_image = {
+        relative = 'win',
+        border = 'rounded',
+        focusable = false,
+        backdrop = false,
+        row = 1,
+        col = -2,
+      },
+    },
 
     -- Auto-show LSP references and quickly navigate between them
     words = {
