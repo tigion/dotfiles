@@ -67,6 +67,18 @@ return {
 
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
       parser_config.tsx.filetype_to_parsername = { 'javascript', 'typescript.tsx' }
+
+      -- Adds a (experimental) parser for AsciiDoc.
+      -- Source: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#adding-parsers
+      -- `:TSInstallFromGrammar asciidoc`
+      -- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.asciidoc = {
+        install_info = {
+          url = 'https://github.com/tigion/tree-sitter-asciidoc', -- local path or git repo
+          files = { 'src/parser.c' },
+          branch = 'main',
+        },
+      }
     end,
   },
 
