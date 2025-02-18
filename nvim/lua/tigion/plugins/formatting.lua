@@ -57,12 +57,13 @@ return {
       vue = { 'prettier' },
       yaml = { 'prettier' },
       zsh = { 'shfmt' },
-      gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
-      gitignore = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
-      tmux = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
-      kitty = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
+      -- gitconfig = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
+      -- gitignore = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
+      -- tmux = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
+      -- kitty = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
       -- filetypes that don't have other formatters
-      ['_'] = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
+      ['_'] = { 'trim_whitespace', 'trim_newlines' },
+      -- ['_'] = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- all filetypes
       -- ['*'] = { '' },
     },
