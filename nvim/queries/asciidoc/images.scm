@@ -1,5 +1,5 @@
 
-(image
-  [
-    (target) @image.src
-  ]) @image
+(macro
+  (name) @name (#eq? @name "image")
+  (target) @image.src
+) @image
