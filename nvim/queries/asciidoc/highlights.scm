@@ -31,17 +31,38 @@
 (macro (attributes) @constant)
 
 ; Blocks
-(example_block
-  (example_block_marker_start) @markup.raw
-  (example_block_marker_end) @markup.raw
-)
-(listing_block) @markup.raw
+[
+  (open_block_marker_start)
+  (open_block_marker_end)
+  (listing_block_marker_start)
+  (listing_block_marker_end)
+  (literal_block_marker_start)
+  (literal_block_marker_end)
+  (sidebar_block_marker_start)
+  (sidebar_block_marker_end)
+  (example_block_marker_start)
+  (example_block_marker_end)
+  (pass_block_marker_start)
+  (pass_block_marker_end)
+] @markup.raw
+
+(listing_block
+  [
+    (listing_block_content)
+    (open_block)
+  ] @markup.raw)
+(callout) @string.escape
 
 ; Lists
 (list (marker) @markup.list.markdown)
 
 ; Comments
 (comment) @comment
+(comment
+  (open_block [
+    (open_block_marker_start)
+    (open_block_marker_end)
+  ] @comment))
 
 ; Other
 (element_attributes) @character.special
