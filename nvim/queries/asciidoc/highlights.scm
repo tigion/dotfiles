@@ -64,6 +64,33 @@
     (open_block_marker_end)
   ] @comment))
 
+; Admonitions
+; (admonition
+;   (admonition_note
+;     (admonition_note_marker) @comment.note
+;     ":" @punctuation.bracket)) ;@punctuation.bracket @punctuation.delimiter
+(admonition
+    ((admonition_marker) @name (#eq? @name "NOTE")) @comment.note
+  ":" @punctuation.bracket)
+(admonition
+    ((admonition_marker) @name (#eq? @name "TIP")) @comment.info
+  ":" @punctuation.bracket)
+(admonition
+    ((admonition_marker) @name (#eq? @name "IMPORTANT")) @comment.error
+  ":" @punctuation.bracket)
+(admonition
+    ((admonition_marker) @name (#eq? @name "CAUTION")) @comment.error
+  ":" @punctuation.bracket)
+(admonition
+    ((admonition_marker) @name (#eq? @name "WARNING")) @comment.warning
+  ":" @punctuation.brace)
+
+
 ; Other
 (element_attributes) @character.special
-(list_continuation_marker) @string.escape
+[
+ (page_break_marker)
+ (break_marker)
+ (list_continuation_marker)
+ (line_continuation_marker)
+] @string.escape
