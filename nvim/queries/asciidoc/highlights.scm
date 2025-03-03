@@ -65,26 +65,43 @@
   ] @comment))
 
 ; Admonitions
-; (admonition
-;   (admonition_note
-;     (admonition_note_marker) @comment.note
-;     ":" @punctuation.bracket)) ;@punctuation.bracket @punctuation.delimiter
+; Line
+((admonition_marker) @name (#eq? @name "NOTE")) @comment.note ":" @punctuation.bracket
+((admonition_marker) @name (#eq? @name "TIP")) @comment.info ":" @punctuation.bracket
+((admonition_marker) @name (#eq? @name "IMPORTANT")) @comment.error ":" @punctuation.bracket
+((admonition_marker) @name (#eq? @name "CAUTION")) @comment.error ":" @punctuation.bracket
+((admonition_marker) @name (#eq? @name "WARNING")) @comment.warning ":" @punctuation.bracket
+; Block Style
 (admonition
-    ((admonition_marker) @name (#eq? @name "NOTE")) @comment.note
-  ":" @punctuation.bracket)
+  (element_attributes (admonition_marker) @name (#eq? @name "NOTE"))
+  [
+    (example_block [ (example_block_marker_start) (example_block_marker_end) ] @comment.note)
+    (open_block [ (open_block_marker_start) (open_block_marker_end) ] @comment.note)
+  ])
 (admonition
-    ((admonition_marker) @name (#eq? @name "TIP")) @comment.info
-  ":" @punctuation.bracket)
+  (element_attributes (admonition_marker) @name (#eq? @name "TIP"))
+  [
+    (example_block [ (example_block_marker_start) (example_block_marker_end) ] @comment.info)
+    (open_block [ (open_block_marker_start) (open_block_marker_end) ] @comment.info)
+  ])
 (admonition
-    ((admonition_marker) @name (#eq? @name "IMPORTANT")) @comment.error
-  ":" @punctuation.bracket)
+  (element_attributes (admonition_marker) @name (#eq? @name "IMPORTANT"))
+  [
+    (example_block [ (example_block_marker_start) (example_block_marker_end) ] @comment.error)
+    (open_block [ (open_block_marker_start) (open_block_marker_end) ] @comment.error)
+  ])
 (admonition
-    ((admonition_marker) @name (#eq? @name "CAUTION")) @comment.error
-  ":" @punctuation.bracket)
+  (element_attributes (admonition_marker) @name (#eq? @name "CAUTION"))
+  [
+    (example_block [ (example_block_marker_start) (example_block_marker_end) ] @comment.error)
+    (open_block [ (open_block_marker_start) (open_block_marker_end) ] @comment.error)
+  ])
 (admonition
-    ((admonition_marker) @name (#eq? @name "WARNING")) @comment.warning
-  ":" @punctuation.brace)
-
+  (element_attributes (admonition_marker) @name (#eq? @name "WARNING"))
+  [
+    (example_block [ (example_block_marker_start) (example_block_marker_end) ] @comment.warning)
+    (open_block [ (open_block_marker_start) (open_block_marker_end) ] @comment.warning)
+  ])
 
 ; Other
 (element_attributes) @character.special
