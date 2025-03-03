@@ -99,11 +99,11 @@ return {
             min_keyword_length = 2,
           },
           cmdline = {
-            -- min_keyword_length = 2,
-            min_keyword_length = function(ctx)
-              -- only applies when typing a command, doesn't apply to arguments
-              return string.find(ctx.line, ' ') == nil and 2 or 0
-            end,
+            -- Only needed if `cmdline.completion.menu.auto_show` is set to `true`
+            -- min_keyword_length = function(ctx)
+            --   -- only applies when typing a command, doesn't apply to arguments
+            --   return ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil and 2 or 0
+            -- end,
           },
         },
       },
@@ -116,10 +116,9 @@ return {
 
       cmdline = {
         keymap = {
-          preset = 'enter',
-          ['<S-Tab>'] = { 'select_prev', 'fallback' },
-          ['<Tab>'] = { 'select_next', 'fallback' },
+          ['<Tab>'] = { 'show', 'accept' },
         },
+        -- completion = { menu = { auto_show = true } },
       },
     },
     -- allows extending the providers array elsewhere in your config
