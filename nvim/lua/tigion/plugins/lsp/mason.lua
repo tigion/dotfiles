@@ -21,9 +21,10 @@ return {
     mason_lspconfig.setup({
       ensure_installed = {
         'bashls', -- Bash (LSP)
+        'biome', -- JavaScript, TypeScript (LSP, Linter, Formatter) -- TODO: Needs testing to replace eslint.
         'clangd', -- C, C++
         'cssls', -- CSS, SCSS, LESS
-        'eslint', -- JS/TS (replaces eslint_d)
+        'eslint', -- JavaScript, TypeScript (replaces eslint_d)
         'html', -- HTML
         'intelephense', -- PHP
         'jdtls', -- Java
