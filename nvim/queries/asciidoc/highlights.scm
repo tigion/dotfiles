@@ -65,6 +65,12 @@
 ; Lists
 (list (marker) @markup.list.markdown)
 
+; Tables
+[
+  (table_marker)
+  (table_cell_marker)
+] @constant
+
 ; Comments
 (comment) @comment
 (comment
