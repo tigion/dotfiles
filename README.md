@@ -18,7 +18,12 @@ Inspired by the many great dotfile repositories out there.
 
 I use a German keyboard layout (qwertz), so I have adjusted some key mappings.
 
-- for example `,` -> `ö`
+> [!NOTE]
+> With `opt.langmap = 'ü[+]Ü{Ä}'` I exchanged the meaning of the characters
+> `ü+ÜÄ` to `[]{}` in Normal mode.
+>
+> - `ü`, `+` -> `[`, `]`
+> - `Ü`, `Ä` -> `{`, `}` (for `*` the default behaviour is used)
 
 - [My Neovim keymaps](nvim/docs/keymaps.md)
 

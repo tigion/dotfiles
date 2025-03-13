@@ -11,8 +11,8 @@ return {
   --  FIX: Keymap `+t` doesn't work, error message: `No mode specified`.
   --       Workaround: Declare keymaps in the plugin config.
   --
-  --   { '+t', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
-  --   { 'üt', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Prev buffer' },
+  --   { '[t', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Prev buffer' },
+  --   { ']t', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
   -- },
   opts = function()
     local bufferline = require('bufferline')
@@ -70,7 +70,7 @@ return {
     require('bufferline').setup(opts)
 
     -- Add keymaps
-    vim.keymap.set('n', '+t', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
-    vim.keymap.set('n', 'üt', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer' })
+    vim.keymap.set('n', '[t', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Prev buffer' })
+    vim.keymap.set('n', ']t', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
   end,
 }

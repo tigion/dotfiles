@@ -198,8 +198,10 @@ return {
     -- { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
 
     -- words
-    { '++', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
-    { 'üü', function() Snacks.words.jump(-1) end, desc = 'Prev Reference' },
+    -- { 'üü', function() Snacks.words.jump(-1) end, desc = 'Prev Reference' },
+    -- { '++', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
+    { '[[', function() Snacks.words.jump(-1) end, desc = 'Prev Reference' },
+    { ']]', function() Snacks.words.jump(1) end, desc = 'Next Reference' },
 
     -- zen
     { '<Leader>z', function() Snacks.zen.zen() end, desc = 'Toggle Zen Mode' },

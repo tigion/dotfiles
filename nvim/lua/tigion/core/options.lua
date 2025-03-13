@@ -7,8 +7,19 @@ local api = vim.api
 local isMac = vim.fn.has('macunix')
 local isWin = vim.fn.has('win32')
 
--- reset all autocommands
--- vim.cmd('autocmd!')
+-- Keyboard specific
+--
+-- NOTE: Some special prev/next keymaps for a German keyboard layout.
+--       - `ü`, `+` -> `[`, `]`
+--       - `Ü`, `Ä` -> `{`, `}` (for `*` the default behaviour is used)
+--
+-- Exchanges the meaning of the characters `ü+ÜÄ` to `[]{}` in Normal mode.
+opt.langmap = 'ü[+]Ü{Ä}'
+-- The following remaps are necessary for the special keymaps.
+vim.keymap.set('n', 'ü', '[', { remap = true })
+vim.keymap.set('n', 'üü', '[[', { remap = true })
+vim.keymap.set('n', 'Ü', '{', { remap = true })
+vim.keymap.set('n', 'Ä', '}', { remap = true })
 
 -- Encoding
 vim.scriptencoding = 'utf-8'

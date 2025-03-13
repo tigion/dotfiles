@@ -69,7 +69,11 @@
 > [!NOTE]
 > I use a German keyboard layout (qwertz), so I have adjusted some key mappings.
 >
-> for example: `[` -> `ü`, `]` -> `+`, `,` -> `ö`
+> With `opt.langmap = 'ü[+]Ü{Ä}'` I exchanged the meaning of the characters
+> `ü+ÜÄ` to `[]{}` in Normal mode.
+>
+> - `ü`, `+` -> `[`, `]`
+> - `Ü`, `Ä` -> `{`, `}` (for `*` the default behaviour is used)
 
 ### Keymap Groups
 
@@ -118,17 +122,18 @@
 | `n`      | `<Leader>sw`  | Search and replace word under cursor |
 | `n`      | `oo`          | Insert line below (normal mode)      |
 | `n`      | `OO`          | Insert line above (normal mode)      |
+| `n`      | `<Leader>K`   | Neovim Help for word under cursor    |
 
 ### Code Navigation
 
-| Mode | Keymap | Description       |
-| ---- | ------ | ----------------- |
-| `n`  | `üm`   | Prev method start |
-| `n`  | `+m`   | Next method start |
-| `n`  | `üM`   | Prev method end   |
-| `n`  | `+M`   | Next method end   |
-| `n`  | `Ü`    | Prev empty line   |
-| `n`  | `Ä`    | Next empty line   |
+| Mode | Keymap      | Description           |
+| ---- | ----------- | --------------------- |
+| `n`  | `üm` (`[m`) | Previous method start |
+| `n`  | `+m` (`]m`) | Next method start     |
+| `n`  | `üM` (`[M`) | Previous method end   |
+| `n`  | `+M` (`]M`) | Next method end       |
+| `n`  | `Ü` (`{`)   | Previous empty line   |
+| `n`  | `Ä` (`}`)   | Next empty line       |
 
 ### Commenting
 
@@ -142,19 +147,19 @@
 | Mode | Keymap       | Description                   |
 | ---- | ------------ | ----------------------------- |
 | `n`  | `<Leader>td` | Toggle diagnostics visibility |
-| `n`  | `+d`         | Next diagnostic               |
-| `n`  | `üd`         | Previous diagnostic           |
+| `n`  | `üd` (`[d`)  | Previous diagnostic           |
+| `n`  | `+d` (`]d`)  | Next diagnostic               |
 
 ### Quickfix/Location List
 
 | Mode | Keymap       | Description          |
 | ---- | ------------ | -------------------- |
 | `n`  | `<Leader>xq` | Toggle quickfix list |
-| `n`  | `+q`         | Next quickfix        |
-| `n`  | `üq`         | Previous quickfix    |
+| `n`  | `üq` (`[q`)  | Previous quickfix    |
+| `n`  | `+q` (`]q`)  | Next quickfix        |
 | `n`  | `<Leader>xl` | Toggle location list |
-| `n`  | `+l`         | Next location        |
-| `n`  | `ül`         | Prev location        |
+| `n`  | `ül` (`[l`)  | Previous location    |
+| `n`  | `+l` (`]l`)  | Next location        |
 
 - See also [trouble.nvim](#troublenvim)
 
@@ -163,22 +168,22 @@
 | Mode | Keymap        | Description                   |
 | ---- | ------------- | ----------------------------- |
 | `n`  | `<Leader>tos` | Toggle spell checking (local) |
-| `n`  | `+s`          | Next spelling mistake         |
-| `n`  | `üs`          | Previous spelling mistake     |
+| `n`  | `üs` (`[s`)   | Previous spelling mistake     |
+| `n`  | `+s` (`]s`)   | Next spelling mistake         |
 
 ### Buffers
 
-| Mode | Keymap | Description |
-| ---- | ------ | ----------- |
-| `n`  | `üb`   | Prev Buffer |
-| `n`  | `+b`   | Next Buffer |
+| Mode | Keymap      | Description     |
+| ---- | ----------- | --------------- |
+| `n`  | `üb` (`[b`) | Previous Buffer |
+| `n`  | `+b` (`]b`) | Next Buffer     |
 
 ### Tabs
 
 | Mode | Keymap | Description  |
 | ---- | ------ | ------------ |
-| `n`  | `gt`   | Next tab     |
 | `n`  | `gT`   | Previous tab |
+| `n`  | `gt`   | Next tab     |
 
 - See also [bufferline.nvim](#bufferlinenvim)
 
@@ -274,12 +279,12 @@ Snippets:
 
 [bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
 
-| Mode | Keymap   | Description           |
-| ---- | -------- | --------------------- |
-| `n`  | ~~`+b`~~ | Go to next buffer     |
-| `n`  | ~~`üb`~~ | Go to previous buffer |
-| `n`  | `+t`     | Go to next tab        |
-| `n`  | `üt`     | Go to previous tab    |
+| Mode | Keymap      | Description           |
+| ---- | ----------- | --------------------- |
+| `n`  | ~~`+b`~~    | Go to next buffer     |
+| `n`  | ~~`üb`~~    | Go to previous buffer |
+| `n`  | `üt` (`[t`) | Go to previous tab    |
+| `n`  | `+t` (`]t`) | Go to next tab        |
 
 ### [conform.nvim]
 
@@ -300,8 +305,8 @@ Snippets:
 | `n`  | `<Leader>gs` | Stage git hunk                  |      |
 | `n`  | `<Leader>gu` | Unstage git hunk                |      |
 | `n`  | `<Leader>gR` | Reset git hunk                  |      |
-| `n`  | `+g`         | Next git hunk                   |      |
-| `n`  | `üg`         | Previous git hunk               |      |
+| `n`  | `üg` (`[g`)  | Previous git hunk               |      |
+| `n`  | `+g` (`]g`)  | Next git hunk                   |      |
 | `n`  | `<Leader>gl` | Show git hunks in location list | (TR) |
 
 - `(TR)` ... [trouble.nvim](#troublenvim) or `:lopen`
@@ -476,10 +481,10 @@ Snippets:
 
 [snacks.words]: https://github.com/folke/snacks.nvim
 
-| Mode | Keymap | Description        |
-| ---- | ------ | ------------------ |
-| `n`  | `++`   | Next Reference     |
-| `n`  | `üü`   | Previous Reference |
+| Mode | Keymap      | Description        |
+| ---- | ----------- | ------------------ |
+| `n`  | `üü` (`[[`) | Previous Reference |
+| `n`  | `++` (`]]`) | Next Reference     |
 
 ### [snacks.notifier]
 
@@ -590,8 +595,8 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `<Leader>cl` | Toggle lsp definitions, references sidebar |
 | `n`  | `<Leader>xL` | Toggle location list                       |
 | `n`  | `<Leader>xQ` | Toggle quickfix list                       |
-| `n`  | `+t`         | Next item                                  |
-| `n`  | `üt`         | Previous item                              |
+| `n`  | `üt` (`[t`)  | Previous item                              |
+| `n`  | `+t` (`]t`)  | Next item                                  |
 
 - See also [Quickfix/Location List](#quickfixlocation-list)
 
@@ -622,23 +627,6 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 - ? `<S-Tab>` for Cancel
 - ? `<C-e>` for Cancel/Clear like CMP
 
-#### [Comment.nvim]
-
-[Comment.nvim]: https://github.com/numToStr/Comment.nvim
-
-| Mode | Keymap | Description                               |
-| ---- | ------ | ----------------------------------------- |
-| `n`  | `gcc`  | Toggle linewise comment for current line  |
-| `n`  | `gbc`  | Toggle blockwise comment for current line |
-| `x`  | `gc`   | Toggle linewise comment for selection     |
-| `x`  | `gb`   | Toggle blockwise comment for selection    |
-| `n`  | `gco`  | Insert comment to the next line           |
-| `n`  | `gcO`  | Insert comment to the previous line       |
-| `n`  | `gcA`  | Insert comment to end of the current line |
-| `n`  | `gc}`  | Toggle until the next blank line          |
-| `n`  | `gcip` | Toggle inside of paragraph                |
-| `n`  | `gca}` | Toggle around curly brackets              |
-
 #### [LuaSnip]
 
 [LuaSnip]: https://github.com/L3MON4D3/LuaSnip
@@ -666,6 +654,23 @@ CMP - Completion Menu:
 | `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
 |      | `<C-u>`           | Scroll completion documentation up                |
 |      | `<C-d>`           | Scroll completion documentation down              |
+
+#### [Comment.nvim]
+
+[Comment.nvim]: https://github.com/numToStr/Comment.nvim
+
+| Mode | Keymap | Description                               |
+| ---- | ------ | ----------------------------------------- |
+| `n`  | `gcc`  | Toggle linewise comment for current line  |
+| `n`  | `gbc`  | Toggle blockwise comment for current line |
+| `x`  | `gc`   | Toggle linewise comment for selection     |
+| `x`  | `gb`   | Toggle blockwise comment for selection    |
+| `n`  | `gco`  | Insert comment to the next line           |
+| `n`  | `gcO`  | Insert comment to the previous line       |
+| `n`  | `gcA`  | Insert comment to end of the current line |
+| `n`  | `gc}`  | Toggle until the next blank line          |
+| `n`  | `gcip` | Toggle inside of paragraph                |
+| `n`  | `gca}` | Toggle around curly brackets              |
 
 ## ftplugin
 

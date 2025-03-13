@@ -33,10 +33,10 @@ return {
     -- Alternative: use `üd`, `+d` for diagnostics
     -- TODO: https://github.com/folke/trouble.nvim/issues/577
     {
-      'üt',
+      '[t',
       function() require('trouble').prev({ skip_groups = true, jump = true }) end,
       desc = 'Prev item (Trouble)',
     },
-    { '+t', function() require('trouble').next({ skip_groups = true, jump = true }) end, desc = 'Next item (Trouble)' },
+    { ']t', function() require('trouble').next({ skip_groups = true, jump = true }) end, desc = 'Next item (Trouble)' },
   },
 }

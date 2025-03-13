@@ -58,31 +58,14 @@ keymap.set('n', 'oo', 'o<Esc>k', { desc = 'Insert line below' })
 keymap.set('n', 'OO', 'O<Esc>j', { desc = 'Insert line above' })
 
 -- Navigation ------------------------------------------------------------------
--- NOTE: Some special prev/next keymaps for a German keyboard layout.
---       - `ü`, `+` or `ü`, `ä` -> `[`, `]`
---       -             `Ü`, `Ä` -> `{`, `}`
-
--- Code
-keymap.set('n', 'üm', '[m', { desc = 'Prev method start' })
-keymap.set('n', '+m', ']m', { desc = 'Next method start' })
-keymap.set('n', 'üM', '[M', { desc = 'Prev method end' })
-keymap.set('n', '+M', ']M', { desc = 'Next method end' })
-keymap.set('n', 'Ü', '{', { desc = 'Prev empty line' })
-keymap.set('n', 'Ä', '}', { desc = 'Next empty line' })
 
 -- Spelling
 keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
-keymap.set('n', 'üs', '[s', { desc = 'Prev spelling mistake' })
-keymap.set('n', '+s', ']s', { desc = 'Next spelling mistake' })
 
--- Diagnostics -----------------------------------------------------------------
-
+-- Diagnostics
 keymap.set('n', '<Leader>td', toggle.diagnostics_visibility, { desc = 'Toggle diagnostics visibility' })
-keymap.set('n', '+d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
-keymap.set('n', 'üd', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
 
--- Quickfix list ---------------------------------------------------------------
-
+-- Quickfix list
 -- keymap.set('n', '<Leader>xq', '<Cmd>copen<CR>', { desc = 'Open quickfix list' })
 keymap.set('n', '<Leader>xq', function()
   for _, win in pairs(vim.fn.getwininfo()) do
@@ -93,13 +76,12 @@ keymap.set('n', '<Leader>xq', function()
   end
   vim.cmd.copen()
 end, { desc = 'Toggle quickfix list' })
-keymap.set('n', '+q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
+keymap.set('n', ']q', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
 -- keymap.set('n', '<C-n>', '<Cmd>cnext<CR>zz', { desc = 'Next quickfix' })
-keymap.set('n', 'üq', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
+keymap.set('n', '[q', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 -- keymap.set('n', '<C-q>', '<Cmd>cprev<CR>zz', { desc = 'Prev quickfix' })
 
--- Location list ---------------------------------------------------------------
-
+-- Location list
 -- keymap.set('n', '<Leader>xl', '<Cmd>lopen<CR>', { desc = 'Open location list' })
 keymap.set('n', '<Leader>xl', function()
   if vim.fn.getloclist(0, { winid = 0 }).winid == 0 then
@@ -108,8 +90,8 @@ keymap.set('n', '<Leader>xl', function()
     vim.cmd.lclose()
   end
 end, { desc = 'Toggle location list' })
-keymap.set('n', '+l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
-keymap.set('n', 'ül', '<Cmd>lprev<CR>zz', { desc = 'Prev location' })
+keymap.set('n', ']l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
+keymap.set('n', '[l', '<Cmd>lprev<CR>zz', { desc = 'Prev location' })
 
 -- Manipulation ----------------------------------------------------------------
 
@@ -147,10 +129,8 @@ keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decremen
 
 -- Buffers ---------------------------------------------------------------------
 
--- keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
--- keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
-keymap.set('n', 'üb', '<Cmd>bprevious<CR>', { desc = 'Prev Buffer' })
-keymap.set('n', '+b', '<Cmd>bnext<CR>', { desc = 'Next Buffer' })
+keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 
 -- Windows ---------------------------------------------------------------------
 
@@ -176,7 +156,7 @@ keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increas
 -- Other -----------------------------------------------------------------------
 
 -- Help for word under cursor (lua: vim.fn.expand('<cword>'))
---keymap.set('n', '<Leader>k', [[:help <C-r><C-w><CR>]], { desc = 'Help for word under cursor' })
+keymap.set('n', '<Leader>K', [[:help <C-r><C-w><CR>]], { desc = 'Help for word under cursor' })
 
 -- Inspect (Treesitter) highlights (under cursor)
 keymap.set('n', '<Leader>ui', '<Cmd>Inspect<CR>', { desc = 'Inspect Pos' })
