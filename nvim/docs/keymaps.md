@@ -126,14 +126,17 @@
 
 ### Code Navigation
 
-| Mode | Keymap      | Description           |
-| ---- | ----------- | --------------------- |
-| `n`  | `üm` (`[m`) | Previous method start |
-| `n`  | `+m` (`]m`) | Next method start     |
-| `n`  | `üM` (`[M`) | Previous method end   |
-| `n`  | `+M` (`]M`) | Next method end       |
-| `n`  | `Ü` (`{`)   | Previous empty line   |
-| `n`  | `Ä` (`}`)   | Next empty line       |
+| Mode | Keymap      | Description              |
+| ---- | ----------- | ------------------------ |
+| `n`  | `üm` (`[m`) | Previous method start    |
+| `n`  | `+m` (`]m`) | Next method start        |
+| `n`  | `üM` (`[M`) | Previous method end      |
+| `n`  | `+M` (`]M`) | Next method end          |
+| `n`  | `Ü` (`{`)   | Previous empty line      |
+| `n`  | `Ä` (`}`)   | Next empty line          |
+| `n`  | `(`         | Next paragraph           |
+| `n`  | `)`         | Previous paragraph       |
+| `n`  | `%`         | Jump to matching bracket |
 
 ### Commenting
 
