@@ -16,7 +16,8 @@ return {
   -- },
   {
     -- This plugin adds a performant completion to Neovim.
-    -- Link: https://github.com/saghen/blink.cmp
+    -- Source: https://github.com/saghen/blink.cmp
+    -- Docs: https://cmp.saghen.dev/
 
     'saghen/blink.cmp',
     enabled = true,
@@ -28,22 +29,14 @@ return {
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
-    ---@diagnostic disable: missing-fields
     opts = {
-      -- disable cmp for specific filetypes
-      enabled = function()
-        return not vim.tbl_contains({}, vim.bo.filetype)
-          and vim.bo.buftype ~= 'nofile'
-          and vim.bo.buftype ~= 'prompt'
-          and vim.b.completion ~= false
-      end,
-
       keymap = {
         preset = 'enter',
         ['<C-y>'] = { 'select_and_accept' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
       },
+
       completion = {
         list = {
           selection = {
@@ -76,25 +69,12 @@ return {
       },
 
       fuzzy = {
-        -- use_typo_resistance = false,
-        -- max_typos = 0.0,
-        -- max_typos = function(keyword) return math.floor(#keyword / 4) end,
-        -- max_typos = function() return 0.0 end,
         -- sorts = { 'exact', 'score', 'sort_text' },
       },
 
-      -- default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, via `opts_extend`
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'omni' },
         providers = {
-          snippets = {
-            -- min_keyword_length = 1,
-            -- opts = {
-            --   friendly_snippets = true,
-            --   search_paths = { vim.fn.stdpath('config') .. '/snippets' },
-            -- },
-          },
           buffer = {
             min_keyword_length = 2,
           },
@@ -109,8 +89,6 @@ return {
       },
 
       appearance = {
-        use_nvim_cmp_as_default = false,
-        nerd_font_variant = 'mono',
         kind_icons = require('tigion.core.icons').code,
       },
 
