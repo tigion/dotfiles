@@ -22,7 +22,7 @@ return {
     'saghen/blink.cmp',
     enabled = true,
     lazy = false, -- lazy loading handled internally
-    version = 'v0.*',
+    version = 'v1.*',
     dependencies = {
       { 'rafamadriz/friendly-snippets' }, -- optional: provides snippets for the snippet source
     },
