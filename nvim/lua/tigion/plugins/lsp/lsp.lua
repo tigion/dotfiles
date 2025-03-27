@@ -140,13 +140,15 @@ return {
         severity_sort = true,
       })
 
-      -- Sets styling for hover and signature help
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = border,
-      })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = border,
-      })
+      if vim.fn.has('nvim-0.11') ~= 1 then
+        -- Sets styling for hover and signature help
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+          border = border,
+        })
+        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+          border = border,
+        })
+      end
 
       -- used to enable autocompletion (assign to every lsp server config)
       -- nvim-cmp -> cmp-nvim-lsp:

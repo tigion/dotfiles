@@ -1,7 +1,20 @@
 -- Options
 
 local opt = vim.opt
+local o = vim.o
 local api = vim.api
+
+-- NOTE: `vim.opt` vs `vim.o` (`:h lua-guide-options`)
+--
+-- Set one value:
+--   `vim.opt.spell = false`
+--   `vim.o.spell = false`
+-- Set multiple values:
+--   `vim.opt.spelllang = { 'de', 'en_us' }`
+--   `vim.o.spelllang = 'de,en_us'`
+-- Append (multiple) values:
+--   `vim.opt.wildignore:append({ '*/node_modules/*' })`
+--   `vim.o.wildignore = vim.o.wildignore .. ',*/node_modules/*'`
 
 -- OS specific
 local isMac = vim.fn.has('macunix')
@@ -111,6 +124,11 @@ opt.timeoutlen = 300 -- quickly trigger keymaps (default 1000)
 opt.updatetime = 50
 opt.wildignore:append({ '*/node_modules/*' })
 opt.wildmode = 'longest:full,full'
+
+if vim.fn.has('nvim-0.11') == 1 then
+  -- o.winborder = 'rounded' -- default border for all floating windows
+  opt.winborder = 'rounded' -- default border for all floating windows
+end
 
 -- Clippboard
 if isMac then
