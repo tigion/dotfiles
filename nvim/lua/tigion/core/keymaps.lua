@@ -29,6 +29,33 @@ vim.g.maplocalleader = ' '
 
 -- Global options
 keymap.set('', '<F7>', '<Cmd>set wrap!<CR>', { desc = 'Toggle line wrap' })
+keymap.set('', '<F8>', '<Cmd>set relativenumber!<CR>', { desc = 'Toggle relative line numbers' })
+keymap.set('', '<F9>', '<Cmd>set number!<CR>', { desc = 'Toggle line numbers' })
+keymap.set('', '<F10>', '<Cmd>set spell!<CR>', { desc = 'Toggle spell checking' })
+
+-- Local options
+keymap.set('n', '<Leader>tow', '<Cmd>setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
+keymap.set('n', '<Leader>ton', function()
+  -- Toggle line numbers between absolute, relative and off.
+
+  if vim.wo.number then
+    if vim.wo.relativenumber then vim.wo.number = false end
+
+    vim.wo.relativenumber = not vim.wo.relativenumber
+  else
+    vim.wo.number = true
+  end
+end, { desc = 'Toggle line numbers (local)' })
+
+-- Goodies ---------------------------------------------------------------------
+
+keymap.set('n', '<Esc><Esc>', '<Cmd>noh<CR>', { desc = 'Remove search highlights' })
+keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
+keymap.set('i', 'jk', '<Esc><Cmd>w<CR>', { desc = 'Exit insert mode and save' })
+keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
+keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
+-- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
+keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 
 -- Navigation ------------------------------------------------------------------
 
