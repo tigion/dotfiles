@@ -254,7 +254,7 @@ Snippets:
 
 | Mode | Keymap               | Description                                                                 | P   |
 | ---- | -------------------- | --------------------------------------------------------------------------- | --- |
-| `n`  | `K`                  | Show hover information                                                      |     |
+| `n`  | (`K`)                | Show hover information                                                      |     |
 | `i`  | ~~`<C-k>`~~          | Show hover information                                                      |     |
 | `n`  | `gK`                 | Show signature help                                                         |     |
 | `i`  | `<C-k>` (`<C-S>`)    | Show signature help                                                         |     |

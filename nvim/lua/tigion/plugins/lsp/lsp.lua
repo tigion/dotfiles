@@ -32,10 +32,10 @@ return {
 
           -- https://github.com/neovim/neovim/discussions/25711
           opts.desc = 'LSP: Show hover information'
-          keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- calling twice jumps into hover message
+          -- keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- calling twice jumps into hover message (default in neovim)
           -- keymap.set('i', '<C-k>', vim.lsp.buf.hover, opts)
           opts.desc = 'LSP: Show signature help'
-          keymap.set('n', 'gK', vim.lsp.buf.signature_help, opts) -- ? default in nvim v0.10
+          keymap.set('n', 'gK', vim.lsp.buf.signature_help, opts)
           keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
 
           opts.desc = 'LSP: Toggle inlay hints'
