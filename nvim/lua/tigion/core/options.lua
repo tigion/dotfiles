@@ -127,7 +127,7 @@ opt.wildmode = 'longest:full,full'
 
 if vim.fn.has('nvim-0.11') == 1 then
   -- o.winborder = 'rounded' -- default border for all floating windows
-  opt.winborder = 'rounded' -- default border for all floating windows
+  -- opt.winborder = 'rounded' -- default border for all floating windows
 end
 
 -- Clippboard

@@ -140,8 +140,15 @@ return {
         severity_sort = true,
       })
 
-      if vim.fn.has('nvim-0.11') ~= 1 then
-        -- Sets styling for hover and signature help
+      -- Sets styling for hover and signature help
+      if vim.fn.has('nvim-0.11') == 1 then
+        local hover = vim.lsp.buf.hover
+        local signature = vim.lsp.buf.signature_help
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.lsp.buf.hover = function() return hover({ border = border }) end
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.lsp.buf.signature_help = function() return signature({ border = border }) end
+      else
         vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
           border = border,
         })
