@@ -9,10 +9,10 @@ return {
     ft = { 'asciidoc' },
     build = 'cd server && npm install --omit=dev',
     opts = {
-      -- server = {
-      --   port = 11234,
-      --   converter = 'js',
-      -- },
+      server = {
+        --   port = 11234,
+        converter = 'cmd', -- js or cmd
+      },
       -- preview = {
       --   position = 'current',
       -- },
