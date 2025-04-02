@@ -62,15 +62,17 @@ return {
       -- tmux = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
       -- kitty = { 'trim_whitespace', 'trim_newlines' }, -- Do not format.
       -- filetypes that don't have other formatters
-      ['_'] = { 'trim_whitespace', 'trim_newlines' },
+      ['_'] = { 'trim_whitespace', 'trim_newlines', lsp_format = 'last' },
       -- ['_'] = { 'trim_whitespace', 'trim_newlines', 'my_auto_indent' },
       -- all filetypes
       -- ['*'] = { '' },
     },
+    default_format_opts = {
+      lsp_format = 'fallback',
+    },
     format_on_save = function()
       if vim.g.conform_disable_format_on_save then return end
       return {
-        lsp_format = 'fallback',
         async = false,
         timeout_ms = 5000,
       }
