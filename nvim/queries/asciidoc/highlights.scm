@@ -126,3 +126,7 @@
  (list_continuation_marker)
  (line_continuation_marker)
 ] @string.escape
+
+; Spell (allow/disallow)
+(inline) @spell
+(listing_block_content) @nospell
