@@ -54,3 +54,5 @@ gem install text-hyphen
 # diagram (plantuml) support
 install graphviz
 gem install asciidoctor-diagram
+gem install asciidoctor-diagram-plantuml
+# gem install asciidoctor-diagram-ditaamini
