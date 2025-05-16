@@ -210,10 +210,11 @@
 
 ### Others
 
-| Mode | Keymap       | Description                          |
-| ---- | ------------ | ------------------------------------ |
-| `n`  | `<Leader>ui` | Inspect Pos (Treesitter highlights)  |
-| `n`  | `<Leader>uI` | Inspect Tree (Treesitter highlights) |
+| Mode     | Keymap       | Description                                   |
+| -------- | ------------ | --------------------------------------------- |
+| `n`      | `<Leader>ui` | Inspect Pos (Treesitter highlights)           |
+| `n`      | `<Leader>uI` | Inspect Tree (Treesitter highlights)          |
+| `n`, `v` | `<Leader>cd` | Debug (message) for current word or selection |
 
 ## Plugins
 

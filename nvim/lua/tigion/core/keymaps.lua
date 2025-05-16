@@ -57,6 +57,10 @@ keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
 keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 
+-- Debug -----------------------------------------------------------------------
+
+keymap.set({ 'n', 'v' }, '<Leader>cd', addons.add_dbg_msg, { desc = 'Debug word under cursor' })
+
 -- Navigation ------------------------------------------------------------------
 
 -- Spelling
