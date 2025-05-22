@@ -38,7 +38,7 @@ return {
         'ts_ls', -- JavaScript, TypeScript
         'typos_lsp', -- Typos (Code Spell Checker)
         'vimls', -- VimScript
-        'volar', -- Vue.js
+        'vue_ls', -- Vue.js (volar renamed to vue_ls (vue-language-server))
         'yamlls', -- Yaml
       },
       automatic_installation = true,
