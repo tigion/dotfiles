@@ -1,0 +1,87 @@
+return {
+  -- {
+  --   -- This plugin adds a Treesitter configuration and abstraction layer to Neovim.
+  --   -- Link: https://github.com/nvim-treesitter/nvim-treesitter
+  --
+  --   'nvim-treesitter/nvim-treesitter',
+  --   branch = 'main',
+  --   build = ':TSUpdate',
+  --   opts = {},
+  --   config = function(_, opts)
+  --     require('nvim-treesitter').setup(opts)
+  --
+  --     -- Parsers to install
+  --     local ensure_installed = {
+  --       'bash',
+  --       'c',
+  --       'css',
+  --       'dockerfile',
+  --       'gitignore',
+  --       'html',
+  --       'htmldjango',
+  --       'java',
+  --       'javascript',
+  --       'json',
+  --       'lua',
+  --       'luadoc',
+  --       'make',
+  --       'markdown',
+  --       'markdown_inline',
+  --       'php',
+  --       'phpdoc',
+  --       'python',
+  --       'regex',
+  --       'toml',
+  --       'tsx',
+  --       'vim',
+  --       'vimdoc',
+  --       'vue',
+  --       'yaml',
+  --       -- 'help',
+  --       -- 'swift',
+  --     }
+  --     require('nvim-treesitter').install(ensure_installed)
+  --
+  --     -- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+  --     --
+  --     -- -- tsx: Update filetypes
+  --     -- parser_config.tsx.filetype_to_parsername = { 'javascript', 'typescript.tsx' }
+  --
+  --     -- asciidoc: Adds a (experimental) parser for AsciiDoc.
+  --     -- Source: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#adding-parsers
+  --     -- `:TSInstallFromGrammar asciidoc`
+  --     -- require('nvim-treesitter.parsers').asciidoc = {
+  --     --   install_info = {
+  --     --     url = 'https://github.com/tigion/tree-sitter-asciidoc', -- local path or git repo
+  --     --     -- url = '/Users/christoph/projects/neovim/tree-sitter-asciidoc',
+  --     --     files = { 'src/parser.c' },
+  --     --     branch = 'main',
+  --     --   },
+  --     -- }
+  --
+  --     vim.api.nvim_create_autocmd('User', {
+  --       pattern = 'TSUpdate',
+  --       callback = function()
+  --         require('nvim-treesitter.parsers').asciidoc = {
+  --           install_info = {
+  --             url = 'https://github.com/tigion/tree-sitter-asciidoc', -- local path or git repo
+  --             --       revision = <sha>, -- commit hash for revision to check out; HEAD if missing
+  --             --       -- optional entries:
+  --             branch = 'main', -- only needed if different from default branch
+  --             --       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
+  --             --       generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
+  --             --       generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+  --           },
+  --         }
+  --       end,
+  --     })
+  --   end,
+  -- },
+
+  -- {
+  --   -- This plugin adds syntax aware text-objects to Neovim.
+  --   -- Link: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  --
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  -- },
+}
