@@ -90,12 +90,17 @@ return {
 
       -- Activates highlights for `asciidoc` filetype or
       -- manually with `:lua vim.treesitter.start()`
+      -- see': :h vi,.treesitter.start()
+      -- see': :h vi,.treesitter.language.add()
       vim.api.nvim_create_autocmd('FileType', {
         pattern = 'asciidoc',
-        callback = function()
-          vim.treesitter.start()
-          -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-          -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        callback = function(args)
+          if vim.treesitter.language.add('asciidoc') then
+            vim.treesitter.start(args.buf, 'asciidoc')
+            vim.bo[args.buf].syntax = 'on' -- Only for currently in tree-sitter-asciidoc unsupported inline syntax.
+            -- vim.bo[args.buf].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            -- vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
         end,
       })
     end,
