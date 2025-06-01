@@ -39,7 +39,7 @@ return {
         -- 'help',
         -- 'swift',
       }
-      local installed = require('nvim-treesitter.config').installed_parsers()
+      local installed = require('nvim-treesitter.config').get_installed('parsers')
       local not_installed = vim.tbl_filter(
         function(parser) return not vim.tbl_contains(installed, parser) end,
         ensure_installed
@@ -71,19 +71,13 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'TSUpdate',
         callback = function()
+          ---@diagnostic disable-next-line missing-fields
           require('nvim-treesitter.parsers').asciidoc = {
-            ---@diagnostic disable-next-line missing-fields
             install_info = {
               url = 'https://github.com/tigion/tree-sitter-asciidoc', -- git repo
               -- path = '~/projects/neovim/tree-sitter-asciidoc', -- local path
               revision = '2535b07174b9b00aadbe4c775c96254b9e40c30d', -- commit hash for revision to check out; HEAD if missing
             },
-            -- WARN: `tier = 2` is important for custom parsers
-            -- `norm_languages()` in config.lua checks vor `tier < 4`
-            -- see: https://github.com/nvim-treesitter/nvim-treesitter/blob/0140c29b31d56be040697176ae809ba0c709da02/lua/nvim-treesitter/config.lua#L95
-            -- tiers: 1: stable, 2: unstable, 3: unmaintained, 4: unsupported
-            --        supported = tier < 4
-            tier = 2,
           }
         end,
       })
