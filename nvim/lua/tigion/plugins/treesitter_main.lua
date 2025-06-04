@@ -56,27 +56,25 @@ return {
       -- asciidoc: Adds a (experimental) parser for AsciiDoc.
       -- Source: https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md#adding-parsers      --
       --
-      -- NOTE: Install with: `:TSInstall asciidoc`
-      --       Update with: `:TSUpdate`
-      --
-      -- NOTE: The `highlights.scm` must be copied manually to one of the following
-      -- locations:
-      -- - `~/.config/nvim/queries/asciidoc/`
-      -- - `~/.local/share/nvim/site/queries/asciidoc/`
+      -- NOTE: Install with:   `:TSInstall asciidoc`
+      --       Update with:    `:TSUpdate`
+      --       Uninstall with: `:TSUninstall asciidoc`
       --
       -- WARN: Uninstall with `:TSUninstall asciidoc`
-      -- This removes only in `~/.local/share/nvim/site/parser` and
-      -- not in `parser-info` and `queries`
+      -- This removes only in `~/.local/share/nvim/site/parser` and `queries` but
+      -- not in `parser-info`
       --
       vim.api.nvim_create_autocmd('User', {
         pattern = 'TSUpdate',
         callback = function()
           ---@diagnostic disable-next-line missing-fields
           require('nvim-treesitter.parsers').asciidoc = {
+            ---@diagnostic disable-next-line missing-fields
             install_info = {
               url = 'https://github.com/tigion/tree-sitter-asciidoc', -- git repo
               -- path = '~/projects/neovim/tree-sitter-asciidoc', -- local path
-              revision = '2535b07174b9b00aadbe4c775c96254b9e40c30d', -- commit hash for revision to check out; HEAD if missing
+              -- revision = '2535b07174b9b00aadbe4c775c96254b9e40c30d', -- commit hash for revision to check out; HEAD if missing
+              queries = 'queries', -- directory with query files
             },
           }
         end,
