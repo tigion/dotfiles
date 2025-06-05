@@ -95,7 +95,8 @@ return {
       cmdline = {
         keymap = {
           ['<Tab>'] = { 'show', 'select_next' },
-          ['<Enter>'] = { 'select_accept_and_enter', 'fallback' },
+          -- ['<Enter>'] = { 'select_accept_and_enter', 'fallback' },
+          ['<Enter>'] = { 'select_and_accept', 'fallback' },
         },
         -- completion = { menu = { auto_show = true } },
       },
