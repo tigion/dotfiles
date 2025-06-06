@@ -169,25 +169,41 @@ return {
     end,
   },
 
-  -- {
-  --  -- This plugin adds a color scheme to Neovim.
-  --  -- Link: https://github.com/olimorris/onedarkpro.nvim
-  --
-  --   'olimorris/onedarkpro.nvim',
-  --   priority = 1000,
-  --   opts = {
-  --     options = {
-  --       transparency = true,
-  --     },
-  --     -- styles = {
-  --     -- },
-  --     -- on_highlights = function(hl, c)
-  --     --   ...
-  --     -- end,
-  --   },
-  --   config = function(_, opts)
-  --     require('onedarkpro').setup(opts)
-  --     vim.cmd([[colorscheme onedark]])
-  --   end,
-  -- }
+  {
+    -- This plugin adds a color scheme to Neovim.
+    -- Link: https://github.com/olimorris/onedarkpro.nvim
+
+    'olimorris/onedarkpro.nvim',
+    enabled = false,
+    priority = 1000,
+    opts = {
+      options = {
+        transparency = true,
+      },
+      -- styles = {
+      -- },
+      -- on_highlights = function(hl, c)
+      --   ...
+      -- end,
+    },
+    config = function(_, opts)
+      require('onedarkpro').setup(opts)
+      vim.cmd([[colorscheme onedark]])
+    end,
+  },
+
+  {
+    -- This plugin adds a color scheme to Neovim.
+    -- Link: https://github.com/sainnhe/everforest
+
+    'sainnhe/everforest',
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.everforest_enable_italic = true
+      vim.g.everforest_background = 'hard'
+      vim.cmd.colorscheme('everforest')
+    end,
+  },
 }
