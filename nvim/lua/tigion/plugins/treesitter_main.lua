@@ -30,6 +30,7 @@ return {
         'phpdoc',
         'python',
         'regex',
+        'sql',
         'toml',
         'tsx',
         'vim',
