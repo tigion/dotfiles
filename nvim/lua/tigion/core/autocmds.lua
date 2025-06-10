@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
-  callback = function() vim.highlight.on_yank({ higroup = 'Visual' }) end,
+  callback = function() vim.hl.on_yank({ higroup = 'Visual' }) end,
 })
 
 -- Go to last cursor location when opening a buffer
