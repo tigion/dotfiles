@@ -9,7 +9,7 @@ return {
       'echasnovski/mini.icons', -- if you use standalone mini plugins
       -- 'echasnovski/mini.nvim', -- if you use the mini.nvim suite
     },
-    -- ft = { 'markdown' },
+    ft = { 'markdown' },
     -- cmd = { 'RenderMarkdown' },
     keys = {
       {
