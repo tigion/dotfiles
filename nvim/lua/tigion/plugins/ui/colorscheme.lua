@@ -48,6 +48,7 @@ return {
 
         -- Colorscheme (tokyonight moon(night))
         hl.WinSeparator = { fg = c.bg_highlight }
+        hl.helpSectionDelim = { fg = c.bg_highlight, bg = c.fg_dark }
 
         -- cmp-nvim
         -- hl.CmpDocumentation.bg = bg_float2
