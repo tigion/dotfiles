@@ -52,6 +52,9 @@ local opts = {
     path = get_local_dev_path,
     -- path = '~/projects/neovim',
   },
+  rocks = {
+    enabled = false, -- disable luarocks support
+  },
 }
 
 require('lazy').setup(spec, opts)
