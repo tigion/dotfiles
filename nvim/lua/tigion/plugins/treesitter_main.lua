@@ -80,18 +80,25 @@ return {
         end,
       })
 
-      -- Activates highlights for `asciidoc` filetype or
+      -- Activates highlights for supported filetypes or
       -- manually with `:lua vim.treesitter.start()`
-      -- see': :h vi,.treesitter.start()
-      -- see': :h vi,.treesitter.language.add()
+      -- - `:h vim.treesitter.start()`, `:h vim.treesitter.language.add()`
       vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'asciidoc',
         callback = function(args)
-          if vim.treesitter.language.add('asciidoc') then
-            vim.treesitter.start(args.buf, 'asciidoc')
-            vim.bo[args.buf].syntax = 'on' -- Only for currently in tree-sitter-asciidoc unsupported inline syntax.
-            -- vim.bo[args.buf].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            -- vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          local buf = args.buf
+          local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
+          if filetype == '' then return end -- Stops if no filetype is detected.
+
+          -- Checks if a parser is available for the filetype.
+          if vim.treesitter.language.add(filetype) then
+            -- Activates the parser for the current buffer.
+            vim.treesitter.start(buf, filetype)
+            -- Sets other options for the current buffer.
+            if filetype == 'asciidoc' then
+              vim.bo[buf].syntax = 'on' -- Only for currently in tree-sitter-asciidoc unsupported inline syntax.
+            end
+            -- vim.bo[buf].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            -- vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,
       })
