@@ -81,6 +81,19 @@ opt.ignorecase = true -- Case insensitive searching unless `/C`
 opt.smartcase = true -- Case sensitive searching if mixed cases in search
 opt.inccommand = 'split' -- Live substitution
 
+-- Folding
+opt.foldmethod = 'expr' -- Uses treesitter as folding source.
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldcolumn = '0' -- Disables the fold column.
+opt.foldtext = '' -- With empty foldtext, the first line of the fold has syntax highlighting.
+opt.foldlevel = 99 -- Minimum foldlevel that will be closed.
+opt.foldlevelstart = -1 -- Minimum foldlevel that will be opened.
+-- opt.foldnestmax = 5
+opt.fillchars:append('foldopen:')
+opt.fillchars:append('foldclose:')
+-- opt.fillchars:append('fold: ')
+opt.fillchars:append('foldsep:┊')
+
 -- Backup, undo, swap
 opt.backup = false
 opt.backupskip = { '/tmp/*', '/private/tmp/*' }
