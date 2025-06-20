@@ -92,12 +92,23 @@ return {
     dev = false,
     keys = {
       { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch to opposite word' },
+      { '<Leader>I', function() require('opposites').cases.next() end, desc = 'Switch to next case type' },
     },
     ---@type opposites.Config
     opts = {
-      -- use_case_sensitive_mask = false,
       opposites = {
-        ['ja'] = 'nein',
+        -- use_case_sensitive_mask = false,
+        words = {
+          ['ja'] = 'nein',
+        },
+      },
+      cases = {
+        types = {
+          'snake',
+          'screaming_snake',
+          'camel',
+          'pascal',
+        },
       },
     },
   },
