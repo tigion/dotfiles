@@ -8,24 +8,9 @@ return {
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')
 
-    -- custom solarized-osaka section colors
-    -- local so_colors = require('solarized-osaka.colors').setup({ transform = true })
-    -- local custom_theme = require('lualine.themes.solarized-osaka')
-    -- custom_theme.normal.b.fg = so_colors.blue
-    -- custom_theme.normal.b.bg = so_colors.base02
-    -- custom_theme.normal.c.bg = so_colors.base04
-    -- custom_theme.insert['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.insert.a.bg }
-    -- custom_theme.command['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.command.a.bg }
-    -- custom_theme.visual['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.visual.a.bg }
-    -- custom_theme.replace['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.replace.a.bg }
-    -- custom_theme.terminal['b'] = { bg = custom_theme.normal.b.bg, fg = custom_theme.terminal.a.bg }
-
     lualine.setup({
       options = {
         icons_enabled = true,
-        -- theme = 'solarized_dark',
-        -- theme = 'solarized-osaka',
-        -- theme = custom_theme,
         theme = 'tokyonight',
         -- theme = 'catppuccin',
         -- theme = 'onedark',
@@ -47,7 +32,8 @@ return {
         },
         lualine_c = {
           { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-          { 'filename', file_status = true, path = 0, padding = { left = 0, right = 1 } },
+          -- { 'filename', file_status = true, path = 1, shorting_target = 75, padding = { left = 0, right = 1 } },
+          { 'filename', file_status = true, path = 4, padding = { left = 0, right = 1 } },
           {
             'diff',
             symbols = {
