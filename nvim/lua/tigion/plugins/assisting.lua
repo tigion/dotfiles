@@ -91,24 +91,36 @@ return {
     'tigion/nvim-opposites',
     dev = false,
     keys = {
-      { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch to opposite word' },
-      { '<Leader>I', function() require('opposites').cases.next() end, desc = 'Switch to next case type' },
+      { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch word' },
+      -- { '<Leader>I', function() require('opposites').cases.switch() end, desc = 'Switch to next word' },
     },
     ---@type opposites.Config
     opts = {
+      all = {
+        modules = { 'opposites', 'cases' },
+      },
       opposites = {
-        -- use_case_sensitive_mask = false,
         words = {
           ['ja'] = 'nein',
+          -- ['jo'] = 'nein',
+        },
+        words_by_ft = {
+          markdown = {
+            ['[ ]'] = '[x]',
+          },
         },
       },
       cases = {
-        types = {
-          'snake',
-          'screaming_snake',
-          'camel',
-          'pascal',
-        },
+        types = { 'snake', 'screaming_snake', 'camel', 'pascal' },
+      },
+      -- chains = {
+      --   words = {
+      --     { 'foo', 'bar', 'baz', 'qux' },
+      --   },
+      -- },
+      notify = {
+        found = false,
+        not_found = true,
       },
     },
   },
