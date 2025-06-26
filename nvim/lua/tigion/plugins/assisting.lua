@@ -97,7 +97,7 @@ return {
     ---@type opposites.Config
     opts = {
       all = {
-        modules = { 'opposites', 'cases' },
+        -- modules = { 'opposites', 'cases' },
       },
       opposites = {
         words = {
@@ -113,11 +113,12 @@ return {
       cases = {
         types = { 'snake', 'screaming_snake', 'camel', 'pascal' },
       },
-      -- chains = {
-      --   words = {
-      --     { 'foo', 'bar', 'baz', 'qux' },
-      --   },
-      -- },
+      chains = {
+        words = {
+          { 'foo', 'bar', 'baz', 'qux' },
+          { '[!NOTE]', '[!TIP]', '[!IMPORTANT]', '[!WARNING]', '[!CAUTION]' }, -- Markdown (GitHub) alerts
+        },
+      },
       notify = {
         found = false,
         not_found = true,
