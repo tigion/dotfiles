@@ -92,23 +92,17 @@ return {
     dev = false,
     keys = {
       { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch word' },
-      -- { '<Leader>I', function() require('opposites').cases.switch() end, desc = 'Switch to next word' },
     },
     ---@type opposites.Config
     opts = {
       all = {
-        -- modules = { 'opposites', 'cases' },
+        modules = { 'opposites', 'chains', 'cases', 'todos' },
       },
       opposites = {
         words = {
           ['ja'] = 'nein',
-          -- ['jo'] = 'nein',
         },
-        words_by_ft = {
-          markdown = {
-            ['[ ]'] = '[x]',
-          },
-        },
+        words_by_ft = {},
       },
       cases = {
         types = { 'snake', 'screaming_snake', 'camel', 'pascal' },
@@ -116,7 +110,14 @@ return {
       chains = {
         words = {
           { 'foo', 'bar', 'baz', 'qux' },
-          { '[!NOTE]', '[!TIP]', '[!IMPORTANT]', '[!WARNING]', '[!CAUTION]' }, -- Markdown (GitHub) alerts
+        },
+        words_by_ft = {
+          asciidoc = {
+            { '[NOTE]', '[TIP]', '[IMPORTANT]', '[WARNING]', '[CAUTION]' }, -- AsciiDoc admonitions
+          },
+          markdown = {
+            { '[!NOTE]', '[!TIP]', '[!IMPORTANT]', '[!WARNING]', '[!CAUTION]' }, -- Markdown (GitHub) alerts
+          },
         },
       },
       notify = {
