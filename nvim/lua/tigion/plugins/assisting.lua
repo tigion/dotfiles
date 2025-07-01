@@ -104,9 +104,6 @@ return {
         },
         words_by_ft = {},
       },
-      cases = {
-        types = { 'snake', 'screaming_snake', 'camel', 'pascal' },
-      },
       chains = {
         words = {
           { 'foo', 'bar', 'baz', 'qux' },
@@ -119,6 +116,9 @@ return {
             { '[!NOTE]', '[!TIP]', '[!IMPORTANT]', '[!WARNING]', '[!CAUTION]' }, -- Markdown (GitHub) alerts
           },
         },
+      },
+      cases = {
+        types = { 'snake', 'screaming_snake', 'camel', 'pascal' },
       },
       notify = {
         found = false,
