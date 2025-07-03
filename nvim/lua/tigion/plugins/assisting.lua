@@ -85,15 +85,15 @@ return {
   },
 
   {
-    -- A Neovim plugin to quickly switch the word under the cursor to its opposite word.
-    -- Link: https://github.com/tigion/nvim-opposites
+    -- A Neovim plugin to quickly switch a word or pattern.
+    -- Link: https://github.com/tigion/swap.nvim
 
-    'tigion/nvim-opposites',
+    'tigion/swap.nvim',
     dev = false,
     keys = {
-      { '<Leader>i', function() require('opposites').switch() end, desc = 'Switch word' },
+      { '<Leader>i', function() require('swap').switch() end, desc = 'Swap word' },
     },
-    ---@type opposites.Config
+    ---@type swap.Config
     opts = {
       all = {
         modules = { 'opposites', 'chains', 'cases', 'todos' },
@@ -110,7 +110,8 @@ return {
         },
         words_by_ft = {
           asciidoc = {
-            { '[NOTE]', '[TIP]', '[IMPORTANT]', '[WARNING]', '[CAUTION]' }, -- AsciiDoc admonitions
+            { '[NOTE]', '[TIP]', '[IMPORTANT]', '[WARNING]', '[CAUTION]' }, -- AsciiDoc admonitions (block)
+            { 'NOTE:', 'TIP:', 'IMPORTANT:', 'WARNING:', 'CAUTION:' }, -- AsciiDoc admonitions (line)
           },
           markdown = {
             { '[!NOTE]', '[!TIP]', '[!IMPORTANT]', '[!WARNING]', '[!CAUTION]' }, -- Markdown (GitHub) alerts
