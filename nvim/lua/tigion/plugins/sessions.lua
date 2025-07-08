@@ -10,6 +10,8 @@ return {
     { '<Leader>ws', '<Cmd>Session save<CR>', desc = 'Save session (cwd)' },
     { '<Leader>wl', '<Cmd>Session load<CR>', desc = 'Load session (cwd)' },
   },
+  ---@module 'sessions'
+  ---@type sessions.Config
   opts = {
     auto_save = false,
   },

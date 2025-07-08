@@ -8,6 +8,8 @@ return {
     dev = false, -- When `true`, the local development version is used instead.
     ft = { 'asciidoc' },
     build = 'cd server && npm install --omit=dev',
+    ---@module 'asciidoc-preview'
+    ---@type asciidoc-preview.Config
     opts = {
       server = {
         --   port = 11234,
