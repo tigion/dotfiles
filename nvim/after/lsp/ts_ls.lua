@@ -34,16 +34,15 @@ local inlay_hints = {
 ---@module "vim.lsp.client"
 ---@class vim.lsp.ClientConfig
 return {
-  -- filetypes = { 'javascript', 'typescript', 'vue' },
   init_options = {
-    plugins = {
-      {
-        name = '@vue/typescript-plugin',
-        location = vue_typescript_plugin,
-        languages = { 'vue' },
-        -- languages = { "javascript", "typescript", "vue" },
-      },
-    },
+    -- plugins = {
+    --   {
+    --     name = '@vue/typescript-plugin',
+    --     location = vue_typescript_plugin,
+    --     languages = { 'vue' },
+    --     -- languages = { "javascript", "typescript", "vue" },
+    --   },
+    -- },
   },
   settings = {
     typescript = {

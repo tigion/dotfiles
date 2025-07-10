@@ -38,11 +38,25 @@ return {
         'ts_ls', -- JavaScript, TypeScript
         'typos_lsp', -- Typos (Code Spell Checker)
         'vimls', -- VimScript
+        'vtsls', -- Since v3.0.0, the Vue language server (vue_ls) requires `vtsls` to support TypeScript.
         'vue_ls', -- Vue.js (volar renamed to vue_ls (vue-language-server))
         'yamlls', -- Yaml
       },
       automatic_installation = true,
       -- handlers = {},
+
+      -- FIX: Workaround for mason-lspconfig errors with
+      --      the new `vue_ls` config in nvim-lspconfig.
+      --
+      -- - https://github.com/neovim/nvim-lspconfig/commit/85379d02d3bac8dc68129a4b81d7dbd00c8b0f77
+      --
+      -- Don't start with `vue_ls` config from mason-lspconfig,
+      -- instead start directly with `vim.lsp.enable`.
+      --
+      -- <- fix start
+      automatic_enable = { exclude = { 'vue_ls' } },
+      vim.lsp.enable({ 'vue_ls' }),
+      -- <- fix end
     })
 
     mason_tool_installer.setup({
