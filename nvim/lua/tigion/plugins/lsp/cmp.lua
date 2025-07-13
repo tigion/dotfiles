@@ -58,6 +58,21 @@ return {
               { 'label', 'label_description', gap = 1 },
               { 'kind', 'source_name', gap = 1 },
             },
+            -- NOTE: Columns for the cmdline are directly configured
+            --       in `cmdline.menu.draw.columns`.
+            --
+            -- columns = function(ctx)
+            --   if ctx.mode == 'cmdline' then
+            --     return {
+            --       { 'label', 'label_description', gap = 1 },
+            --     }
+            --   end
+            --   return {
+            --     { 'kind_icon' },
+            --     { 'label', 'label_description', gap = 1 },
+            --     { 'kind', 'source_name', gap = 1 },
+            --   }
+            -- end,
           },
         },
         documentation = {
@@ -99,6 +114,16 @@ return {
           ['<Enter>'] = { 'select_and_accept', 'fallback' },
         },
         -- completion = { menu = { auto_show = true } },
+        completion = {
+          menu = {
+            -- auto_show = true,
+            draw = {
+              columns = {
+                { 'label', 'label_description', gap = 1 },
+              },
+            },
+          },
+        },
       },
 
       -- Experimental signature help support
