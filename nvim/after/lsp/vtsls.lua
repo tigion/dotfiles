@@ -9,6 +9,21 @@ local vue_plugin = {
   configNamespace = 'typescript',
 }
 
+local inlay_hints = {
+  parameterNames = {
+    enabled = 'all',
+    -- suppressWhenArgumentMatchesName = true, -- default
+  },
+  parameterTypes = { enabled = true },
+  variableTypes = {
+    enabled = true,
+    -- suppressWhenTypeMatchesName = false, -- default
+  },
+  propertyDeclarationTypes = { enabled = true },
+  functionLikeReturnTypes = { enabled = true },
+  enumMemberValues = { enabled = true }, -- typescript only
+}
+
 ---@module "vim.lsp.client"
 ---@class vim.lsp.ClientConfig
 return {
@@ -20,6 +35,12 @@ return {
           vue_plugin,
         },
       },
+    },
+    typescript = {
+      inlayHints = inlay_hints,
+    },
+    javascript = {
+      inlayHints = inlay_hints,
     },
   },
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
