@@ -20,30 +20,32 @@ return {
 
     mason_lspconfig.setup({
       ensure_installed = {
-        'bashls', -- Bash (LSP)
+        'basedpyright', -- Python (LSP, better fork of pyright) -- Replaces `pyright`
+        'bashls', -- Bash (LSP, bash-language-server)
         'biome', -- JavaScript, TypeScript (LSP, Linter, Formatter) -- TODO: Needs testing to replace eslint.
-        'clangd', -- C, C++
-        'cssls', -- CSS, SCSS, LESS
-        'eslint', -- JavaScript, TypeScript (replaces eslint_d)
-        'html', -- HTML
-        'intelephense', -- PHP
-        'jdtls', -- Java
-        'jsonls', -- JSON
-        'lua_ls', -- Lua
-        'marksman', -- Markdown
-        'phpactor', -- PHP
-        'basedpyright', -- Python (better fork of pyright)
-        -- 'pyright', -- Python
-        'ruff', -- Python (LSP/Linter/Formatter)
-        'ts_ls', -- JavaScript, TypeScript
-        'typos_lsp', -- Typos (Code Spell Checker)
-        'vimls', -- VimScript
-        'vtsls', -- Since v3.0.0, the Vue language server (vue_ls) requires `vtsls` to support TypeScript.
-        'vue_ls', -- Vue.js (volar renamed to vue_ls (vue-language-server))
-        'yamlls', -- Yaml
+        'clangd', -- C, C++ (LSP)
+        'cssls', -- CSS, SCSS, LESS (LSP, css-lsp)
+        'eslint', -- JavaScript, TypeScript (LSP, eslint_lsp) -- Replaces `eslint_d`
+        'html', -- HTML (LSP, html-lsp)
+        'intelephense', -- PHP (LSP)
+        'jdtls', -- Java (LSP)
+        'jsonls', -- JSON (LSP, json-lsp)
+        'lua_ls', -- Lua (LSP, lua-language-server)
+        'marksman', -- Markdown (LSP)
+        'phpactor', -- PHP (LSP)
+        -- 'pyright', -- Python (LSP) -- Replaced by `basedpyright`
+        'ruff', -- Python (LSP, Linter, Formatter)
+        -- 'ts_ls', -- JavaScript, TypeScript (LSP, typescript-language-server) -- Replaced by `vtsls`
+        'typos_lsp', -- * (LSP, typos-lsp, Code Spell Checker)
+        'vimls', -- VimScript (LSP, vim-language-server)
+        'vtsls', -- JavaScript, TypeScript, Vue via vue_ls -- Replaces `ts_ls`
+        -- NOTE:
+        -- - Since `vue_ls` v3.0 `vtsls` instead `ts_ls` is required to support JavaScript or TypeScript.
+        -- - `volar` is renamed to `vue_ls` (vue-language-server)
+        'vue_ls', -- Vue (LSP, vue-language-server)
+        'yamlls', -- YAML (LSP, yaml-language-server)
       },
       automatic_installation = true,
-      -- handlers = {},
 
       -- FIX: Workaround for mason-lspconfig errors with
       --      the new `vue_ls` config in nvim-lspconfig.
@@ -61,22 +63,27 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        'prettier', -- Code (Formatter)
+        'markdownlint-cli2', -- Markdown (Linter, Formatter)
+        'prettier', -- * (Formatter)
+        'shellcheck', -- Bash (Linter)
+        'shfmt', -- Bash, Mksh, Shell (Formatter)
         'stylua', -- Lua (Formatter)
-        'shellcheck', -- Shell (Linter)
-        'shfmt', -- Shell (Formatter)
+
         -- 'pylint', -- Python (Linter)
         -- 'flake8', -- Python (Linter)
         -- 'ruff-lsp', -- Python (LSP/Linter/Formatter) -- replaced by new ruff (06.11.2024)
         -- 'black', -- Python (Formatter)
         -- 'isort', -- Python (Formatter: includes)
-        -- 'pint', -- PHP (Formatter) -- Use LSP fallback from intelephense TODO: configure to also format embedded HTML
-        -- 'eslint_d', -- JS/TS (Linter) -- replaced by eslint_lsp -- TODO: Needs testing with flat config and projects without own eslint.
-        -- { 'eslint_d', version = '13.1.2' }, -- JS/TS (Linter) NOTE: (:MasonInstall eslint_d@13.1.2) Pin to older version to support the old config style (not the new flat config)
-        'markdownlint-cli2', -- Markdown (Linter)
+
+        -- 'pint', -- PHP (Formatter) -- Use LSP fallback from intelephense -- Configure to also format embedded HTML
+
+        -- 'eslint_d', -- JS/TS (Linter) -- Replaced by `eslint`
+        -- { 'eslint_d', version = '13.1.2' }, -- JS/TS (Linter) -- (:MasonInstall eslint_d@13.1.2) Pin to older version to support the old config style (not the new flat config)
+
         -- 'markdownlint', -- Markdown (Linter)
+
         -- 'codespell', -- Code (Linter: words) use typos_lsp instead
-        -- { 'volar', version = '1.8.27' }, -- Vue.js FIX: (:MasonInstall volar@1.8.27)
+        -- { 'volar', version = '1.8.27' }, -- Vue.js -- (:MasonInstall volar@1.8.27) Pin to older version.
         -- 'jsonlint', -- JSON (Linter)
       },
     })
