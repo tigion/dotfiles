@@ -93,6 +93,7 @@ return {
     keys = {
       { '<Leader>i', function() require('swap').switch() end, desc = 'Swap word' },
     },
+    ---@module 'swap'
     ---@type swap.Config
     opts = {
       all = {
