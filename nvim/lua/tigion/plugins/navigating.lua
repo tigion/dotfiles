@@ -27,10 +27,10 @@ return {
 
     'aaronik/treewalker.nvim',
     keys = {
-      { 'äj', '<CMD>Treewalker Down<CR>' },
-      { 'äk', '<CMD>Treewalker Up<CR>' },
-      { 'äh', '<CMD>Treewalker Left<CR>' },
-      { 'äl', '<CMD>Treewalker Right<CR>' },
+      { 'äj', '<Cmd>Treewalker Down<CR>', desc = 'Treewalker Down' },
+      { 'äk', '<Cmd>Treewalker Up<CR>', desc = 'Treewalker Up' },
+      { 'äh', '<Cmd>Treewalker Left<CR>', desc = 'Treewalker Left' },
+      { 'äl', '<Cmd>Treewalker Right<CR>', desc = 'Treewalker Right' },
     },
     opts = {},
   },
