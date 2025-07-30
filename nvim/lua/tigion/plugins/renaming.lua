@@ -19,5 +19,6 @@ return {
     -- dressing is irritating. So I'm disabling it for now.
     --
     -- input_buffer_type = 'dressing',
+    -- input_buffer_type = 'snacks',
   },
 }
