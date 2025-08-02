@@ -40,13 +40,7 @@ return {
         -- 'help',
         -- 'swift',
       }
-      local installed = require('nvim-treesitter.config').get_installed('parsers')
-      local not_installed = vim.tbl_filter(
-        function(parser) return not vim.tbl_contains(installed, parser) end,
-        ensure_installed
-      )
-      -- Calls `install()` only if there are missing parsers.
-      if #not_installed > 0 then require('nvim-treesitter').install(not_installed) end
+      require('nvim-treesitter').install(ensure_installed)
 
       -- TODO: Update or Remove if not needed
       --
