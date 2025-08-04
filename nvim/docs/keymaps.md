@@ -26,6 +26,7 @@
       - [nvim-lspconfig](#nvim-lspconfig)
     - [bufferline.nvim](#bufferlinenvim)
     - [conform.nvim](#conformnvim)
+    - [flash.nvim](#flashnvim)
     - [gitsigns.nvim](#gitsignsnvim)
     - [harpoon](#harpoon)
     - [hardtime.nvim](#hardtimenvim)
@@ -298,6 +299,22 @@ Snippets:
 | -------- | ------------ | ------------------------------- |
 | `n`, `x` | `<Leader>cf` | Format buffer/file or selection |
 | `n`      | `<Leader>tf` | Toggle format on save           |
+
+### [flash.nvim]
+
+[flash.nvim]: https://github.com/folke/flash.nvim
+
+| Mode          | Keymap  | Description             |
+| ------------- | ------- | ----------------------- |
+| `n`, `x`, `o` | `s`     | Flash                   |
+| `n`, `x`, `o` | `S`     | Flash treesitter        |
+| `o`           | `r`     | Remote flash            |
+| `o`, `x`      | `R`     | Remote flash treesitter |
+| `c`           | `<C-s>` | Toggle flash search     |
+
+> [!NOTE]
+> Replaces the default `s` and `S` substitute key mappings for characterwise
+> and linewise deletions. (`:help s`)
 
 ### [gitsigns.nvim]
 

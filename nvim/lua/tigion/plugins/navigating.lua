@@ -21,6 +21,52 @@ return {
   },
 
   {
+    -- This plugin lets you navigate your code with search labels,
+    -- enhanced character motions, and Treesitter integration.
+    --
+    -- Replaces the default `s` and `S` substitute key mappings for
+    -- characterwise and linewise deletions. (`:help s`)
+    --
+    -- Link: https://github.com/folke/flash.nvim
+
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    enabled = true,
+    ---@type Flash.Config
+    opts = {
+      labels = 'asdfghjklqwertzuiopyxcvbnm', -- Switched `y` and `z`.
+      search = {
+        multi_window = true,
+      },
+      label = {
+        distance = true,
+        -- min_pattern_length = 2,
+      },
+      modes = {
+        -- Search with `/` or `?`.
+        search = {
+          enabled = false, -- Disabled, toggle manually with `<C-s>`.
+        },
+        -- Motions with `f`, `F`, `t`, `T`, `;` and `,`.
+        char = {
+          enabled = true,
+          jump_labels = false,
+        },
+        treesitter = {
+          -- labels = 'asdfghjklqwertzuiopyxcvbnm',
+        },
+      },
+    },
+    keys = {
+      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
+      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
+      { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash' },
+      { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
+      { '<C-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' },
+    },
+  },
+
+  {
     -- This plugin adds a moving around your code in a syntax tree
     -- aware manner to Neovim.
     -- Link: https://github.com/aaronik/treewalker.nvim
