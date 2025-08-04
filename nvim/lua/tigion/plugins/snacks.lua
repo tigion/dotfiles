@@ -284,5 +284,18 @@ return {
         })
       end,
     })
+
+    -- FIX: This is a workaround to prevent blink.cmp from flickering with snacks.animation.
+    --
+    -- Turns snacks.animation off while the blink.cmp menu is open,
+    -- turn it back on afterwards.
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'BlinkCmpMenuOpen',
+      callback = function() vim.g.snacks_animate = false end,
+    })
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'BlinkCmpMenuClose',
+      callback = function() vim.g.snacks_animate = true end,
+    })
   end,
 }
