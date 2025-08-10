@@ -7,7 +7,8 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     keys = {
       -- show/navigate git hunks
-      { '<Leader>gp', '<Cmd>Gitsigns preview_hunk<CR>', desc = 'Show (preview) git hunk' },
+      { '<Leader>gp', '<Cmd>Gitsigns preview_hunk<CR>', desc = 'Preview git hunk (popup)' },
+      { '<Leader>gP', '<Cmd>Gitsigns preview_hunk_inline<CR>', desc = 'Preview git hunk (inline)' },
       { '[g', '<Cmd>Gitsigns prev_hunk<CR>', desc = 'Prev git hunk' },
       { ']g', '<Cmd>Gitsigns next_hunk<CR>', desc = 'Next git hunk' },
       { '<Leader>gl', '<Cmd>Gitsigns setloclist<CR>', desc = 'Show git hunks in location list' },

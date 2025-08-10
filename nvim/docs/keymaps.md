@@ -322,7 +322,8 @@ Snippets:
 
 | Mode | Keymap       | Description                     | P    |
 | ---- | ------------ | ------------------------------- | ---- |
-| `n`  | `<Leader>gp` | Show (preview) git hunk         |      |
+| `n`  | `<Leader>gp` | Peview git hunk (popup)         |      |
+| `n`  | `<Leader>gP` | Preview git hunk (inline)       |      |
 | `n`  | `<Leader>gs` | Stage git hunk                  |      |
 | `n`  | `<Leader>gu` | Unstage git hunk                |      |
 | `n`  | `<Leader>gR` | Reset git hunk                  |      |
