@@ -54,6 +54,10 @@ return {
     -- This plugin lets you use Codeium in Neovim.
     -- Link: https://github.com/Exafunction/codeium.vim
 
+    -- TODO: Codeium is now Windsurf. Rename links and names.
+    --       - https://github.com/Exafunction/windsurf.vim
+    --       - https://github.com/Exafunction/windsurf.nvim
+
     -- NOTE: clean up ~/.codeium/bin from old folders
     --       with language_server_macos_arm binaries
 
@@ -106,5 +110,14 @@ return {
   --     'hrsh7th/nvim-cmp',
   --   },
   --   config = function() require('codeium').setup({}) end,
+  -- },
+
+  -- {
+  --   -- https://github.com/augmentcode/augment.vim
+  --   -- https://docs.augmentcode.com/vim/setup-augment/install-vim-neovim
+  --
+  --   -- TODO: Needs to be tested.
+  --
+  --   -- 'augmentcode/augment.vim',
   -- },
 }
