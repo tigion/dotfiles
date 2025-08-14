@@ -27,7 +27,12 @@ return {
           local enabled = vim.o.lines >= 21
           return {
             { icon = '󰈔 ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
-            { icon = '󱔗 ', key = 'r', desc = 'Recent Files', action = ':Telescope oldfiles' },
+            {
+              icon = '󱔗 ',
+              key = 'r',
+              desc = 'Recent Files',
+              action = function() Snacks.picker.recent({ filter = { cwd = true } }) end,
+            },
             {
               icon = ' ',
               key = 'l',
@@ -35,9 +40,15 @@ return {
               action = ':Session load',
               enabled = require('sessions').exists(),
             },
-            { icon = '󰱼 ', key = 'f', desc = 'Find File', action = ':Telescope find_files' },
-            { icon = '󰺮 ', key = 'g', desc = 'Find Text', action = ':Telescope live_grep' },
-            { icon = '󱤇 ', key = 'h', desc = 'Find Help Tag', action = ':Telescope help_tags', enabled = enabled },
+            { icon = '󰱼 ', key = 'f', desc = 'Find File', action = function() Snacks.picker.files() end },
+            { icon = '󰺮 ', key = 'g', desc = 'Find Text', action = function() Snacks.picker.grep() end },
+            {
+              icon = '󱤇 ',
+              key = 'h',
+              desc = 'Find Help Tag',
+              action = function() Snacks.picker.help() end,
+              enabled = enabled,
+            },
             {
               icon = ' ',
               key = 's',
