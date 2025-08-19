@@ -98,6 +98,16 @@ return {
       return hipatterns.compute_hex_color_group(hex, style)
     end
 
+    -- Returns hex color group for matching named color.
+    ---@param match string
+    ---@return string
+    local named_color_group = function(_, match)
+      local style = hi_group_styles[my_style] or 'bg'
+      local name = match
+      local hex = util_color.named_to_hex(name)
+      return hipatterns.compute_hex_color_group(hex, style)
+    end
+
     -- Returns extmark opts for highlights with virtual inline text.
     ---@param data table Includes `hl_group`, `full_match` and more.
     ---@return table
@@ -166,6 +176,14 @@ return {
         cmyk_color = {
           pattern = 'cmyk%(%d+%%, ?%d+%%, ?%d+%%, ?%d+%%%)',
           group = cmyk_color_group,
+          extmark_opts = my_extmark_opts,
+        },
+
+        -- True:  'green', "green"
+        -- False: red, redblue, (red), `red`
+        named_color = {
+          pattern = util_color.named_colors_pattern(),
+          group = named_color_group,
           extmark_opts = my_extmark_opts,
         },
       },

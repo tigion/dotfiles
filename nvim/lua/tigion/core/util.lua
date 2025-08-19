@@ -254,6 +254,28 @@ function M.color.cmyk_to_hex(c, m, y, k)
   return string.format('#%02x%02x%02x', r, g, b)
 end
 
+---A table with named colors and their corresponding hex color.
+local named_colors = {
+  green = '#008000',
+  orange = '#ffa500',
+  red = '#ff0000',
+}
+
+---Returns a list of named colors as Lua patterns.
+---@return table
+function M.color.named_colors_pattern()
+  local patterns = {}
+  for name, _ in pairs(named_colors) do
+    table.insert(patterns, string.format('[\'"]()%s()[\'"]', name))
+  end
+  return patterns
+end
+
+---Converts named color to HEX string.
+---@param name string The name of the color.
+---@return string # The hexadecimal value in the format #rrggbb.
+function M.color.named_to_hex(name) return named_colors[name] or '#ffffff' end
+
 ---Mixes two HEX strings with a certain weighting.
 ---@param hex1 string The first hexadecimal value in the format #rrggbb.
 ---@param hex2 string The second hexadecimal value in the format #rrggbb.
