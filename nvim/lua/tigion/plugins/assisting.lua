@@ -10,7 +10,7 @@ return {
       local autopairs = require('nvim-autopairs')
 
       autopairs.setup({
-        disable_filetype = { 'TelescopePrompt', 'vim' },
+        disable_filetype = { 'TelescopePrompt', 'vim', 'snacks_picker_input', 'snacks_input' },
         check_ts = true, -- enable treesitter
         ts_config = {
           -- it will not add a pair on that treesitter filetype nodes:
