@@ -55,7 +55,9 @@ keymap.set('i', 'jk', '<Esc><Cmd>w<CR>', { desc = 'Exit insert mode and save' })
 keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
-keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
+
+-- keymap.set('n', '*', '*N', { desc = 'Search and go back to initial word' })
+-- keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 
 -- Debug -----------------------------------------------------------------------
 
