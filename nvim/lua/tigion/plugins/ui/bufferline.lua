@@ -4,7 +4,7 @@ return {
 
   'akinsho/bufferline.nvim',
   enabled = true,
-  dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   version = '*',
   event = 'VeryLazy',
   -- keys = {

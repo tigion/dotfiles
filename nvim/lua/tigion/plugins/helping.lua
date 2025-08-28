@@ -4,7 +4,7 @@ return {
     -- Link: https://github.com/folke/which-key.nvim
 
     'folke/which-key.nvim',
-    dependencies = { 'echasnovski/mini.icons' },
+    dependencies = { 'nvim-mini/mini.icons' },
     event = 'VeryLazy',
     opts = {
       preset = 'helix', ---@type false | "classic" | "modern" | "helix"

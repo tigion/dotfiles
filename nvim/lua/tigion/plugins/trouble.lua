@@ -4,7 +4,7 @@ return {
   -- Link: https://github.com/folke/trouble.nvim
 
   'folke/trouble.nvim',
-  dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   -- dependencies = { 'nvim-tree/nvim-web-devicons' },
   cmd = { 'TroubleToggle', 'Trouble' },
   opts = { use_diagnostic_signs = true },

@@ -98,7 +98,7 @@ return {
         end,
         -- Greets the user depending on the time of day.
         function()
-          -- Source: https://github.com/echasnovski/mini.nvim/blob/main/lua/mini/starter.lua
+          -- Source: https://github.com/nvim-mini/mini.nvim/blob/main/lua/mini/starter.lua
           -- [02:00, 10:00)(8h) - morning, [10:00, 18:00)(8h) - day, [18:00, 02:00)(8h) - evening
           local hour = tonumber(vim.fn.strftime('%H'))
           local part_id = math.floor((hour + 6) / 8) + 1

@@ -361,7 +361,7 @@ Snippets:
 
 ### [mini.ai]
 
-[mini.ai]: https://github.com/echasnovski/mini.ai
+[mini.ai]: https://github.com/nvim-mini/mini.ai
 
 | Mode | Keymap       | Description                                                     |
 | ---- | ------------ | --------------------------------------------------------------- |
@@ -374,7 +374,7 @@ Snippets:
 
 ### [mini.hipatterns]
 
-[mini.hipatterns]: https://github.com/echasnovski/mini.hipatterns
+[mini.hipatterns]: https://github.com/nvim-mini/mini.hipatterns
 
 | Mode | Keymap        | Description            |
 | ---- | ------------- | ---------------------- |

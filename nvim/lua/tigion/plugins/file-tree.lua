@@ -3,7 +3,7 @@ return {
   -- Link: https://github.com/nvim-tree/nvim-tree.lua
 
   'nvim-tree/nvim-tree.lua',
-  dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   cmd = 'NvimTreeOpen', -- used in alpha-nvim
   keys = {
     { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Toggle file explorer' },

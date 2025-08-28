@@ -3,7 +3,7 @@ return {
   -- Link: https://github.com/nvim-lualine/lualine.nvim
 
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   config = function()
     local lualine = require('lualine')
     local icons = require('tigion.core.icons')

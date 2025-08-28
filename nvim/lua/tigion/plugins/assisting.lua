@@ -31,12 +31,12 @@ return {
 
   -- {
   --   -- This plugin adds minimal and fast autopairs to Neovim.
-  --   -- Link: https://github.com/echasnovski/mini.pairs
+  --   -- Link: https://github.com/nvim-mini/mini.pairs
   --
   --   -- NOTE: Deactivated, needs more testing. At the moment, this plugin
   --   --       has less needed default features than nvim-autopairs.
   --
-  --   'echasnovski/mini.pairs',
+  --   'nvim-mini/mini.pairs',
   --   enabled = false,
   --   version = false,
   -- },
@@ -61,13 +61,13 @@ return {
 
   {
     -- This plugin extends and creates a/i textobjects in Neovim.
-    -- Link: https://github.com/echasnovski/mini.ai
+    -- Link: https://github.com/nvim-mini/mini.ai
 
     -- NOTE: For text-objects like `@block.inner` is the dependency
     --       `nvim-treesitter/nvim-treesitter-textobjects` required.
     --       Extra config is in `tigion/plugins/treesitter.lua`.
 
-    'echasnovski/mini.ai',
+    'nvim-mini/mini.ai',
     -- dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     version = false,
     event = { 'BufReadPre', 'BufNewFile' },
