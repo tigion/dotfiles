@@ -26,16 +26,21 @@ set hidden
 set ttyfast
 " history size
 set history=1000
-" Automaticly reread outside changed file (if not touched inside)
+" Automatically reread outside changed file (if not touched inside)
 set autoread
 " autowrite for special operations
 set autowrite
+
+" Set cursor symbol
+let &t_EI = "\033[2 q" " NORMAL  █
+let &t_SI = "\033[5 q" " INSERT  |
+let &t_SR = "\033[3 q" " REPLACE _
 
 " User Interface - appearance
 " ---------------------------------------------------------------------
 " Show line numbers
 set number
-"set relativenumber
+set relativenumber
 " highlight current line
 set cursorline
 " display the status line
@@ -55,6 +60,7 @@ if &t_Co > 2
 
   " Color scheme
   colorscheme monokai
+  "colorscheme tokyonight
   "colorscheme solarized8
   "colorscheme solarized8_flat
   "colorscheme gruvbox
@@ -126,7 +132,7 @@ set noshiftround
 
 " Comments
 " ---------------------------------------------------------------------
-" automatic formating
+" automatic formatting
 set formatoptions=croq
 " automagic multi-line comments
 set comments=sl:/*,mb:**,elx:*/
@@ -174,23 +180,31 @@ nnoremap <Esc><Esc> :noh<cr>
 " select all
 nnoremap <C-a> gg<S-v>G
 " Split window
-nnoremap ss :split<Return><C-w>w
+nnoremap sh :split<Return><C-w>w
 nnoremap sv :vsplit<Return><C-w>w
 " switch window
 nnoremap <Leader><Tab> <C-w>w
-nnoremap sh <C-w>h
-nnoremap sk <C-w>k
-nnoremap sj <C-w>j
-nnoremap sl <C-w>l
+" nnoremap sh <C-w>h
+" nnoremap sk <C-w>k
+" nnoremap sj <C-w>j
+" nnoremap sl <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " open explorer
 nnoremap <Leader>e :Lexplore<Cr>
-"nnoremap <Leader>e :NERDTreeToggle<Cr>
+" nnoremap <Leader>e :NERDTreeToggle<Cr>
+
 " search and replace template for the current word under cursor
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " --- insert mode ---
-" also `jj` for <Esc>
+" Exit insert mode
 inoremap jj <Esc>
+" Exit insert mode and save
+inoremap jk <Esc>:w<CR>
 " let `<C-c>` act like `<Esc>`
 inoremap <C-c> <Esc>
 
@@ -231,8 +245,7 @@ if has("autocmd")
   " source .zshrc on save
   augroup sourceConfig
     autocmd!
-    autocmd BufWritePost ~/.vimrc so ~/.vimrc
-    autocmd BufWritePost .vimrc so ~/.vimrc
+    autocmd BufWritePost .vimrc,~/.vimrc so ~/.vimrc
   augroup END
 else
   set autoindent
