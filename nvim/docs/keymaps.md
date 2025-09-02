@@ -39,13 +39,14 @@
     - [nvim-sessions](#nvim-sessions)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-tree](#nvim-tree)
-    - [nvim-treesitter](#nvim-treesitter)
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
-    - [snacks.words](#snackswords)
-    - [snacks.notifier](#snacksnotifier)
-    - [snacks.zen](#snackszen)
+    - [snacks.nvim](#snacksnvim)
+      - [snacks.notifier](#snacksnotifier)
+      - [snacks.picker](#snackspicker)
+      - [snacks.words](#snackswords)
+      - [snacks.zen](#snackszen)
     - [supermaven-nvim](#supermaven-nvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
@@ -57,6 +58,7 @@
       - [Comment.nvim](#commentnvim)
       - [LuaSnip](#luasnip)
       - [nvim-cmp](#nvim-cmp)
+      - [nvim-treesitter](#nvim-treesitter)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
     - [Help](#help)
@@ -261,23 +263,24 @@ Snippets:
 | `n`  | `gK`                 | Show signature help                                                         |     |
 | `i`  | `<C-k>` (`<C-S>`)    | Show signature help                                                         |     |
 | `n`  | `ti`                 | Toggle inlay hints                                                          |     |
-| `n`  | `gs` (`gO`)          | Show symbols in current buffer                                              | T   |
-| `n`  | `gss`                | Show symbols in workspace (sbt)                                             | T   |
-| `n`  | `gr` (`grr`)         | Show references (wuc)                                                       | T   |
-| `n`  | `gd`                 | Go to definition(s) (wuc)                                                   | T   |
+| `n`  | `gs` (`gO`)          | Show symbols in current buffer                                              | S   |
+| `n`  | `gss`                | Show symbols in workspace (sbt)                                             | S   |
+| `n`  | `gr` (`grr`)         | Show references (wuc)                                                       | S   |
+| `n`  | `gd`                 | Go to definition(s) (wuc)                                                   | S   |
 | `n`  | `gD`                 | Go to declaration (wuc)                                                     |     |
-| `n`  | `gdt`                | Go to type definition(s) (wuc)                                              | T   |
-| `n`  | `gI` (`gri`)         | Go to implementation(s)                                                     | T   |
+| `n`  | `gdt`                | Go to type definition(s) (wuc)                                              | S   |
+| `n`  | `gI` (`gri`)         | Go to implementation(s)                                                     | S   |
 | `n`  | `<Leader>ca` (`gca`) | Show code actions                                                           |     |
 | `n`  | `<Leader>rN` (`grn`) | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
 | `n`  | ~~`<Leader>f`~~      | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
 | `n`  | `<Leader>d`          | Show line diagnostics                                                       |     |
-| `n`  | ~~`<Leader>dd`~~     | Show diagnostics for current buffer                                         | T   |
-| `n`  | ~~`<Leader>da`~~     | Show diagnostics for all buffers                                            | T   |
+| `n`  | ~~`<Leader>dd`~~     | Show diagnostics for current buffer                                         | S   |
+| `n`  | ~~`<Leader>da`~~     | Show diagnostics for all buffers                                            | S   |
 | `n`  | `<Leader>rs`         | Restart LSP servers for current buffer                                      |     |
 
 - `wuc` ... Word under cursor
 - `sbt` ... Same buffer (file) type?
+- `S` ... [snacks.picker](#snackspicker)
 - `T` ... [telescope.nvim](#telescopenvim)
 
 ### [bufferline.nvim]
@@ -438,16 +441,6 @@ Snippets:
 | ------ | ------------------------- |
 | `g?`   | Show help (exit with `q`) |
 
-### [nvim-treesitter]
-
-[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
-
-| Mode | Keymap | Description                             |
-| ---- | ------ | --------------------------------------- |
-| `n`  | `<CR>` | Init selection (current node)           |
-| `x`  | `<CR>` | Expand selection to outer (parent) node |
-| `x`  | `<BS>` | Reduce selection to inner (child) node  |
-
 ### [outline.nvim]
 
 [outline.nvim]: https://github.com/hedyhli/outline.nvim
@@ -472,9 +465,21 @@ Snippets:
 | ---- | ------------ | ---------------------- |
 | `n`  | `<Leader>tm` | Toggle Render Markdown |
 
-### [snacks.picker]
+### [snacks.nvim]
 
-[snacks.picker]: https://github.com/folke/snacks.nvim
+[snacks.nvim]: https://github.com/folke/snacks.nvim
+
+#### [snacks.notifier]
+
+[snacks.notifier]: https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
+
+| Mode | Keymap       | Description             |
+| ---- | ------------ | ----------------------- |
+| `n`  | `<Leader>tn` | Toggle Notifier History |
+
+#### [snacks.picker]
+
+[snacks.picker]: https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 
 | Mode     | Keymap | Description                       |
 | -------- | ------ | --------------------------------- |
@@ -499,26 +504,18 @@ Snippets:
 | `n`      | `öö`   | Reopen previous search            |
 | `n`      | `ööö`  | Find find sources                 |
 
-### [snacks.words]
+#### [snacks.words]
 
-[snacks.words]: https://github.com/folke/snacks.nvim
+[snacks.words]: https://github.com/folke/snacks.nvim/blob/main/docs/words.md
 
 | Mode | Keymap      | Description        |
 | ---- | ----------- | ------------------ |
 | `n`  | `üü` (`[[`) | Previous Reference |
 | `n`  | `++` (`]]`) | Next Reference     |
 
-### [snacks.notifier]
+#### [snacks.zen]
 
-[snacks.notifier]: https://github.com/folke/snacks.nvim
-
-| Mode | Keymap       | Description             |
-| ---- | ------------ | ----------------------- |
-| `n`  | `<Leader>tn` | Toggle Notifier History |
-
-### [snacks.zen]
-
-[snacks.zen]: https://github.com/folke/snacks.nvim
+[snacks.zen]: https://github.com/folke/snacks.nvim/blob/main/docs/zen.md
 
 | Mode | Keymap      | Description          |
 | ---- | ----------- | -------------------- |
@@ -588,10 +585,12 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 
 | Mode | Keymap       | Description           | P   |
 | ---- | ------------ | --------------------- | --- |
-| `n`  | `öt`         | Find in TODO comments | T   |
+| `n`  | `öt`         | Find in TODO comments | S   |
+| `n`  | `Öt`         | Find in TODO comments | T   |
 | `n`  | `<Leader>xt` | Show TODO comments    | TR  |
 
 - `T` ... [telescope.nvim](#telescopenvim)
+- `S` ... [snacks.picker](#snackspicker)
 - `TR` ... [trouble.nvim](#troublenvim)
 
 ### [treewalker.nvim]
@@ -693,6 +692,18 @@ CMP - Completion Menu:
 | `n`  | `gc}`  | Toggle until the next blank line          |
 | `n`  | `gcip` | Toggle inside of paragraph                |
 | `n`  | `gca}` | Toggle around curly brackets              |
+
+#### [nvim-treesitter]
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+
+Only for archived **master** branch:
+
+| Mode | Keymap | Description                             |
+| ---- | ------ | --------------------------------------- |
+| `n`  | `<CR>` | Init selection (current node)           |
+| `x`  | `<CR>` | Expand selection to outer (parent) node |
+| `x`  | `<BS>` | Reduce selection to inner (child) node  |
 
 ## ftplugin
 

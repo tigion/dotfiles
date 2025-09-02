@@ -42,7 +42,8 @@ return {
         '<Cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>',
         desc = 'Show TODO comments (Trouble)',
       },
-      { 'öt', '<Cmd>TodoTelescope<CR>', desc = 'Find in TODO comments' },
+      { 'öt', function() Snacks.picker.todo_comments() end, desc = 'Find in TODO comments' },
+      { 'Öt', '<Cmd>TodoTelescope<CR>', desc = 'Find in TODO comments' },
     },
     opts = {
       signs = false,
