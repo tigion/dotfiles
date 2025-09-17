@@ -127,7 +127,13 @@ return {
       },
 
       -- Experimental signature help support
-      signature = { enabled = true },
+      signature = {
+        enabled = false,
+        window = {
+          -- border = 'rounded',
+          show_documentation = false,
+        },
+      },
     },
     -- allows extending the providers array elsewhere in your config
     -- without having to redefine it
