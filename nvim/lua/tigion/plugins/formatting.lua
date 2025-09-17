@@ -11,7 +11,7 @@ return {
       function()
         require('conform').format({
           async = true,
-          lsp_format = 'fallback',
+          -- lsp_format = 'fallback',
           timeout_ms = 5000,
         })
         vim.notify(
