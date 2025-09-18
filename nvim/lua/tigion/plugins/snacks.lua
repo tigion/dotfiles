@@ -152,6 +152,9 @@ return {
       top_down = false,
     },
 
+    -- Scope detection based on treesitter or indent
+    scope = {},
+
     -- Scratch buffers with a persistent file
     scratch = {},
 
