@@ -180,8 +180,8 @@ nnoremap <Esc><Esc> :noh<cr>
 " select all
 nnoremap <C-a> gg<S-v>G
 " Split window
-nnoremap sh :split<Return><C-w>w
-nnoremap sv :vsplit<Return><C-w>w
+nnoremap sh :split<CR><C-w>w
+nnoremap sv :vsplit<CR><C-w>w
 " switch window
 nnoremap <Leader><Tab> <C-w>w
 " nnoremap sh <C-w>h

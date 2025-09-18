@@ -64,9 +64,9 @@ return {
       { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
       { '<C-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' },
       {
-        '<Return>',
+        '<CR>',
         mode = { 'n', 'x', 'o' },
-        function() require('flash').treesitter({ actions = { ['<Return>'] = 'next', ['<BS>'] = 'prev' } }) end,
+        function() require('flash').treesitter({ actions = { ['<CR>'] = 'next', ['<BS>'] = 'prev' } }) end,
         desc = 'Treesitter incremental selection',
       },
     },

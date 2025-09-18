@@ -141,8 +141,8 @@ keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 -- Windows ---------------------------------------------------------------------
 
 -- Split window
-keymap.set('n', 'sh', '<Cmd>split<Return>', { desc = 'Split window horizontally' })
-keymap.set('n', 'sv', '<Cmd>vsplit<Return>', { desc = 'Split window vertically' })
+keymap.set('n', 'sh', '<Cmd>split<CR>', { desc = 'Split window horizontally' })
+keymap.set('n', 'sv', '<Cmd>vsplit<CR>', { desc = 'Split window vertically' })
 
 -- Switch window
 -- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
