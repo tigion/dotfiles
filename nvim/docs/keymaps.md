@@ -31,11 +31,11 @@
     - [harpoon](#harpoon)
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
-    - [mini.ai](#miniai)
-    - [mini.hipatterns](#minihipatterns)
+    - [mini.nvim](#mininvim)
+      - [mini.ai](#miniai)
+      - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
-    - [nvim-opposites](#nvim-opposites)
     - [nvim-sessions](#nvim-sessions)
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-tree](#nvim-tree)
@@ -45,9 +45,11 @@
     - [snacks.nvim](#snacksnvim)
       - [snacks.notifier](#snacksnotifier)
       - [snacks.picker](#snackspicker)
+      - [snacks.scope](#snacksscope)
       - [snacks.words](#snackswords)
       - [snacks.zen](#snackszen)
     - [supermaven-nvim](#supermaven-nvim)
+    - [swap.nvim](#swapnvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
     - [treewalker.nvim](#treewalkernvim)
@@ -319,6 +321,13 @@ Snippets:
 > Replaces the default `s` and `S` substitute key mappings for characterwise
 > and linewise deletions. (`:help s`)
 
+Special keymaps:
+
+| Mode | Keymap | Description                 |
+| ---- | ------ | --------------------------- |
+| `n`  | `<CR>` | Treesitter expand selection |
+| `n`  | `<BS>` | Treesitter reduce selection |
+
 ### [gitsigns.nvim]
 
 [gitsigns.nvim]: https://github.com/lewis6991/gitsigns.nvim
@@ -362,20 +371,26 @@ Snippets:
 | ---- | ------------ | -------------------------------- |
 | `n`  | `<Leader>rn` | Rename with all references (wuc) |
 
-### [mini.ai]
+### [mini.nvim]
+
+[mini.nvim]: https://github.com/nvim-mini/mini.nvim
+
+#### [mini.ai]
 
 [mini.ai]: https://github.com/nvim-mini/mini.ai
 
-| Mode | Keymap       | Description                                                     |
-| ---- | ------------ | --------------------------------------------------------------- |
-| `n`  | `vab`, `vib` | Select around/in brackets (`([{`)                               |
-| `n`  | `vag`, `vig` | Select around/in single/double quotes and backticks (`` "'` ``) |
-| `n`  | `va#`, `vi#` | Select around/in given character (`#` is a placeholder)         |
-| `n`  | ...          | ... and more                                                    |
+Text objects:
+
+| Keymap       | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| `vab`, `vib` | Select around/in brackets (`([{`)                               |
+| `vag`, `vig` | Select around/in single/double quotes and backticks (`` "'` ``) |
+| `va#`, `vi#` | Select around/in given character (`#` is a placeholder)         |
+| ...          | ... and more                                                    |
 
 - To expand the selection in `((...))`, use after `vib` `ib` again.
 
-### [mini.hipatterns]
+#### [mini.hipatterns]
 
 [mini.hipatterns]: https://github.com/nvim-mini/mini.hipatterns
 
@@ -398,14 +413,6 @@ Snippets:
 | Mode | Keymap          | Description              |
 | ---- | --------------- | ------------------------ |
 | `n`  | ~~`<Leader>l`~~ | Lint current buffer/file |
-
-### [nvim-opposites]
-
-[nvim-opposites]: https://github.com/tigion/nvim-opposites
-
-| Mode | Keymap      | Description             |
-| ---- | ----------- | ----------------------- |
-| `n`  | `<Leader>i` | Switch to opposite word |
 
 ### [nvim-sessions]
 
@@ -504,6 +511,22 @@ Snippets:
 | `n`      | `öö`   | Reopen previous search            |
 | `n`      | `ööö`  | Find find sources                 |
 
+#### [snacks.scope]
+
+[snacks.scope]: https://github.com/folke/snacks.nvim/blob/main/docs/scope.md
+
+| Mode | Keymap | Description                  |
+| ---- | ------ | ---------------------------- |
+| `n`  | `[i`   | jump to top edge of scope    |
+| `n`  | `]i`   | jump to bottom edge of scope |
+
+Text objects:
+
+| Keymap | Description |
+| ------ | ----------- |
+| `ii`   | inner scope |
+| `ai`   | full scope  |
+
 #### [snacks.words]
 
 [snacks.words]: https://github.com/folke/snacks.nvim/blob/main/docs/words.md
@@ -532,6 +555,14 @@ Snippets:
 | `i`  | `<Tab>`      | Accept suggestion |
 | `i`  | `<C-e>`      | Clear suggestion  |
 | `i`  | `<C-f>`      | Accept word       |
+
+### [swap.nvim]
+
+[swap.nvim]: https://github.com/tigion/swap.nvim
+
+| Mode | Keymap      | Description |
+| ---- | ----------- | ----------- |
+| `n`  | `<Leader>i` | Swap word   |
 
 ### [telescope.nvim]
 
