@@ -17,6 +17,9 @@ auto-update-channel = stable
 
 # Fonts
 font-family = MesloLGSDZ Nerd Font Mono
+font-family-italic = "Maple Mono"
+font-family-bold-italic = "Maple Mono"
+font-feature = "-calt,+zero,+cv31,+cv35"
 font-size = 17
 
 # Colors
@@ -26,7 +29,7 @@ theme = tokyonight_night
 background = #1a1b26
 # background = #161720
 background-opacity = 0.95
-background-blur-radius = 20
+background-blur = 20
 
 # Windows
 window-save-state = never
@@ -46,12 +49,13 @@ adjust-underline-position = 3
 adjust-cursor-thickness = 2
 
 # Cursor
-## shell-integration-features = cursor,no-sudo,title
+cursor-color = cell-foreground
 
 # Mouse
 mouse-hide-while-typing = true
 
 # Shell
+shell-integration-features = cursor,sudo,no-title,ssh-env,ssh-terminfo
 
 # macOS
 macos-titlebar-style = hidden

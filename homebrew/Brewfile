@@ -1,10 +1,11 @@
 tap "homebrew/bundle"
-# tap "homebrew/cask"
-# tap "homebrew/core"
+#tap "homebrew/cask"
+#tap "homebrew/core"
 
 # fonts
 cask "font-meslo-lg-nerd-font"
 #cask "font-hack-nerd-font"
+cask "font-maple-mono"
 
 # tools
 brew "tree"
@@ -43,10 +44,10 @@ brew "ruby"
 #brew "cmatrix"
 #brew "tty-clock"
 
-# casks
+# apps
 cask "ghostty"
-cask "kitty"
-cask "docker"
+#cask "kitty"
+#cask "docker"
 #cask "libreoffice"
 
 # nice to have
