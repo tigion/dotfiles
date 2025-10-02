@@ -62,6 +62,7 @@ keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- Debug -----------------------------------------------------------------------
 
 keymap.set({ 'n', 'v' }, '<Leader>cd', addons.add_dbg_msg, { desc = 'Debug word under cursor' })
+keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc = 'Debug X' })
 
 -- Navigation ------------------------------------------------------------------
 
