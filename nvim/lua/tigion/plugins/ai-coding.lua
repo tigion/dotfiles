@@ -1,9 +1,116 @@
 return {
   {
+    -- This plugin lets you use integrates Copilot LSP's "Next Edit Suggestions"
+    -- with a built-in terminal for any AI CLI.
+    -- Link: https://github.com/folke/sidekick.nvim
+
+    'folke/sidekick.nvim',
+    opts = {
+      nes = {
+        enabled = false,
+      },
+      cli = {
+        mux = {
+          enabled = false,
+          backend = 'tmux',
+        },
+      },
+    },
+    keys = {
+      {
+        '<leader>aa',
+        function() require('sidekick.cli').toggle() end,
+        desc = 'Sidekick Toggle CLI',
+      },
+      {
+        '<leader>as',
+        function() require('sidekick.cli').select() end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = 'Select CLI',
+      },
+      {
+        '<leader>ap',
+        function() require('sidekick.cli').prompt() end,
+        desc = 'Sidekick Ask Prompt',
+        mode = { 'n', 'v' },
+      },
+      {
+        '<c-.>',
+        function() require('sidekick.cli').focus() end,
+        mode = { 'n', 'x', 'i', 't' },
+        desc = 'Sidekick Switch Focus',
+      },
+    },
+  },
+  {
+    -- This plugin lets you use GitHub Copilot in Neovim.
+    -- Used for code completion and suggestions.
+    -- Link: https://github.com/zbirenbaum/copilot.lua
+
+    'zbirenbaum/copilot.lua',
+    enabled = true,
+    event = 'InsertEnter',
+    keys = {
+      {
+        '<Leader>tc',
+        function()
+          if require('copilot.client').is_disabled() then
+            require('copilot.command').enable()
+            vim.notify('Copilot enabled')
+          else
+            require('copilot.command').disable()
+            vim.notify('Copilot disabled')
+          end
+        end,
+        desc = 'Toggle Copilot',
+      },
+      {
+        '<Tab>',
+        function()
+          if require('copilot.suggestion').is_visible() then
+            require('copilot.suggestion').accept()
+            return
+          end
+          return '<Tab>'
+        end,
+        mode = { 'i' },
+        desc = 'Copilot: Accept',
+        expr = true,
+      },
+    },
+    opts = {
+      panel = {
+        enabled = false,
+      },
+      suggestion = {
+        -- enabled = true,
+        auto_trigger = true, -- Automatically show suggestions. If false, use keymap accept, next or prev to trigger suggestion.
+        -- hide_during_completion = true,
+        -- debounce = 75,
+        -- trigger_on_accept = true,
+        keymap = {
+          -- accept = '<Tab>',
+          -- accept = '<C-i>',
+          accept = false,
+          accept_word = '<C-f>',
+          accept_line = false,
+          next = '<C-g>', -- '<M-]>'
+          prev = '<C-G>', -- '<M-[>'
+          dismiss = '<C-e>',
+        },
+      },
+      nes = {
+        enabled = false,
+      },
+    },
+  },
+  {
     -- This plugin lets you use Suppermaven in Neovim.
     -- Link: https://github.com/supermaven-inc/supermaven-nvim
 
     'supermaven-inc/supermaven-nvim',
+    enabled = false,
     event = 'BufEnter',
     keys = {
       { '<Leader>ts', '<Cmd>SupermavenToggle<CR>', desc = 'Toggle Supermaven' },
