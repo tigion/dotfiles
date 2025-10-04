@@ -160,6 +160,10 @@ keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increas
 
 -- Tabs ------------------------------------------------------------------------
 
+-- Terminal --------------------------------------------------------------------
+
+keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit insert mode' })
+
 -- Other -----------------------------------------------------------------------
 
 -- Help for word under cursor (lua: vim.fn.expand('<cword>'))
