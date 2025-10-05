@@ -6,8 +6,12 @@ return {
 
     'folke/sidekick.nvim',
     opts = {
+      signs = {
+        enabled = true, -- enable signs by default
+        icon = ' ',
+      },
       nes = {
-        enabled = false,
+        enabled = true,
       },
       cli = {
         mux = {
@@ -18,25 +22,35 @@ return {
     },
     keys = {
       {
-        '<leader>aa',
+        '<Tab>',
+        function()
+          -- If there is a next edit, jump to it, otherwise apply it if any.
+          if not require('sidekick').nes_jump_or_apply() then
+            return '<Tab>' -- Fallback to normal tab.
+          end
+        end,
+        expr = true,
+        desc = 'Sidekick Goto/Apply Next Edit Suggestion',
+      },
+      {
+        '<Leader>aa',
         function() require('sidekick.cli').toggle() end,
         desc = 'Sidekick Toggle CLI',
       },
       {
-        '<leader>as',
+        '<Leader>as',
         function() require('sidekick.cli').select() end,
-        -- Or to select only installed tools:
         -- require("sidekick.cli").select({ filter = { installed = true } })
-        desc = 'Select CLI',
+        desc = 'Sidekick Select CLI',
       },
       {
-        '<leader>ap',
+        '<Leader>ap',
         function() require('sidekick.cli').prompt() end,
         desc = 'Sidekick Ask Prompt',
         mode = { 'n', 'v' },
       },
       {
-        '<c-.>',
+        '<C-.>',
         function() require('sidekick.cli').focus() end,
         mode = { 'n', 'x', 'i', 't' },
         desc = 'Sidekick Switch Focus',
@@ -72,7 +86,7 @@ return {
             require('copilot.suggestion').accept()
             return
           end
-          return '<Tab>'
+          return '<Tab>' -- Fallback to normal tab.
         end,
         mode = { 'i' },
         desc = 'Copilot: Accept',

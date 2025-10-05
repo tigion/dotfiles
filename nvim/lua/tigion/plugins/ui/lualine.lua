@@ -68,6 +68,28 @@ return {
           { require('tigion.core.util').supermaven.status },
           { require('tigion.core.util').codeium.status },
           {
+            function()
+              local status = require('sidekick.status').get()
+              local icon = status.kind == 'Warning' and icons.copilot_warning or icons.copilot
+              local copilot_is_enabled = not require('copilot.client').is_disabled()
+              return copilot_is_enabled and icon or icons.copilot_disabled
+            end,
+            color = function()
+              local status = require('sidekick.status').get()
+              if status then
+                return status.kind == 'Error' and 'DiagnosticError'
+                  or status.busy and 'DiagnosticWarn'
+                  or status.kind == 'Normal' and 'Special'
+                  or nil
+              end
+            end,
+            cond = function()
+              local sidekick_has_status = require('sidekick.status').get() ~= nil
+              local copilot_is_enabled = not require('copilot.client').is_disabled()
+              return sidekick_has_status or copilot_is_enabled
+            end,
+          },
+          {
             require('tigion.core.util').info.lsp,
             on_click = function() vim.notify('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
           },
