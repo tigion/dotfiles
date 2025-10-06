@@ -12,7 +12,8 @@ return {
     ---@type asciidoc-preview.Config
     opts = {
       server = {
-        --   port = 11234,
+        -- port = 11234,
+        -- hostname = '127.0.0.1',
         converter = 'cmd', -- js or cmd
       },
       -- preview = {
