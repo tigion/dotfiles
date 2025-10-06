@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 check() {
   if ! eval "$1" 2>/dev/null; then echo "! '$2' is not installed or found"; fi

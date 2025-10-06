@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # cd & check
 if ! cd "$(dirname "$0")"; then exit; fi

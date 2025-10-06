@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Replace $HOME with '~' and print basename
 # - $1: path to process (pane_current_path)
 #
@@ -29,4 +29,3 @@ if [[ ${path::1} == "/" ]]; then
 fi
 
 basename "${path}"
-

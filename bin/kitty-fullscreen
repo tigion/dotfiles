@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Starts kitty as new single instance in fullscreen with:
 # - custom background image

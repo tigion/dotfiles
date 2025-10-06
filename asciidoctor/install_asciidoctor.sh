@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script für die lokale Installation von Asciidoctor unter Ubuntu und macOS
 
