@@ -69,17 +69,20 @@ return {
           { require('tigion.core.util').codeium.status },
           {
             function()
-              local status = require('sidekick.status').get()
-              local icon = status.kind == 'Warning' and icons.copilot_warning or icons.copilot
               local copilot_is_enabled = not require('copilot.client').is_disabled()
-              return copilot_is_enabled and icon or icons.copilot_disabled
+              local sidekick_status = require('sidekick.status').get()
+              local has_nes = require('sidekick.nes').have()
+              local icon = not copilot_is_enabled and icons.copilot_disabled
+                or sidekick_status.kind == 'Warning' and icons.copilot_warning
+                or icons.copilot
+              return icon .. (has_nes and '󱋉' or '')
             end,
             color = function()
-              local status = require('sidekick.status').get()
-              if status then
-                return status.kind == 'Error' and 'DiagnosticError'
-                  or status.busy and 'DiagnosticWarn'
-                  or status.kind == 'Normal' and 'Special'
+              local sidekick_status = require('sidekick.status').get()
+              if sidekick_status then
+                return sidekick_status.kind == 'Error' and 'DiagnosticError'
+                  or sidekick_status.busy and 'DiagnosticWarn'
+                  or sidekick_status.kind == 'Normal' and 'Special'
                   or nil
               end
             end,
