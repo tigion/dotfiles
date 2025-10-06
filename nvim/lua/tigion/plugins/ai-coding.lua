@@ -117,6 +117,9 @@ return {
       nes = {
         enabled = false,
       },
+      filetypes = {
+        ['markdown'] = true,
+      },
     },
   },
   {
