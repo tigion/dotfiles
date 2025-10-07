@@ -15,8 +15,9 @@ return {
       },
       cli = {
         mux = {
-          enabled = false,
+          enabled = true,
           backend = 'tmux',
+          create = 'split', -- "terminal"|"window"|"split"
         },
       },
     },
