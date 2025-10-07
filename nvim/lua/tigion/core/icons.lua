@@ -63,9 +63,15 @@ M.neovim = ''
 M.snacks = '󱥰'
 M.telescope = ''
 M.codeium = '󰘦'
-M.copilot = ''
-M.copilot_disabled = ''
-M.copilot_warning = ''
+M.copilot = {
+  enabled = '',
+  disabled = '',
+  warning = '',
+  nes = {
+    has = '󰭺',
+    process = '󱋊',
+  },
+}
 M.supermaven = '󱙺'
 M.supermaven_error = '󱙻'
 
