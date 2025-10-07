@@ -163,6 +163,7 @@ keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increas
 -- Terminal --------------------------------------------------------------------
 
 keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit insert mode' })
+keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit insert mode' })
 
 -- Other -----------------------------------------------------------------------
 
