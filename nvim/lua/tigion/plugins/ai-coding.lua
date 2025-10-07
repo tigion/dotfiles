@@ -49,12 +49,6 @@ return {
         desc = 'Sidekick Ask Prompt',
         mode = { 'n', 'v' },
       },
-      {
-        '<C-.>',
-        function() require('sidekick.cli').focus() end,
-        mode = { 'n', 'x', 'i', 't' },
-        desc = 'Sidekick Switch Focus',
-      },
     },
   },
   {
