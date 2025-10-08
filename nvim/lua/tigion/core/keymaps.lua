@@ -37,15 +37,14 @@ keymap.set('', '<F10>', '<Cmd>set spell!<CR>', { desc = 'Toggle spell checking' 
 keymap.set('n', '<Leader>tow', '<Cmd>setlocal wrap!<CR>', { desc = 'Toggle line wrap (local)' })
 keymap.set('n', '<Leader>ton', function()
   -- Toggle line numbers between absolute, relative and off.
-
   if vim.wo.number then
     if vim.wo.relativenumber then vim.wo.number = false end
-
     vim.wo.relativenumber = not vim.wo.relativenumber
   else
     vim.wo.number = true
   end
 end, { desc = 'Toggle line numbers (local)' })
+keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 
 -- Goodies ---------------------------------------------------------------------
 
@@ -62,12 +61,9 @@ keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- Debug -----------------------------------------------------------------------
 
 keymap.set({ 'n', 'v' }, '<Leader>cd', addons.add_dbg_msg, { desc = 'Debug word under cursor' })
-keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc = 'Debug X' })
+keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc = 'Copy context' })
 
 -- Navigation ------------------------------------------------------------------
-
--- Spelling
-keymap.set('n', '<Leader>tos', '<Cmd>setlocal spell!<CR>', { desc = 'Toggle spell checking (local)' })
 
 -- Diagnostics
 keymap.set('n', '<Leader>td', toggle.diagnostics_visibility, { desc = 'Toggle diagnostics visibility' })
@@ -110,7 +106,7 @@ keymap.set('x', '>', '>gv', { desc = 'Increase indent' })
 keymap.set('n', 'x', '"_x') -- delete character without copying (register)
 -- ('v', P') -> keymap.set('x', '<Leader>p', [["_dP]]) -- preserve highlight source
 --
--- move highlighted line
+-- move highlighted/selected lines
 keymap.set('x', 'J', ":m '>+1<CR>gv=gv") -- down
 keymap.set('x', 'K', ":m '<-2<CR>gv=gv") -- up
 
@@ -128,7 +124,7 @@ keymap.set(
 )
 
 -- increment/decrement numbers
-keymap.set('n', '<Leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
+keymap.set('n', '<Leader>_', '<C-a>', { desc = 'Increment number' }) -- increment
 keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- Switch word under cursor to opposite word
@@ -146,11 +142,12 @@ keymap.set('n', 'sh', '<Cmd>split<CR>', { desc = 'Split window horizontally' })
 keymap.set('n', 'sv', '<Cmd>vsplit<CR>', { desc = 'Split window vertically' })
 
 -- Switch window
+-- - Deactivated, because it is handled by `nvim-tmux-navigation` plugin.
 -- keymap.set('n', '<C-Space', '<C-w>w', { desc = 'Go to next window' })
-keymap.set('', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
-keymap.set('', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
-keymap.set('', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
-keymap.set('', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
+-- keymap.set('', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
+-- keymap.set('', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
+-- keymap.set('', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
+-- keymap.set('', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
 
 -- Resize window
 keymap.set('n', '<C-w><Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease window width' })

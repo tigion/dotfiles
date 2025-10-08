@@ -1,8 +1,9 @@
 -- Options
 
 local opt = vim.opt
-local o = vim.o
-local api = vim.api
+-- local o = vim.o
+-- local api = vim.api
+local keymap = vim.keymap
 
 -- NOTE: `vim.opt` vs `vim.o` (`:h lua-guide-options`)
 --
@@ -17,8 +18,8 @@ local api = vim.api
 --   `vim.o.wildignore = vim.o.wildignore .. ',*/node_modules/*'`
 
 -- OS specific
-local isMac = vim.fn.has('macunix')
-local isWin = vim.fn.has('win32')
+local is_mac = vim.fn.has('macunix')
+local is_win = vim.fn.has('win32')
 
 -- Keyboard specific
 --
@@ -29,10 +30,10 @@ local isWin = vim.fn.has('win32')
 -- Exchanges the meaning of the characters `ü+ÜÄ` to `[]{}` in Normal mode.
 opt.langmap = 'ü[+]Ü{Ä}'
 -- The following remaps are necessary for the special keymaps.
-vim.keymap.set('n', 'ü', '[', { remap = true })
-vim.keymap.set('n', 'üü', '[[', { remap = true })
-vim.keymap.set('n', 'Ü', '{', { remap = true })
-vim.keymap.set('n', 'Ä', '}', { remap = true })
+keymap.set('n', 'ü', '[', { remap = true })
+keymap.set('n', 'üü', '[[', { remap = true })
+keymap.set('n', 'Ü', '{', { remap = true })
+keymap.set('n', 'Ä', '}', { remap = true })
 
 -- Encoding
 vim.scriptencoding = 'utf-8'
@@ -135,7 +136,7 @@ opt.smoothscroll = true
 opt.timeout = true
 opt.timeoutlen = 300 -- quickly trigger keymaps (default 1000)
 opt.updatetime = 50
-opt.wildignore:append({ '*/node_modules/*' })
+opt.wildignore:append({ '*/.git/*', '*/node_modules/*', '*/.venv/*', '*/venv/*', '*/__pycache__/*', '.DS_Store' })
 opt.wildmode = 'longest:full,full'
 
 if vim.fn.has('nvim-0.11') == 1 then
@@ -144,8 +145,8 @@ if vim.fn.has('nvim-0.11') == 1 then
 end
 
 -- Clippboard
-if isMac then
+if is_mac then
   opt.clipboard:append({ 'unnamedplus' })
-elseif isWin then
+elseif is_win then
   opt.clipboard:prepend({ 'unnamed', 'unnamedplus' })
 end
