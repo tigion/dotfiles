@@ -6,10 +6,6 @@ return {
 
     'folke/sidekick.nvim',
     opts = {
-      signs = {
-        enabled = true, -- enable signs by default
-        icon = ' ',
-      },
       nes = {
         enabled = true,
       },
@@ -18,7 +14,14 @@ return {
           enabled = true,
           backend = 'tmux',
           create = 'split', -- "terminal"|"window"|"split"
+          split = {
+            vertical = true, -- vertical or horizontal split
+            size = 80, -- size of the split (0-1 for percentage)
+          },
         },
+        -- prompts = {
+        --   refactor = 'Refactor the following code:\n\n{this}',
+        -- },
       },
     },
     keys = {
