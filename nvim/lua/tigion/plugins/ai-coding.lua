@@ -55,6 +55,7 @@ return {
       },
     },
   },
+
   {
     -- This plugin lets you use GitHub Copilot in Neovim.
     -- Used for code completion and suggestions.
@@ -98,15 +99,10 @@ return {
       suggestion = {
         -- enabled = true,
         auto_trigger = true, -- Automatically show suggestions. If false, use keymap accept, next or prev to trigger suggestion.
-        -- hide_during_completion = true,
-        -- debounce = 75,
-        -- trigger_on_accept = true,
         keymap = {
-          -- accept = '<Tab>',
-          -- accept = '<C-i>',
-          accept = false,
+          accept = false, -- Use custom keymap in keys section instead '<Tab>'.
           accept_word = '<C-f>',
-          accept_line = false,
+          accept_line = '<C-F>',
           next = '<C-g>', -- '<M-]>'
           prev = '<C-G>', -- '<M-[>'
           dismiss = '<C-e>',
@@ -120,6 +116,7 @@ return {
       },
     },
   },
+
   {
     -- This plugin lets you use Suppermaven in Neovim.
     -- Link: https://github.com/supermaven-inc/supermaven-nvim
@@ -225,21 +222,4 @@ return {
       -- vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
     end,
   },
-  -- {
-  --   'Exafunction/codeium.nvim',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'hrsh7th/nvim-cmp',
-  --   },
-  --   config = function() require('codeium').setup({}) end,
-  -- },
-
-  -- {
-  --   -- https://github.com/augmentcode/augment.vim
-  --   -- https://docs.augmentcode.com/vim/setup-augment/install-vim-neovim
-  --
-  --   -- TODO: Needs to be tested.
-  --
-  --   -- 'augmentcode/augment.vim',
-  -- },
 }
