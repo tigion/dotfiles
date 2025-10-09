@@ -37,6 +37,13 @@ return {
         desc = 'Sidekick Goto/Apply Next Edit Suggestion',
       },
       {
+        -- Only useful to toggle sidekick in terminal mode.
+        '<C-.>',
+        function() require('sidekick.cli').toggle() end,
+        desc = 'Sidekick Toggle',
+        mode = { 'n', 't', 'i', 'x' },
+      },
+      {
         '<Leader>aa',
         function() require('sidekick.cli').toggle() end,
         desc = 'Sidekick Toggle CLI',
