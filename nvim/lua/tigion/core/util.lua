@@ -399,6 +399,50 @@ function M.codeium.status()
   return status
 end
 
+M.copilot = {}
+
+---Returns Copilot status as formatted string.
+---@return string
+function M.copilot.status()
+  local has_sidekick = pcall(require, 'sidekick')
+  local has_copilot = pcall(require, 'copilot')
+  local copilot_is_enabled = has_copilot and not require('copilot.client').is_disabled() or false
+  local sidekick_status = has_sidekick and require('sidekick.status').get() or ''
+  local sidekick_has_nes = has_sidekick and require('sidekick.nes').have() or false
+  local sidekick_process_nes = has_sidekick and next(require('sidekick.nes')._requests) or false
+  local icon = (has_copilot and not copilot_is_enabled or sidekick_status == 'Inactive') and icons.copilot.disabled
+    or sidekick_status.kind == 'Warning' and icons.copilot.warning
+    or (sidekick_status ~= 'Inactive' or copilot_is_enabled) and icons.copilot.enabled
+    or ''
+  local icon_nes = sidekick_process_nes and icons.copilot.nes.process
+    or sidekick_has_nes and icons.copilot.nes.has
+    or ''
+  return icon .. icon_nes
+end
+
+---Returns Copilot status color.
+---@return string|nil
+function M.copilot.color()
+  local has_sidekick = pcall(require, 'sidekick')
+  local sidekick_status = has_sidekick and require('sidekick.status').get() or ''
+  if sidekick_status then
+    return sidekick_status.kind == 'Error' and 'DiagnosticError'
+      or sidekick_status.busy and 'DiagnosticWarn'
+      or sidekick_status.kind == 'Normal' and 'Special'
+      or nil
+  end
+end
+
+---Returns true if Copilot or Sidekick is active otherwise false.
+---@return boolean
+function M.copilot.condition()
+  local has_sidekick = pcall(require, 'sidekick')
+  local sidekick_has_status = has_sidekick and require('sidekick.status').get() ~= nil or false
+  local has_copilot = pcall(require, 'copilot')
+  local copilot_is_enabled = has_copilot and require('copilot.client').is_disabled() or false
+  return sidekick_has_status or copilot_is_enabled
+end
+
 M.supermaven = {}
 
 ---Returns Supermaven status as formatted string.

@@ -68,33 +68,9 @@ return {
           { require('tigion.core.util').supermaven.status },
           { require('tigion.core.util').codeium.status },
           {
-            function()
-              local copilot_is_enabled = not require('copilot.client').is_disabled()
-              local sidekick_status = require('sidekick.status').get()
-              local sidekick_has_nes = require('sidekick.nes').have()
-              local sidekick_process_nes = next(require('sidekick.nes')._requests)
-              local icon = not copilot_is_enabled and icons.copilot.disabled
-                or sidekick_status.kind == 'Warning' and icons.copilot.warning
-                or icons.copilot.enabled
-              local icon_nes = sidekick_process_nes and icons.copilot.nes.process
-                or sidekick_has_nes and icons.copilot.nes.has
-                or ''
-              return icon .. icon_nes
-            end,
-            color = function()
-              local sidekick_status = require('sidekick.status').get()
-              if sidekick_status then
-                return sidekick_status.kind == 'Error' and 'DiagnosticError'
-                  or sidekick_status.busy and 'DiagnosticWarn'
-                  or sidekick_status.kind == 'Normal' and 'Special'
-                  or nil
-              end
-            end,
-            cond = function()
-              local sidekick_has_status = require('sidekick.status').get() ~= nil
-              local copilot_is_enabled = not require('copilot.client').is_disabled()
-              return sidekick_has_status or copilot_is_enabled
-            end,
+            require('tigion.core.util').copilot.status,
+            color = require('tigion.core.util').copilot.color,
+            cond = require('tigion.core.util').copilot.condition,
           },
           {
             require('tigion.core.util').info.lsp,
