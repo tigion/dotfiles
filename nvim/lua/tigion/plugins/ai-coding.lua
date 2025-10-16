@@ -122,6 +122,11 @@ return {
       filetypes = {
         ['markdown'] = true,
       },
+      -- server = {
+      -- type = 'nodejs',
+      -- Uses the copilot-language-server installed by mason.nvim instead the bundled one.
+      -- custom_server_filepath = '~/.local/share/nvim/mason/bin/copilot-language-server',
+      -- },
     },
   },
 
