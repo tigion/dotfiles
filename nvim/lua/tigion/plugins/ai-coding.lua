@@ -69,6 +69,7 @@ return {
     -- Link: https://github.com/zbirenbaum/copilot.lua
 
     'zbirenbaum/copilot.lua',
+    commit = '1404c0f', -- FIX: Temporary fix to use bundled 1.378 copilot-language-server for not working nes in copilot.lua with 1.379 copilot-language-server version.
     enabled = true,
     event = 'InsertEnter',
     keys = {
