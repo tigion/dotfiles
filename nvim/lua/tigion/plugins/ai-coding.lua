@@ -69,7 +69,6 @@ return {
     -- Link: https://github.com/zbirenbaum/copilot.lua
 
     'zbirenbaum/copilot.lua',
-    commit = '1404c0f', -- FIX: Temporary fix to use bundled 1.378 copilot-language-server for not working nes in copilot.lua with 1.379 copilot-language-server version.
     enabled = true,
     event = 'InsertEnter',
     keys = {
@@ -122,10 +121,10 @@ return {
       filetypes = {
         ['markdown'] = true,
       },
+      -- Use the copilot-language-server installed by mason.nvim instead the bundled one.
       -- server = {
-      -- type = 'nodejs',
-      -- Uses the copilot-language-server installed by mason.nvim instead the bundled one.
-      -- custom_server_filepath = '~/.local/share/nvim/mason/bin/copilot-language-server',
+      --   type = 'binary',
+      --   custom_server_filepath = '~/.local/share/nvim/mason/bin/copilot-language-server',
       -- },
     },
   },
