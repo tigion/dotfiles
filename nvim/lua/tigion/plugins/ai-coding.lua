@@ -60,6 +60,11 @@ return {
         desc = 'Sidekick Ask Prompt',
         mode = { 'n', 'v' },
       },
+      {
+        '<Leader>tan',
+        function() require('sidekick.nes').toggle() end,
+        desc = 'Toggle Copilot NES',
+      },
     },
   },
 
@@ -73,7 +78,7 @@ return {
     event = 'InsertEnter',
     keys = {
       {
-        '<Leader>tc',
+        '<Leader>taa',
         function()
           if require('copilot.client').is_disabled() then
             require('copilot.command').enable()
