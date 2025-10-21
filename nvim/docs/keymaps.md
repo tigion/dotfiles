@@ -21,6 +21,9 @@
     - [Windows](#windows)
     - [Others](#others)
   - [Plugins](#plugins)
+    - [AI](#ai)
+      - [copilot.lua](#copilotlua)
+      - [sidekick.nvim](#sidekicknvim)
     - [LSP/CMP/Snippets](#lspcmpsnippets)
       - [blink.cmp](#blinkcmp)
       - [nvim-lspconfig](#nvim-lspconfig)
@@ -42,13 +45,13 @@
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
+    - [sidekick.nvim](#sidekicknvim)
     - [snacks.nvim](#snacksnvim)
       - [snacks.notifier](#snacksnotifier)
       - [snacks.picker](#snackspicker)
       - [snacks.scope](#snacksscope)
       - [snacks.words](#snackswords)
       - [snacks.zen](#snackszen)
-    - [supermaven-nvim](#supermaven-nvim)
     - [swap.nvim](#swapnvim)
     - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
@@ -61,6 +64,7 @@
       - [LuaSnip](#luasnip)
       - [nvim-cmp](#nvim-cmp)
       - [nvim-treesitter](#nvim-treesitter)
+      - [supermaven-nvim](#supermaven-nvim)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
     - [Help](#help)
@@ -222,6 +226,35 @@
 | `n`, `v` | `<Leader>cd` | Debug (message) for current word or selection |
 
 ## Plugins
+
+### AI
+
+#### [copilot.lua]
+
+[copilot.lua]: https://github.com/zbirenbaum/copilot.lua
+
+| Mode | Keymap        | Description       |
+| ---- | ------------- | ----------------- |
+| `n`  | `<Leader>taa` | Toggle Copilot    |
+| `i`  | `<Tab>`       | Accept suggestion |
+| `i`  | `<C-f>`       | Accept word       |
+| `i`  | `<C-F>`       | Accept line       |
+| `i`  | `<C-g>`       | Next suggestion   |
+| `i`  | `<C-G>`       | Prev suggestion   |
+| `i`  | `<C-e>`       | Clear suggestion  |
+
+#### [sidekick.nvim]
+
+[sidekick.nvim]: https://github.com/folke/sidekick.nvim
+
+| Mode               | Keymap        | Description         |
+| ------------------ | ------------- | ------------------- |
+| `n`, `t`, `i`, `x` | `<C-.>`       | Toggle (Select) CLI |
+| `n`                | `<Leader>aa`  | Toggle (Select) CLI |
+| `n`                | `<Leader>as`  | Select CLI          |
+| `n`, `v`           | `<Leader>ap`  | Ask Prompt          |
+| `i`                | `<Tab>`       | Goto/Apply NES      |
+| `n`                | `<Leader>tan` | Toggle Copilot NES  |
 
 ### LSP/CMP/Snippets
 
