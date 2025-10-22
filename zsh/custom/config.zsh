@@ -52,7 +52,9 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     # get Homebrew installation path
     homebrew_path=$(brew --prefix)
     # add_path "$homebrew_path/bin"
-    # add_path "$homebrew_path/sbin"
+    if [[ "$(uname -m)" == "x86_64" ]]; then
+      add_path "$homebrew_path/sbin"
+    fi
 
     # --- Ruby ---
     add_path "${homebrew_path}/opt/ruby/bin"
