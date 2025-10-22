@@ -4,10 +4,10 @@ setopt noautocd # don't change directory without `cd`
 # Command History
 export HISTFILE=~/.zsh_history # history file
 export HISTFILESIZE=1000000000 # history file size
-export HISTSIZE=1000000000 # history size
-setopt INC_APPEND_HISTORY # immediately add commands to history
+export HISTSIZE=1000000000     # history size
+setopt INC_APPEND_HISTORY      # immediately add commands to history
 #export HISTTIMEFORMAT="[%F %T] " # timestamp format
-setopt HIST_FIND_NO_DUPS # skip duplicate commands
+setopt HIST_FIND_NO_DUPS      # skip duplicate commands
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
@@ -39,7 +39,6 @@ add_path() {
 # ~/bin
 add_path "$HOME/bin"
 
-
 # macOS
 if [[ "$(uname -s)" == "Darwin" ]]; then
   # --- Terminfo ---
@@ -49,23 +48,18 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   fi
 
   # --- Homebrew ---
-  add_path "/usr/local/sbin"
+  if command -v brew &>/dev/null; then
+    # get Homebrew installation path
+    homebrew_path=$(brew --prefix)
+    # add_path "$homebrew_path/bin"
+    # add_path "$homebrew_path/sbin"
 
-  # --- Ruby ---
-  if [[ "$(uname -m)" = "arm64" ]]; then
-    # arm64 (apple)
-    add_path "/opt/homebrew/opt/ruby/bin"
-  elif [[ "$(uname -m)" = "x86_64" ]]; then
-    # x86_64 (intel)
-    add_path "/usr/local/opt/ruby/bin"
-  fi
-  add_path "$(gem environment gemdir)/bin"
+    # --- Ruby ---
+    add_path "${homebrew_path}/opt/ruby/bin"
+    add_path "$(gem environment gemdir)/bin"
 
-  # --- Java ---
-  if [ "$(uname -m)" = "arm64" ]; then
-    add_path "/opt/homebrew/opt/openjdk/bin"
-  elif [ "$(uname -m)" = "x86_64" ]; then
-    add_path "/usr/local/opt/openjdk/bin"
+    # --- Java ---
+    add_path "${homebrew_path}/opt/openjdk/bin"
   fi
 fi
 
