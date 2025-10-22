@@ -84,7 +84,10 @@ update_node() {
     info "Node.js $node_version"
     info "npm $npm_version"
     subtitle "npm -g outdated"
+    # `npm outdated` exits with a non-zero status if any packages are outdated.
+    set +e
     npm -g outdated
+    set -e
     # update
     if [[ "$INSTALL_UPDATES" == "true" ]]; then
       subtitle "npm -g update"
