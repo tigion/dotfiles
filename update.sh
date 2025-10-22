@@ -52,4 +52,5 @@ ask_to_start
 
 update_homebrew
 update_ruby
+update_node
 # update_python

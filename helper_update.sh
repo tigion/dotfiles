@@ -11,8 +11,9 @@ show_options() {
 update_homebrew() {
   if command -v brew &>/dev/null; then
     title "Homebrew"
-    # check
-    brew -v
+    # info
+    brew_version=$(brew --version)
+    info "$brew_version"
     subtitle "brew outdated"
     brew outdated
     subtitle "brew outdated --cask --greedy"
@@ -46,14 +47,15 @@ update_homebrew() {
 update_ruby() {
   if command -v gem &>/dev/null; then
     title "Ruby"
-    # printf "\nRubyGems, Gems:"
+    ruby_version=$(ruby -v)
+    info "$ruby_version"
     # check
     current_version=$(gem --version)
-    latest_version=$(curl -s https://api.github.com/repos/rubygems/rubygems/releases | grep -m 1 "html_url" | grep -o "releases/.*/.*" | tr -d "v\"," | cut -d"/" -f3)
-    if [[ ${current_version//./} -lt ${latest_version//./} ]]; then
-      info "A new RubyGems version is available ($current_version < $latest_version)"
-    else
-      info "RubyGems $current_version"
+    info "gem $current_version"
+    latest_version=$(curl -sf --max-time 5 "https://api.github.com/repositories/614070/releases/latest" | grep -o '"tag_name": *"[^"]*"' | cut -d'"' -f4 | tr -d 'v')
+    min_version=$(printf '%s\n' "$current_version" "$latest_version" | sort -V | head -n1)
+    if [[ $min_version == "$current_version" && $min_version != "$latest_version" ]]; then
+      info "A new RubyGems version ${latest_version} is available."
     fi
     subtitle "gem outdated"
     gem outdated
@@ -72,12 +74,33 @@ update_ruby() {
   fi
 }
 
+# update Node global packages
+update_node() {
+  if command -v npm &>/dev/null; then
+    title "Node.js"
+    # info
+    node_version=$(node -v)
+    npm_version=$(npm -v)
+    info "Node.js $node_version"
+    info "npm $npm_version"
+    subtitle "npm -g outdated"
+    npm -g outdated
+    # update
+    if [[ "$INSTALL_UPDATES" == "true" ]]; then
+      subtitle "npm -g update"
+      npm -g update
+    fi
+  fi
+}
+
 # update Python package manager pip
 update_python() {
   if command -v pip3 &>/dev/null; then
-    printf "\nPython pip:"
-    # check
+    title "Python pip"
+    # info
+    subtitle "pip3 --version"
     pip3 --version
+    subtitle "pip3 list --outdated"
     pip3 list --outdated
     # update
     if [[ "$INSTALL_UPDATES" == "true" ]]; then
