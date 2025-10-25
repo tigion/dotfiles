@@ -27,14 +27,15 @@ brew "neovim"
 brew "ripgrep"
 brew "fd"
 brew "tree-sitter"
+brew "tree-sitter-cli"
 brew "node"
 brew "imagemagick"
 
 # coding
 brew "python3"
 brew "ruby"
+brew "php"
 #brew "composer"
-#brew "php"
 #brew maven
 
 #brew "openjdk"
