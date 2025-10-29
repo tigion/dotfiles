@@ -7,6 +7,9 @@ cask "font-meslo-lg-nerd-font"
 #cask "font-hack-nerd-font"
 cask "font-maple-mono"
 
+# shell
+brew "bash" # Override macOS default bash.
+
 # tools
 brew "tree"
 brew "curl"
@@ -18,7 +21,7 @@ brew "bat"
 brew "eza"
 
 # git
-brew "git"
+brew "git" # Override macOS default git.
 brew "lazygit"
 brew "git-delta"
 
