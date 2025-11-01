@@ -57,7 +57,7 @@ fi
 # link configs and install dependencies
 if [[ "$INSTALL_CONFIG" == "true" ]]; then
   title "Install Configurations"
-  use_bin
+  link_scripts
   use_git
   use_ssh
   use_zsh

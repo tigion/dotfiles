@@ -135,11 +135,28 @@ link() {
   success "Linked $src_type '$src_name' to '$dst_name'"
 }
 
-# bin
-use_bin() {
-  subtitle "Bin"
-  link "$DOTFILES_ROOT/bin" "$HOME/bin"
+link_scripts() {
+  subtitle "Link scripts to ~/bin"
+  for script in "$DOTFILES_ROOT/scripts/bin/"*.sh; do
+    if [[ -f "$script" && -x "$script" ]]; then
+      script_name="$(basename "$script" .sh)"
+      link "$script" "$HOME/bin/$script_name"
+    fi
+  done
+
+  subtitle "Link script libraries to ~/lib"
+  for lib in "$DOTFILES_ROOT/scripts/lib/"*.sh; do
+    if [[ -f "$lib" ]]; then
+      link "$lib" "$HOME/lib/$lib"
+    fi
+  done
 }
+
+# bin
+# use_bin() {
+#   subtitle "Bin"
+#   link "$DOTFILES_ROOT/bin" "$HOME/bin"
+# }
 
 # git
 use_git() {
