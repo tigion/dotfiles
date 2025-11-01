@@ -93,6 +93,11 @@ update_node() {
       subtitle "npm -g update"
       npm -g update
     fi
+    # clean up
+    if [[ "$CLEAN_UP" == "true" && "$INSTALL_UPDATES" == "true" ]]; then
+      subtitle "npm cache verify"
+      npm cache verify
+    fi
   fi
 }
 
