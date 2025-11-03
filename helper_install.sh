@@ -147,7 +147,8 @@ link_scripts() {
   subtitle "Link script libraries to ~/lib"
   for lib in "$DOTFILES_ROOT/scripts/lib/"*.sh; do
     if [[ -f "$lib" ]]; then
-      link "$lib" "$HOME/lib/$lib"
+      lib_name="$(basename "$lib")"
+      link "$lib" "$HOME/lib/$lib_name"
     fi
   done
 }
