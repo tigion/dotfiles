@@ -147,7 +147,7 @@ return {
 
     -- GitHub CLI integration
     gh = {
-      enabled = true,
+      enabled = false,
     },
 
     -- Image viewer using Kitty Graphics Protocol
