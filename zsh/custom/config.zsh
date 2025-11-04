@@ -1,4 +1,5 @@
 # --- Zsh ---
+
 setopt noautocd # don't change directory without `cd`
 
 # Command History
@@ -15,58 +16,50 @@ setopt HIST_IGNORE_ALL_DUPS   # delete all duplicates
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
+
 # set own COMPDUMP path (default is ~/)
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-# --- user config folder ---
+# user config folder
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# --- CD Paths ---
+# cd Paths
 #export cdpath=($HOME/code)
 
-# --- helper ---
-add_path() {
-  # if [[ -d "$1" && ! "$PATH" =~ (^|:)$1(:|$) ]]; then
-  # deactivated because:
-  # - add new paths in front
-  # - remove duplicates later with `typeset -U path` to prevent unwanted reordering
-  if [[ -d "$1" ]]; then
-    export PATH="$1:$PATH"
-  fi
-}
-
 # --- Paths ---
-# ~/bin
-add_path "$HOME/bin"
 
-# macOS
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  # --- Terminfo ---
+# --- Homebrew ---
+if command -v brew &>/dev/null; then
+  # get Homebrew installation path
+  homebrew_path=$(brew --prefix)
+  # _add_path "$homebrew_path/bin"
+  if [[ "$(uname -m)" == "x86_64" ]]; then
+    _add_path "$homebrew_path/sbin"
+  fi
+
+  # --- Ruby ---
+  _add_path "${homebrew_path}/opt/ruby/bin"
+  _add_path "$(gem environment gemdir)/bin"
+
+  # --- Java ---
+  _add_path "${homebrew_path}/opt/openjdk/bin"
+
+  unset homebrew_path
+fi
+
+# add ~/bin
+_add_path "$HOME/bin"
+
+# clean up duplicates in $PATH (zsh feature)
+typeset -U path
+
+# --- Terminfo ---
+if _is_macos; then
   terminfo_folder="$HOME/.local/share/terminfo"
   if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
     export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
   fi
-
-  # --- Homebrew ---
-  if command -v brew &>/dev/null; then
-    # get Homebrew installation path
-    homebrew_path=$(brew --prefix)
-    # add_path "$homebrew_path/bin"
-    if [[ "$(uname -m)" == "x86_64" ]]; then
-      add_path "$homebrew_path/sbin"
-    fi
-
-    # --- Ruby ---
-    add_path "${homebrew_path}/opt/ruby/bin"
-    add_path "$(gem environment gemdir)/bin"
-
-    # --- Java ---
-    add_path "${homebrew_path}/opt/openjdk/bin"
-  fi
 fi
-
-# clean up duplicates in $PATH (zsh feature)
-typeset -U path
 
 # --- fzf ---
 eval "$(fzf --zsh)"
