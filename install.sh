@@ -53,6 +53,7 @@ if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
   title "Install Software"
   is_macos && install_xcode_cli
   is_ubuntu && install_apt
+  is_ubuntu && install_snap
   install_homebrew
 fi
 
