@@ -60,11 +60,8 @@ install_xcode_cli() {
 # install software via Homebrew
 install_homebrew() {
   subtitle "Homebrew"
-  if is_command brew; then
-    success "Homebrew is already installed"
-  else
-    is_active && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    success "Installed Homebrew"
+  if ! is_command brew; then
+    fail "Homebrew is not installed. Please install it first: https://brew.sh/"
   fi
   if is_macos; then
     is_active && brew bundle --file "$DOTFILES_ROOT/_install/macos/brew_packages_macos"
