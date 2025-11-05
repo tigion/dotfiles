@@ -29,13 +29,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # --- Paths ---
 
 # --- Homebrew ---
-if command -v brew &>/dev/null; then
+if _is_cmd "brew" || _has_brew; then
   # get Homebrew installation path
-  homebrew_path=$(brew --prefix)
-  # _add_path "$homebrew_path/bin"
-  if [[ "$(uname -m)" == "x86_64" ]]; then
-    _add_path "$homebrew_path/sbin"
-  fi
+  _is_cmd "brew" && homebrew_path=$(brew --prefix) || homebrew_path=$(_brew_prefix)
+
+  # --- Homebrew bin & sbin ---
+  _add_path "$homebrew_path/bin"
+  _add_path "$homebrew_path/sbin"
 
   # --- Ruby ---
   _add_path "${homebrew_path}/opt/ruby/bin"

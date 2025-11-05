@@ -114,7 +114,14 @@ export LANG=de_DE.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Load my separated config files
-for file in "$HOME/.config/zsh/"*.zsh; do
+file="$HOME/.config/zsh/helper.zsh"
+[[ -e "${file}" ]] && source "${file}"
+file="$HOME/.config/zsh/config.zsh"
+[[ -e "${file}" ]] && source "${file}"
+file="$HOME/.config/zsh/alias.zsh"
+[[ -e "${file}" ]] && source "${file}"
+# Load my private config files
+for file in "$HOME/.config/zsh/"*.private.zsh(N); do
   [[ -e "${file}" ]] && source "${file}"
 done
 unset file

@@ -19,6 +19,23 @@ _is_ubuntu() {
   [[ "$ID" == "ubuntu" ]]
 }
 
+# Needs special handling, because `brew` might be installed but not in PATH yet.
+_has_brew() {
+  # check default installation paths
+  [[ -x "/usr/local/bin/brew" || -x "/opt/homebrew/bin/brew" || -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]
+}
+
+_brew_prefix() {
+  if [[ -x "/usr/local/bin/brew" ]]; then
+    echo "/usr/local"
+  elif [[ -x "/opt/homebrew/bin/brew" ]]; then
+    echo "/opt/homebrew"
+  elif [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+    echo "/home/linuxbrew/.linuxbrew"
+  fi
+  echo ""
+}
+
 # Checks if a command exists.
 _is_cmd() {
   command -v "$1" >/dev/null 2>&1
