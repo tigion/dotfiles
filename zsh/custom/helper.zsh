@@ -55,7 +55,7 @@ _add_path() {
   # - remove duplicates later with `typeset -U path` to prevent unwanted reordering
   if [[ -d "$1" ]]; then
     export PATH="$1:$PATH"
-  else
-    echo "Directory $1 does not exist, not adding to PATH."
+  # else
+  #   echo "Directory $1 does not exist, not adding to PATH."
   fi
 }
