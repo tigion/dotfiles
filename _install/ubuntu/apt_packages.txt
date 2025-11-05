@@ -1,6 +1,3 @@
-git
-curl
 vim
-build-essential
-procps
-file
+php
+ruby

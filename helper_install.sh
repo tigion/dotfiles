@@ -75,12 +75,23 @@ install_homebrew() {
 install_apt() {
   subtitle "apt"
   if ! is_command apt; then
-    fail "apt is not available"
+    skip "apt is not available"
     return 0
   fi
   is_active && sudo apt update
   is_active && xargs sudo apt-get -y install <"$DOTFILES_ROOT/_install/ubuntu/apt_packages.txt"
   success "Installed apt packages"
+}
+
+# install software via snap
+install_snap() {
+  subtitle "snap"
+  if ! is_command snap; then
+    skip "snap is not available"
+    return 0
+  fi
+  is_active && xargs sudo snap install <"$DOTFILES_ROOT/_install/ubuntu/snap_packages.txt"
+  success "Installed snap packages"
 }
 
 # identify config type
