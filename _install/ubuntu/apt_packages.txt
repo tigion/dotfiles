@@ -1,5 +1,6 @@
 git
 curl
 vim
-
-ghostty
+build-essential
+procps
+file
