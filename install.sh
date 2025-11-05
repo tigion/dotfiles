@@ -45,12 +45,14 @@ source "${DOTFILES_ROOT}/helper_install.sh"
 # start
 title "Start installation"
 show_options
+check_supported_systems
 ask_to_start
 
 # install software
 if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
   title "Install Software"
-  install_xcode_cli
+  is_macos && install_xcode_cli
+  is_ubuntu && install_apt
   install_homebrew
 fi
 
@@ -58,21 +60,21 @@ fi
 if [[ "$INSTALL_CONFIG" == "true" ]]; then
   title "Install Configurations"
   link_scripts
-  use_git
-  use_ssh
-  use_zsh
-  #use_bash
-  use_tmux
-  use_fd
-  use_vim
-  use_neovim
-  use_kitty
-  use_lazygit
-  use_httpie
-  use_fzf
-  use_ghostty
+  # use_bash
   use_btop
   use_fastfetch
+  use_fd
+  use_fzf
+  use_ghostty
+  use_git
+  use_httpie
+  use_kitty
+  use_lazygit
+  use_neovim
+  use_ssh
+  use_tmux
+  use_vim
+  use_zsh
 fi
 
 echo ""

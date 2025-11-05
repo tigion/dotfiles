@@ -29,6 +29,19 @@ show_options() {
   fi
 }
 
+# check supported operating systems
+check_supported_systems() {
+  subtitle "Supported Operating Systems:"
+  local is_macos is_ubuntu
+  is_macos=$(is_macos && echo true || echo false)
+  is_ubuntu=$(is_ubuntu && echo true || echo false)
+  info "Found macOS: $(get_yes_no "$is_macos")"
+  info "Found Ubuntu Linux: $(get_yes_no "$is_ubuntu")"
+  if [[ "$is_macos" != "true" && "$is_ubuntu" != "true" ]]; then
+    fail "No supported Operating System found!"
+  fi
+}
+
 # install Xcode command line tools
 install_xcode_cli() {
   subtitle "Xcode Command Line Tools"
@@ -53,8 +66,22 @@ install_homebrew() {
     is_active && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Installed Homebrew"
   fi
-  is_active && brew bundle --file "$DOTFILES_ROOT/homebrew/Brewfile"
-  success "Installed Homebrew bundle"
+  is_active && brew bundle --file "$DOTFILES_ROOT/_install/macos/brew_packages_macos"
+  success "Installed Homebrew macOS packages"
+  is_active && brew bundle --file "$DOTFILES_ROOT/_install/brew_packages"
+  success "Installed Homebrew default packages"
+}
+
+# install software via apt-get
+install_apt() {
+  subtitle "apt"
+  if ! is_command apt; then
+    fail "apt is not available"
+    return 0
+  fi
+  is_active && sudo apt update
+  is_active && xargs sudo apt-get -y install <"$DOTFILES_ROOT/_install/ubuntu/apt_packages.txt"
+  success "Installed apt packages"
 }
 
 # identify config type
@@ -239,7 +266,7 @@ use_fd() {
 # tmux terminfo
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 install_tmux_terminfo() {
-  src="$DOTFILES_ROOT/macOS/tmux-256color/tmux-256color.src"
+  src="$DOTFILES_ROOT/_install/macos/terminfo_tmux-256color.src"
   dst="$HOME/.local/share/terminfo"
   if [[ ! -f $HOME/.local/share/terminfo/74/tmux-256color ]]; then
     is_active && /usr/bin/tic -x -o "$dst" "$src"

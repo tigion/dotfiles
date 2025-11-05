@@ -1,0 +1,33 @@
+# vim: set ft=config:
+
+# macOS specific Homebrew packages
+
+# Use newer versions than those provided by macOS.
+brew "bash"
+brew "git"
+
+# Tools
+brew "curl"
+brew "wget"
+
+# Coding
+brew "python3"
+brew "ruby"
+brew "php"
+#brew "composer"
+#brew "maven"
+
+#brew "openjdk"
+#sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+# apps
+cask "ghostty"
+#cask "kitty"
+#cask "docker"
+#cask "libreoffice"
+
+# nice to have
+#cask "fliqlo"
+#cask "stats"
+#cask "itsycal"
+#cask "iterm2"

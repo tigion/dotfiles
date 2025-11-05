@@ -1,0 +1,30 @@
+# vim: set ft=config:
+
+# Fonts
+cask "font-meslo-lg-nerd-font"
+#cask "font-hack-nerd-font"
+cask "font-maple-mono"
+
+# Tools
+brew "tmux"
+brew "fzf"
+brew "bat"
+brew "eza"
+
+# Coding
+brew "httpie"
+brew "lazygit"
+brew "git-delta"
+
+# Neovim
+brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "tree-sitter"
+brew "tree-sitter-cli"
+brew "node"
+brew "imagemagick"
+
+# Fun
+#brew "cmatrix"
+#brew "tty-clock"

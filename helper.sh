@@ -43,14 +43,19 @@ is_active() {
 
 # check OS
 is_linux() {
-  [[ $(uname -s) == "Linux" ]]
+  [[ $OSTYPE == linux-gnu* ]]
 }
 is_macos() {
-  [[ $(uname -s) == "Darvin" ]]
+  [[ $OSTYPE == darwin* ]]
 }
-# is_windows_wsl() {
-#   # TODO
-# }
+is_ubuntu() {
+  # [[ "$(uname -a)" == *"Ubuntu"* ]]
+  local file="/etc/os-release"
+  [[ ! -f "$file" ]] && return 1
+  # shellcheck source=/dev/null
+  source "$file"
+  [[ "$ID" == "ubuntu" ]]
+}
 
 # get true/false as yes/no
 get_yes_no() {
@@ -62,6 +67,7 @@ get_yes_no() {
 # check if a command exists
 is_command() {
   command -v "$1" &>/dev/null
+  # command -v "$1" >/dev/null 2>&1
 }
 
 # ready to start
