@@ -2,3 +2,4 @@ zsh
 vim
 php
 ruby
+keyd
