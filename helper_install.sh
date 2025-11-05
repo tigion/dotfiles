@@ -66,8 +66,10 @@ install_homebrew() {
     is_active && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     success "Installed Homebrew"
   fi
-  is_active && brew bundle --file "$DOTFILES_ROOT/_install/macos/brew_packages_macos"
-  success "Installed Homebrew macOS packages"
+  if is_macos; then
+    is_active && brew bundle --file "$DOTFILES_ROOT/_install/macos/brew_packages_macos"
+    success "Installed Homebrew macOS packages"
+  fi
   is_active && brew bundle --file "$DOTFILES_ROOT/_install/brew_packages"
   success "Installed Homebrew default packages"
 }
