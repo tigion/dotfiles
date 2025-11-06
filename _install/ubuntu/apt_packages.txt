@@ -2,4 +2,5 @@ zsh
 vim
 php
 ruby
+wl-clipboard
 keyd
