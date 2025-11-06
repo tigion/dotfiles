@@ -2,6 +2,7 @@
 
 # default settings
 Host *
+  IgnoreUnknown UseKeychain
   AddKeysToAgent yes
   UseKeychain yes
   Compression yes
