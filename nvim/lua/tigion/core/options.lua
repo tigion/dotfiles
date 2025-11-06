@@ -20,6 +20,7 @@ local keymap = vim.keymap
 -- OS specific
 local is_mac = vim.fn.has('macunix')
 local is_win = vim.fn.has('win32')
+local is_linux = vim.fn.has('linux')
 
 -- Keyboard specific
 --
@@ -145,8 +146,8 @@ if vim.fn.has('nvim-0.11') == 1 then
 end
 
 -- Clippboard
-if is_mac then
+if is_mac == 1 or is_linux == 1 then
   opt.clipboard:append({ 'unnamedplus' })
-elseif is_win then
+elseif is_win == 1 then
   opt.clipboard:prepend({ 'unnamed', 'unnamedplus' })
 end
