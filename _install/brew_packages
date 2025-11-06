@@ -10,6 +10,7 @@ brew "tmux"
 brew "fzf"
 brew "bat"
 brew "eza"
+brew "btop"
 
 # Coding
 brew "httpie"
