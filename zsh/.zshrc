@@ -112,18 +112,16 @@ export LANG=de_DE.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Load my separated config files
-file="$HOME/.config/zsh/helper.zsh"
-[[ -e "${file}" ]] && source "${file}"
-file="$HOME/.config/zsh/config.zsh"
-[[ -e "${file}" ]] && source "${file}"
-file="$HOME/.config/zsh/alias.zsh"
-[[ -e "${file}" ]] && source "${file}"
-# Load my private config files
+# Loads my separated config files.
+file="$HOME/.config/zsh/helper.zsh" && [[ -e "${file}" ]] && source "${file}"
+file="$HOME/.config/zsh/config.zsh" && [[ -e "${file}" ]] && source "${file}"
+file="$HOME/.config/zsh/alias.zsh" && [[ -e "${file}" ]] && source "${file}"
+# Loads my private config files.
 for file in "$HOME/.config/zsh/"*.private.zsh(N); do
   [[ -e "${file}" ]] && source "${file}"
 done
 unset file
 
+# Sets up Powerlevel10k theme for the prompt.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
