@@ -40,6 +40,7 @@ if _is_cmd "brew" || _has_brew; then
   # --- Ruby ---
   _add_path "${homebrew_path}/opt/ruby/bin"
   _add_path "$(gem environment gemdir)/bin"
+  _add_path "$(ruby -e 'print Gem.user_dir')/bin"
 
   # --- Java ---
   _add_path "${homebrew_path}/opt/openjdk/bin"
