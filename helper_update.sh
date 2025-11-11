@@ -43,6 +43,29 @@ update_homebrew() {
   fi
 }
 
+update_apt() {
+  if is_ubuntu; then
+    title "apt"
+    # info
+    subtitle "apt list --upgradable"
+    apt list --upgradable
+    # update
+    if [[ "$INSTALL_UPDATES" == "true" ]]; then
+      subtitle "sudo apt update"
+      sudo apt update
+      subtitle "sudo apt upgrade -y"
+      sudo apt upgrade -y
+    fi
+    # clean up
+    if [[ "$CLEAN_UP" == "true" && "$INSTALL_UPDATES" == "true" ]]; then
+      subtitle "sudo apt autoremove -y"
+      sudo apt autoremove -y
+      subtitle "sudo apt autoclean"
+      sudo apt autoclean
+    fi
+  fi
+}
+
 # update Ruby package manager RubyGems and Gems
 update_ruby() {
   if command -v gem &>/dev/null; then

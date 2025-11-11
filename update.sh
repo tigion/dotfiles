@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO:
-# - macOS: trigger system and app update
-# - Node: npm updates (node -v, npm -v)
-
 # cd & check
 if ! cd "$(dirname "$0")"; then exit; fi
 
@@ -50,7 +46,8 @@ title "Start update"
 show_options
 ask_to_start
 
+is_ubuntu && update_apt
 update_homebrew
-update_ruby
+is_macos && update_ruby
 update_node
 # update_python
