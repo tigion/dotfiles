@@ -147,7 +147,7 @@ return {
 
     -- GitHub CLI integration
     gh = {
-      enabled = false,
+      enabled = true,
     },
 
     -- Image viewer using Kitty Graphics Protocol
@@ -434,6 +434,12 @@ return {
   keys = {
     -- explorer
     -- { '<Leader>E', function() Snacks.explorer() end, desc = 'Toggle File Explorer' },
+
+    -- gh (GitHub CLI)
+    { '<leader>ghi', function() Snacks.picker.gh_issue() end, desc = 'GitHub Issues (open)' },
+    { '<leader>ghI', function() Snacks.picker.gh_issue({ state = 'all' }) end, desc = 'GitHub Issues (all)' },
+    { '<leader>ghp', function() Snacks.picker.gh_pr() end, desc = 'GitHub Pull Requests (open)' },
+    { '<leader>ghP', function() Snacks.picker.gh_pr({ state = 'all' }) end, desc = 'GitHub Pull Requests (all)' },
 
     -- notifier
     { '<Leader>tn', function() Snacks.notifier.show_history() end, desc = 'Toggle Notifier History' },
