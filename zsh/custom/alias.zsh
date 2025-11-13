@@ -16,15 +16,16 @@ alias tree='tree -a -l -C -I ".git" --dirsfirst'
 # eza
 if _is_cmd 'eza'; then
   # defaults
-  alias eza='eza --group --group-directories-first --icons'
+  alias eza='eza --group-directories-first --icons'
   # shortcuts
-  alias ll='eza -l'
-  alias lt='eza --tree --all --ignore-glob=.git'
+  alias ll='eza -l --group'
+  alias lt='eza --tree --all --follow-symlinks --ignore-glob=.git'
   alias lt1='lt --level=1'
   alias lt2='lt --level=2'
   alias lt3='lt --level=3'
   # replacements
   alias ls='eza'
+  alias tree='lt'
 fi
 
 # bat
