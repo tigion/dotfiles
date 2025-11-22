@@ -7,7 +7,7 @@ return {
     'tigion/nvim-asciidoc-preview',
     dev = false, -- When `true`, the local development version is used instead.
     ft = { 'asciidoc' },
-    build = 'cd server && npm install --omit=dev',
+    build = 'cd server && npm install --omit=dev --no-save',
     ---@module 'asciidoc-preview'
     ---@type asciidoc-preview.Config
     opts = {
