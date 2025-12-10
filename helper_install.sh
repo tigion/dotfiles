@@ -58,7 +58,7 @@ install_xcode_cli() {
 }
 
 # install software via Homebrew
-install_homebrew() {
+install_via_homebrew() {
   subtitle "Homebrew"
   if ! is_command brew; then
     fail "Homebrew is not installed. Please install it first: https://brew.sh/"
@@ -68,11 +68,11 @@ install_homebrew() {
     success "Installed Homebrew macOS packages"
   fi
   is_active && brew bundle --file "$DOTFILES_ROOT/_install/brew_packages"
-  success "Installed Homebrew default packages"
+  success "Installed Homebrew packages"
 }
 
 # install software via apt-get
-install_apt() {
+install_via_apt() {
   subtitle "apt"
   if ! is_command apt; then
     skip "apt is not available"
@@ -84,7 +84,7 @@ install_apt() {
 }
 
 # install software via snap
-install_snap() {
+install_via_snap() {
   subtitle "snap"
   if ! is_command snap; then
     skip "snap is not available"
@@ -274,15 +274,19 @@ use_fd() {
 }
 
 # tmux terminfo
+# NOTE: Since macOS 14 tmux-256color is included by default.
+#
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 install_tmux_terminfo() {
-  src="$DOTFILES_ROOT/_install/macos/terminfo_tmux-256color.src"
-  dst="$HOME/.local/share/terminfo"
-  if [[ ! -f $HOME/.local/share/terminfo/74/tmux-256color ]]; then
-    is_active && /usr/bin/tic -x -o "$dst" "$src"
-    success "Installed tmux-256color"
-  else
-    success "tmux-256color is already installed"
+  if [[ $(sw_vers -productVersion | sed 's/\..*//') -lt 14 ]]; then
+    src="$DOTFILES_ROOT/_install/macos/terminfo_tmux-256color.src"
+    dst="$HOME/.local/share/terminfo"
+    if [[ ! -f $HOME/.local/share/terminfo/74/tmux-256color ]]; then
+      is_active && /usr/bin/tic -x -o "$dst" "$src"
+      success "Installed tmux-256color"
+    else
+      success "tmux-256color is already installed"
+    fi
   fi
 }
 
@@ -322,11 +326,7 @@ use_neovim() {
   if is_command nvim; then
     subtitle "Neovim"
     link "$DOTFILES_ROOT/nvim" "$HOME/.config/nvim"
-    #is_active && nvim --headless +PackerInstall +q
     # install spell files
-    # '$HOME/.config/nvim/spell/'
-    # wget 'https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.spl'
-    # wget 'https://ftp.nluug.nl/pub/vim/runtime/spell/de.utf-8.sug'
     local installed=false
     if [[ ! -d "$HOME/.config/nvim/spell" ]]; then
       is_active && mkdir -p "$HOME/.config/nvim/spell"

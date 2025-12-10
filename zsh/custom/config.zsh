@@ -56,9 +56,12 @@ typeset -U path
 
 # --- Terminfo ---
 if _is_macos; then
-  terminfo_folder="$HOME/.local/share/terminfo"
-  if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
-    export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
+  # NOTE: Since macOS 14 tmux-256color is included by default.
+  if [[ $(sw_vers -productVersion | sed 's/\..*//') -lt 14 ]]; then
+    terminfo_folder="$HOME/.local/share/terminfo"
+    if [[ -d "$terminfo_folder" && ! "$TERMINFO_DIRS" =~ (^|:)$terminfo_folder(:|$) ]]; then
+      export TERMINFO_DIRS=$TERMINFO_DIRS:$terminfo_folder
+    fi
   fi
 fi
 

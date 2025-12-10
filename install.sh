@@ -52,9 +52,9 @@ ask_to_start
 if [[ "$INSTALL_SOFTWARE" == "true" ]]; then
   title "Install Software"
   is_macos && install_xcode_cli
-  is_ubuntu && install_apt
-  is_ubuntu && install_snap
-  install_homebrew
+  is_ubuntu && install_via_apt
+  is_ubuntu && install_via_snap
+  install_via_homebrew
 fi
 
 # link configs and install dependencies
