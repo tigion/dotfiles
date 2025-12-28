@@ -66,7 +66,7 @@ keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc 
 -- Navigation ------------------------------------------------------------------
 
 -- Diagnostics
-keymap.set('n', '<Leader>td', toggle.diagnostics_visibility, { desc = 'Toggle diagnostics visibility' })
+keymap.set('n', '<Leader>td', toggle.diagnostics, { desc = 'Toggle diagnostics globally' })
 
 -- Quickfix list
 -- keymap.set('n', '<Leader>xq', '<Cmd>copen<CR>', { desc = 'Open quickfix list' })

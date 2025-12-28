@@ -108,6 +108,9 @@ end
 
 M.toggle = {}
 
+---Toggles diagnostics globally.
+function M.toggle.diagnostics() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end
+
 local diagnostics_visible = true
 ---Toggle diagnostics visibility for current buffer.
 ---@return nil

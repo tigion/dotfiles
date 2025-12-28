@@ -78,6 +78,7 @@ return {
     -- Link: https://github.com/aaronik/treewalker.nvim
 
     'aaronik/treewalker.nvim',
+    enabled = false,
     keys = {
       { 'äj', '<Cmd>Treewalker Down<CR>', desc = 'Treewalker Down' },
       { 'äk', '<Cmd>Treewalker Up<CR>', desc = 'Treewalker Up' },
@@ -88,10 +89,11 @@ return {
   },
 
   {
-    -- This plugin adds a list of freqiently used files with hot keys to Neovim.
+    -- This plugin adds a list of frequently used files with hot keys to Neovim.
     -- Link: https://github.com/ThePrimeagen/harpoon
 
     'ThePrimeagen/harpoon',
+    enabled = false,
     branch = 'harpoon2',
     keys = function()
       local keys = {
