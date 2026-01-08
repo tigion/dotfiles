@@ -29,6 +29,14 @@ M.folding = {
   open = '▾', -- ''
 }
 
+-- folder
+M.folder = {
+  closed = '',
+  open = '',
+  empty = '',
+  separator = '',
+}
+
 -- git
 M.git = {
   branch = '',

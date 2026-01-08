@@ -26,6 +26,72 @@ function M.info.plugin_stats()
   }
 end
 
+---Shortens a directory path to fit within a maximum length.
+---@param dir_path string The original directory path.
+---@param max_len number The maximum length of the shortened path.
+---@param separator string The separator used between directory names.
+---@return string The shortened directory path.
+local function shorten_dir_path(dir_path, max_len, separator)
+  separator = separator or '/'
+  max_len = math.max(max_len, 0) or 0
+
+  local sep_len = vim.str_utfindex(separator, 'utf-32')
+
+  local dirs = {}
+  local len = 0
+  for dir in dir_path:gmatch('[^/]+') do
+    dirs[#dirs + 1] = dir
+    len = len + #dir
+  end
+  len = len + (#dirs - 1) * sep_len
+
+  if max_len > 0 then
+    if len > max_len then
+      for i = 1, #dirs do
+        local dir_len = #dirs[i]
+        if dir_len > 1 then
+          dirs[i] = string.sub(dirs[i], 1, 1)
+          len = len - (dir_len - #dirs[i])
+        end
+        if len <= max_len then break end
+      end
+    end
+    if len > max_len then return '' end
+  end
+
+  return table.concat(dirs, separator)
+end
+
+---Returns the file path as formatted string.
+---- relative to home or cwd
+---- shorten if too long
+---@return string
+function M.info.dir_path()
+  local file_path = vim.fn.expand('%:~:.') -- relative to home or cwd
+  if file_path == '' then return '[No Name]' end
+  local dir_path = vim.fn.fnamemodify(file_path, ':h')
+  if dir_path == '.' then return '' end
+
+  -- local separator = '/'
+  -- local suffix = '/'
+  -- local separator = icons.folder.separator
+  -- local suffix = icons.folder.separator
+  local separator = ' ' .. icons.folder.separator .. ' '
+  local suffix = ' ' .. icons.folder.separator
+
+  local suffix_len = vim.str_utfindex(suffix, 'utf-32')
+  local file_name = vim.fn.fnamemodify(file_path, ':t')
+
+  local reserved_space = 92
+  local statusbar_len = (vim.o.laststatus == 3) and vim.o.columns or vim.api.nvim_win_get_width(0)
+  local max_dir_len = math.max(statusbar_len - reserved_space - suffix_len - (3 + #file_name), 0)
+
+  local new_dir_path = shorten_dir_path(dir_path, max_dir_len, separator)
+  if new_dir_path ~= '' then new_dir_path = new_dir_path .. suffix end
+
+  return new_dir_path
+end
+
 ---Returns the lsp server status as formatted string.
 ---@return string
 function M.info.lsp()

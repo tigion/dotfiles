@@ -31,8 +31,15 @@ return {
           { 'branch', icon = icons.git.branch },
         },
         lualine_c = {
+          {
+            require('tigion.core.util').info.dir_path,
+            separator = '',
+            padding = { left = 1, right = 0 },
+            -- icon = icons.folder.open,
+          },
           { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-          { 'filename', file_status = true, path = 1, shorting_target = 75, padding = { left = 0, right = 1 } },
+          { 'filename', file_status = true, path = 0, padding = { left = 0, right = 1 } },
+          -- { 'filename', file_status = true, path = 1, shorting_target = 85, padding = { left = 0, right = 1 } },
           -- { 'filename', file_status = true, path = 4, padding = { left = 0, right = 1 } },
           {
             'diff',
@@ -65,8 +72,6 @@ return {
             cond = require('lazy.status').has_updates,
             on_click = function() vim.cmd('Lazy') end,
           },
-          { require('tigion.core.util').supermaven.status },
-          { require('tigion.core.util').codeium.status },
           {
             require('tigion.core.util').copilot.status,
             color = require('tigion.core.util').copilot.color,
