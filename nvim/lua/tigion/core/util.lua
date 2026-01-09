@@ -33,7 +33,7 @@ end
 ---@return string The shortened directory path.
 local function shorten_dir_path(dir_path, max_len, separator)
   separator = separator or '/'
-  max_len = math.max(max_len, 0) or 0
+  max_len = math.max(max_len, -1) or -1
 
   local sep_len = vim.str_utfindex(separator, 'utf-32')
 
@@ -45,7 +45,7 @@ local function shorten_dir_path(dir_path, max_len, separator)
   end
   len = len + (#dirs - 1) * sep_len
 
-  if max_len > 0 then
+  if max_len > -1 then
     if len > max_len then
       for i = 1, #dirs do
         local dir_len = #dirs[i]
