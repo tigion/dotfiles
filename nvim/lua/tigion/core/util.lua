@@ -28,14 +28,14 @@ end
 
 ---Shortens a directory path to fit within a maximum length.
 ---@param dir_path string The original directory path.
----@param max_len number The maximum length of the shortened path.
----@param separator string The separator used between directory names.
+---@param max_len number The maximum length of the shortened path. -1 for no limit.
+---@param new_sep string The new separator used between directory names.
 ---@return string The shortened directory path.
-local function shorten_dir_path(dir_path, max_len, separator)
-  separator = separator or '/'
+local function shorten_dir_path(dir_path, max_len, new_sep)
+  new_sep = new_sep or '/'
   max_len = math.max(max_len, -1) or -1
 
-  local sep_len = vim.str_utfindex(separator, 'utf-32')
+  local sep_len = vim.str_utfindex(new_sep, 'utf-32')
 
   local dirs = {}
   local len = 0
@@ -59,7 +59,7 @@ local function shorten_dir_path(dir_path, max_len, separator)
     if len > max_len then return '' end
   end
 
-  return table.concat(dirs, separator)
+  return table.concat(dirs, new_sep)
 end
 
 ---Returns the file path as formatted string.
@@ -82,7 +82,7 @@ function M.info.dir_path()
   local suffix_len = vim.str_utfindex(suffix, 'utf-32')
   local file_name = vim.fn.fnamemodify(file_path, ':t')
 
-  local reserved_space = 92
+  local reserved_space = 75
   local statusbar_len = (vim.o.laststatus == 3) and vim.o.columns or vim.api.nvim_win_get_width(0)
   local max_dir_len = math.max(statusbar_len - reserved_space - suffix_len - (3 + #file_name), 0)
 
