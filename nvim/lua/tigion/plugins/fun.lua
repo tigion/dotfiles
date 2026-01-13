@@ -1,6 +1,6 @@
 return {
   'tigion/games.nvim',
-  enable = true,
+  enabled = require('tigion.core.util').is_allowed_on_host(),
   dev = true,
   event = 'VeryLazy',
   -- keys = {},

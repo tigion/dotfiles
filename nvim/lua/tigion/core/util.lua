@@ -172,6 +172,33 @@ function M.is_proxy_active()
   return proxy_active
 end
 
+---Returns true if the current host is allowed otherwise false.
+---
+---Used to disable certain plugins on specific hosts.
+---
+---@return boolean
+function M.is_allowed_on_host()
+  -- Gets the hostname of the current machine.
+  local hostname = vim.trim(vim.fn.system('hostname'))
+
+  -- The not allowed hostname patterns.
+  local not_allowed_hostnames = {
+    { name = 'ilux.*', is_pattern = true },
+    { name = 'isys.*', is_pattern = true },
+  }
+
+  -- Checks if the hostname matches any of the not allowed hostnames or patterns.
+  for _, nah in pairs(not_allowed_hostnames) do
+    if nah.is_pattern or false then
+      if string.find(hostname, nah.name, 1, false) ~= nil then return false end
+    elseif hostname == nah.name then
+      return false
+    end
+  end
+
+  return true
+end
+
 M.toggle = {}
 
 ---Toggles diagnostics globally.
