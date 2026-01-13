@@ -5,7 +5,7 @@ return {
     -- Link: https://github.com/folke/sidekick.nvim
 
     'folke/sidekick.nvim',
-    enabled = require('tigion.core.util').is_allowed_on_host(),
+    enabled = IS_ALLOWED_PLUGIN,
     opts = {
       nes = {
         enabled = true,
@@ -75,7 +75,7 @@ return {
     -- Link: https://github.com/zbirenbaum/copilot.lua
 
     'zbirenbaum/copilot.lua',
-    enabled = require('tigion.core.util').is_allowed_on_host(),
+    enabled = IS_ALLOWED_PLUGIN,
     event = 'InsertEnter',
     keys = {
       {
