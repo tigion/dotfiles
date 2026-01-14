@@ -4,5 +4,5 @@
 require('tigion.core')
 
 -- plugins
-IS_ALLOWED_PLUGIN = require('tigion.core.util').is_allowed_on_host()
+IS_ALLOWED_PLUGIN = require('tigion.core.util').check.is_allowed_host()
 require('tigion.lazy')

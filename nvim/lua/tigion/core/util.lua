@@ -131,66 +131,58 @@ function M.info.spell_languages()
   return languages
 end
 
+---A table with various environment checks.
+---
+--- NOTE: Use this function only once on startup or cache the result!
+---
+M.check = {}
+
 ---Returns true if we are in a Git repository otherwise false.
 ---@return boolean
-function M.info.in_git_repo()
+function M.check.is_git_repo()
   -- local cwd = vim.uv.cwd()
   -- local cmd = 'cd "' .. cwd .. '"; git rev-parse --show-toplevel 2> /dev/null'
+
   local cmd = 'git rev-parse --show-toplevel 2> /dev/null'
   local handle = io.popen(cmd)
   if handle == nil then return false end
   local result = handle:read('*a')
   handle:close()
+
   return result ~= ''
 end
 
-local proxy_active = nil
 ---Returns true if we are in a proxy environment otherwise false.
 ---@return boolean
-function M.is_proxy_active()
-  -- BUG: The `vim.fn.system` produces a cursor flickering with the lualine plugin!
-  --      The command is executed with every lualine refresh.
-  --
-  -- Workaround: Check for proxy only once ( TODO: per nvim startup).
-  if proxy_active ~= nil then return proxy_active end
+function M.check.has_proxy()
+  -- Variant 1: `vim.loop.os_getenv()`
+  local http_proxy = vim.loop.os_getenv('http_proxy')
 
-  -- TODO: What is the difference between `vim.fn.system()` and `io.popen()`?
-  --       What is better in this case?
+  -- Variant 2: `vim.fn.system()`
+  -- local http_proxy = vim.trim(vim.fn.system('echo $http_proxy'))
 
-  -- Variant 1: `vim.fn.system()`
-  local result = vim.trim(vim.fn.system('echo $http_proxy'))
-  proxy_active = result ~= ''
-
-  -- Variant 2: `io.popen()`
+  -- Variant 3: `io.popen()`
   -- local cmd = 'echo $http_proxy'
   -- local handle = io.popen(cmd)
   -- if handle == nil then return false end
-  -- local result = vim.trim(handle:read('*a'))
+  -- local http_proxy = vim.trim(handle:read('*a'))
   -- handle:close()
-  -- proxy_active = result ~= ''
 
-  return proxy_active
+  return http_proxy ~= nil
 end
 
 ---Returns true if the current host is allowed otherwise false.
----
----Used to disable certain plugins on specific hosts.
----
 ---@return boolean
-function M.is_allowed_on_host()
-  -- Gets the hostname of the current machine.
-  local hostname = vim.trim(vim.fn.system('hostname'))
-
-  -- The not allowed hostname patterns.
+function M.check.is_allowed_host()
+  local hostname = vim.loop.os_gethostname() or ''
   local not_allowed_hostnames = {
     { name = 'ilux.*', is_pattern = true },
     { name = 'isys.*', is_pattern = true },
   }
 
-  -- Checks if the hostname matches any of the not allowed hostnames or patterns.
-  for _, nah in pairs(not_allowed_hostnames) do
-    if nah.is_pattern or false then
-      if string.find(hostname, nah.name, 1, false) ~= nil then return false end
+  for _, nah in ipairs(not_allowed_hostnames) do
+    if nah.is_pattern then
+      if hostname:match(nah.name) then return false end
     elseif hostname == nah.name then
       return false
     end
@@ -481,20 +473,6 @@ function M.bufferline.fixed_highlights(bg_default, bg_inactive)
   return M.bufferline.background_highlights(bg_default, nil, bg_inactive)
 end
 
-M.codeium = {}
-
----Returns Codeium status as formatted string.
----@return string
-function M.codeium.status()
-  if not pcall(vim.fn['codeium#Enabled']) then return '' end
-  if not vim.fn['codeium#Enabled']() then return '' end
-  local status = icons.codeium or '󰘦'
-  -- vim.api.nvim_call_function("codeium#GetStatusString", {})
-  local str = string.gsub(vim.fn['codeium#GetStatusString'](), '%s+', '')
-  if str ~= 'ON' and str ~= '' then status = status .. ' ' .. str end
-  return status
-end
-
 M.copilot = {}
 
 ---Returns Copilot status as formatted string.
@@ -537,22 +515,6 @@ function M.copilot.condition()
   local has_copilot = pcall(require, 'copilot')
   local copilot_is_enabled = has_copilot and require('copilot.client').is_disabled() or false
   return sidekick_has_status or copilot_is_enabled
-end
-
-M.supermaven = {}
-
----Returns Supermaven status as formatted string.
----@return string
-function M.supermaven.status()
-  if not pcall(require('supermaven-nvim.api').is_running) then return '' end
-  if not require('supermaven-nvim.api').is_running() then return '' end -- 󱙻
-  local status = icons.supermaven or '󱙺'
-
-  -- FIX: Workaround for connection timeout behind a proxy
-  --
-  if M.is_proxy_active() == true then status = icons.supermaven_error or '󱙻' end
-
-  return status
 end
 
 return M
