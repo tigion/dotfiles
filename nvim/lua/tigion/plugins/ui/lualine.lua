@@ -15,8 +15,11 @@ return {
         -- theme = 'catppuccin',
         -- theme = 'onedark',
         section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
         -- component_separators = { left = '', right = '' },
-        component_separators = { left = '┊', right = '┊' },
+        -- component_separators = { left = '┊', right = '┊' },
+        component_separators = { left = '', right = '' },
+        -- component_separators = { left = '', right = '' },
         disabled_filetypes = {},
         -- globalstatus = false,
       },
@@ -38,7 +41,13 @@ return {
             icon = icons.folder.closed,
           },
           { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-          { 'filename', file_status = true, path = 0, padding = { left = 0, right = 1 } },
+          {
+            'filename',
+            file_status = true,
+            path = 0,
+            padding = { left = 0, right = 1 },
+            -- color = function() return vim.bo.modified and { fg = 'fg' } end,
+          },
           -- { 'filename', file_status = true, path = 1, shorting_target = 85, padding = { left = 0, right = 1 } },
           -- { 'filename', file_status = true, path = 4, padding = { left = 0, right = 1 } },
           {
@@ -80,6 +89,7 @@ return {
           {
             require('tigion.core.util').info.lsp,
             on_click = function() vim.notify('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
+            -- color = { fg = '#545c7e', gui = 'italic' },
           },
           {
             'encoding',
