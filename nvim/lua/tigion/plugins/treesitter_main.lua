@@ -4,7 +4,8 @@ return {
     -- Link: https://github.com/nvim-treesitter/nvim-treesitter
 
     'nvim-treesitter/nvim-treesitter',
-    branch = 'main',
+    lazy = false,
+    -- branch = 'main', -- Default branch is 'main'
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').setup()
@@ -75,6 +76,10 @@ return {
         end,
       })
 
+      -- vim.treesitter.language.register('bash', 'sh') -- Maps 'sh' filetype to 'bash' parser.
+      -- vim.treesitter.language.get_filetypes('bash') -- Returns list of filetypes using 'bash' parser.
+      -- vim.treesitter.language.get_lang('sh') -- Returns the language associated with 'sh' filetype.
+
       -- Activates highlights for supported filetypes or
       -- manually with `:lua vim.treesitter.start()`
       -- - `:h vim.treesitter.start()`, `:h vim.treesitter.language.add()`
@@ -83,6 +88,8 @@ return {
           local buf = args.buf
           local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
           if filetype == '' then return end -- Stops if no filetype is detected.
+
+          -- local ts_lang = vim.treesitter.language.get_lang(filetype)
 
           -- Checks if a parser is available for the filetype.
           if vim.treesitter.language.add(filetype) then
@@ -95,8 +102,18 @@ return {
             -- vim.bo[buf].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
             -- vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
+
+          -- elseif ts_lang and ts_lang ~= filetype then
+          --   -- Manually starts tree-sitter for filetypes mapped to other parsers.
+          --   vim.treesitter.start(buf, ts_lang)
+          -- end
         end,
       })
+
+      -- vim.api.nvim_create_autocmd('FileType', {
+      --   pattern = { 'sh' },
+      --   callback = function() vim.treesitter.start() end,
+      -- })
     end,
   },
 

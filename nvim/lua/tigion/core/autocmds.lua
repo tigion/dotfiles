@@ -40,3 +40,15 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end
   end,
 })
+
+-- Sets filetype bash for sh files with bash shebang.
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Sets filetype bash for sh files with bash shebang',
+  group = vim.api.nvim_create_augroup('set_bash_filetype_for_sh_files', { clear = true }),
+  pattern = 'sh',
+  callback = function(args)
+    -- Gets the first line of the buffer (shebang line).
+    local shebang_line = vim.api.nvim_buf_get_lines(args.buf, 0, 1, false)[1]
+    if shebang_line and shebang_line:match('^#!.*[/ ]bash') then vim.bo.filetype = 'bash' end
+  end,
+})
