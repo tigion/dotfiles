@@ -68,7 +68,7 @@ end
 ---@return string
 function M.info.dir_path()
   local file_path = vim.fn.expand('%:~:.') -- relative to home or cwd
-  if file_path == '' then return '[No Name]' end
+  if file_path == '' then return '' end
   local dir_path = vim.fn.fnamemodify(file_path, ':h')
   if dir_path == '.' then return '' end
 
