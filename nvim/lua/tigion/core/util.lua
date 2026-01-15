@@ -174,6 +174,9 @@ end
 ---Returns true if the current host is allowed otherwise false.
 ---@return boolean
 function M.check.is_allowed_host()
+  local os = vim.loop.os_uname().sysname or ''
+  if os:match('Darwin') then return true end -- macOS is always allowed
+
   local hostname = vim.loop.os_gethostname() or ''
   local not_allowed_hostnames = {
     { name = 'ilux.*', is_pattern = true },
