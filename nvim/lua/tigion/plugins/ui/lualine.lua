@@ -14,7 +14,8 @@ return {
         theme = 'tokyonight',
         -- theme = 'catppuccin',
         -- theme = 'onedark',
-        section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
+        section_separators = { left = '▌', right = '▐' },
         -- section_separators = { left = '', right = '' },
         -- component_separators = { left = '', right = '' },
         -- component_separators = { left = '┊', right = '┊' },
@@ -89,7 +90,6 @@ return {
           {
             require('tigion.core.util').info.lsp,
             on_click = function() vim.notify('LSP servers: ' .. require('tigion.core.util').info.lsp_servers()) end,
-            -- color = { fg = '#545c7e', gui = 'italic' },
           },
           {
             'encoding',
@@ -101,8 +101,16 @@ return {
           },
           'filetype',
         },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' },
+        lualine_y = {
+          'progress',
+        },
+        lualine_z = {
+          {
+            'location',
+            fmt = function(str) return vim.trim(str) end,
+            -- icon = '',
+          },
+        },
       },
       inactive_sections = {
         lualine_a = {},
