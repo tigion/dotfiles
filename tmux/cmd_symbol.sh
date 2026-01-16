@@ -4,7 +4,7 @@
 # - $1: command name
 #
 # - `zsh` -> ``
-# - `foo` -> `foo`
+# - `foo` -> `foo` or `󰣖`
 #
 # Replace `#{b:pane_current_command}` in tmux.conf with
 # `#(~/.config/tmux/cmd_symbol.sh #{b:pane_current_command})`
@@ -30,6 +30,7 @@ case "$1" in
     echo ""
     ;;
   *)
-    echo "$1"
+    # echo "$1"
+    echo "󰣖"
     ;;
 esac
