@@ -102,13 +102,15 @@ return {
           'filetype',
         },
         lualine_y = {
-          'progress',
+          {
+            'progress',
+            icon = '',
+          },
         },
         lualine_z = {
           {
             'location',
             fmt = function(str) return vim.trim(str) end,
-            -- icon = '',
           },
         },
       },
