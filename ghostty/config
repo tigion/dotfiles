@@ -36,7 +36,7 @@ background-blur = 20
 window-save-state = never
 window-width  = 80
 window-height = 30
-# window-step-resize = true
+window-step-resize = false
 window-padding-x = 5
 window-padding-y = 5
 window-padding-balance = true
@@ -51,6 +51,7 @@ adjust-cursor-thickness = 2
 
 # Cursor
 cursor-color = cell-foreground
+# cursor-opacity = 1
 
 # Mouse
 mouse-hide-while-typing = true
