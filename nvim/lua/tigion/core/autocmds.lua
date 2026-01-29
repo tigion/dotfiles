@@ -6,11 +6,28 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   command = 'set nopaste',
 })
 
--- Highlight when yanking (copying) text (on `yy` or `yap` for example)
+-- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
-  callback = function() vim.hl.on_yank({ higroup = 'Visual' }) end,
+  callback = function()
+    -- Highlights yanked text.
+    vim.hl.on_yank({ higroup = 'Visual' })
+
+    -- Copy within Neovim over SSH (Tmux):
+    -- - Copies yanked text to system clipboard using OSC52.
+    -- - Works only if `set -g set-clipboard on` is set in tmux config.
+    --   This Tmux setting is a potential security risk, so use with caution.
+    --
+    -- local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy('+')
+    -- local paste_to_unnamedplus = require('vim.ui.clipboard.osc52').paste('+')
+    -- copy_to_unnamedplus(vim.v.event.regcontents)
+    -- paste_to_unnamedplus()
+    -- local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy('*')
+    -- local paste_to_unnamed = require('vim.ui.clipboard.osc52').paste('*')
+    -- copy_to_unnamed(vim.v.event.regcontents)
+    -- paste_to_unnamed()
+  end,
 })
 
 -- Go to last cursor location when opening a buffer
