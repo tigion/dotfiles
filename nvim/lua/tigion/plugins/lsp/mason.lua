@@ -30,7 +30,7 @@ return {
         'intelephense', -- PHP (LSP)
         'jdtls', -- Java (LSP)
         'jsonls', -- JSON (LSP, json-lsp)
-        'lua_ls', -- Lua (LSP, lua-language-server)
+        'lua_ls@3.16.4', -- Lua (LSP, lua-language-server) -- FIX: Don't update! Use v3.16.4 due to issues with newer versions (v3.17.0, v3.17.1).
         'marksman', -- Markdown (LSP)
         'phpactor', -- PHP (LSP)
         -- 'pyright', -- Python (LSP) -- Replaced by `basedpyright`
