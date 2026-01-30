@@ -16,6 +16,7 @@ brew "btop"
 brew "httpie"
 brew "lazygit"
 brew "git-delta"
+brew "mise"
 
 # Neovim
 brew "neovim"
