@@ -66,9 +66,11 @@ if _is_macos; then
 fi
 
 # --- fzf ---
-eval "$(fzf --zsh)"
-bindkey "ç" fzf-cd-widget # Workaround for `option/alt+c` to cd selected folder
-export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
+if _is_cmd "fzf"; then
+  eval "$(fzf --zsh)"
+  bindkey "ç" fzf-cd-widget # Workaround for `option/alt+c` to cd selected folder
+  export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
+fi
 
 # --- mise ---
 _is_cmd "mise" && eval "$(mise activate zsh)"
