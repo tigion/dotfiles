@@ -69,3 +69,6 @@ fi
 eval "$(fzf --zsh)"
 bindkey "ç" fzf-cd-widget # Workaround for `option/alt+c` to cd selected folder
 export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/config"
+
+# --- mise ---
+_is_cmd "mise" && eval "$(mise activate zsh)"
