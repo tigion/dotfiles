@@ -59,3 +59,19 @@ _add_path() {
   #   echo "Directory $1 does not exist, not adding to PATH."
   fi
 }
+
+# Sets the default editor.
+_set_default_editor() {
+  local editor=""
+  if _is_cmd "nvim"; then
+    edit_candidate="nvim"
+  elif _is_cmd "vim"; then
+    edit_candidate="vim"
+  elif _is_cmd "vi"; then
+    edit_candidate="vi"
+  fi
+  if [[ -n "$edit" ]]; then
+    export EDITOR="$edit"
+    export VISUAL="$edit"
+  fi
+}

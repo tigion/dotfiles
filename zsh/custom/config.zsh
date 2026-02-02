@@ -65,6 +65,9 @@ if _is_macos; then
   fi
 fi
 
+# Sets the default editor.
+_set_default_editor
+
 # --- fzf ---
 if _is_cmd "fzf"; then
   eval "$(fzf --zsh)"
