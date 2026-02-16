@@ -5,6 +5,11 @@ show_options() {
   subtitle "Options:"
   info "Show update infos: $(get_yes_no true)"
   info "Install updates: $(get_yes_no "$INSTALL_UPDATES")"
+  info "Update Homebrew: $(get_yes_no "$UPDATE_HOMEBREW")"
+  info "Update Apt: $(get_yes_no "$UPDATE_APT")"
+  info "Update global Ruby gems: $(get_yes_no "$UPDATE_RUBY")"
+  info "Update global Node packages: $(get_yes_no "$UPDATE_NODE")"
+  info "Clean up: $(get_yes_no "$CLEAN_UP")"
 }
 
 # update Homebrew and installed software

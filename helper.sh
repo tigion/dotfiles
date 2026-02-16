@@ -70,6 +70,19 @@ is_command() {
   # command -v "$1" >/dev/null 2>&1
 }
 
+# check supported operating systems
+check_supported_systems() {
+  subtitle "Supported Operating Systems:"
+  local is_macos is_ubuntu
+  is_macos=$(is_macos && echo true || echo false)
+  is_ubuntu=$(is_ubuntu && echo true || echo false)
+  info "Found macOS: $(get_yes_no "$is_macos")"
+  info "Found Ubuntu Linux: $(get_yes_no "$is_ubuntu")"
+  if [[ "$is_macos" != "true" && "$is_ubuntu" != "true" ]]; then
+    fail "No supported Operating System found!"
+  fi
+}
+
 # ready to start
 ask_to_start() {
   question "Ready to start (y/n)?"
