@@ -31,7 +31,6 @@
     - [conform.nvim](#conformnvim)
     - [flash.nvim](#flashnvim)
     - [gitsigns.nvim](#gitsignsnvim)
-    - [harpoon](#harpoon)
     - [hardtime.nvim](#hardtimenvim)
     - [inc-rename.nvim](#inc-renamenvim)
     - [mini.nvim](#mininvim)
@@ -45,7 +44,6 @@
     - [outline.nvim](#outlinenvim)
     - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
-    - [sidekick.nvim](#sidekicknvim)
     - [snacks.nvim](#snacksnvim)
       - [snacks.notifier](#snacksnotifier)
       - [snacks.picker](#snackspicker)
@@ -53,18 +51,17 @@
       - [snacks.words](#snackswords)
       - [snacks.zen](#snackszen)
     - [swap.nvim](#swapnvim)
-    - [telescope.nvim](#telescopenvim)
     - [todo-comments.nvim](#todo-commentsnvim)
-    - [treewalker.nvim](#treewalkernvim)
     - [trouble.nvim](#troublenvim)
     - [which-key.nvim](#which-keynvim)
     - [Deactivated](#deactivated)
-      - [codeium.vim](#codeiumvim)
       - [Comment.nvim](#commentnvim)
+      - [harpoon](#harpoon)
       - [LuaSnip](#luasnip)
       - [nvim-cmp](#nvim-cmp)
       - [nvim-treesitter](#nvim-treesitter)
-      - [supermaven-nvim](#supermaven-nvim)
+      - [telescope.nvim](#telescopenvim)
+      - [treewalker.nvim](#treewalkernvim)
   - [ftplugin](#ftplugin)
     - [AsciiDoc](#asciidoc)
     - [Help](#help)
@@ -378,16 +375,6 @@ Special keymaps:
 
 - `(TR)` ... [trouble.nvim](#troublenvim) or `:lopen`
 
-### [harpoon]
-
-[harpoon]: https://github.com/ThePrimeagen/harpoon
-
-| Mode | Keymap                     | Description                      |
-| ---- | -------------------------- | -------------------------------- |
-| `n`  | `<Leader>h`                | Open Harpoon quick menu          |
-| `n`  | `<Leader>H`                | Add (harpoon) file to quick menu |
-| `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 9 directly      |
-
 ### [hardtime.nvim]
 
 [hardtime.nvim]: https://github.com/m4xshen/hardtime.nvim
@@ -578,17 +565,6 @@ Text objects:
 | `n`  | `<Leader>z` | Toggle Zen Mode      |
 | `n`  | `<Leader>Z` | Toggle Zen Zoom Mode |
 
-### [supermaven-nvim]
-
-[supermaven-nvim]: https://github.com/supermaven-inc/supermaven-nvim
-
-| Mode | Keymap       | Description       |
-| ---- | ------------ | ----------------- |
-| `n`  | `<Leader>ts` | Toggle Supermaven |
-| `i`  | `<Tab>`      | Accept suggestion |
-| `i`  | `<C-e>`      | Clear suggestion  |
-| `i`  | `<C-f>`      | Accept word       |
-
 ### [swap.nvim]
 
 [swap.nvim]: https://github.com/tigion/swap.nvim
@@ -597,7 +573,116 @@ Text objects:
 | ---- | ----------- | ----------- |
 | `n`  | `<Leader>i` | Swap word   |
 
-### [telescope.nvim]
+### [todo-comments.nvim]
+
+[todo-comments.nvim]: https://github.com/folke/todo-comments.nvim
+
+| Mode | Keymap       | Description           | P   |
+| ---- | ------------ | --------------------- | --- |
+| `n`  | `öt`         | Find in TODO comments | S   |
+| `n`  | `Öt`         | Find in TODO comments | T   |
+| `n`  | `<Leader>xt` | Show TODO comments    | TR  |
+
+- `T` ... [telescope.nvim](#telescopenvim)
+- `S` ... [snacks.picker](#snackspicker)
+- `TR` ... [trouble.nvim](#troublenvim)
+
+### [trouble.nvim]
+
+[trouble.nvim]: https://github.com/folke/trouble.nvim
+
+| Mode | Keymap       | Description                                |
+| ---- | ------------ | ------------------------------------------ |
+| `n`  | `<Leader>xx` | Toggle workspace diagnostics               |
+| `n`  | `<Leader>xX` | Toggle document diagnostics                |
+| `n`  | `<Leader>cs` | Toggle symbols sidebar                     |
+| `n`  | `<Leader>cl` | Toggle lsp definitions, references sidebar |
+| `n`  | `<Leader>xL` | Toggle location list                       |
+| `n`  | `<Leader>xQ` | Toggle quickfix list                       |
+| `n`  | `üt` (`[t`)  | Previous item                              |
+| `n`  | `+t` (`]t`)  | Next item                                  |
+
+- See also [Quickfix/Location List](#quickfixlocation-list)
+
+### [which-key.nvim]
+
+[which-key.nvim]: https://github.com/folke/which-key.nvim
+
+| Mode | Keymap       | Description               |
+| ---- | ------------ | ------------------------- |
+| `n`  | `<Leader>?`  | Show local buffer keymaps |
+| `n`  | `<Leader>??` | Show global keymaps       |
+
+### Deactivated
+
+#### [Comment.nvim]
+
+[Comment.nvim]: https://github.com/numToStr/Comment.nvim
+
+| Mode | Keymap | Description                               |
+| ---- | ------ | ----------------------------------------- |
+| `n`  | `gcc`  | Toggle linewise comment for current line  |
+| `n`  | `gbc`  | Toggle blockwise comment for current line |
+| `x`  | `gc`   | Toggle linewise comment for selection     |
+| `x`  | `gb`   | Toggle blockwise comment for selection    |
+| `n`  | `gco`  | Insert comment to the next line           |
+| `n`  | `gcO`  | Insert comment to the previous line       |
+| `n`  | `gcA`  | Insert comment to end of the current line |
+| `n`  | `gc}`  | Toggle until the next blank line          |
+| `n`  | `gcip` | Toggle inside of paragraph                |
+| `n`  | `gca}` | Toggle around curly brackets              |
+
+#### [harpoon]
+
+[harpoon]: https://github.com/ThePrimeagen/harpoon
+
+| Mode | Keymap                     | Description                      |
+| ---- | -------------------------- | -------------------------------- |
+| `n`  | `<Leader>h`                | Open Harpoon quick menu          |
+| `n`  | `<Leader>H`                | Add (harpoon) file to quick menu |
+| `n`  | `<Leader>1` .. `<Leader>5` | Select file 1 to 9 directly      |
+
+#### [LuaSnip]
+
+[LuaSnip]: https://github.com/L3MON4D3/LuaSnip
+
+| Mode     | Keymap  | Description                        |
+| -------- | ------- | ---------------------------------- |
+| `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
+| `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
+
+#### [nvim-cmp]
+
+[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
+
+CMP - Completion Menu:
+
+| Mode | Keymap            | Description                                       |
+| ---- | ----------------- | ------------------------------------------------- |
+| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
+| `i`  | `<C-e>`           | Cancel completion                                 |
+| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
+| `i`  | `<C-Space>`       | Trigger completion menu                           |
+| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
+| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
+| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
+| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
+|      | `<C-u>`           | Scroll completion documentation up                |
+|      | `<C-d>`           | Scroll completion documentation down              |
+
+#### [nvim-treesitter]
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+
+Only for archived **master** branch:
+
+| Mode | Keymap | Description                             |
+| ---- | ------ | --------------------------------------- |
+| `n`  | `<CR>` | Init selection (current node)           |
+| `x`  | `<CR>` | Expand selection to outer (parent) node |
+| `x`  | `<BS>` | Reduce selection to inner (child) node  |
+
+#### [telescope.nvim]
 
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
 
@@ -643,21 +728,7 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 |         | !`<C-f>`                   | Scroll left in preview window               |
 |         | !`<C-b>`                   | Scroll right in preview window              |
 
-### [todo-comments.nvim]
-
-[todo-comments.nvim]: https://github.com/folke/todo-comments.nvim
-
-| Mode | Keymap       | Description           | P   |
-| ---- | ------------ | --------------------- | --- |
-| `n`  | `öt`         | Find in TODO comments | S   |
-| `n`  | `Öt`         | Find in TODO comments | T   |
-| `n`  | `<Leader>xt` | Show TODO comments    | TR  |
-
-- `T` ... [telescope.nvim](#telescopenvim)
-- `S` ... [snacks.picker](#snackspicker)
-- `TR` ... [trouble.nvim](#troublenvim)
-
-### [treewalker.nvim]
+#### [treewalker.nvim]
 
 [treewalker.nvim]: https://github.com/aaronik/treewalker.nvim
 
@@ -667,107 +738,6 @@ In Telescope ([Default Mappings](https://github.com/nvim-telescope/telescope.nvi
 | `n`  | `äk`   | Up          |
 | `n`  | `äh`   | Left        |
 | `n`  | `äl`   | Right       |
-
-### [trouble.nvim]
-
-[trouble.nvim]: https://github.com/folke/trouble.nvim
-
-| Mode | Keymap       | Description                                |
-| ---- | ------------ | ------------------------------------------ |
-| `n`  | `<Leader>xx` | Toggle workspace diagnostics               |
-| `n`  | `<Leader>xX` | Toggle document diagnostics                |
-| `n`  | `<Leader>cs` | Toggle symbols sidebar                     |
-| `n`  | `<Leader>cl` | Toggle lsp definitions, references sidebar |
-| `n`  | `<Leader>xL` | Toggle location list                       |
-| `n`  | `<Leader>xQ` | Toggle quickfix list                       |
-| `n`  | `üt` (`[t`)  | Previous item                              |
-| `n`  | `+t` (`]t`)  | Next item                                  |
-
-- See also [Quickfix/Location List](#quickfixlocation-list)
-
-### [which-key.nvim]
-
-[which-key.nvim]: https://github.com/folke/which-key.nvim
-
-| Mode | Keymap       | Description               |
-| ---- | ------------ | ------------------------- |
-| `n`  | `<Leader>?`  | Show local buffer keymaps |
-| `n`  | `<Leader>??` | Show global keymaps       |
-
-### Deactivated
-
-#### [codeium.vim]
-
-[codeium.vim]: https://github.com/Exafunction/codeium.vim
-
-- Currently deactivated
-
-| Mode | Keymap       | Description                      |
-| ---- | ------------ | -------------------------------- |
-| `n`  | `<Leader>tc` | Toggle Codeium                   |
-| `i`  | `<Tab>`      | Accept completion                |
-| `i`  | `<C-e>`      | Cancel/Clear current completions |
-| `f`  | `<C-f>`      | Cycle completions forwards       |
-
-- ? `<S-Tab>` for Cancel
-- ? `<C-e>` for Cancel/Clear like CMP
-
-#### [LuaSnip]
-
-[LuaSnip]: https://github.com/L3MON4D3/LuaSnip
-
-| Mode     | Keymap  | Description                        |
-| -------- | ------- | ---------------------------------- |
-| `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
-| `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
-
-#### [nvim-cmp]
-
-[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
-
-CMP - Completion Menu:
-
-| Mode | Keymap            | Description                                       |
-| ---- | ----------------- | ------------------------------------------------- |
-| `i`  | `<CR>`, `<C-y>`   | Confirm completion                                |
-| `i`  | `<C-e>`           | Cancel completion                                 |
-| `i`  | `<S-CR>`, `<C-r>` | Confirm completion with replace                   |
-| `i`  | `<C-Space>`       | Trigger completion menu                           |
-| `i`  | `<C-j>`, `<Down>` | Go to the next item                               |
-| `i`  | `<C-k>`, `<Up>`   | Go to the previous item                           |
-| `i`  | `<C-n>`           | Go to the next item (trigger completion menu)     |
-| `i`  | `<C-p>`           | Go to the previous item (trigger completion menu) |
-|      | `<C-u>`           | Scroll completion documentation up                |
-|      | `<C-d>`           | Scroll completion documentation down              |
-
-#### [Comment.nvim]
-
-[Comment.nvim]: https://github.com/numToStr/Comment.nvim
-
-| Mode | Keymap | Description                               |
-| ---- | ------ | ----------------------------------------- |
-| `n`  | `gcc`  | Toggle linewise comment for current line  |
-| `n`  | `gbc`  | Toggle blockwise comment for current line |
-| `x`  | `gc`   | Toggle linewise comment for selection     |
-| `x`  | `gb`   | Toggle blockwise comment for selection    |
-| `n`  | `gco`  | Insert comment to the next line           |
-| `n`  | `gcO`  | Insert comment to the previous line       |
-| `n`  | `gcA`  | Insert comment to end of the current line |
-| `n`  | `gc}`  | Toggle until the next blank line          |
-| `n`  | `gcip` | Toggle inside of paragraph                |
-| `n`  | `gca}` | Toggle around curly brackets              |
-
-#### [nvim-treesitter]
-
-[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
-
-Only for archived **master** branch:
-
-| Mode | Keymap | Description                             |
-| ---- | ------ | --------------------------------------- |
-| `n`  | `<CR>` | Init selection (current node)           |
-| `x`  | `<CR>` | Expand selection to outer (parent) node |
-| `x`  | `<BS>` | Reduce selection to inner (child) node  |
 
 ## ftplugin
 
