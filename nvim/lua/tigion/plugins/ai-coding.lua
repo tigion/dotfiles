@@ -8,7 +8,7 @@ return {
     enabled = IS_ALLOWED_PLUGIN,
     opts = {
       nes = {
-        enabled = true,
+        enabled = false,
       },
       cli = {
         mux = {
