@@ -156,8 +156,8 @@ return {
     name = 'catppuccin',
     priority = 1000,
     opts = {
-      flavour = 'mocha', -- auto, latte, frappe, macchiato, mocha
-      transparent_background = true,
+      flavour = 'macchiato', -- auto, latte, frappe, macchiato, mocha
+      transparent_background = false,
       -- styles = {
       -- },
       -- on_highlights = function(hl, c)
