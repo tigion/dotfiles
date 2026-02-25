@@ -37,8 +37,6 @@ I use a German keyboard layout (qwertz), so I have adjusted some key mappings.
 
 ## Old Screenshots
 
-- ![Screenshot](docs/images/screenshot_20260114.png)
-
 - 14.01.2026, [Ghostty](https://ghostty.org/)
   with [tmux](https://github.com/tmux/tmux/wiki)
   and [Neovim](https://neovim.io/) on macOS:
