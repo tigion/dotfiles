@@ -9,7 +9,7 @@ Inspired by the many great dotfile repositories out there.
 > The _install.sh_ and _update.sh_ are currently only for macOS and partly
 > Ubuntu Linux.
 
-![Screenshot](docs/images/screenshot_20260114.png)
+![Screenshot](docs/images/screenshot_20260225.png)
 
 - Screenshot: [Ghostty](https://ghostty.org/)
   with [tmux](https://github.com/tmux/tmux/wiki)
@@ -37,11 +37,18 @@ I use a German keyboard layout (qwertz), so I have adjusted some key mappings.
 
 ## Old Screenshots
 
+- ![Screenshot](docs/images/screenshot_20260114.png)
+
+- 14.01.2026, [Ghostty](https://ghostty.org/)
+  with [tmux](https://github.com/tmux/tmux/wiki)
+  and [Neovim](https://neovim.io/) on macOS:
+
+    <img src="docs/images/screenshot_20260114.png" alt="Screenshot" width="400"/>
+
 - 30.12.2024, [Ghostty](https://ghostty.org/)
   with [tmux](https://github.com/tmux/tmux/wiki)
   and [Neovim](https://neovim.io/) on macOS:
 
-    <!-- ![Screenshot](docs/images/screenshot_20240221.png) -->
     <img src="docs/images/screenshot_20241230.jpg" alt="Screenshot" width="400"/>
 
 - 21.02.2024, [kitty](https://sw.kovidgoyal.net/kitty/)
