@@ -22,7 +22,7 @@ brew "gpg"
 #sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # apps
-cask "ghostty"
+#cask "ghostty"
 #cask "kitty"
 #cask "docker"
 #cask "libreoffice"
