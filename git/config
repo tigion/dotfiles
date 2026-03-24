@@ -11,19 +11,22 @@
   filemode = false
   pager = delta
 [diff]
-  colorMoved = default
+  colorMoved = default # color moved lines in diffs (git diff --color-moved)
 [init]
-  defaultBranch = main
+  defaultBranch = main # set default branch name for new repositories
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3 # use a 3-way diff style for merge conflicts (git merge --conflict=zdiff3)
+  ff = false # disable fast-forward merges to preserve history (git merge --no-ff ...)
 [mergetool]
-  keepBackup = true
+  keepBackup = true # keep backup files after a merge conflict is resolved (git mergetool --keepBackup)
 [pack]
-  threads = 0
+  threads = 0 # use all available CPU cores for packing objects (git gc --threads=0)
 [pull]
-  rebase = true
+  rebase = true # rebase by default when pulling (git pull --rebase)
+[rebase]
+  autoStash = true # automatically stash and pop local changes when rebasing (git rebase --autostash)
 
 [delta]
   line-numbers = true
