@@ -79,7 +79,13 @@ vim.api.nvim_create_autocmd('LspProgress', {
     local status = value.kind == 'end' and 0 or 1
     local percent = value.percentage or 0
     local osc_seq = string.format('\27]9;4;%d;%d\a', status, percent)
-    if os.getenv('TMUX') then osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq) end
+
+    if os.getenv('TMUX') then
+      -- If running inside Tmux, wrap the OSC sequence in the appropriate escape codes.
+      -- `set -g allow-passthrough on` must be set in tmux config for this to work.
+      osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq)
+    end
+
     io.stdout:write(osc_seq)
     io.stdout:flush()
   end,
@@ -91,7 +97,13 @@ vim.api.nvim_create_autocmd({ 'VimLeavePre', 'ExitPre' }, {
     local status = 0
     local percent = 100
     local osc_seq = string.format('\27]9;4;%d;%d\a', status, percent)
-    if os.getenv('TMUX') then osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq) end
+
+    if os.getenv('TMUX') then
+      -- If running inside Tmux, wrap the OSC sequence in the appropriate escape codes.
+      -- `set -g allow-passthrough on` must be set in tmux config for this to work.
+      osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq)
+    end
+
     io.stdout:write(osc_seq)
     io.stdout:flush()
   end,
