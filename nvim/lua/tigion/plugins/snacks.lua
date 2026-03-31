@@ -71,7 +71,30 @@ return {
         }, '\n'),
       },
       sections = {
-        { section = 'header' },
+        -- { section = 'header' },
+        function()
+          local color_blue = 'NeovimLogoColorBlue'
+          local color_green = 'NeovimLogoColorGreen'
+          local color_text = 'NonText'
+          return {
+            align = 'center',
+            padding = 2,
+            text = {
+              { '█  █\n', hl = color_green },
+              { '', hl = color_blue },
+              { '█ ██\n', hl = color_green },
+              { '█', hl = color_blue },
+              { '███\n', hl = color_green },
+              { '██', hl = color_blue },
+              { ' ███\n', hl = color_green },
+              { '█', hl = color_blue },
+              { '  █\n\n', hl = color_green },
+              { 'n e o v i m\n', hl = color_text },
+              -- { 'n e o ', hl = color_blue },
+              -- { 'v i m', hl = color_green },
+            },
+          }
+        end,
         { section = 'keys', gap = 1, padding = 1 },
         -- Prints some information about Neovim, the plugins and the date.
         function()
@@ -81,6 +104,7 @@ return {
           local updates = plugin_stats.updates > 0 and '  ' .. plugin_stats.updates .. '' or ''
           return {
             align = 'center',
+            padding = 1,
             text = {
               { ' ', hl = 'footer' },
               { version, hl = 'NonText' },
@@ -92,7 +116,6 @@ return {
               { '    ', hl = 'footer' },
               { date, hl = 'NonText' },
             },
-            padding = 1,
           }
         end,
         -- Greets the user depending on the time of day.
@@ -113,7 +136,21 @@ return {
       config = function(opts, _)
         -- Change dashboard header depending on the height of the screen.
         if vim.o.lines < 37 then opts.sections[2].gap = 0 end
-        if vim.o.lines < 28 then opts.preset.header = 'N E O V I M' end
+        if vim.o.lines < 28 then
+          opts.sections[1] = function()
+            local color_blue = 'NeovimLogoColorBlue'
+            local color_green = 'NeovimLogoColorGreen'
+            return {
+              align = 'center',
+              padding = 1,
+              text = {
+                { 'N E O ', hl = color_blue },
+                { 'V I M', hl = color_green },
+              },
+            }
+          end
+          -- opts.preset.header = 'N E O V I M'
+        end
 
         local snacks = require('snacks')
 

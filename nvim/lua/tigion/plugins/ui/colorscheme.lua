@@ -46,6 +46,11 @@ return {
         local bg_float2 = '#161720'
         local bg_float3 = '#12121a'
 
+        -- Neovim logo colors
+        -- default blue: '#3791D4', green: '#54A23D'
+        hl.NeovimLogoColorBlue = { fg = '#518EC3' }
+        hl.NeovimLogoColorGreen = { fg = '#609C4D' }
+
         -- Colorscheme (tokyonight moon(night))
         hl.WinSeparator = { fg = c.bg_highlight }
         hl.healthSectionDelim = { fg = c.bg_dark, bg = c.fg_dark }
