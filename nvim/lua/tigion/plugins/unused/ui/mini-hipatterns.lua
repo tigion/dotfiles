@@ -3,7 +3,7 @@ return {
   -- Link: https://github.com/nvim-mini/mini.hipatterns
 
   'nvim-mini/mini.hipatterns',
-  enabled = true,
+  enabled = false,
   version = false,
   event = 'VeryLazy',
   keys = {
