@@ -69,3 +69,30 @@ vim.api.nvim_create_autocmd('FileType', {
     if shebang_line and shebang_line:match('^#!.*[/ ]bash') then vim.bo.filetype = 'bash' end
   end,
 })
+
+-- Show LSP progress bar in supporting terminals (e.g., Ghostty, Tmux).
+vim.api.nvim_create_autocmd('LspProgress', {
+  desc = 'Show LSP progress in supporting terminals.',
+  group = vim.api.nvim_create_augroup('lsp_progress', { clear = true }),
+  callback = function(args)
+    local value = args.data.params.value
+    local status = value.kind == 'end' and 0 or 1
+    local percent = value.percentage or 0
+    local osc_seq = string.format('\27]9;4;%d;%d\a', status, percent)
+    if os.getenv('TMUX') then osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq) end
+    io.stdout:write(osc_seq)
+    io.stdout:flush()
+  end,
+})
+-- Reset LSP progress bar in supporting terminals (e.g., Ghostty, Tmux)
+-- when exiting Neovim.
+vim.api.nvim_create_autocmd({ 'VimLeavePre', 'ExitPre' }, {
+  callback = function()
+    local status = 0
+    local percent = 100
+    local osc_seq = string.format('\27]9;4;%d;%d\a', status, percent)
+    if os.getenv('TMUX') then osc_seq = string.format('\27Ptmux;\27%s\27\\', osc_seq) end
+    io.stdout:write(osc_seq)
+    io.stdout:flush()
+  end,
+})
