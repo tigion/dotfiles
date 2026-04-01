@@ -431,6 +431,12 @@ return {
 
     ---@type table<string, snacks.win.Config>
     styles = {
+      input = {
+        relative = 'cursor',
+        border = 'rounded',
+        row = -3,
+        col = 0,
+      },
       snacks_image = {
         relative = 'win',
         border = 'rounded',

@@ -86,11 +86,8 @@ return {
           opts.desc = 'LSP: Show code actions'
           keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts) -- in visual mode will apply to selection
 
-          -- Deactivated: See inc-rename.lua (inc-rename.nvim)
-          -- opts.desc = 'LSP: Rename with all references'
-          -- keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
           opts.desc = 'Rename with references (lsp)'
-          keymap.set('n', '<Leader>rN', vim.lsp.buf.rename, opts)
+          keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
 
           -- Deactivated: See formatting.lua (conform.nvim)
           -- opts.desc = 'LSP: Format current buffer'

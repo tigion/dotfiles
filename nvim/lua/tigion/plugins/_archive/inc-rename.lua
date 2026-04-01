@@ -4,6 +4,7 @@ return {
   -- Link: https://github.com/smjonas/inc-rename.nvim
 
   'smjonas/inc-rename.nvim',
+  enabled = false,
   event = 'VeryLazy',
   cmd = 'IncRename',
   keys = {
