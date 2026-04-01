@@ -32,10 +32,8 @@
     - [flash.nvim](#flashnvim)
     - [gitsigns.nvim](#gitsignsnvim)
     - [hardtime.nvim](#hardtimenvim)
-    - [inc-rename.nvim](#inc-renamenvim)
     - [mini.nvim](#mininvim)
       - [mini.ai](#miniai)
-      - [mini.hipatterns](#minihipatterns)
     - [neogen](#neogen)
     - [nvim-lint](#nvim-lint)
     - [nvim-sessions](#nvim-sessions)
@@ -58,6 +56,7 @@
       - [Comment.nvim](#commentnvim)
       - [harpoon](#harpoon)
       - [LuaSnip](#luasnip)
+      - [mini.hipatterns](#minihipatterns)
       - [nvim-cmp](#nvim-cmp)
       - [nvim-treesitter](#nvim-treesitter)
       - [telescope.nvim](#telescopenvim)
@@ -288,27 +287,27 @@ Snippets:
 
 <!-- [lsp-zero.nvim]: https://github.com/VonHeikemen/lsp-zero.nvim -->
 
-| Mode | Keymap               | Description                                                                 | P   |
-| ---- | -------------------- | --------------------------------------------------------------------------- | --- |
-| `n`  | (`K`)                | Show hover information                                                      |     |
-| `i`  | ~~`<C-k>`~~          | Show hover information                                                      |     |
-| `n`  | `gK`                 | Show signature help                                                         |     |
-| `i`  | `<C-k>` (`<C-S>`)    | Show signature help                                                         |     |
-| `n`  | `ti`                 | Toggle inlay hints                                                          |     |
-| `n`  | `gs` (`gO`)          | Show symbols in current buffer                                              | S   |
-| `n`  | `gss`                | Show symbols in workspace (sbt)                                             | S   |
-| `n`  | `gr` (`grr`)         | Show references (wuc)                                                       | S   |
-| `n`  | `gd`                 | Go to definition(s) (wuc)                                                   | S   |
-| `n`  | `gD`                 | Go to declaration (wuc)                                                     |     |
-| `n`  | `gdt`                | Go to type definition(s) (wuc)                                              | S   |
-| `n`  | `gI` (`gri`)         | Go to implementation(s)                                                     | S   |
-| `n`  | `<Leader>ca` (`gca`) | Show code actions                                                           |     |
-| `n`  | `<Leader>rN` (`grn`) | Rename with all references (wuc)<br />-> [inc-rename.nvim](#inc-renamenvim) |     |
-| `n`  | ~~`<Leader>f`~~      | Format current buffer<br />-> [conform.nvim](#conformnvim)                  |     |
-| `n`  | `<Leader>d`          | Show line diagnostics                                                       |     |
-| `n`  | ~~`<Leader>dd`~~     | Show diagnostics for current buffer                                         | S   |
-| `n`  | ~~`<Leader>da`~~     | Show diagnostics for all buffers                                            | S   |
-| `n`  | `<Leader>rs`         | Restart LSP servers for current buffer                                      |     |
+| Mode | Keymap               | Description                                                | P   |
+| ---- | -------------------- | ---------------------------------------------------------- | --- |
+| `n`  | (`K`)                | Show hover information                                     |     |
+| `i`  | ~~`<C-k>`~~          | Show hover information                                     |     |
+| `n`  | `gK`                 | Show signature help                                        |     |
+| `i`  | `<C-k>` (`<C-S>`)    | Show signature help                                        |     |
+| `n`  | `ti`                 | Toggle inlay hints                                         |     |
+| `n`  | `gs` (`gO`)          | Show symbols in current buffer                             | S   |
+| `n`  | `gss`                | Show symbols in workspace (sbt)                            | S   |
+| `n`  | `gr` (`grr`)         | Show references (wuc)                                      | S   |
+| `n`  | `gd`                 | Go to definition(s) (wuc)                                  | S   |
+| `n`  | `gD`                 | Go to declaration (wuc)                                    |     |
+| `n`  | `gdt`                | Go to type definition(s) (wuc)                             | S   |
+| `n`  | `gI` (`gri`)         | Go to implementation(s)                                    | S   |
+| `n`  | `<Leader>ca` (`gca`) | Show code actions                                          |     |
+| `n`  | `<Leader>rn` (`grn`) | Rename with all references (wuc)                           |     |
+| `n`  | ~~`<Leader>f`~~      | Format current buffer<br />-> [conform.nvim](#conformnvim) |     |
+| `n`  | `<Leader>d`          | Show line diagnostics                                      |     |
+| `n`  | ~~`<Leader>dd`~~     | Show diagnostics for current buffer                        | S   |
+| `n`  | ~~`<Leader>da`~~     | Show diagnostics for all buffers                           | S   |
+| `n`  | `<Leader>rs`         | Restart LSP servers for current buffer                     |     |
 
 - `wuc` ... Word under cursor
 - `sbt` ... Same buffer (file) type?
@@ -383,14 +382,6 @@ Special keymaps:
 | ---- | ------------- | --------------- |
 | `n`  | `<Leader>tha` | Toggle Hardtime |
 
-### [inc-rename.nvim]
-
-[inc-rename.nvim]: https://github.com/smjonas/inc-rename.nvim
-
-| Mode | Keymap       | Description                      |
-| ---- | ------------ | -------------------------------- |
-| `n`  | `<Leader>rn` | Rename with all references (wuc) |
-
 ### [mini.nvim]
 
 [mini.nvim]: https://github.com/nvim-mini/mini.nvim
@@ -409,14 +400,6 @@ Text objects:
 | ...          | ... and more                                                    |
 
 - To expand the selection in `((...))`, use after `vib` `ib` again.
-
-#### [mini.hipatterns]
-
-[mini.hipatterns]: https://github.com/nvim-mini/mini.hipatterns
-
-| Mode | Keymap        | Description            |
-| ---- | ------------- | ---------------------- |
-| `n`  | `<Leader>thi` | Toggle mini.hipatterns |
 
 ### [neogen]
 
@@ -650,6 +633,14 @@ Text objects:
 | -------- | ------- | ---------------------------------- |
 | `i`, `s` | `<C-f>` | Go to next snippet placeholder     |
 | `i`, `s` | `<C-b>` | Go to previous snippet placeholder |
+
+#### [mini.hipatterns]
+
+[mini.hipatterns]: https://github.com/nvim-mini/mini.hipatterns
+
+| Mode | Keymap        | Description            |
+| ---- | ------------- | ---------------------- |
+| `n`  | `<Leader>thi` | Toggle mini.hipatterns |
 
 #### [nvim-cmp]
 
