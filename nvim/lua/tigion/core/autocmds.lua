@@ -108,3 +108,17 @@ vim.api.nvim_create_autocmd({ 'VimLeavePre', 'ExitPre' }, {
     io.stdout:flush()
   end,
 })
+
+-- Deactivated
+
+-- Highlight references under the cursor.
+-- Replaced by plugin snacks.nvim -> word (snacks.lua)
+-- local group = vim.api.nvim_create_augroup('LspReferenceHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+--   group = group,
+--   callback = function() vim.lsp.buf.document_highlight() end,
+-- })
+-- vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter' }, {
+--   group = group,
+--   callback = function() vim.lsp.buf.clear_references() end,
+-- })
