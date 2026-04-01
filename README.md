@@ -3,17 +3,19 @@
 These are my **dotfiles** for **macOS** and partly **Ubuntu**.
 Inspired by the many great dotfile repositories out there.
 
+It's mainly about my **Neovim** configuration and some CLI tools I use.
+
+![Screenshot](docs/images/screenshot_20260331.png)
+
+- Screenshot: [Ghostty](https://ghostty.org/)
+  with [tmux](https://github.com/tmux/tmux/wiki)
+  and [Neovim](https://neovim.io/) on macOS
+
 > [!WARNING]
 > Work in progress. Use at your own risk.
 >
 > The _install.sh_ and _update.sh_ are currently only for macOS and partly
 > Ubuntu Linux.
-
-![Screenshot](docs/images/screenshot_20260225.png)
-
-- Screenshot: [Ghostty](https://ghostty.org/)
-  with [tmux](https://github.com/tmux/tmux/wiki)
-  and [Neovim](https://neovim.io/) on macOS
 
 ## Good to know
 
