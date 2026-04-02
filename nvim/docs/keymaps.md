@@ -195,10 +195,10 @@
 
 ### Tabs
 
-| Mode | Keymap | Description  |
-| ---- | ------ | ------------ |
-| `n`  | `gT`   | Previous tab |
-| `n`  | `gt`   | Next tab     |
+| Mode | Keymap      | Description  |
+| ---- | ----------- | ------------ |
+| `n`  | `[t` (`gT`) | Previous tab |
+| `n`  | `]t` (`gt`) | Next tab     |
 
 - See also [bufferline.nvim](#bufferlinenvim)
 
@@ -589,8 +589,8 @@ Text objects:
 | `n`  | `<Leader>cl` | Toggle lsp definitions, references sidebar |
 | `n`  | `<Leader>xL` | Toggle location list                       |
 | `n`  | `<Leader>xQ` | Toggle quickfix list                       |
-| `n`  | `üt` (`[t`)  | Previous item                              |
-| `n`  | `+t` (`]t`)  | Next item                                  |
+| `n`  | `üx` (`[x`)  | Previous item                              |
+| `n`  | `+x` (`]x`)  | Next item                                  |
 
 - See also [Quickfix/Location List](#quickfixlocation-list)
 

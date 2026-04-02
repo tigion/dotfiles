@@ -43,6 +43,7 @@ return {
     -- Link: https://github.com/tris203/precognition.nvim
 
     'tris203/precognition.nvim',
+    enabled = false,
     event = 'VeryLazy',
     keys = {
       { '<Leader>tp', '<Cmd>Precognition toggle<CR>', desc = 'Toggle Precognition' },
@@ -58,6 +59,7 @@ return {
     -- Link: https://github.com/m4xshen/hardtime.nvim
 
     'm4xshen/hardtime.nvim',
+    enabled = true,
     dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
     event = 'VeryLazy',
     keys = {

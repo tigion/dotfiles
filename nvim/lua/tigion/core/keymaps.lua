@@ -157,6 +157,11 @@ keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decremen
 keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 
+-- Tabs ------------------------------------------------------------------------
+
+keymap.set('n', '[t', '<cmd>tabprevious<cr>', { desc = 'Prev Tab' })
+keymap.set('n', ']t', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
+
 -- Windows ---------------------------------------------------------------------
 
 -- Split window
@@ -176,8 +181,6 @@ keymap.set('n', '<C-w><Left>', '<Cmd>vertical resize -2<CR>', { desc = 'Decrease
 keymap.set('n', '<C-w><Down>', '<Cmd>resize -2<CR>', { desc = 'Decrease window height' })
 keymap.set('n', '<C-w><Up>', '<Cmd>resize +2<CR>', { desc = 'Increase window height' })
 keymap.set('n', '<C-w><Right>', '<Cmd>vertical resize +2<CR>', { desc = 'Increase window width' })
-
--- Tabs ------------------------------------------------------------------------
 
 -- Terminal --------------------------------------------------------------------
 

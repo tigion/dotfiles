@@ -3,7 +3,7 @@ return {
   -- Link: https://github.com/akinsho/bufferline.nvim
 
   'akinsho/bufferline.nvim',
-  enabled = true,
+  enabled = false,
   dependencies = { 'nvim-mini/mini.icons' },
   version = '*',
   event = 'VeryLazy',
