@@ -52,13 +52,12 @@ keymap.set('n', '<Esc><Esc>', '<Cmd>noh<CR>', { desc = 'Remove search highlights
 keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
 keymap.set('i', 'jk', '<Esc><Cmd>w<CR>', { desc = 'Exit insert mode and save' })
 keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
-keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
 -- keymap.set('n', '<Leader>e', ':Lexplore<CR>', { desc = 'Toggle file explorer' }) -- open vim file manager
 
 -- keymap.set('n', '*', '*N', { desc = 'Search and go back to initial word' })
 -- keymap.set('n', '*', '*<C-o>', { desc = 'Search and go back to initial word' })
 
--- Debug -----------------------------------------------------------------------
+-- Addons ----------------------------------------------------------------------
 
 keymap.set({ 'n', 'v' }, '<Leader>cd', addons.add_dbg_msg, { desc = 'Debug word under cursor' })
 keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc = 'Copy context' })
@@ -96,6 +95,33 @@ end, { desc = 'Toggle location list' })
 -- keymap.set('n', ']l', '<Cmd>lnext<CR>zz', { desc = 'Next location' })
 -- keymap.set('n', '[l', '<Cmd>lprev<CR>zz', { desc = 'Prev location' })
 
+--- Selection ------------------------------------------------------------------
+
+-- Select all
+keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
+
+-- Move selected lines up/down
+keymap.set('x', 'J', ":m '>+1<CR>gv=gv") -- down
+keymap.set('x', 'K', ":m '<-2<CR>gv=gv") -- up
+
+-- Incremental selection with LSP or Treesitter
+-- Outer node (parent)
+vim.keymap.set({ 'x', 'o' }, '<CR>', function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require('vim.treesitter._select').select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = 'Select parent (outer) node' })
+-- Inner node (child)
+vim.keymap.set({ 'x', 'o' }, '<BS>', function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require('vim.treesitter._select').select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = 'Select child (inner) node' })
+
 -- Manipulation ----------------------------------------------------------------
 
 -- better identing (repeatable)
@@ -105,10 +131,6 @@ keymap.set('x', '>', '>gv', { desc = 'Increase indent' })
 -- dont affect register
 keymap.set('n', 'x', '"_x') -- delete character without copying (register)
 -- ('v', P') -> keymap.set('x', '<Leader>p', [["_dP]]) -- preserve highlight source
---
--- move highlighted/selected lines
-keymap.set('x', 'J', ":m '>+1<CR>gv=gv") -- down
-keymap.set('x', 'K', ":m '<-2<CR>gv=gv") -- up
 
 -- keep cursor position with line concatenation
 -- keymap.set('n', 'J', 'mzJ`z')

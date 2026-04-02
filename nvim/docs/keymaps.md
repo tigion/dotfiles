@@ -120,14 +120,21 @@
 | `n`      | `<Esc><Esc>`  | Remove search highlights             |
 | `i`      | `jj`, `<C-c>` | Exit insert mode                     |
 | `i`      | `jk`          | Exit insert mode and save            |
-| `n`      | `<C-a>`       | Select all                           |
-| `x`      | `J`           | Move selection down                  |
-| `x`      | `K`           | Move selection up                    |
 | `n`, `x` | `<Leader>ss`  | Search and replace template          |
 | `n`      | `<Leader>sw`  | Search and replace word under cursor |
 | `n`      | (`<[-Space>`) | Insert line above (normal mode)      |
 | `n`      | (`<]-Space>`) | Insert line below (normal mode)      |
 | `n`      | `<Leader>K`   | Neovim Help for word under cursor    |
+
+### Selection
+
+| Mode     | Keymap          | Description                             |
+| -------- | --------------- | --------------------------------------- |
+| `n`      | `<C-a>`         | Select all                              |
+| `x`      | `J`             | Move selection down                     |
+| `x`      | `K`             | Move selection up                       |
+| `x`, `o` | `<CR>` (`v_an`) | Expand selection to outer (parent) node |
+| `x`, `o` | `<BS>` (`v_in`) | Reduce selection to inner (child) node  |
 
 ### Code Navigation
 
@@ -392,12 +399,12 @@ Special keymaps:
 
 Text objects:
 
-| Keymap       | Description                                                     |
-| ------------ | --------------------------------------------------------------- |
-| `vab`, `vib` | Select around/in brackets (`([{`)                               |
-| `vag`, `vig` | Select around/in single/double quotes and backticks (`` "'` ``) |
-| `va#`, `vi#` | Select around/in given character (`#` is a placeholder)         |
-| ...          | ... and more                                                    |
+| Keymap        | Description                                                     |
+| ------------- | --------------------------------------------------------------- |
+| `vab` / `vib` | Select around/in brackets (`([{`)                               |
+| `vag` / `vig` | Select around/in single/double quotes and backticks (`` "'` ``) |
+| `va#` / `vi#` | Select around/in given character (`#` is a placeholder)         |
+| ...           | ... and more                                                    |
 
 - To expand the selection in `((...))`, use after `vib` `ib` again.
 

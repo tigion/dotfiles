@@ -68,18 +68,26 @@ return {
     --       Extra config is in `tigion/plugins/treesitter.lua`.
 
     'nvim-mini/mini.ai',
+    enabled = true,
     -- dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     version = false,
     event = { 'BufReadPre', 'BufNewFile' },
     opts = function()
       return {
-        n_lines = 200,
         custom_textobjects = {
           -- o = require('mini.ai').gen_spec.treesitter({ -- code block
           --   a = { '@block.outer', '@conditional.outer', '@loop.outer' },
           --   i = { '@block.inner', '@conditional.inner', '@loop.inner' },
           -- }),
         },
+        mappings = {
+          -- Next/last textobject mappings
+          around_next = '',
+          inside_next = '',
+          around_last = '',
+          inside_last = '',
+        },
+        n_lines = 200,
       }
     end,
   },
