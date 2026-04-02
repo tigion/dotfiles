@@ -11,6 +11,7 @@
       - [Global options](#global-options)
       - [Local options](#local-options)
     - [Goodies](#goodies)
+    - [Selection](#selection)
     - [Code Navigation](#code-navigation)
     - [Commenting](#commenting)
     - [Diagnostics](#diagnostics)
