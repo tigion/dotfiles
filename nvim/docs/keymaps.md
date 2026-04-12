@@ -28,11 +28,9 @@
     - [LSP/CMP/Snippets](#lspcmpsnippets)
       - [blink.cmp](#blinkcmp)
       - [nvim-lspconfig](#nvim-lspconfig)
-    - [bufferline.nvim](#bufferlinenvim)
     - [conform.nvim](#conformnvim)
     - [flash.nvim](#flashnvim)
     - [gitsigns.nvim](#gitsignsnvim)
-    - [hardtime.nvim](#hardtimenvim)
     - [mini.nvim](#mininvim)
       - [mini.ai](#miniai)
     - [neogen](#neogen)
@@ -41,7 +39,6 @@
     - [nvim-tmux-navigation](#nvim-tmux-navigation)
     - [nvim-tree](#nvim-tree)
     - [outline.nvim](#outlinenvim)
-    - [precognition.nvim](#precognitionnvim)
     - [render-markdown.nvim](#render-markdownnvim)
     - [snacks.nvim](#snacksnvim)
       - [snacks.notifier](#snacksnotifier)
@@ -54,12 +51,15 @@
     - [trouble.nvim](#troublenvim)
     - [which-key.nvim](#which-keynvim)
     - [Deactivated](#deactivated)
+      - [bufferline.nvim](#bufferlinenvim)
       - [Comment.nvim](#commentnvim)
+      - [hardtime.nvim](#hardtimenvim)
       - [harpoon](#harpoon)
       - [LuaSnip](#luasnip)
       - [mini.hipatterns](#minihipatterns)
       - [nvim-cmp](#nvim-cmp)
       - [nvim-treesitter](#nvim-treesitter)
+      - [precognition.nvim](#precognitionnvim)
       - [telescope.nvim](#telescopenvim)
       - [treewalker.nvim](#treewalkernvim)
   - [ftplugin](#ftplugin)
@@ -322,17 +322,6 @@ Snippets:
 - `S` ... [snacks.picker](#snackspicker)
 - `T` ... [telescope.nvim](#telescopenvim)
 
-### [bufferline.nvim]
-
-[bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
-
-| Mode | Keymap      | Description           |
-| ---- | ----------- | --------------------- |
-| `n`  | ~~`+b`~~    | Go to next buffer     |
-| `n`  | ~~`üb`~~    | Go to previous buffer |
-| `n`  | `üt` (`[t`) | Go to previous tab    |
-| `n`  | `+t` (`]t`) | Go to next tab        |
-
 ### [conform.nvim]
 
 [conform.nvim]: https://github.com/stevearc/conform.nvim
@@ -381,14 +370,6 @@ Special keymaps:
 | `n`  | `<Leader>gl` | Show git hunks in location list | (TR) |
 
 - `(TR)` ... [trouble.nvim](#troublenvim) or `:lopen`
-
-### [hardtime.nvim]
-
-[hardtime.nvim]: https://github.com/m4xshen/hardtime.nvim
-
-| Mode | Keymap        | Description     |
-| ---- | ------------- | --------------- |
-| `n`  | `<Leader>tha` | Toggle Hardtime |
 
 ### [mini.nvim]
 
@@ -466,14 +447,6 @@ Text objects:
 | Mode | Keymap      | Description               |
 | ---- | ----------- | ------------------------- |
 | `n`  | `<Leader>o` | Toggle outline of symbols |
-
-### [precognition.nvim]
-
-[precognition.nvim]: https://github.com/tris203/precognition.nvim
-
-| Mode | Keymap       | Description         |
-| ---- | ------------ | ------------------- |
-| `n`  | `<Leader>tp` | Toggle Precognition |
 
 ### [render-markdown.nvim]
 
@@ -606,6 +579,17 @@ Text objects:
 
 ### Deactivated
 
+#### [bufferline.nvim]
+
+[bufferline.nvim]: https://github.com/akinsho/bufferline.nvim
+
+| Mode | Keymap      | Description           |
+| ---- | ----------- | --------------------- |
+| `n`  | ~~`+b`~~    | Go to next buffer     |
+| `n`  | ~~`üb`~~    | Go to previous buffer |
+| `n`  | `üt` (`[t`) | Go to previous tab    |
+| `n`  | `+t` (`]t`) | Go to next tab        |
+
 #### [Comment.nvim]
 
 [Comment.nvim]: https://github.com/numToStr/Comment.nvim
@@ -622,6 +606,14 @@ Text objects:
 | `n`  | `gc}`  | Toggle until the next blank line          |
 | `n`  | `gcip` | Toggle inside of paragraph                |
 | `n`  | `gca}` | Toggle around curly brackets              |
+
+#### [hardtime.nvim]
+
+[hardtime.nvim]: https://github.com/m4xshen/hardtime.nvim
+
+| Mode | Keymap        | Description     |
+| ---- | ------------- | --------------- |
+| `n`  | `<Leader>tha` | Toggle Hardtime |
 
 #### [harpoon]
 
@@ -680,6 +672,14 @@ Only for archived **master** branch:
 | `n`  | `<CR>` | Init selection (current node)           |
 | `x`  | `<CR>` | Expand selection to outer (parent) node |
 | `x`  | `<BS>` | Reduce selection to inner (child) node  |
+
+#### [precognition.nvim]
+
+[precognition.nvim]: https://github.com/tris203/precognition.nvim
+
+| Mode | Keymap       | Description         |
+| ---- | ------------ | ------------------- |
+| `n`  | `<Leader>tp` | Toggle Precognition |
 
 #### [telescope.nvim]
 
