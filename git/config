@@ -33,6 +33,8 @@
   keep-plus-minus-markers = true
   hunk-header-decoration-style = omit
   zero-style = dim syntax
+  side-by-side = false
+  navigate = false  # use n and N to move between diff sections
 [delta "interactive"]
   keep-plus-minus-markers = false
 
