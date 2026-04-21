@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# NOTE: This script relies on `du`, whose behavior differs between
-#       GNU (Linux) and BSD (macOS). Reported sizes may not match
-#       `ls -l` due to block size rounding and directory accounting.
+# WARNING: Work in progress!
 
 set -euo pipefail
 
@@ -11,6 +9,15 @@ set -euo pipefail
 # =========================
 
 # Config
+SIZE_MODE="blocks" # Uses "du" for block sizes (faster).
+case "${1:-}" in
+  --exact) SIZE_MODE="exact" ;; # Uses "stat" for exact sizes (slower).
+  "") ;;                        # No argument, uses default "blocks" mode.
+  *)
+    echo "Usage: $(basename "$0") [--exact]" >&2
+    exit 1
+    ;;
+esac
 BAR_LENGTH=10
 
 # Colors
@@ -19,11 +26,22 @@ COLOR_YELLOW="\033[0;33m"
 COLOR_RED="\033[0;31m"
 COLOR_NONE="\033[0m"
 
+# OS detection
+case "$(uname -s)" in
+  Linux) OS_NAME="Linux" ;;
+  Darwin) OS_NAME="macOS" ;;
+  *) OS_NAME="Unknown" ;;
+esac
+
 # Global data variables
-files=() file_count=0
-sizes=() size_strs=() names=()
-max_size=0 max_size_str_len=0
-summary_size=0
+files=()
+sizes=()
+size_strs=()
+names=()
+count=0
+max_size=0
+max_size_str_len=0
+recursion_depth=0
 
 # =========================
 # Functions
@@ -40,11 +58,63 @@ get_files() {
 get_size_with_du() {
   local file=$1
   local size=0
-  # `NR==1` handles possible newlines in filenames safely.
-  # Alternatively: `du -sk "./$file" ...` instead of `du -sk -- "$file" ...`
+  # Handles possible newlines in filenames safely.
   size=$(du -sk -- "$file" 2>/dev/null | awk 'NR==1 {print $1}')
   # Converts the size from kilobytes to bytes.
   echo "$((size * 1024))"
+}
+
+get_size_with_stat() {
+  local file=$1
+  local size=0
+
+  if [[ -f "$file" ]]; then
+    case "$OS_NAME" in
+      Linux) size=$(stat -c%s -- "$file") ;;
+      macOS) size=$(stat -f%z -- "$file") ;;
+    esac
+  elif [[ -d "$file" ]]; then
+    size=$(get_dir_size "$file")
+  fi
+
+  echo "$size"
+}
+
+get_dir_size() {
+  local dir=$1
+  ((recursion_depth += 1))
+
+  # Prevents infinite or deep recursion.
+  if ((recursion_depth > 4)); then
+    printf "\n Warning: '%s' is too deep, skipping.\n" "$dir" >&2
+    echo "0"
+    return
+  fi
+
+  (
+    cd -- "$dir" || exit 0
+    shopt -s nullglob dotglob
+    local dir_files=(*)
+    shopt -u nullglob dotglob
+
+    local file size=0 total_size=0
+    for file in "${dir_files[@]}"; do
+      if [[ -L "$file" ]]; then
+        continue
+      elif [[ -f "$file" ]]; then
+        case "$OS_NAME" in
+          Linux) size=$(stat -c%s -- "$file") ;;
+          macOS) size=$(stat -f%z -- "$file") ;;
+        esac
+        total_size=$((total_size + size))
+      elif [[ -d "$file" ]]; then
+        size=$(get_dir_size "$file")
+        total_size=$((total_size + size))
+      fi
+    done
+
+    echo "$total_size"
+  )
 }
 
 calc_sizes() {
@@ -52,34 +122,30 @@ calc_sizes() {
   local file size size_str size_str_len name
 
   for file in "${files[@]}"; do
-    printf '\rCalculating: %s/%s ...' "$((idx + 1))" "$file_count"
+    printf '\rCalculating (%s): %s/%s ...' "$SIZE_MODE" "$((idx + 1))" "$count"
 
-    # Escapes the file name for safe printing.
-    name=$(printf '%q' "$file")
+    # Skips if the file does not exist.
+    [[ -e "$file" ]] || continue
 
-    if [[ -e "$file" ]]; then
-      if [[ -L "$file" ]]; then
-        name="${name}@"
-      elif [[ -d "$file" ]]; then
-        name="${name}/"
-      fi
-      size=$(get_size_with_du "$file")
-    else
-      name="! ${name} (no size)"
-      size=0
-    fi
+    # Gets the size of the file or directory.
+    case "$SIZE_MODE" in
+      exact) size=$(get_size_with_stat "$file") ;;
+      blocks) size=$(get_size_with_du "$file") ;;
+    esac
 
     ((size > max_size)) && max_size=$size
     size_str=$(convert "$size")
-
     size_str_len=${#size_str}
     ((size_str_len > max_size_str_len)) && max_size_str_len=$size_str_len
+
+    # Escapes the file name for safe printing.
+    name=$(printf '%q' "$file")
+    [[ -d "$file" ]] && name="${name}/"
 
     sizes[idx]=$size
     size_strs[idx]=$size_str
     names[idx]=$name
 
-    summary_size=$((summary_size + size))
     ((idx += 1))
   done
 
@@ -106,7 +172,7 @@ progress_bar() {
     color=$COLOR_YELLOW
   fi
 
-  printf "[%b" "$color"
+  printf "[%b" "$color" e
   printf '%*s' "$filled_length" '' | tr ' ' '#'
   printf "%b" "$COLOR_NONE"
   printf '%*s' "$empty_length" ''
@@ -119,8 +185,8 @@ progress_bar() {
 
 # Gathers files and directories.
 get_files
-file_count=${#files[@]}
-if ((file_count == 0)); then
+count=${#files[@]}
+if ((count == 0)); then
   echo "No files or directories found."
   exit 0
 fi
@@ -143,6 +209,3 @@ for idx in "${sorted_indices[@]}"; do
   bar=$(progress_bar "$max_size" "$size")
   printf "%*s %s %s\n" "$max_size_str_len" "$size_str" "$bar" "$name"
 done
-
-# Prints the summary.
-printf "\nTotal size: %s\n" "$(convert "$summary_size")"
