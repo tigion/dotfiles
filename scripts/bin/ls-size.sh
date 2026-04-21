@@ -66,8 +66,8 @@ get_size_with_stat() {
 
   if [[ -f "$file" ]]; then
     case "$OS_NAME" in
-      Linux) size=$(stat -c%s "$file") ;;
-      macOS) size=$(stat -f%z "$file") ;;
+      Linux) size=$(stat -c%s -- "$file") ;;
+      macOS) size=$(stat -f%z -- "$file") ;;
     esac
   elif [[ -d "$file" ]]; then
     size=$(get_dir_size "$file")
@@ -81,7 +81,7 @@ get_dir_size() {
   local file
   local size=0 total_size=0
 
-  cd "$dir" || exit 0
+  cd -- "$dir" || exit 0
   shopt -s nullglob dotglob
   local files=(*)
   shopt -u nullglob dotglob
@@ -92,8 +92,8 @@ get_dir_size() {
       continue
     elif [[ -f "$file" ]]; then
       case "$OS_NAME" in
-        Linux) size=$(stat -c%s "$file") ;;
-        macOS) size=$(stat -f%z "$file") ;;
+        Linux) size=$(stat -c%s -- "$file") ;;
+        macOS) size=$(stat -f%z -- "$file") ;;
       esac
       total_size=$((total_size + size))
     elif [[ -d "$file" ]]; then
