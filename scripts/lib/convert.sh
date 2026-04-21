@@ -1,17 +1,30 @@
 #!/usr/bin/env bash
 
-# Converts kilobytes to human-readable format.
+# Converts a value in bytes to a human-readable format.
+# Parameters:
+#  $1: value in bytes
+#  $2: base unit (optional, default: "B")
 convert() {
   local value=$1
-  local result=$value unit="K"
+  local base_unit="${2:-B}"
+  local result=$value unit="B"
+
+  case "$base_unit" in
+    K) value=$((value * 1024)) ;;
+    M) value=$((value * 1024 * 1024)) ;;
+    G) value=$((value * 1024 * 1024 * 1024)) ;;
+    T) value=$((value * 1024 * 1024 * 1024 * 1024)) ;;
+  esac
 
   # Converts the value and sets the unit.
-  if ((value >= 1024 * 1024 * 1024)); then
-    result=$(echo "scale=2; $value / (1024 * 1024 * 1024)" | bc) unit="T"
+  if ((value >= 1024 * 1024 * 1024 * 1024)); then
+    result=$(echo "scale=2; $value / (1024 * 1024 * 1024 * 1024)" | bc) unit="T"
+  elif ((value >= 1024 * 1024 * 1024)); then
+    result=$(echo "scale=2; $value / (1024 * 1024 * 1024)" | bc) unit="G"
   elif ((value >= 1024 * 1024)); then
-    result=$(echo "scale=2; $value / (1024 * 1024)" | bc) unit="G"
+    result=$(echo "scale=2; $value / (1024 * 1024)" | bc) unit="M"
   elif ((value >= 1024)); then
-    result=$(echo "scale=2; $value / 1024" | bc) unit="M"
+    result=$(echo "scale=2; $value / 1024" | bc) unit="K"
   elif ((value == 0)); then
     result=0 unit="B"
   fi
