@@ -6,9 +6,15 @@
 
 set -euo pipefail
 
-# =========================
-# Config / Globals
-# =========================
+# --- Parameters -----------------------------------------------------
+
+path="${1:-.}"
+cd "$path" || {
+  printf "Error: Cannot access path '%s'" "$path" >&2
+  exit 1
+}
+
+# --- Config / Globals -----------------------------------------------
 
 # Config
 BAR_LENGTH=10
@@ -25,11 +31,21 @@ sizes=() size_strs=() names=()
 max_size=0 max_size_str_len=0
 summary_size=0
 
-# =========================
-# Functions
-# =========================
+# --- Function Libraries ---------------------------------------------
 
-source "$HOME/lib/convert.sh" || exit 1
+lib_file="$HOME/lib/convert.sh"
+if [[ ! -r "$lib_file" ]]; then
+  echo "Error: Cannot read $lib_file" >&2
+  exit 1
+fi
+# shellcheck disable=SC1090
+source "$lib_file" || exit 1
+
+# --- Functions ------------------------------------------------------
+
+usage() {
+  echo "Usage: $(basename "$0") [path]"
+}
 
 get_files() {
   shopt -s nullglob dotglob
@@ -113,9 +129,7 @@ progress_bar() {
   printf "]"
 }
 
-# =========================
-# Main
-# =========================
+# --- Main -----------------------------------------------------------
 
 # Gathers files and directories.
 get_files
