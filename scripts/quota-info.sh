@@ -14,7 +14,7 @@ elif ! quota --no-wrap >/dev/null 2>&1; then
 fi
 
 # Loads the needed functions.
-source "$HOME/lib/convert.sh"
+source "$HOME/lib/bytes_to_human.sh"
 
 # Colors
 COLOR_GREEN="\033[0;32m"
@@ -79,6 +79,6 @@ for str in $source; do
   warn_p=80
 
   # Shows the quota usage information.
-  show_usage_info "$volume" "$used_p" "$warn_p" "$soft_p" "$(convert "$free")" "$(convert "$hard")"
+  show_usage_info "$volume" "$used_p" "$warn_p" "$soft_p" "$(bytes_to_human "$free")" "$(bytes_to_human "$hard")"
 done
 IFS=$IFS_SAVE # restore the original IFS

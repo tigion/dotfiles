@@ -33,7 +33,7 @@ summary_size=0
 
 # --- Function Libraries ---------------------------------------------
 
-lib_file="$HOME/lib/convert.sh"
+lib_file="$HOME/lib/bytes_to_human.sh"
 if [[ ! -r "$lib_file" ]]; then
   echo "Error: Cannot read $lib_file" >&2
   exit 1
@@ -86,7 +86,7 @@ calc_sizes() {
     fi
 
     ((size > max_size)) && max_size=$size
-    size_str=$(convert "$size")
+    size_str=$(bytes_to_human "$size")
 
     size_str_len=${#size_str}
     ((size_str_len > max_size_str_len)) && max_size_str_len=$size_str_len
@@ -159,4 +159,4 @@ for idx in "${sorted_indices[@]}"; do
 done
 
 # Prints the summary.
-printf "\nTotal size: %s\n" "$(convert "$summary_size")"
+printf "\nTotal size: %s\n" "$(bytes_to_human "$summary_size")"
