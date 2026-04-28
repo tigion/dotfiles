@@ -467,8 +467,21 @@ return {
         tabline = false,
       },
       win = {
-        backdrop = { transparent = false },
-        -- width = 120,
+        backdrop = {
+          transparent = false,
+          bg = '#1a1b26',
+          -- bg = '#12121a',
+        },
+        width = 0.75,
+        min_width = 120,
+        max_width = 160,
+      },
+      zoom = {
+        win = {
+          backdrop = false,
+          width = 0, -- full width
+          max_width = 9999, -- full width
+        },
       },
     },
   },
