@@ -35,6 +35,7 @@
     dir                     # current directory
     vcs                     # git status
     python_venv_version     # python virtual environment version
+    ruby_mise_version       # ruby version from mise
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -1662,6 +1663,12 @@
     if [[ ! -z $VIRTUAL_ENV ]]; then
       # p10k segment -f 6 -i '' -t "${${$(python3 -V)#* }//\%/%%}"
       p10k segment -f 6 -i '' -t "$(python -V | cut -d' ' -f2)"
+    fi
+  }
+
+  function prompt_ruby_mise_version() {
+    if echo $PATH | grep mise >/dev/null; then
+      p10k segment -f 1 -i '' -t "$(ruby -v | cut -d' ' -f2)"
     fi
   }
 
