@@ -1667,9 +1667,9 @@
   }
 
   function prompt_ruby_mise_version() {
-    if echo $PATH | grep mise >/dev/null; then
-      p10k segment -f 1 -i '' -t "$(ruby -v | cut -d' ' -f2)"
-    fi
+    local version
+    version=$(mise current 2>/dev/null | awk '$1 == "ruby" {print $2; exit}')
+    [[ -n $version ]] && p10k segment -f 1 -i '' -t "${version//\%/%%}"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
