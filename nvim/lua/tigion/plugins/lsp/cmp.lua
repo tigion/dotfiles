@@ -25,6 +25,7 @@ return {
     version = 'v1.*',
     dependencies = {
       { 'rafamadriz/friendly-snippets' }, -- optional: provides snippets for the snippet source
+      -- { 'fang2hou/blink-copilot' }, -- optional: provides a source for GitHub Copilot suggestions
     },
 
     ---@module 'blink.cmp'
@@ -88,7 +89,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'omni' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'omni' }, -- 'copilot' requires `blink-copilot`
         providers = {
           buffer = {
             min_keyword_length = 2,
@@ -100,6 +101,12 @@ return {
             --   return ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil and 2 or 0
             -- end,
           },
+          -- copilot = {
+          --   name = 'copilot',
+          --   module = 'blink-copilot',
+          --   score_offset = 100,
+          --   async = true,
+          -- },
         },
       },
 
