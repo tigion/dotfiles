@@ -15,8 +15,8 @@ return {
       server = {
         -- port = 11234,
         -- hostname = '127.0.0.1',
-        converter = 'cmd', -- js or cmd
-        -- converter = 'js',
+        -- converter = 'cmd', -- js or cmd
+        converter = 'js',
       },
       preview = {
         --   position = 'current',
