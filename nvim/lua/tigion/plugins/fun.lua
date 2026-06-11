@@ -1,16 +1,25 @@
 return {
-  'tigion/games.nvim',
-  enabled = IS_ALLOWED_PLUGIN,
-  dev = true,
-  event = 'VeryLazy',
-  -- keys = {},
-  opts = {
-    window = {
-      -- width = 1,
-      -- height = 1,
-      -- max = { width = 0, height = 0 },
-      border = 'rounded',
-      -- ignore_34_aspect_ratio = true,
+  {
+    'tigion/games.nvim',
+    enabled = false,
+    -- enabled = IS_ALLOWED_PLUGIN,
+    dev = true,
+    event = 'VeryLazy',
+    -- keys = {},
+    opts = {
+      window = {
+        -- width = 1,
+        -- height = 1,
+        -- max = { width = 0, height = 0 },
+        border = 'rounded',
+        -- ignore_34_aspect_ratio = true,
+      },
     },
+  },
+  {
+    'tigion/demo.nvim',
+    enabled = false,
+    dev = true,
+    opts = {},
   },
 }
