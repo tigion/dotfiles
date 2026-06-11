@@ -20,9 +20,25 @@ return {
             size = 80, -- size of the split (0-1 for percentage)
           },
         },
-        -- prompts = {
-        --   refactor = 'Refactor the following code:\n\n{this}',
-        -- },
+        prompts = {
+          -- commit_message = "Analyze the recent commit history and current diff. Suggest 3 commit messages consistent with the project's style, and recommend the best one.",
+          commit_message_unstaged = [[
+Analyze the current git diff for unstaged changes in the repository context, give a short summary and propose:
+
+a commit message matching the project's existing conventions
+a Conventional Commit following best practices
+
+Focus on the intent and impact of the changes, not implementation details. Keep messages concise and descriptive.
+]],
+          commit_message_staged = [[
+Analyze the current git diff for staged changes in the repository context, give a short summary and propose:
+
+a commit message matching the project's existing conventions
+a Conventional Commit following best practices
+
+Focus on the intent and impact of the changes, not implementation details. Keep messages concise and descriptive.
+]],
+        },
       },
     },
     keys = {
