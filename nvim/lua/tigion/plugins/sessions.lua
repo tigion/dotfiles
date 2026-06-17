@@ -4,7 +4,6 @@ return {
 
   'tigion/sessions.nvim',
   dev = false,
-  event = 'VeryLazy',
   cmd = 'Session',
   keys = {
     { '<Leader>ws', '<Cmd>Session save<CR>', desc = 'Save session (cwd)' },
