@@ -98,7 +98,8 @@ end, { desc = 'Toggle location list' })
 --- Selection ------------------------------------------------------------------
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
+-- keymap.set('n', '<C-a>', 'gg<S-v>G', { desc = 'Select all' })
+keymap.set('n', '<C-a>', '<Cmd>keepjumps normal! ggVG<CR>', { desc = 'Select all' })
 
 -- Move selected lines up/down
 keymap.set('x', 'J', ":m '>+1<CR>gv=gv") -- down
@@ -154,13 +155,13 @@ keymap.set('n', '<Leader>-', '<C-x>', { desc = 'Decrement number' }) -- decremen
 
 -- Buffers ---------------------------------------------------------------------
 
-keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+keymap.set('n', '[b', '<Cmd>bprevious<CR>', { desc = 'Prev Buffer' })
+keymap.set('n', ']b', '<Cmd>bnext<CR>', { desc = 'Next Buffer' })
 
 -- Tabs ------------------------------------------------------------------------
 
-keymap.set('n', '[t', '<cmd>tabprevious<cr>', { desc = 'Prev Tab' })
-keymap.set('n', ']t', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
+keymap.set('n', '[t', '<Cmd>tabprevious<CR>', { desc = 'Prev Tab' })
+keymap.set('n', ']t', '<Cmd>tabnext<CR>', { desc = 'Next Tab' })
 
 -- Windows ---------------------------------------------------------------------
 
