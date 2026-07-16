@@ -12,7 +12,6 @@
 local keymap = vim.keymap
 
 local toggle = require('tigion.core.util').toggle
-local addons = require('tigion.core.addons')
 
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -59,8 +58,14 @@ keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
 
 -- Addons ----------------------------------------------------------------------
 
-keymap.set({ 'n', 'v' }, '<Leader>cd', addons.add_dbg_msg, { desc = 'Debug word under cursor' })
-keymap.set({ 'n', 'v' }, '<Leader>ay', addons.copy_context_to_clipboard, { desc = 'Copy context' })
+keymap.set({ 'n', 'v' }, '<Leader>cd', require('tigion.addons.debug').add_dbg_msg, { desc = 'Debug word under cursor' })
+
+keymap.set(
+  { 'n', 'v' },
+  '<Leader>ay',
+  function() require('tigion.addons.context').copy({ notify = true }) end,
+  { desc = 'Copy context' }
+)
 
 -- Navigation ------------------------------------------------------------------
 
