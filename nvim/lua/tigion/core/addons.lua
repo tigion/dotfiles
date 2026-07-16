@@ -73,11 +73,42 @@ function M.switch_word_to_opposite_word_simple()
   end
 end
 
+---Returns some information about the current buffer like
+---file infos and cursor position. Returns nil for unnamed buffers.
+---@return table|nil
+local function get_buffer_info()
+  local full_file_path = vim.api.nvim_buf_get_name(0)
+  if full_file_path == '' then return nil end
+
+  local cwd = vim.fn.getcwd()
+
+  -- Get the relative file path from the current working directory.
+  -- Falls back to an absolute path (with ~ expansion) if outside CWD.
+  local rel_file_path = vim.fn.fnamemodify(full_file_path, ':~:.')
+
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+
+  return {
+    file = {
+      cwd = cwd,
+      full_path = full_file_path,
+      relative_path = rel_file_path,
+      filetype = vim.bo.filetype,
+    },
+    cursor = {
+      line = cursor_pos[1], -- 1-based line number.
+      col = cursor_pos[2] + 1, -- Convert to a 1-based column number.
+    },
+  }
+end
+
 ---Cleans up the given text lines from the minimum
 ---indentation and trailing whitespaces.
 ---@param lines string[]
 ---@return string[]
 local function normalize_lines(lines)
+  if #lines == 0 then return lines end
+
   -- Find the minimum indentation of the lines.
   local min_indentation = math.huge
   for _, line in ipairs(lines) do
@@ -86,129 +117,107 @@ local function normalize_lines(lines)
   end
 
   -- Remove the minimum indentation and trailing whitespaces.
+  local normalized = {}
   for i, line in ipairs(lines) do
-    lines[i] = line:sub(min_indentation + 1):gsub('%s+$', '')
-    -- mask backslashes
-    -- lines[i] = lines[i]:gsub('\\', '\\\\')
+    normalized[i] = line:sub(min_indentation + 1):gsub('%s+$', '')
+    -- normalized[i] = normalized[i]:gsub('\\', '\\\\') --  TODO: Are mask backslashes needed?
   end
 
-  return lines
+  return normalized
 end
 
----Returns some information of the current buffer like
----file infos, cursor position, selection.
----@return table
-local function get_buffer_info()
-  local info = {}
-
-  -- Get the file infos of the current buffer:
-  local cwd = vim.fn.getcwd()
-  local full_file_path = vim.api.nvim_buf_get_name(0)
-  local rel_file_path = vim.fn.fnamemodify(full_file_path, ':.')
-  info.file = {
-    full_path = full_file_path,
-    relative_path = rel_file_path,
-    cwd = cwd,
-    filetype = vim.bo.filetype,
-  }
-
-  -- Get the current cursor position:
-  local cursor_pos = vim.api.nvim_win_get_cursor(0)
-  local cursor = {
-    line = cursor_pos[1],
-    col = cursor_pos[2] + 1, -- Uses 1-based instead of 0-based indexing.
-  }
-  info.cursor = cursor
-
-  -- Get the current visual selection.
+---Returns the current visual selection information.
+---or nil if not in visual mode.
+---@return table|nil
+local function get_visual_selection()
   local mode = vim.fn.mode()
-  if mode:match('[vV\22]') then -- The "\22" is Ctrl-V (visual block).
-    -- Leave visual mode to write the selection marks.
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'xn', false)
 
-    -- Get the start and end positions of the visual selection.
-    local start_pos = vim.fn.getcharpos("'<")
-    local end_pos = vim.fn.getcharpos("'>")
+  -- Return nil if not in a visual mode.
+  if mode ~= 'v' and mode ~= 'V' and mode ~= '\22' then return nil end
 
-    -- Correct the order of the start and end positions
-    -- if the start position is after the end position.
-    if start_pos[2] > end_pos[2] or start_pos[2] == end_pos[2] and start_pos[3] > end_pos[3] then
-      local tmp = start_pos
-      start_pos = end_pos
-      end_pos = tmp
-    end
+  -- Leave visual mode to write the selection marks.
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'xn', false)
 
-    local start_row = start_pos[2]
-    local start_col = start_pos[3]
-    local end_row = end_pos[2]
-    local end_col = end_pos[3]
+  -- Get the start and end positions of the visual selection.
+  local start_pos = vim.fn.getcharpos("'<")
+  local end_pos = vim.fn.getcharpos("'>")
 
-    local selected_lines = vim.fn.getregion(start_pos, end_pos, { type = mode })
-    -- local selection = vim.fn.getregion(start_pos, end_pos, { type = vim.fn.visualmode() })
-
-    -- Fill the first line with spaces in visual mode and multi line selection.
-    if mode == 'v' and start_row ~= end_row and start_col > 1 then
-      selected_lines[1] = string.rep(' ', start_col - 1) .. selected_lines[1]
-    end
-
-    selected_lines = normalize_lines(selected_lines)
-
-    -- Set the selection info.
-    info.selection = {
-      mode = mode,
-      start_row = start_row,
-      start_col = start_col,
-      end_row = end_row,
-      end_col = end_col,
-      text = selected_lines,
-    }
+  -- Correct the order of the start and end positions
+  -- if the start position is after the end position.
+  if start_pos[2] > end_pos[2] or (start_pos[2] == end_pos[2] and start_pos[3] > end_pos[3]) then
+    start_pos, end_pos = end_pos, start_pos
   end
 
-  return info
+  local start_row = start_pos[2]
+  local start_col = start_pos[3]
+  local end_row = end_pos[2]
+  local end_col = end_pos[3]
+
+  local selected_lines = vim.fn.getregion(start_pos, end_pos, { type = mode })
+  -- local selected_lines = vim.fn.getregion(start_pos, end_pos, { type = vim.fn.visualmode() })
+
+  -- Preserve the indentation of the first line in visual mode.
+  if mode == 'v' and #selected_lines > 1 and start_col > 1 then
+    local prefix = vim.fn.getline(start_row):sub(1, start_col - 1)
+    selected_lines[1] = prefix:gsub('[^%s]', ' ') .. selected_lines[1]
+  end
+
+  selected_lines = normalize_lines(selected_lines)
+
+  return {
+    mode = mode,
+    start_row = start_row,
+    start_col = start_col,
+    end_row = end_row,
+    end_col = end_col,
+    text = selected_lines,
+  }
 end
 
 ---Copies the current buffer context to the clipboard.
-function M.copy_context_to_clipboard()
+---@param opts? { notify?: boolean }
+function M.copy_context_to_clipboard(opts)
+  opts = opts or {}
+  local notify = opts.notify == true -- Default to false.
+
   local info = get_buffer_info()
 
-  -- Build the file string.
-  local file = '@' .. info.file.relative_path
-  if info.selection then
-    if info.selection.mode == 'V' then
-      file = file .. ':' .. info.selection.start_row .. '-' .. info.selection.end_row
-    elseif info.selection.mode == 'v' then
-      file = file
-        .. ':'
-        .. info.selection.start_row
-        .. ':'
-        .. info.selection.start_col
-        .. '-'
-        .. info.selection.end_row
-        .. ':'
-        .. info.selection.end_col
+  if not info then
+    if notify then vim.notify('No valid buffer context to copy.') end
+    return
+  end
+
+  local selection = get_visual_selection()
+
+  -- Build the file string with the selection range or cursor position.
+  local suffix
+  if selection then
+    if selection.mode == 'v' then
+      suffix = (':%d:%d-%d:%d'):format(selection.start_row, selection.start_col, selection.end_row, selection.end_col)
+    else
+      if selection.start_row == selection.end_row then
+        suffix = (':%d'):format(selection.start_row)
+      else
+        suffix = (':%d-%d'):format(selection.start_row, selection.end_row)
+      end
     end
   else
-    file = file .. ':' .. info.cursor.line .. ':' .. info.cursor.col
+    suffix = (':%d:%d'):format(info.cursor.line, info.cursor.col)
+  end
+  local file_str = '@' .. info.file.relative_path .. (suffix or '')
+
+  -- Build the selection string as a code block if there is a visual selection.
+  local selection_str = nil
+  if selection and #selection.text > 0 then
+    selection_str = ('```%s\n%s\n```'):format(info.file.filetype, table.concat(selection.text, '\n'))
   end
 
-  -- Build the selection string.
-  local selection = ''
-  if info.selection and #info.selection.text > 0 then
-    selection = selection .. '```' .. info.file.filetype .. '\n'
-    selection = selection .. table.concat(info.selection.text, '\n') .. '\n'
-    selection = selection .. '```\n'
-  end
+  local context_str = file_str .. (selection_str and '\n\n' .. selection_str or '')
 
-  -- Build the context string.
-  local context = ''
-  if file ~= '' then context = context .. file .. '\n\n' end
-  if selection ~= '' then context = context .. selection end
-
-  -- Print the context string.
-  vim.notify(context)
+  if notify then vim.notify(context_str) end
 
   -- Copy the context string to the clipboard.
-  vim.fn.setreg('+', context)
+  vim.fn.setreg('+', context_str)
 end
 
 return M
