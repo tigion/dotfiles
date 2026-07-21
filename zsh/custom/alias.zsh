@@ -16,7 +16,7 @@ alias tree='tree -a -l -C -I ".git" --dirsfirst'
 # eza
 if _is_cmd 'eza'; then
   # defaults
-  alias eza='eza --group-directories-first --icons'
+  alias eza='eza --group-directories-first --icons=auto'
   # shortcuts
   alias ll='eza -l --group'
   alias lt='eza --tree --all --follow-symlinks --ignore-glob=.git'
