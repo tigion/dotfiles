@@ -19,6 +19,13 @@ return {
 
       local border = 'rounded'
 
+      -- Enables LSP servers for specific filetypes.
+      -- With Mason installed ones, will handled by Mason automatically.
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'swift',
+        callback = function() vim.lsp.enable('sourcekit') end,
+      })
+
       -- Executes the callback function every time a
       -- language server is attached to a buffer.
       vim.api.nvim_create_autocmd('LspAttach', {
