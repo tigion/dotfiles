@@ -67,8 +67,8 @@ return {
           require('nvim-treesitter.parsers').asciidoc = {
             ---@diagnostic disable-next-line missing-fields
             install_info = {
-              -- url = 'https://github.com/tigion/tree-sitter-asciidoc', -- git repo
-              path = '~/projects/neovim/tree-sitter-asciidoc', -- local path
+              url = 'https://github.com/tigion/tree-sitter-asciidoc', -- git repo
+              -- path = '~/projects/neovim/tree-sitter-asciidoc', -- local path
               -- revision = '2535b07174b9b00aadbe4c775c96254b9e40c30d', -- commit hash for revision to check out; HEAD if missing
               queries = 'queries', -- directory with query files
             },
