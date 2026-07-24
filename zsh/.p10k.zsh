@@ -36,6 +36,7 @@
     vcs                     # git status
     python_venv_version     # python virtual environment version
     ruby_mise_version       # ruby version from mise
+    rust_mise_version       # rust version from mise
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -1670,6 +1671,12 @@
     local version
     version=$(mise current 2>/dev/null | awk '$1 == "ruby" {print $2; exit}')
     [[ -n $version ]] && p10k segment -f 1 -i '' -t "${version//\%/%%}"
+  }
+
+  function prompt_rust_mise_version() {
+    local version
+    version=$(mise current 2>/dev/null | awk '$1 == "rust" {print $2; exit}')
+    [[ -n $version ]] && p10k segment -f 5 -i '' -t "${version//\%/%%}"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
