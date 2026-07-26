@@ -2,48 +2,23 @@
 {
   // General
 
-  "breadcrumbs.enabled": false,
-  "diffEditor.renderSideBySide": true,
+  "editor.fontSize": 14,
   "editor.fontFamily": "'MesloLGSDZ Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": false,
-  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "workbench.colorTheme": "Tokyo Night",
-
-  // Extension: Asciidoc
-
-  "asciidoc.preview.useEditorStyle": false,
-  "asciidoc.extensions.enableKroki": true,
-
-  // Extension: Code Spell Checker
-
-  "cSpell.enabled": true,
-  "cSpell.language": "en,de-DE",
-
-  // Extension: Markdown All in One
-
-  "markdown.extension.toc.updateOnSave": false,
-  "markdown.extension.toc.levels": "2..6",
-
-  // Extension: Markdown Preview GitHub Styling
-
-  "markdown-preview-github-styles.colorTheme": "light",
-
-  // Extension: Material Icon Theme
-
-  "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.folders.theme": "classic",
-  "material-icon-theme.opacity": 0.75,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
 
   // Extension: Vim
 
-  "vim.easymotion": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
+  //"vim.easymotion": true,
+  //"vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.leader": "<Space>",
+  "vim.enableNeovim": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     // Toggle sidebar
     {
@@ -61,7 +36,6 @@
       "commands": ["workbench.action.findInFiles"]
     },
     { "before": ["<Esc>", "<Esc>"], "commands": [":nohl"] },
-    // { "before": ["<C-a>"], "after": ["g", "g", "V", "G"] },
     { "before": ["<C-a>"], "commands": ["editor.action.selectAll"] },
     { "before": ["s", "h"], "commands": [":split"] },
     { "before": ["s", "v"], "commands": [":vsplit"] }
@@ -80,5 +54,47 @@
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
     { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
     { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
-  ]
+  ],
+
+  // Extension: Asciidoc
+
+  "asciidoc.preview.useEditorStyle": false,
+  "asciidoc.extensions.enableKroki": true,
+
+  // Extension: Code Spell Checker
+
+  "cSpell.enabled": true,
+  "cSpell.language": "en,de-de",
+
+  // Extension: Prettier - Code formatter
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+
+  // Other
 }

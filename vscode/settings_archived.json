@@ -1,0 +1,17 @@
+// vim: filetype=jsonc
+{
+  // Extension: Markdown All in One
+
+  "markdown.extension.toc.updateOnSave": false,
+  "markdown.extension.toc.levels": "2..6",
+
+  // Extension: Markdown Preview GitHub Styling
+
+  "markdown-preview-github-styles.colorTheme": "light",
+
+  // Extension: Material Icon Theme
+
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.theme": "classic",
+  "material-icon-theme.opacity": 0.75
+}
