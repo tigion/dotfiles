@@ -8,7 +8,7 @@
 if ! command -v quota &>/dev/null; then
   echo "The 'quota' command was not found."
   exit 1
-elif ! quota --no-wrap >/dev/null 2>&1; then
+elif ! quota --no-wrap &>/dev/null; then
   echo "The script needs a 'quota' command with support for the '--no-wrap' option."
   exit 1
 fi
@@ -51,7 +51,7 @@ show_usage_info() {
 }
 
 # Gets the quota information for the userdata volume.
-source=$(quota --no-wrap | tail -n +3)
+source=$(quota --no-wrap 2>/dev/null | tail -n +3)
 
 # Exits if no quota information is available.
 if [[ -z "$source" ]]; then
