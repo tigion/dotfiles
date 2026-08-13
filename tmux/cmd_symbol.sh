@@ -11,26 +11,25 @@
 
 case "$1" in
   nvim)
-    echo ""
+    printf '%s\n' ""
     ;;
   vim)
-    echo ""
+    printf '%s\n' ""
     ;;
   bash | fish | zsh)
     #     
-    # echo ""
-    echo ""
+    printf '%s\n' ""
     ;;
   git | lazygit)
     #  󰊢   
-    echo "󰊢"
+    printf '%s\n' "󰊢"
     ;;
   ssh)
-    # echo ""
-    echo ""
+    #  
+    printf '%s\n' ""
     ;;
   *)
-    # echo "$1"
-    echo "󰣖"
+    # printf '%s\n' "$1"
+    printf '%s\n' "󰣖"
     ;;
 esac
