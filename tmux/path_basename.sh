@@ -13,19 +13,12 @@
 # `#(~/.config/tmux/path_basename.sh #{pane_current_path})`
 
 path=${1:-"-"}
-# [[ -n $1 ]] && path=$1 || path="-"
 
-if [[ ${path::1} == "/" ]]; then
-  # use only real paths
-  path=~${path#"$(realpath "$HOME")"}
-
-  # use symlinks and real paths
-  # home=$(realpath "$HOME"
-  # if [[ ${path} == "$HOME"* ]]; then
-  #   path=~${path#"$HOME"}
-  # elif [[ "$HOME" != "$home" ]]; then
-  #   path=~${path#"$home"}
-  # fi
+if [[ $path == /* ]]; then
+  home=$(realpath "$HOME" 2>/dev/null) || home=$HOME
+  if [[ $path == "$home" || $path == "$home"/* ]]; then
+    path=~${path#"$home"}
+  fi
 fi
 
-basename "${path}"
+basename -- "${path}"
