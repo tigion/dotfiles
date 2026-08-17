@@ -310,6 +310,25 @@ Snippets:
 - `S` ... [snacks.picker](#snackspicker)
 - `T` ... [telescope.nvim](#telescopenvim)
 
+### [codediff.nvim]
+
+| Mode | Keymap       | Description   |
+| ---- | ------------ | ------------- |
+| `n`  | `<Leader>cd` | Show git diff |
+
+| Keymap       | Description                                          |
+| ------------ | ---------------------------------------------------- |
+| `[c`/`]c`    | Prev/Next change                                     |
+| `[f`/`]f`    | Prev/Next file                                       |
+| `t`          | Toggle layout between side-by-side and inline layout |
+| `<Leader>b`  | Toggle explorer visibility (explorer mode only)      |
+| `q`          | Close diff                                           |
+| `-`          | Stage/unstage current file                           |
+| `<Leader>hs` | Stage hunk under cursor to git index                 |
+| `<Leader>hu` | Unstage hunk under cursor from git index             |
+| `<Leader>hr` | Discard hunk under cursor (working tree only)        |
+| `g?`         | Show floating window with available keymaps          |
+
 ### [conform.nvim]
 
 [conform.nvim]: https://github.com/stevearc/conform.nvim

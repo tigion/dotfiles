@@ -21,4 +21,16 @@ return {
     },
     opts = {},
   },
+
+  -- A Neovim plugin that provides VSCode-style diff rendering with two-tier
+  -- highlighting, supporting both side-by-side and inline (unified) layouts.
+  -- Link: https://github.com/esmuellert/codediff.nvim
+
+  {
+    'esmuellert/codediff.nvim',
+    cmd = 'CodeDiff',
+    keys = {
+      { '<Leader>cd', '<Cmd>CodeDiff<CR>', desc = 'Show git diff' },
+    },
+  },
 }
