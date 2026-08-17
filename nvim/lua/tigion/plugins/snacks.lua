@@ -414,16 +414,18 @@ return {
       enabled = true,
       -- Config hook to customize options after they have been resolved.
       config = function()
-        -- FIX: This is a workaround to prevent blink.cmp from flickering with snacks.scroll (snacks.animation).
+        -- FIX: This is a workaround to prevent problems with the scroll animation
+        --      with snacks.scroll (snacks.animation).
         --
-        -- Turns snacks.animation off while the blink.cmp menu is open,
-        -- turn it back on afterwards.
+        -- Turns snacks.animation off while the following is open:
+        -- - blink.cmp menu
+        -- - code-diff.nvim diff view
         vim.api.nvim_create_autocmd('User', {
-          pattern = 'BlinkCmpMenuOpen',
+          pattern = { 'BlinkCmpMenuOpen', 'CodeDiffOpen' },
           callback = function() vim.g.snacks_animate = false end,
         })
         vim.api.nvim_create_autocmd('User', {
-          pattern = 'BlinkCmpMenuClose',
+          pattern = { 'BlinkCmpMenuClose', 'CodeDiffClose' },
           callback = function() vim.g.snacks_animate = true end,
         })
       end,
