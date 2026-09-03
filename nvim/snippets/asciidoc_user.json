@@ -45,11 +45,11 @@
   "image macro": {
     "prefix": "image++ (ti)",
     "body": [
-      ":imageTitle: ${1:title}",
-      ":imageFile: ${2:filepath}",
-      ":imageWidth: ${3:width}",
-      ":imageID: ${4:id}",
-      "image::{imageFile}[title=\"{imageTitle}\", alt=\"{imageTitle}\", id=\"{imageID}\", width={imageWidth}]",
+      ":image-title: ${1:title}",
+      ":image-file: ${2:filepath}",
+      ":image-width: ${3:width}",
+      ":image-id: ${4:id}",
+      "image::{image-file}[title=\"{image-title}\", alt=\"{image-title}\", id=\"{image-id}\", width={image-width}]",
       "$0"
     ],
     "description": "Insert block image macro with title and attributes"
@@ -58,11 +58,11 @@
   "diagram plantuml": {
     "prefix": "diagram plantuml+ (ti)",
     "body": [
-      ":diagramFile: ${1:file-without-extension}",
+      ":diagram-file: ${1:file-without-extension}",
       ".${2:title}",
-      "[plantuml, \"{diagramsdir}/{diagramFile}\", svg]",
+      "[plantuml, \"{diagramsdir}/{diagram-file}\", svg]",
       "....",
-      "include::{plantumlsdir}/{diagramFile}.puml[]",
+      "include::{plantumlsdir}/{diagram-file}.puml[]",
       "....",
       "$0"
     ],
