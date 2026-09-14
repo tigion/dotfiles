@@ -5,18 +5,19 @@
 # Use newer versions than those provided by macOS.
 brew "bash"
 brew "git"
+brew "rsync"
 
 # Tools
 brew "curl"
 brew "wget"
+brew "gpg"
 
 # Coding
 brew "python3"
 brew "ruby"
-brew "php"
+#brew "php"
 #brew "composer"
 #brew "maven"
-brew "gpg"
 
 #cask "temurin"
 ##brew "openjdk"
