@@ -142,6 +142,7 @@ Focus on the intent and impact of the changes, not implementation details. Keep 
       },
       filetypes = {
         ['markdown'] = true,
+        -- ['yaml'] = true,
       },
       -- Use the copilot-language-server installed by mason.nvim instead the bundled one.
       -- server = {
