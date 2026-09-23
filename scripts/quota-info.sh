@@ -72,6 +72,11 @@ for str in $source; do
   soft=$(echo "$str" | tr -s ' ' | cut -d' ' -f3)
   hard=$(echo "$str" | tr -s ' ' | cut -d' ' -f4)
 
+  # Converts the quota values from KB to bytes.
+  used=$((used * 1024))
+  soft=$((soft * 1024))
+  hard=$((hard * 1024))
+
   # Calculates free space and percentages.
   free=$((hard - used))
   used_p=$((used * 100 / hard))
