@@ -35,6 +35,7 @@ return {
         'phpactor', -- PHP (LSP)
         -- 'pyright', -- Python (LSP) -- Replaced by `basedpyright`
         'ruff', -- Python (LSP, Linter, Formatter)
+        'rust_analyzer', -- Rust (LSP)
         -- 'ts_ls', -- JavaScript, TypeScript (LSP, typescript-language-server) -- Replaced by `vtsls`
         'typos_lsp', -- * (LSP, typos-lsp, Code Spell Checker)
         'vimls', -- VimScript (LSP, vim-language-server)
