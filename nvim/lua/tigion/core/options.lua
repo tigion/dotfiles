@@ -151,3 +151,10 @@ if is_mac == 1 or is_linux == 1 then
 elseif is_win == 1 then
   opt.clipboard:prepend({ 'unnamed', 'unnamedplus' })
 end
+
+-- Cursor
+opt.guicursor = {
+  'n-v-c:block-blinkwait700-blinkon400-blinkoff250',
+  'i-ci:ver25-blinkwait700-blinkon400-blinkoff250',
+  'r:hor20',
+}
