@@ -125,3 +125,29 @@ unset file
 # Sets up Powerlevel10k theme for the prompt.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# NOTE: Workaround for vi mode cursor shape handling in tmux.
+#
+# Sets the cursor shape based on the current vi mode and refreshes
+# the Powerlevel10k prompt to update its vi mode indicator.
+# --> Start: Vi mode cursor workaround
+function _set_vi_cursor {
+  if [[ $KEYMAP == vicmd ]]; then
+    printf '\e[1 q' # Blinking block
+  else
+    printf '\e[5 q' # Blinking beam
+  fi
+}
+
+function zle-keymap-select {
+  _set_vi_cursor
+  zle reset-prompt
+}
+
+function zle-line-init {
+  _set_vi_cursor
+}
+
+zle -N zle-keymap-select
+zle -N zle-line-init
+# <-- End: Vi mode cursor workaround

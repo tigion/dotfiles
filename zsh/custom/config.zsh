@@ -26,6 +26,18 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # cd Paths
 #export cdpath=($HOME/code)
 
+# --- Key Bindings ---
+
+# use vi key bindings in command line
+bindkey -v
+# vi mode key bindings to have some default (emacs) key bindings in insert mode
+bindkey -M viins '^[b' backward-word
+bindkey -M viins '^[f' forward-word
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M viins '^W' backward-kill-word
+
 # --- Paths ---
 
 # --- Homebrew ---
