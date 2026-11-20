@@ -2,10 +2,16 @@
 
 # default settings
 Host *
-  IgnoreUnknown UseKeychain
-  AddKeysToAgent yes
-  UseKeychain yes
   Compression yes
+
+  # 1Password integration
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  IdentitiesOnly yes
+
+  # macOS Keychain integration
+  # IgnoreUnknown UseKeychain
+  # AddKeysToAgent yes
+  # UseKeychain yes
 
 # import custom config files
 Include ~/.config/ssh/config.*
